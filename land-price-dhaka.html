@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="canonical" href="https://sadmansamin21.github.io/land-price-dhaka.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>Land Price Dhaka | Per Katha Price Estimator by Area</title>
+  <meta name="description" content="Estimate land prices per katha across all major areas of Dhaka and Bangladesh. Free instant land price tool covering 200+ locations.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c10;
+      --text: #f0f4f8;
+      --glass-border: rgba(255,255,255,0.07);
+      --glass-bg: rgba(255,255,255,0.03);
+      --teal: #0ff4c6;
+      --green: #22d3a5;
+      --amber: #f59e0b;
+      --red: #f43f5e;
+      --blue: #38bdf8;
+      --accent: #0ff4c6;
+      --font-display: 'Sora', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:var(--font-display); -webkit-tap-highlight-color:transparent; }
+    body { background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden; overflow-y:auto; }
+
+    .liquid-container { position:fixed; inset:0; z-index:-1; background:#080c10; overflow:hidden; }
+    .blob { position:absolute; border-radius:50%; filter:blur(120px); opacity:0.35; will-change:transform; animation:blobFloat 28s infinite ease-in-out alternate; }
+    .blob-1 { top:5%; left:15%; width:55vw; height:55vw; background:#0a2a4a; animation-delay:0s; }
+    .blob-2 { bottom:15%; right:8%; width:45vw; height:45vw; background:#0a3a2a; animation-delay:-10s; }
+    .blob-3 { top:45%; left:45%; width:35vw; height:35vw; background:#1a2a0a; animation-delay:-18s; }
+
+    .liquid-container.premium .blob { background:#4a0a3a !important; transition:background 1.5s ease; }
+    .liquid-container.high .blob    { background:#3a1a0a !important; transition:background 1.5s ease; }
+    .liquid-container.mid .blob     { background:#0a2a3a !important; transition:background 1.5s ease; }
+    .liquid-container.budget .blob  { background:#0a1a3a !important; transition:background 1.5s ease; }
+
+    @keyframes blobFloat {
+      0%   { transform:translate(0,0) scale(1); }
+      50%  { transform:translate(45px,-45px) scale(1.08); }
+      100% { transform:translate(-30px,35px) scale(0.93); }
+    }
+    .noise { position:fixed; inset:0; opacity:0.028; pointer-events:none; z-index:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .container { position:relative; z-index:10; max-width:820px; margin:0 auto; padding:24px 20px; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+
+    header { text-align:center; margin-bottom:36px; transition:opacity 0.5s ease; }
+    .logo-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(15,244,198,0.08); border:1px solid rgba(15,244,198,0.2); border-radius:30px; padding:6px 16px; font-size:0.72rem; font-family:var(--font-mono); color:var(--teal); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:18px; }
+    .logo-badge span { width:6px; height:6px; border-radius:50%; background:var(--teal); display:inline-block; animation:blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+
+    h1 { font-size:clamp(2.2rem,7vw,4rem); font-weight:700; letter-spacing:-0.04em; line-height:1.05; margin-bottom:12px; background:linear-gradient(135deg,#ffffff 0%,#94a3b8 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .subtitle { font-size:clamp(0.8rem,2.2vw,0.95rem); color:rgba(255,255,255,0.4); font-weight:400; letter-spacing:0.5px; max-width:480px; margin:0 auto; line-height:1.6; }
+
+    .search-wrapper { width:100%; position:relative; margin-bottom:8px; }
+    .back-btn { position:absolute; top:50%; left:16px; transform:translateY(-50%); background:transparent; border:none; color:rgba(255,255,255,0.45); font-size:1.4rem; cursor:pointer; padding:4px; display:none; z-index:20; transition:color 0.2s; }
+    .back-btn:hover { color:rgba(255,255,255,0.9); }
+
+    input { width:100%; padding:18px 22px; font-size:1rem; font-family:var(--font-display); background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09); border-radius:16px; color:#fff; outline:none; backdrop-filter:blur(14px); transition:all 0.3s ease; }
+    input::placeholder { color:rgba(255,255,255,0.3); }
+    .has-back-btn input { padding-left:50px; }
+    input:focus { background:rgba(255,255,255,0.08); border-color:rgba(15,244,198,0.25); box-shadow:0 0 0 3px rgba(15,244,198,0.06); }
+    .search-hint { text-align:center; color:rgba(255,255,255,0.28); font-size:0.78rem; margin-top:10px; margin-bottom:18px; font-family:var(--font-mono); }
+
+    .suggestions { position:absolute; top:110%; left:0; width:100%; background:rgba(10,14,18,0.98); backdrop-filter:blur(24px); border-radius:14px; border:1px solid rgba(255,255,255,0.09); max-height:0; overflow:hidden; transition:max-height 0.3s ease; z-index:50; }
+    .suggestions.active { max-height:62vh; overflow-y:auto; }
+    .suggestion-item { padding:13px 20px; border-bottom:1px solid rgba(255,255,255,0.04); cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:background 0.2s ease; }
+    .suggestion-item:last-child { border-bottom:none; }
+    .suggestion-item:hover { background:rgba(255,255,255,0.05); }
+    .suggestion-item .loc-name { font-size:0.95rem; color:rgba(255,255,255,0.85); }
+    .suggestion-item .loc-meta { font-size:0.72rem; color:rgba(255,255,255,0.35); margin-top:2px; font-family:var(--font-mono); }
+    .price-badge { font-size:0.7rem; font-family:var(--font-mono); padding:4px 11px; border-radius:20px; background:rgba(255,255,255,0.07); white-space:nowrap; flex-shrink:0; margin-left:10px; }
+
+    .result-panel { display:none; width:100%; gap:14px; margin-top:18px; animation:slideUp 0.45s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+    .card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:22px; padding:26px 28px; backdrop-filter:blur(14px); }
+    .card-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.35); font-family:var(--font-mono); margin-bottom:6px; }
+    .card-main { font-size:1.5rem; font-weight:600; line-height:1.25; }
+    .card-sub { font-size:0.82rem; color:rgba(255,255,255,0.45); margin-top:5px; line-height:1.5; }
+
+    .big-price { font-size:3rem; font-weight:700; letter-spacing:-0.03em; font-family:var(--font-mono); }
+    .price-range { font-size:0.8rem; font-family:var(--font-mono); color:rgba(255,255,255,0.4); margin-top:6px; }
+
+    .progress-bar { width:100%; height:3px; background:rgba(255,255,255,0.09); border-radius:10px; margin-top:18px; overflow:hidden; }
+    .progress-fill { height:100%; width:0%; transition:width 1.1s cubic-bezier(0.22,1,0.36,1); }
+
+    .detail-grid { display:grid; grid-template-columns:1fr; gap:14px; }
+    @media(min-width:600px){ .detail-grid { grid-template-columns:1fr 1fr; } }
+
+    .tier-dot { width:10px; height:10px; border-radius:50%; display:inline-block; margin-right:8px; vertical-align:middle; }
+
+    .stats-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .stat-chip { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:8px 14px; font-size:0.75rem; font-family:var(--font-mono); color:rgba(255,255,255,0.55); }
+    .stat-chip strong { color:rgba(255,255,255,0.85); display:block; font-size:0.85rem; margin-bottom:2px; }
+
+    .footer { margin-top:60px; font-size:0.72rem; color:rgba(255,255,255,0.2); text-align:center; line-height:2; }
+    .footer a { color:rgba(15,244,198,0.6); text-decoration:none; transition:color 0.2s; }
+    .footer a:hover { color:var(--teal); }
+
+    .share-row { display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; }
+    .share-btn { flex:1; min-width:100px; padding:11px 16px; border:1px solid rgba(255,255,255,0.1); border-radius:12px; background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.6); font-size:0.78rem; font-family:var(--font-display); cursor:pointer; transition:all 0.2s; text-align:center; }
+    .share-btn:hover { background:rgba(255,255,255,0.08); color:#fff; border-color:rgba(255,255,255,0.2); }
+
+    .modal-overlay { position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
+    .modal-overlay.active { opacity:1; pointer-events:all; }
+    .modal-box { background:#0e1218; border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:32px; max-width:480px; width:100%; transform:translateY(20px); transition:transform 0.3s ease; }
+    .modal-overlay.active .modal-box { transform:translateY(0); }
+    .modal-box h3 { font-size:1.3rem; margin-bottom:12px; }
+    .modal-box p { font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:10px; }
+    .modal-close { float:right; background:none; border:none; color:rgba(255,255,255,0.4); font-size:1.3rem; cursor:pointer; margin-top:-4px; }
+    .divider { width:100%; height:1px; background:rgba(255,255,255,0.05); margin:12px 0; }
+
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-track { background:transparent; }
+    ::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:4px; }
+  </style>
+</head>
+<body>
+
+<div class="liquid-container" id="liquidBg">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="noise"></div>
+
+<div class="modal-overlay" id="aboutModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('aboutModal')">✕</button>
+    <h3>🗺️ About This Tool</h3>
+    <p>Land Price Estimator provides estimated land prices per katha (1.65 decimal / ~67 sq m) for 200+ locations across Dhaka city, Dhaka Division, and major districts of Bangladesh.</p>
+    <p>Prices reflect median residential/commercial land market rates. Actual prices vary based on road width, plot size, land use type, legal clearance, and negotiation.</p>
+    <div class="divider"></div>
+    <p style="font-size:0.75rem;">Data reflects 2024–2025 market estimates. 1 Katha = 1.65 Decimal = ~720 sq ft.</p>
+  </div>
+</div>
+
+<div class="container" id="app">
+  <header id="header">
+    <div class="logo-badge"><span></span> Dhaka · All Divisions · 200+ Areas</div>
+    <h1>Land Price<br>Estimator</h1>
+    <p class="subtitle">Search any area, thana, or district in Bangladesh to get an instant per-katha land price estimate.</p>
+  </header>
+
+  <div style="width:100%">
+    <div class="search-wrapper" id="searchWrapper">
+      <button class="back-btn" id="backBtn" title="Back">←</button>
+      <input type="text" id="searchInput" placeholder="Search — Gulshan, Dhanmondi, Uttara, Mirpur…" autocomplete="off" />
+      <div class="suggestions" id="suggestionsBox"></div>
+    </div>
+    <p class="search-hint" id="searchHint">↑ type an area, thana, or district name</p>
+
+    <div class="result-panel" id="results" style="display:none">
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+          <div>
+            <div class="card-label">Estimated Land Price Per Katha</div>
+            <div class="big-price" id="priceMain">—</div>
+            <div class="price-range" id="priceRange">—</div>
+          </div>
+          <div style="text-align:right">
+            <div class="card-label">Zone</div>
+            <div class="card-main" id="tierLabel">—</div>
+            <div class="card-sub" id="divisionLabel">—</div>
+          </div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="meter"></div></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="card">
+          <div class="card-label">Residential Plot (3 Katha)</div>
+          <div class="card-main" id="price3k">—</div>
+          <div class="card-sub" id="desc3k">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Standard Plot (5 Katha)</div>
+          <div class="card-main" id="price5k">—</div>
+          <div class="card-sub" id="desc5k">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Area Insights</div>
+        <div class="card-main" id="areaName">—</div>
+        <div class="card-sub" id="areaNote">—</div>
+        <div class="stats-row">
+          <div class="stat-chip"><strong id="statRoad">—</strong>Road Premium</div>
+          <div class="stat-chip"><strong id="statDemand">—</strong>Demand Level</div>
+          <div class="stat-chip"><strong id="statYoY">—</strong>YoY Trend</div>
+          <div class="stat-chip"><strong id="statType">—</strong>Land Use</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Share This Estimate</div>
+        <div class="card-sub" style="margin-bottom:10px;">Found it useful? Share with someone looking to buy land.</div>
+        <div class="share-row">
+          <button class="share-btn" onclick="shareOnTwitter()">𝕏 Twitter</button>
+          <button class="share-btn" onclick="shareOnFacebook()">Facebook</button>
+          <button class="share-btn" onclick="copyLink()">🔗 Copy Link</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer" id="homepageFooter">
+    <div>Estimates per katha (1 Katha = 1.65 Decimal ≈ 720 sq ft) · Prices vary by road width, plot size & legal status</div>
+    <div style="margin-top:8px;">
+      Land Price Estimator BD ·
+      <a href="#" onclick="openModal('aboutModal'); return false;">About</a> ·
+      Data: 2024–2025 market estimates
+    </div>
+  </footer>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// DATASET: 200+ Bangladesh land price locations
+// Fields: n=name, d=division/area, t=tier(1=budget,2=mid,3=high,4=premium)
+//         pk=price per katha (BDT Lakh), note=description
+//         road=road premium factor, demand, yoy=trend, type=land use
+// ─────────────────────────────────────────────────────────────
+const locations = [
+  // ══════════════════════════════════════
+  // DHAKA CITY — PREMIUM ZONES (Tier 4)
+  // ══════════════════════════════════════
+  { n:"Gulshan 1",          d:"Dhaka City · Gulshan Thana",         t:4, pk:900,   note:"Diplomatic enclave, expat hub, posh apartments & embassies. Road-facing plots command extreme premiums.",            road:"3–5× on main road", demand:"Very High", yoy:"↑ +12%", type:"Residential/Commercial" },
+  { n:"Gulshan 2",          d:"Dhaka City · Gulshan Thana",         t:4, pk:1100,  note:"Bangladesh's most exclusive address. Circle 2 plots are among the costliest in the country.",                       road:"3–6× on main road", demand:"Very High", yoy:"↑ +14%", type:"Residential/Commercial" },
+  { n:"Banani",             d:"Dhaka City · Banani Thana",          t:4, pk:850,   note:"Upscale residential and commercial. Model Town-style planning. High investor interest.",                            road:"3–4× on main road", demand:"Very High", yoy:"↑ +11%", type:"Residential/Commercial" },
+  { n:"Baridhara",          d:"Dhaka City · Baridhara Thana",       t:4, pk:1000,  note:"Embassy zone, ultra-secure. DOHS Baridhara plots rarely available, very high in demand.",                          road:"2–4× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Baridhara DOHS",     d:"Dhaka City · Baridhara Thana",       t:4, pk:1200,  note:"Military residential plots, strictly managed, very scarce. Premium over civilian Baridhara.",                      road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Niketan",            d:"Dhaka City · Gulshan Thana",         t:4, pk:750,   note:"Between Gulshan and Hatirjheel, gated blocks, family-favourite.",                                                  road:"2–4× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential" },
+  { n:"Bashundhara R/A",    d:"Dhaka City · Khilkhet Thana",        t:3, pk:400,   note:"Large planned township. Block prices vary; A–C blocks cheaper, I–J blocks most expensive.",                        road:"2–3× on main road", demand:"Very High", yoy:"↑ +15%", type:"Residential" },
+  { n:"Bashundhara Block A",d:"Dhaka City · Khilkhet Thana",        t:3, pk:350,   note:"Older blocks of Bashundhara, still developing but high demand for ready plots.",                                   road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +13%", type:"Residential" },
+  { n:"Bashundhara Block J",d:"Dhaka City · Khilkhet Thana",        t:4, pk:550,   note:"Newest & most premium blocks of Bashundhara R/A near Jamuna Future Park.",                                         road:"2–3× on main road", demand:"Very High", yoy:"↑ +16%", type:"Residential/Commercial" },
+
+  // ══════════════════════════════════════
+  // DHAKA CITY — HIGH-END ZONES (Tier 3)
+  // ══════════════════════════════════════
+  { n:"Dhanmondi",          d:"Dhaka City · Dhanmondi Thana",       t:3, pk:600,   note:"Cultural heart of Dhaka. Lakeside plots are most expensive. Education and NGO hub.",                               road:"2–4× on main road", demand:"Very High", yoy:"↑ +10%", type:"Residential/Commercial" },
+  { n:"Lalmatia",           d:"Dhaka City · Mohammadpur Thana",     t:3, pk:450,   note:"Quiet upscale area next to Dhanmondi. Government-allotted plots, educated crowd.",                                 road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Mohakhali",          d:"Dhaka City · Mohakhali Thana",       t:3, pk:500,   note:"Corporate and residential mix. DOHS colony nearby adds to premium.",                                               road:"2–4× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
+  { n:"Uttara Sector 1",    d:"Dhaka City · Uttara Thana",          t:3, pk:280,   note:"Near airport and Hajrat Shahjalal. Rajuk-planned sectors. Sector 1 is among the priciest.",                        road:"2–3× on main road", demand:"High",      yoy:"↑ +12%", type:"Residential" },
+  { n:"Uttara Sector 3",    d:"Dhaka City · Uttara Thana",          t:3, pk:290,   note:"Well-established sector, good schools and parks. Consistent buyer demand.",                                         road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential" },
+  { n:"Uttara Sector 4",    d:"Dhaka City · Uttara Thana",          t:3, pk:270,   note:"Family-friendly, near Uttara Club and major schools.",                                                              road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Uttara Sector 6",    d:"Dhaka City · Uttara Thana",          t:3, pk:260,   note:"Commercial-residential mix, Diabari lake proximity adds value.",                                                   road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential/Commercial" },
+  { n:"Uttara Sector 7",    d:"Dhaka City · Uttara Thana",          t:3, pk:250,   note:"Established sector with full amenities, wide internal roads.",                                                     road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Uttara Sector 10",   d:"Dhaka City · Uttara Thana",          t:3, pk:240,   note:"Newer sector with BRT connectivity planned. Rising fast.",                                                          road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +14%", type:"Residential" },
+  { n:"Uttara Sector 11",   d:"Dhaka City · Uttara Thana",          t:2, pk:200,   note:"Developing sector, slightly cheaper than older sectors. Good future prospects.",                                   road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +12%", type:"Residential" },
+  { n:"Uttara Sector 13",   d:"Dhaka City · Uttara Thana",          t:2, pk:180,   note:"Developing area, affordable entry to Uttara market.",                                                              road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +10%", type:"Residential" },
+  { n:"Hatirjheel",         d:"Dhaka City · Rampura Thana",         t:3, pk:380,   note:"Lakeside premium. New developments rising fast. Very popular with investors.",                                      road:"2–4× lake-facing",  demand:"Very High", yoy:"↑ +13%", type:"Residential/Commercial" },
+  { n:"Panthapath",         d:"Dhaka City · Dhanmondi Thana",       t:3, pk:480,   note:"Metro rail connected, Bashundhara City mall adjacent. High commercial demand.",                                    road:"3–5× on main road", demand:"High",      yoy:"↑ +10%", type:"Commercial/Residential" },
+  { n:"Green Road",         d:"Dhaka City · Dhanmondi Thana",       t:3, pk:420,   note:"Near Dhanmondi, good connectivity, mixed residential and office buildings.",                                       road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
+  { n:"Eskaton",            d:"Dhaka City · Ramna Thana",           t:3, pk:460,   note:"Embassy proximity, Minto Road area, upmarket quiet enclave.",                                                      road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Nikunja 1",          d:"Dhaka City · Khilkhet Thana",        t:3, pk:300,   note:"Airport adjacent planned housing. Popular with airline staff and expats.",                                          road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Nikunja 2",          d:"Dhaka City · Khilkhet Thana",        t:3, pk:320,   note:"Slightly newer than Nikunja 1, cleaner roads, rising demand.",                                                     road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential" },
+  { n:"Cantonment",         d:"Dhaka City · Cantonment Thana",      t:3, pk:500,   note:"Military zone, very well managed, limited civilian land available. Rare to buy.",                                  road:"2–3× on main road", demand:"Low",       yoy:"↑ +5%",  type:"Residential" },
+  { n:"Mirpur DOHS",        d:"Dhaka City · Mirpur Thana",          t:3, pk:350,   note:"Military residential, secure and organized. High investor interest when plots available.",                         road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +7%",  type:"Residential" },
+
+  // ══════════════════════════════════════
+  // DHAKA CITY — MID-RANGE (Tier 2)
+  // ══════════════════════════════════════
+  { n:"Banasree",           d:"Dhaka City · Rampura Thana",         t:2, pk:200,   note:"Well-planned blocks with parks and schools. Very popular family area. Strong demand.",                             road:"1.5–2.5× main",     demand:"Very High", yoy:"↑ +12%", type:"Residential" },
+  { n:"Aftabnagar",         d:"Dhaka City · Rampura Thana",         t:2, pk:180,   note:"Adjacent to Banasree, lakeside plots command premium. Developing fast.",                                           road:"1.5–2× main",       demand:"High",      yoy:"↑ +11%", type:"Residential" },
+  { n:"Rampura",            d:"Dhaka City · Rampura Thana",         t:2, pk:170,   note:"TV station area, Banasree proximity, older mid-range residential.",                                                road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
+  { n:"Badda",              d:"Dhaka City · Badda Thana",           t:2, pk:160,   note:"Near Bashundhara access road, affordable, IT park proximity boosting prices.",                                     road:"1.5–2× main",       demand:"High",      yoy:"↑ +10%", type:"Residential/Commercial" },
+  { n:"Merul Badda",        d:"Dhaka City · Badda Thana",           t:2, pk:180,   note:"Gulshan link road access. Affordable entry to the premium eastern corridor.",                                      road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
+  { n:"Khilkhet",           d:"Dhaka City · Khilkhet Thana",        t:2, pk:190,   note:"Airport road proximity, growing IT hub. Good investment prospect.",                                                road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +11%", type:"Residential/Commercial" },
+  { n:"Mohammadpur",        d:"Dhaka City · Mohammadpur Thana",     t:2, pk:220,   note:"Dense residential area, Adabar/Shyamoli adjacent, well-established.",                                             road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +7%",  type:"Residential" },
+  { n:"Shyamoli",           d:"Dhaka City · Mohammadpur Thana",     t:2, pk:250,   note:"Planned colony, near Dhanmondi, popular with middle-upper class families.",                                        road:"1.5–3× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Adabar",             d:"Dhaka City · Adabar Thana",          t:2, pk:200,   note:"Mohammadpur subzone, large residential blocks, good amenities.",                                                   road:"1.5–2× main",       demand:"High",      yoy:"↑ +7%",  type:"Residential" },
+  { n:"Kalabagan",          d:"Dhaka City · Dhanmondi Thana",       t:2, pk:280,   note:"Dhanmondi lake proximity, popular with young professionals. Dense development.",                                   road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
+  { n:"Indira Road",        d:"Dhaka City · Farmgate Thana",        t:2, pk:240,   note:"Between Farmgate and Dhanmondi, mixed residential zone.",                                                          road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
+  { n:"Farmgate",           d:"Dhaka City · Farmgate Thana",        t:2, pk:260,   note:"Busy commercial node, metro-connected, high commercial land value.",                                               road:"2–4× on main road", demand:"High",      yoy:"↑ +8%",  type:"Commercial/Residential" },
+  { n:"Agargaon",           d:"Dhaka City · Sher-e-Bangla Nagar",   t:2, pk:200,   note:"Government hub, NID & passport offices, metro accessible. Good for institutional plots.",                         road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +10%", type:"Residential/Institutional" },
+  { n:"Tejgaon",            d:"Dhaka City · Tejgaon Thana",         t:2, pk:220,   note:"Industrial and commercial zone transitioning to mixed use. High commercial value.",                                road:"2–4× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Commercial/Industrial" },
+  { n:"Karwan Bazar",       d:"Dhaka City · Tejgaon Thana",         t:2, pk:280,   note:"Media and IT cluster, commercial land very high value. Near kitchen market.",                                      road:"3–5× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial" },
+  { n:"Malibagh",           d:"Dhaka City · Sabujbagh Thana",       t:2, pk:190,   note:"Mid-range, schools and hospitals nearby, consistent demand.",                                                      road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +7%",  type:"Residential" },
+  { n:"Shantinagar",        d:"Dhaka City · Paltan Thana",          t:2, pk:200,   note:"Central east Dhaka, good transport, older mid-range area.",                                                        road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +7%",  type:"Residential/Commercial" },
+  { n:"Mouchak",            d:"Dhaka City · Ramna Thana",           t:2, pk:210,   note:"Shopping area, Malibagh-Shantinagar corridor, commercial demand rising.",                                          road:"2–3× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Commercial/Residential" },
+  { n:"Segunbagicha",       d:"Dhaka City · Ramna Thana",           t:2, pk:230,   note:"Press Club zone, government quarter adjacency, stable pricing.",                                                   road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +5%",  type:"Residential/Institutional" },
+  { n:"Motijheel",          d:"Dhaka City · Motijheel Thana",       t:2, pk:300,   note:"Bangladesh's financial district, Dilkusha. Commercial land very high.",                                            road:"3–5× on main road", demand:"Medium",    yoy:"↑ +5%",  type:"Commercial" },
+  { n:"Wari",               d:"Dhaka City · Wari Thana",            t:2, pk:180,   note:"Historic residential, near Buriganga river. Old plots with good titles.",                                          road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +4%",  type:"Residential" },
+  { n:"Shahbag",            d:"Dhaka City · Ramna Thana",           t:2, pk:280,   note:"Cultural epicenter, BSMMU hospital, TSC proximity. Commercial values high.",                                       road:"2–4× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial/Residential" },
+  { n:"Azimpur",            d:"Dhaka City · Lalbagh Thana",         t:2, pk:200,   note:"Near Dhaka University and BUET, government housing estate, popular with academics.",                              road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +6%",  type:"Residential/Institutional" },
+  { n:"Elephant Road",      d:"Dhaka City · Ramna Thana",           t:2, pk:250,   note:"Near New Market, high pedestrian and commercial traffic. Good retail land.",                                       road:"2–4× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial/Residential" },
+  { n:"New Market Area",    d:"Dhaka City · Newmarket Thana",       t:2, pk:260,   note:"Major shopping district, high commercial land value, busy location.",                                              road:"3–5× on main road", demand:"High",      yoy:"↑ +6%",  type:"Commercial" },
+
+  // ══════════════════════════════════════
+  // DHAKA CITY — BUDGET ZONES (Tier 1)
+  // ══════════════════════════════════════
+  { n:"Mirpur 1",           d:"Dhaka City · Mirpur Thana",          t:1, pk:80,    note:"Metro-connected, very affordable. Zoo and botanical garden proximity.",                                            road:"1.5–2.5× main",     demand:"Very High", yoy:"↑ +9%",  type:"Residential" },
+  { n:"Mirpur 2",           d:"Dhaka City · Mirpur Thana",          t:1, pk:85,    note:"Stadium area, budget residential, high density. Metro connectivity added value.",                                 road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Mirpur 10",          d:"Dhaka City · Mirpur Thana",          t:1, pk:100,   note:"Major metro hub, busy commercial zone. Commercial plots valuable.",                                               road:"2–3× on main road", demand:"Very High", yoy:"↑ +10%", type:"Residential/Commercial" },
+  { n:"Mirpur 11",          d:"Dhaka City · Mirpur Thana",          t:1, pk:90,    note:"Quiet mixed blocks, DOHS adjacent, budget entry to Mirpur.",                                                      road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Mirpur 12",          d:"Dhaka City · Mirpur Thana",          t:1, pk:90,    note:"Near Pallabi, large residential catchment, budget housing.",                                                       road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Pallabi",            d:"Dhaka City · Pallabi Thana",         t:1, pk:75,    note:"Budget residential zone, Mirpur DOHS adjacent. Very affordable entry.",                                           road:"1.5–2× main",       demand:"High",      yoy:"↑ +7%",  type:"Residential" },
+  { n:"Kafrul",             d:"Dhaka City · Kafrul Thana",          t:1, pk:80,    note:"Near Cantonment border, mixed residential. Relatively affordable.",                                               road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +6%",  type:"Residential" },
+  { n:"Shewrapara",         d:"Dhaka City · Mirpur Thana",          t:1, pk:85,    note:"Metro accessible, budget-friendly Mirpur neighborhood. Good connectivity.",                                       road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Kazipara",           d:"Dhaka City · Mirpur Thana",          t:1, pk:80,    note:"Metro station hub, affordable Mirpur neighborhood.",                                                              road:"1.5–2× main",       demand:"High",      yoy:"↑ +9%",  type:"Residential" },
+  { n:"Paikpara",           d:"Dhaka City · Mirpur Thana",          t:1, pk:70,    note:"Working class area, very affordable Mirpur zone.",                                                                road:"1.5–2× main",       demand:"High",      yoy:"↑ +6%",  type:"Residential" },
+  { n:"Darussalam",         d:"Dhaka City · Darussalam Thana",      t:1, pk:65,    note:"Northwest Dhaka, affordable area, mostly old housing stock.",                                                      road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential" },
+  { n:"Gabtoli",            d:"Dhaka City · Mirpur Thana",          t:1, pk:55,    note:"Bus terminal area, transit hub, very affordable. Industrial/commercial fringe.",                                  road:"2–3× on main road", demand:"Medium",    yoy:"↑ +4%",  type:"Residential/Commercial" },
+  { n:"Khilgaon",           d:"Dhaka City · Khilgaon Thana",        t:1, pk:95,    note:"Old residential area, Taltola market, affordable east Dhaka.",                                                    road:"1.5–2× main",       demand:"High",      yoy:"↑ +6%",  type:"Residential" },
+  { n:"Mugda",              d:"Dhaka City · Mugda Thana",           t:1, pk:80,    note:"Dense old Dhaka periphery, budget plots, improving infrastructure.",                                              road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential" },
+  { n:"Basabo",             d:"Dhaka City · Sabujbagh Thana",       t:1, pk:70,    note:"Old Dhaka outskirts, community living, very affordable.",                                                          road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +4%",  type:"Residential" },
+  { n:"Jatrabari",          d:"Dhaka City · Jatrabari Thana",       t:1, pk:65,    note:"South Dhaka gateway, Dhaka-Chittagong highway junction. Good commercial prospects.",                             road:"2–3× on main road", demand:"Medium",    yoy:"↑ +5%",  type:"Residential/Commercial" },
+  { n:"Demra",              d:"Dhaka City · Demra Thana",           t:1, pk:45,    note:"Industrial area near Buriganga, cheap land, EPZ proximity.",                                                       road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Industrial" },
+  { n:"Kadamtali",          d:"Dhaka City · Kadamtali Thana",       t:1, pk:40,    note:"Near Keraniganj ferry, southern Dhaka, very budget area.",                                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential" },
+  { n:"Hazaribagh",         d:"Dhaka City · Hazaribagh Thana",      t:1, pk:90,    note:"Near Dhaka University, popular with students and academics.",                                                      road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential" },
+  { n:"Lalbagh",            d:"Dhaka City · Lalbagh Thana",         t:1, pk:70,    note:"Old Dhaka fort area, dense and historical. Old plot titles available.",                                           road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +3%",  type:"Residential" },
+  { n:"Chawkbazar",         d:"Dhaka City · Chawkbazar Thana",      t:1, pk:65,    note:"Historic old Dhaka, very dense, commerce-heavy area.",                                                             road:"2–3× on main road", demand:"Medium",    yoy:"↑ +3%",  type:"Commercial/Residential" },
+  { n:"Sutrapur",           d:"Dhaka City · Sutrapur Thana",        t:1, pk:60,    note:"Old Dhaka neighborhood, traditional community feel.",                                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential" },
+  { n:"Sadarghat",          d:"Dhaka City · Kotwali Thana",         t:1, pk:55,    note:"River port area, flood-risk zone, older buildings. Commercial plots near ferry terminal.",                        road:"2–3× on main road", demand:"Low",       yoy:"→ 0%",   type:"Commercial/Residential" },
+  { n:"Kotwali",            d:"Dhaka City · Kotwali Thana",         t:1, pk:60,    note:"Old Dhaka commercial zone, dense, historical.",                                                                    road:"2–3× on main road", demand:"Low",       yoy:"↑ +2%",  type:"Commercial" },
+  { n:"Aminbazar",          d:"Dhaka City · Mirpur Thana",          t:1, pk:35,    note:"Dhaka-Manikganj border, very cheap, far from center. Industrial fringe.",                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Industrial" },
+  { n:"Nilkhet",            d:"Dhaka City · Newmarket Thana",       t:1, pk:130,   note:"University zone, book market. High density, good commercial value near DU.",                                      road:"2–3× on main road", demand:"High",      yoy:"↑ +6%",  type:"Commercial/Residential" },
+
+  // ══════════════════════════════════════
+  // DHAKA DIVISION — SUBURBS & DISTRICTS
+  // ══════════════════════════════════════
+  { n:"Savar",              d:"Dhaka Division · Savar Upazila",     t:1, pk:40,    note:"Garment industry hub, EPZ, large workforce. Industrial land in demand.",                                           road:"1.5–2× main",       demand:"High",      yoy:"↑ +7%",  type:"Residential/Industrial" },
+  { n:"Ashulia",            d:"Dhaka Division · Savar Upazila",     t:1, pk:25,    note:"Industrial zone, factory land cheap, residential plots budget-level.",                                             road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Industrial/Residential" },
+  { n:"Tongi",              d:"Dhaka Division · Gazipur",           t:1, pk:30,    note:"Industrial corridor, Ijtema grounds. Budget land near Dhaka border.",                                              road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Industrial/Residential" },
+  { n:"Gazipur City",       d:"Dhaka Division · Gazipur",           t:1, pk:35,    note:"Industrial city, large EPZ. Commercial along main road valuable.",                                                 road:"2–3× on main road", demand:"High",      yoy:"↑ +7%",  type:"Industrial/Residential" },
+  { n:"Narayanganj",        d:"Dhaka Division · Narayanganj",       t:1, pk:55,    note:"Textile city, river port. Commercial plots near old city center valuable.",                                        road:"2–3× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
+  { n:"Keraniganj",         d:"Dhaka Division · Keraniganj",        t:1, pk:30,    note:"Across Buriganga river, affordable land, Padma Bridge corridor beneficiary.",                                     road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential" },
+  { n:"Manikganj",          d:"Dhaka Division · Manikganj",         t:1, pk:10,    note:"Agricultural district town near Dhaka. Cheap farmland, some residential plots.",                                  road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Munshiganj",         d:"Dhaka Division · Munshiganj",        t:1, pk:12,    note:"Hilsa fish district, close to Dhaka. Padma Bridge corridor, rising values.",                                      road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Narsingdi",          d:"Dhaka Division · Narsingdi",         t:1, pk:10,    note:"Textile & garment district east of Dhaka. Budget residential land.",                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Faridpur",           d:"Dhaka Division · Faridpur",          t:1, pk:9,     note:"Padma riverbank district. Padma Bridge boosting land values.",                                                     road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Agricultural" },
+  { n:"Madaripur",          d:"Dhaka Division · Madaripur",         t:1, pk:8,     note:"Padma Bridge corridor beneficiary, growing fast.",                                                                 road:"1.5–2× main",       demand:"Low",       yoy:"↑ +6%",  type:"Residential/Agricultural" },
+  { n:"Shariatpur",         d:"Dhaka Division · Shariatpur",        t:1, pk:7,     note:"Padma Bridge beneficiary district, land values climbing.",                                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +7%",  type:"Residential/Agricultural" },
+  { n:"Gopalganj",          d:"Dhaka Division · Gopalganj",         t:1, pk:7,     note:"Bongobandhu's birthplace, quiet district town.",                                                                   road:"1.5–2× main",       demand:"Low",       yoy:"↑ +2%",  type:"Residential/Agricultural" },
+  { n:"Rajbari",            d:"Dhaka Division · Rajbari",           t:1, pk:7,     note:"Padma riverbank, agricultural district. Budget land.",                                                             road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Tangail",            d:"Dhaka Division · Tangail",           t:1, pk:12,    note:"Tangail saree district, Jamuna bridge side. District town prices.",                                               road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Kishoreganj",        d:"Dhaka Division · Kishoreganj",       t:1, pk:9,     note:"Haor district. District town residential plots available.",                                                        road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+
+  // ══════════════════════════════════════
+  // CHATTOGRAM DIVISION
+  // ══════════════════════════════════════
+  { n:"Khulshi",            d:"Chattogram Division · Chattogram",   t:4, pk:600,   note:"Chattogram's most premium hilltop address. Luxury villas and penthouses.",                                        road:"2–4× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Panchlaish",         d:"Chattogram Division · Chattogram",   t:3, pk:350,   note:"CDA planned residential area, upscale Chattogram living.",                                                        road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Nasirabad",          d:"Chattogram Division · Chattogram",   t:3, pk:320,   note:"Near Chittagong polytechnic and stadium. Premium residential.",                                                   road:"2–3× on main road", demand:"High",      yoy:"↑ +7%",  type:"Residential" },
+  { n:"Agrabad",            d:"Chattogram Division · Chattogram",   t:3, pk:400,   note:"Chattogram CBD. Commercial land very valuable, banks and corporate HQs.",                                         road:"3–5× on main road", demand:"High",      yoy:"↑ +8%",  type:"Commercial/Residential" },
+  { n:"GEC Circle",         d:"Chattogram Division · Chattogram",   t:3, pk:300,   note:"Government Employees Colony area, busy commercial and residential node.",                                         road:"2–3× on main road", demand:"High",      yoy:"↑ +7%",  type:"Residential/Commercial" },
+  { n:"Halishahar",         d:"Chattogram Division · Chattogram",   t:2, pk:120,   note:"Port area, affordable residential. Near Chittagong port.",                                                        road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential/Commercial" },
+  { n:"Oxygen Morr Area",   d:"Chattogram Division · Chattogram",   t:2, pk:100,   note:"North Chattogram, affordable, decent amenities and connectivity.",                                                road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +6%",  type:"Residential" },
+  { n:"Chawkbazar Ctg",     d:"Chattogram Division · Chattogram",   t:1, pk:60,    note:"Old city center Chattogram, traditional market hub.",                                                             road:"2–3× on main road", demand:"Medium",    yoy:"↑ +4%",  type:"Commercial/Residential" },
+  { n:"Cox's Bazar City",   d:"Chattogram Division · Cox's Bazar",  t:3, pk:250,   note:"World's longest beach destination. Tourism-driven demand. Beachfront premium.",                                  road:"3–6× beachfront",   demand:"High",      yoy:"↑ +12%", type:"Commercial/Residential" },
+  { n:"Comilla City",       d:"Chattogram Division · Comilla",      t:2, pk:90,    note:"EPZ, Mainamati ruins, education hub. District town premium prices.",                                              road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
+  { n:"Brahmanbaria",       d:"Chattogram Division · Brahmanbaria", t:1, pk:40,    note:"Cultural town, natural gas area. Budget district town prices.",                                                    road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Noakhali",           d:"Chattogram Division · Noakhali",     t:1, pk:30,    note:"Coastal district, remittance economy. Budget land.",                                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Feni",               d:"Chattogram Division · Feni",         t:1, pk:35,    note:"Border education hub. Midway Comilla-Chattogram. Budget land.",                                                   road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Rangamati",          d:"Chattogram Division · Rangamati",    t:1, pk:20,    note:"Hill tracts. Land title regulations restrict non-CHT purchases.",                                                 road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential" },
+  { n:"Bandarban",          d:"Chattogram Division · Bandarban",    t:1, pk:18,    note:"Highest peak BD, CHT tourism. Land ownership restricted.",                                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential" },
+
+  // ══════════════════════════════════════
+  // SYLHET DIVISION
+  // ══════════════════════════════════════
+  { n:"Sylhet City",        d:"Sylhet Division · Sylhet",           t:3, pk:200,   note:"Tea garden city, expat remittance economy. Clean and cosmopolitan.",                                              road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential/Commercial" },
+  { n:"Shahjalal Uposohor", d:"Sylhet Division · Sylhet",           t:3, pk:250,   note:"SUST area, planned housing. Premium Sylhet address.",                                                             road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential" },
+  { n:"Zindabazar",         d:"Sylhet Division · Sylhet",           t:3, pk:280,   note:"Sylhet city center. Highest commercial land value in Sylhet.",                                                    road:"3–5× on main road", demand:"Very High", yoy:"↑ +9%",  type:"Commercial" },
+  { n:"Ambarkhana",         d:"Sylhet Division · Sylhet",           t:2, pk:150,   note:"Major bus stand area, busy commercial zone. Mid-range residential nearby.",                                       road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
+  { n:"Tilagarh",           d:"Sylhet Division · Sylhet",           t:3, pk:220,   note:"Upscale residential, university adjacency. Popular with returning expats.",                                       road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential" },
+  { n:"Moulvibazar",        d:"Sylhet Division · Moulvibazar",      t:1, pk:35,    note:"Tea capital, Lawachara forest. District town budget prices.",                                                      road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Sunamganj",          d:"Sylhet Division · Sunamganj",        t:1, pk:25,    note:"Haor wetlands, Tanguar Haor. Very cheap land, flooding risk.",                                                    road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Habiganj",           d:"Sylhet Division · Habiganj",         t:1, pk:30,    note:"Remittance district, natural gas production. Budget land.",                                                        road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+
+  // ══════════════════════════════════════
+  // RAJSHAHI DIVISION
+  // ══════════════════════════════════════
+  { n:"Rajshahi City",      d:"Rajshahi Division · Rajshahi",       t:2, pk:80,    note:"Silk city, mango capital. Clean city with growing real estate demand.",                                           road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +7%",  type:"Residential/Commercial" },
+  { n:"Rajshahi Upashahar", d:"Rajshahi Division · Rajshahi",       t:2, pk:100,   note:"Planned residential area adjacent to Rajshahi University. Premium Rajshahi.",                                    road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential" },
+  { n:"Motihar",            d:"Rajshahi Division · Rajshahi",       t:2, pk:90,    note:"Near Rajshahi University, faculty and student housing demand.",                                                   road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Bogura",             d:"Rajshahi Division · Bogura",         t:1, pk:45,    note:"North BD commercial hub, agro-processing. District town premium.",                                                road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
+  { n:"Naogaon",            d:"Rajshahi Division · Naogaon",        t:1, pk:20,    note:"Mango & paddy district. Paharpur ruins nearby. Budget land.",                                                     road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Pabna",              d:"Rajshahi Division · Pabna",          t:1, pk:22,    note:"Hardinge Bridge town. Jamuna fertilizer factory area. Budget.",                                                   road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Sirajganj",          d:"Rajshahi Division · Sirajganj",      t:1, pk:25,    note:"Handloom & yarn city. Jamuna Bridge beneficiary. Growing values.",                                                road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Commercial" },
+
+  // ══════════════════════════════════════
+  // KHULNA DIVISION
+  // ══════════════════════════════════════
+  { n:"Khulna City",        d:"Khulna Division · Khulna",           t:2, pk:90,    note:"Industrial port city, Sundarbans gateway. Growing real estate demand.",                                           road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
+  { n:"Sonadanga",          d:"Khulna Division · Khulna",           t:2, pk:110,   note:"Planned KDA residential area. Premium Khulna address.",                                                           road:"2–3× on main road", demand:"High",      yoy:"↑ +7%",  type:"Residential" },
+  { n:"Jessore",            d:"Khulna Division · Jessore",          t:1, pk:50,    note:"First liberated city 1971. Flower cultivation district. Budget land.",                                            road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential/Commercial" },
+  { n:"Kushtia",            d:"Khulna Division · Kushtia",          t:1, pk:35,    note:"Lalon Shah birthplace, tobacco district. Mid-budget land.",                                                       road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Satkhira",           d:"Khulna Division · Satkhira",         t:1, pk:20,    note:"Sundarbans border. Shrimp farming zone. Budget land.",                                                            road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Bagerhat",           d:"Khulna Division · Bagerhat",         t:1, pk:18,    note:"60 Dome Mosque UNESCO site. Sundarbans tourism. Budget.",                                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+
+  // ══════════════════════════════════════
+  // BARISAL DIVISION
+  // ══════════════════════════════════════
+  { n:"Barisal City",       d:"Barisal Division · Barisal",         t:2, pk:70,    note:"River city, floating market. Launch terminal hub. Growing city.",                                                 road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
+  { n:"Band Road Barisal",  d:"Barisal Division · Barisal",         t:2, pk:85,    note:"Barisal's main commercial strip. Premium location.",                                                              road:"2–3× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Commercial/Residential" },
+  { n:"Patuakhali",         d:"Barisal Division · Patuakhali",      t:1, pk:20,    note:"Kuakata beach access, coastal district. Padma Bridge beneficiary.",                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Agricultural" },
+  { n:"Bhola",              d:"Barisal Division · Bhola",           t:1, pk:12,    note:"Bangladesh's largest island district. Isolated, budget land.",                                                    road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+
+  // ══════════════════════════════════════
+  // RANGPUR DIVISION
+  // ══════════════════════════════════════
+  { n:"Rangpur City",       d:"Rangpur Division · Rangpur",         t:2, pk:60,    note:"Northern BD hub. Tobacco & jute district. Growing city.",                                                         road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +7%",  type:"Residential/Commercial" },
+  { n:"Dinajpur",           d:"Rangpur Division · Dinajpur",        t:1, pk:35,    note:"Rice granary, Kantajew temple. University town. Budget land.",                                                    road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Agricultural" },
+  { n:"Gaibandha",          d:"Rangpur Division · Gaibandha",       t:1, pk:15,    note:"Char areas, flood-vulnerable. Very cheap land.",                                                                  road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Nilphamari",         d:"Rangpur Division · Nilphamari",      t:1, pk:18,    note:"Saidpur airport city. Cold winter region. Budget.",                                                               road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Panchagarh",         d:"Rangpur Division · Panchagarh",      t:1, pk:12,    note:"Northernmost district, tea cultivation, India border. Very cheap.",                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Thakurgaon",         d:"Rangpur Division · Thakurgaon",      t:1, pk:14,    note:"Sugarcane belt, cold northern climate. Budget.",                                                                  road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+
+  // ══════════════════════════════════════
+  // MYMENSINGH DIVISION
+  // ══════════════════════════════════════
+  { n:"Mymensingh City",    d:"Mymensingh Division · Mymensingh",   t:2, pk:70,    note:"Agricultural university city, Brahmaputra riverside. Growing city.",                                              road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +7%",  type:"Residential/Commercial" },
+  { n:"BAU Area",           d:"Mymensingh Division · Mymensingh",   t:2, pk:85,    note:"Bangladesh Agricultural University campus zone. Strong student demand.",                                          road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Jamalpur",           d:"Mymensingh Division · Jamalpur",     t:1, pk:25,    note:"Handloom district. Jamuna char area. Budget land.",                                                               road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Netrokona",          d:"Mymensingh Division · Netrokona",    t:1, pk:18,    note:"Haor region, Birishiri, indigenous culture. Very budget.",                                                        road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Sherpur",            d:"Mymensingh Division · Sherpur",      t:1, pk:15,    note:"Border district, Garo hills proximity. Budget.",                                                                  road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+];
+
+// ─────────────────────────────────────────────────────────────
+// Tier config
+// ─────────────────────────────────────────────────────────────
+const tiers = {
+  1: { label:"Budget Zone",   color:"#38bdf8", bg:"budget"  },
+  2: { label:"Mid-Range",     color:"#22d3a5", bg:"mid"     },
+  3: { label:"High-End",      color:"#f59e0b", bg:"high"    },
+  4: { label:"Premium Zone",  color:"#c084fc", bg:"premium" },
+};
+
+function formatL(n) {
+  if (n >= 100) return "৳" + (n/100).toFixed(2) + " Cr";
+  return "৳" + n.toFixed(0) + " Lac";
+}
+function formatFull(lacs) {
+  const crore = lacs / 100;
+  if (lacs >= 100) return "৳" + crore.toFixed(2) + " Crore";
+  return "৳" + lacs.toFixed(0) + " Lac";
+}
+
+const $ = id => document.getElementById(id);
+const header = $('header'), search = $('searchInput');
+const box = $('suggestionsBox'), results = $('results'), bg = $('liquidBg');
+const backBtn = $('backBtn'), searchWrapper = $('searchWrapper');
+const homepageFooter = $('homepageFooter'), searchHint = $('searchHint');
+let current = null;
+
+function openModal(id)  { $(id).classList.add('active');    document.body.style.overflow='hidden'; }
+function closeModal(id) { $(id).classList.remove('active'); document.body.style.overflow='auto';   }
+document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if(e.target===o) closeModal(o.id); }));
+
+backBtn.addEventListener('click', resetToHome);
+
+function resetToHome() {
+  results.style.display = 'none';
+  header.style.display = 'block';
+  homepageFooter.style.display = 'block';
+  searchHint.style.display = 'block';
+  bg.className = 'liquid-container';
+  search.value = '';
+  box.classList.remove('active');
+  searchWrapper.classList.remove('has-back-btn');
+  backBtn.style.display = 'none';
+  current = null;
+}
+
+search.addEventListener('input', e => {
+  const val = e.target.value.toLowerCase().trim();
+  box.innerHTML = '';
+  if (!val) { box.classList.remove('active'); return; }
+  const matches = locations.filter(loc =>
+    loc.n.toLowerCase().includes(val) || loc.d.toLowerCase().includes(val)
+  ).slice(0, 22);
+  if (matches.length) {
+    box.classList.add('active');
+    matches.forEach(loc => {
+      const div = document.createElement('div');
+      div.className = 'suggestion-item';
+      const tier = tiers[loc.t];
+      div.innerHTML = `
+        <div>
+          <div class="loc-name">${loc.n}</div>
+          <div class="loc-meta">${loc.d}</div>
+        </div>
+        <span class="price-badge" style="color:${tier.color}">${formatL(loc.pk)}/katha</span>
+      `;
+      div.onclick = () => loadResult(loc);
+      box.appendChild(div);
+    });
+  } else {
+    box.classList.remove('active');
+  }
+});
+
+function loadResult(loc) {
+  current = loc;
+  header.style.display = 'none';
+  homepageFooter.style.display = 'none';
+  searchHint.style.display = 'none';
+  search.value = loc.n;
+  box.classList.remove('active');
+  results.style.display = 'grid';
+  searchWrapper.classList.add('has-back-btn');
+  backBtn.style.display = 'block';
+
+  const tier = tiers[loc.t];
+  const pk = loc.pk;
+  const lo = Math.round(pk * 0.82);
+  const hi = Math.round(pk * 1.25);
+
+  $('priceMain').textContent = formatL(pk);
+  $('priceMain').style.color = tier.color;
+  $('priceRange').textContent = `Typical range: ${formatL(lo)} – ${formatL(hi)} per katha`;
+  $('tierLabel').innerHTML = `<span class="tier-dot" style="background:${tier.color}"></span>${tier.label}`;
+  $('divisionLabel').textContent = loc.d;
+
+  const p3k = pk * 3;
+  const p5k = pk * 5;
+  $('price3k').textContent = formatFull(p3k);
+  $('price3k').style.color = tier.color;
+  $('desc3k').textContent = "Estimated total for a 3 katha residential plot.";
+  $('price5k').textContent = formatFull(p5k);
+  $('price5k').style.color = tier.color;
+  $('desc5k').textContent = "Estimated total for a 5 katha standard plot.";
+
+  $('areaName').textContent = loc.n + ' — ' + loc.d.split('·')[0].trim();
+  $('areaNote').textContent = loc.note;
+  $('statRoad').textContent = loc.road;
+  $('statDemand').textContent = loc.demand;
+  $('statYoY').textContent = loc.yoy;
+  $('statType').textContent = loc.type;
+
+  bg.className = 'liquid-container ' + tier.bg;
+  $('meter').style.backgroundColor = tier.color;
+  $('meter').style.width = '0%';
+  // Scale: max reference ~1200 lac
+  setTimeout(() => { $('meter').style.width = Math.min(pk / 12, 100) + '%'; }, 80);
+}
+
+function shareOnTwitter() {
+  if (!current) return;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Land price in ${current.n}, Bangladesh is approx ${formatL(current.pk)} per katha. Check your area: https://sadmansamin21.github.io/land-price-dhaka`)}`, '_blank');
+}
+function shareOnFacebook() {
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://sadmansamin21.github.io/land-price-dhaka')}`, '_blank');
+}
+function copyLink() {
+  navigator.clipboard.writeText('https://sadmansamin21.github.io/land-price-dhaka').then(() => {
+    const btn = document.querySelector('.share-btn:last-child');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+
+search.addEventListener('keyup', e => { if (e.key==='Enter' && !search.value) resetToHome(); });
+document.addEventListener('keydown', e => { if (e.key==='Escape' && current) resetToHome(); });
+
+console.log(`Land Price Estimator BD: ${locations.length} locations loaded.`);
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <title>Land Price Dhaka | Per Katha Price Estimator by Area</title>
-  <meta name="description" content="Estimate land prices per katha across all major areas of Dhaka and Bangladesh. Free instant land price tool covering 200+ locations.">
+  <meta name="description" content="Estimate land prices per katha across all major areas of Dhaka City and Dhaka Division. Free instant land price tool.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,8 +44,7 @@
       50%  { transform:translate(45px,-45px) scale(1.08); }
       100% { transform:translate(-30px,35px) scale(0.93); }
     }
-    .noise { position:fixed; inset:0; opacity:0.028; pointer-events:none; z-index:0;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .noise { position:fixed; inset:0; opacity:0.028; pointer-events:none; z-index:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
     .container { position:relative; z-index:10; max-width:820px; margin:0 auto; padding:24px 20px; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
 
@@ -134,8 +133,8 @@
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('aboutModal')">✕</button>
     <h3>🗺️ About This Tool</h3>
-    <p>Land Price Estimator provides estimated land prices per katha (1.65 decimal / ~67 sq m) for 200+ locations across Dhaka city, Dhaka Division, and major districts of Bangladesh.</p>
-    <p>Prices reflect median residential/commercial land market rates. Actual prices vary based on road width, plot size, land use type, legal clearance, and negotiation.</p>
+    <p>Land Price Estimator provides estimated land prices per katha (1.65 decimal / ~67 sq m) specifically for Dhaka City and surrounding districts within the Dhaka Division.</p>
+    <p>Prices reflect median residential/commercial land market rates. Actual prices vary heavily based on road width, corner plots, legal clearance, and direct negotiation.</p>
     <div class="divider"></div>
     <p style="font-size:0.75rem;">Data reflects 2024–2025 market estimates. 1 Katha = 1.65 Decimal = ~720 sq ft.</p>
   </div>
@@ -143,18 +142,18 @@
 
 <div class="container" id="app">
   <header id="header">
-    <div class="logo-badge"><span></span> Dhaka · Whole Division · 200+ Areas</div>
+    <div class="logo-badge"><span></span> Dhaka City & Division Only</div>
     <h1>Land Price<br>Estimator</h1>
-    <p class="subtitle">Search any area, thana, or district in Bangladesh to get an instant per-katha land price estimate.</p>
+    <p class="subtitle">Search any neighborhood, block, sector, or district in Dhaka to get an instant per-katha land price estimate.</p>
   </header>
 
   <div style="width:100%">
     <div class="search-wrapper" id="searchWrapper">
       <button class="back-btn" id="backBtn" title="Back">←</button>
-      <input type="text" id="searchInput" placeholder="Search — Gulshan, Dhanmondi, Uttara, Mirpur…" autocomplete="off" />
+      <input type="text" id="searchInput" placeholder="Search — Gulshan, Purbachal, Uttara, Dhanmondi..." autocomplete="off" />
       <div class="suggestions" id="suggestionsBox"></div>
     </div>
-    <p class="search-hint" id="searchHint">↑ type an area, thana, or district name</p>
+    <p class="search-hint" id="searchHint">↑ type an area, sector, block, or district name</p>
 
     <div class="result-panel" id="results" style="display:none">
 
@@ -215,7 +214,7 @@
   <footer class="footer" id="homepageFooter">
     <div>Estimates per katha (1 Katha = 1.65 Decimal ≈ 720 sq ft) · Prices vary by road width, plot size & legal status</div>
     <div style="margin-top:8px;">
-      Land Price Estimator BD ·
+      Dhaka Land Price Estimator ·
       <a href="#" onclick="openModal('aboutModal'); return false;">About</a> ·
       Data: 2024–2025 market estimates
     </div>
@@ -224,7 +223,7 @@
 
 <script>
 // ─────────────────────────────────────────────────────────────
-// DATASET: 200+ Bangladesh land price locations
+// DATASET: DHAKA DIVISION ONLY (Highly Detailed)
 // Fields: n=name, d=division/area, t=tier(1=budget,2=mid,3=high,4=premium)
 //         pk=price per katha (BDT Lakh), note=description
 //         road=road premium factor, demand, yoy=trend, type=land use
@@ -233,196 +232,163 @@ const locations = [
   // ══════════════════════════════════════
   // DHAKA CITY — PREMIUM ZONES (Tier 4)
   // ══════════════════════════════════════
-  { n:"Gulshan 1",          d:"Dhaka City · Gulshan Thana",         t:4, pk:900,   note:"Diplomatic enclave, expat hub, posh apartments & embassies. Road-facing plots command extreme premiums.",            road:"3–5× on main road", demand:"Very High", yoy:"↑ +12%", type:"Residential/Commercial" },
-  { n:"Gulshan 2",          d:"Dhaka City · Gulshan Thana",         t:4, pk:1100,  note:"Bangladesh's most exclusive address. Circle 2 plots are among the costliest in the country.",                       road:"3–6× on main road", demand:"Very High", yoy:"↑ +14%", type:"Residential/Commercial" },
-  { n:"Banani",             d:"Dhaka City · Banani Thana",          t:4, pk:850,   note:"Upscale residential and commercial. Model Town-style planning. High investor interest.",                            road:"3–4× on main road", demand:"Very High", yoy:"↑ +11%", type:"Residential/Commercial" },
-  { n:"Baridhara",          d:"Dhaka City · Baridhara Thana",       t:4, pk:1000,  note:"Embassy zone, ultra-secure. DOHS Baridhara plots rarely available, very high in demand.",                          road:"2–4× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
-  { n:"Baridhara DOHS",     d:"Dhaka City · Baridhara Thana",       t:4, pk:1200,  note:"Military residential plots, strictly managed, very scarce. Premium over civilian Baridhara.",                      road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Niketan",            d:"Dhaka City · Gulshan Thana",         t:4, pk:750,   note:"Between Gulshan and Hatirjheel, gated blocks, family-favourite.",                                                  road:"2–4× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential" },
-  { n:"Bashundhara R/A",    d:"Dhaka City · Khilkhet Thana",        t:3, pk:400,   note:"Large planned township. Block prices vary; A–C blocks cheaper, I–J blocks most expensive.",                        road:"2–3× on main road", demand:"Very High", yoy:"↑ +15%", type:"Residential" },
-  { n:"Bashundhara Block A",d:"Dhaka City · Khilkhet Thana",        t:3, pk:350,   note:"Older blocks of Bashundhara, still developing but high demand for ready plots.",                                   road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +13%", type:"Residential" },
-  { n:"Bashundhara Block J",d:"Dhaka City · Khilkhet Thana",        t:4, pk:550,   note:"Newest & most premium blocks of Bashundhara R/A near Jamuna Future Park.",                                         road:"2–3× on main road", demand:"Very High", yoy:"↑ +16%", type:"Residential/Commercial" },
+  { n:"Gulshan 1",          d:"Dhaka City · Gulshan Thana",         t:4, pk:950,   note:"Diplomatic enclave, expat hub, posh apartments & commercial blocks. Road-facing plots command extreme premiums.", road:"3–5× on main road", demand:"Very High", yoy:"↑ +12%", type:"Residential/Commercial" },
+  { n:"Gulshan 2",          d:"Dhaka City · Gulshan Thana",         t:4, pk:1150,  note:"Bangladesh's most exclusive address. Circle 2 plots and diplomatic zone borders are among the costliest in the country.", road:"3–6× on main road", demand:"Very High", yoy:"↑ +14%", type:"Residential/Commercial" },
+  { n:"Banani",             d:"Dhaka City · Banani Thana",          t:4, pk:850,   note:"Upscale residential and commercial. Model Town-style planning. High investor interest.", road:"3–4× on main road", demand:"Very High", yoy:"↑ +11%", type:"Residential/Commercial" },
+  { n:"Banani DOHS",        d:"Dhaka City · Banani Thana",          t:4, pk:1050,  note:"Highly secure military-controlled residential area. Extremely peaceful and pristine. Very low supply.", road:"2–3× on main road", demand:"Very High", yoy:"↑ +12%", type:"Residential" },
+  { n:"Baridhara",          d:"Dhaka City · Baridhara Thana",       t:4, pk:1100,  note:"Embassy zone, ultra-secure. Civilian plots in the diplomatic zone are incredibly scarce.", road:"2–4× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Baridhara DOHS",     d:"Dhaka City · Baridhara Thana",       t:4, pk:1250,  note:"Military residential plots, strictly managed, arguably the best DOHS in Dhaka. Premium over civilian Baridhara.", road:"2–3× on main road", demand:"Very High", yoy:"↑ +11%", type:"Residential" },
+  { n:"Mohakhali DOHS",     d:"Dhaka City · Mohakhali Thana",       t:4, pk:900,   note:"Excellent central location, great security, high demand from corporate elites.", road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Niketan",            d:"Dhaka City · Gulshan Thana",         t:4, pk:750,   note:"Between Gulshan and Hatirjheel, gated blocks, high security, family-favourite.", road:"2–4× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential" },
+  { n:"Bashundhara Block I",d:"Dhaka City · Khilkhet Thana",        t:4, pk:550,   note:"Premium inner block of Bashundhara, highly developed, wide roads, extreme demand.", road:"2–3× on main road", demand:"Very High", yoy:"↑ +15%", type:"Residential" },
+  { n:"Bashundhara Block J",d:"Dhaka City · Khilkhet Thana",        t:4, pk:600,   note:"Most premium commercial/residential block of Bashundhara near 300ft road and Jamuna Future Park.", road:"2–4× on main road", demand:"Very High", yoy:"↑ +16%", type:"Residential/Commercial" },
 
   // ══════════════════════════════════════
   // DHAKA CITY — HIGH-END ZONES (Tier 3)
   // ══════════════════════════════════════
-  { n:"Dhanmondi",          d:"Dhaka City · Dhanmondi Thana",       t:3, pk:600,   note:"Cultural heart of Dhaka. Lakeside plots are most expensive. Education and NGO hub.",                               road:"2–4× on main road", demand:"Very High", yoy:"↑ +10%", type:"Residential/Commercial" },
-  { n:"Lalmatia",           d:"Dhaka City · Mohammadpur Thana",     t:3, pk:450,   note:"Quiet upscale area next to Dhanmondi. Government-allotted plots, educated crowd.",                                 road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Mohakhali",          d:"Dhaka City · Mohakhali Thana",       t:3, pk:500,   note:"Corporate and residential mix. DOHS colony nearby adds to premium.",                                               road:"2–4× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
-  { n:"Uttara Sector 1",    d:"Dhaka City · Uttara Thana",          t:3, pk:280,   note:"Near airport and Hajrat Shahjalal. Rajuk-planned sectors. Sector 1 is among the priciest.",                        road:"2–3× on main road", demand:"High",      yoy:"↑ +12%", type:"Residential" },
-  { n:"Uttara Sector 3",    d:"Dhaka City · Uttara Thana",          t:3, pk:290,   note:"Well-established sector, good schools and parks. Consistent buyer demand.",                                         road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential" },
-  { n:"Uttara Sector 4",    d:"Dhaka City · Uttara Thana",          t:3, pk:270,   note:"Family-friendly, near Uttara Club and major schools.",                                                              road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
-  { n:"Uttara Sector 6",    d:"Dhaka City · Uttara Thana",          t:3, pk:260,   note:"Commercial-residential mix, Diabari lake proximity adds value.",                                                   road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential/Commercial" },
-  { n:"Uttara Sector 7",    d:"Dhaka City · Uttara Thana",          t:3, pk:250,   note:"Established sector with full amenities, wide internal roads.",                                                     road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
-  { n:"Uttara Sector 10",   d:"Dhaka City · Uttara Thana",          t:3, pk:240,   note:"Newer sector with BRT connectivity planned. Rising fast.",                                                          road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +14%", type:"Residential" },
-  { n:"Uttara Sector 11",   d:"Dhaka City · Uttara Thana",          t:2, pk:200,   note:"Developing sector, slightly cheaper than older sectors. Good future prospects.",                                   road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +12%", type:"Residential" },
-  { n:"Uttara Sector 13",   d:"Dhaka City · Uttara Thana",          t:2, pk:180,   note:"Developing area, affordable entry to Uttara market.",                                                              road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +10%", type:"Residential" },
-  { n:"Hatirjheel",         d:"Dhaka City · Rampura Thana",         t:3, pk:380,   note:"Lakeside premium. New developments rising fast. Very popular with investors.",                                      road:"2–4× lake-facing",  demand:"Very High", yoy:"↑ +13%", type:"Residential/Commercial" },
-  { n:"Panthapath",         d:"Dhaka City · Dhanmondi Thana",       t:3, pk:480,   note:"Metro rail connected, Bashundhara City mall adjacent. High commercial demand.",                                    road:"3–5× on main road", demand:"High",      yoy:"↑ +10%", type:"Commercial/Residential" },
-  { n:"Green Road",         d:"Dhaka City · Dhanmondi Thana",       t:3, pk:420,   note:"Near Dhanmondi, good connectivity, mixed residential and office buildings.",                                       road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
-  { n:"Eskaton",            d:"Dhaka City · Ramna Thana",           t:3, pk:460,   note:"Embassy proximity, Minto Road area, upmarket quiet enclave.",                                                      road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Nikunja 1",          d:"Dhaka City · Khilkhet Thana",        t:3, pk:300,   note:"Airport adjacent planned housing. Popular with airline staff and expats.",                                          road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
-  { n:"Nikunja 2",          d:"Dhaka City · Khilkhet Thana",        t:3, pk:320,   note:"Slightly newer than Nikunja 1, cleaner roads, rising demand.",                                                     road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential" },
-  { n:"Cantonment",         d:"Dhaka City · Cantonment Thana",      t:3, pk:500,   note:"Military zone, very well managed, limited civilian land available. Rare to buy.",                                  road:"2–3× on main road", demand:"Low",       yoy:"↑ +5%",  type:"Residential" },
-  { n:"Mirpur DOHS",        d:"Dhaka City · Mirpur Thana",          t:3, pk:350,   note:"Military residential, secure and organized. High investor interest when plots available.",                         road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +7%",  type:"Residential" },
+  { n:"Dhanmondi",          d:"Dhaka City · Dhanmondi Thana",       t:3, pk:650,   note:"Cultural heart of Dhaka. Lakeside plots are most expensive. Education and medical hub.", road:"2–4× on main road", demand:"Very High", yoy:"↑ +10%", type:"Residential/Commercial" },
+  { n:"Lalmatia",           d:"Dhaka City · Mohammadpur Thana",     t:3, pk:480,   note:"Quiet upscale area next to Dhanmondi. Block A and B command higher prices.", road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Mohakhali",          d:"Dhaka City · Mohakhali Thana",       t:3, pk:500,   note:"Corporate and residential mix. Proximity to Gulshan and Tejgaon adds value.", road:"2–4× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
+  
+  // Uttara Detailed Sectors
+  { n:"Uttara Sector 1",    d:"Dhaka City · Uttara Thana",          t:3, pk:320,   note:"Near airport and Jashimuddin road. Sector 1 is highly commercialized and pricey.", road:"2–3× on main road", demand:"High",      yoy:"↑ +12%", type:"Residential/Commercial" },
+  { n:"Uttara Sector 3",    d:"Dhaka City · Uttara Thana",          t:3, pk:310,   note:"Well-established sector, good schools and parks. Proximity to main highway.", road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential" },
+  { n:"Uttara Sector 4",    d:"Dhaka City · Uttara Thana",          t:3, pk:290,   note:"Family-friendly, near Uttara Club, parks, and top-tier schools.", road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Uttara Sector 5",    d:"Dhaka City · Uttara Thana",          t:3, pk:280,   note:"Central Uttara, highly residential, great community environment.", road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Uttara Sector 6",    d:"Dhaka City · Uttara Thana",          t:3, pk:280,   note:"Commercial-residential mix, highly sought after for corporate offices.", road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential/Commercial" },
+  { n:"Uttara Sector 7",    d:"Dhaka City · Uttara Thana",          t:3, pk:270,   note:"Established sector with full amenities, lake view plots demand high premium.", road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Uttara Sector 9",    d:"Dhaka City · Uttara Thana",          t:3, pk:260,   note:"Adjacent to Sonargaon Janapath road, great commercial access.", road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  
+  { n:"Hatirjheel",         d:"Dhaka City · Rampura Thana",         t:3, pk:400,   note:"Lakeside premium. New developments rising fast. Very popular with investors.", road:"2–4× lake-facing",  demand:"Very High", yoy:"↑ +13%", type:"Residential/Commercial" },
+  { n:"Panthapath",         d:"Dhaka City · Dhanmondi Thana",       t:3, pk:500,   note:"Metro rail connected, Bashundhara City mall adjacent. High commercial demand.", road:"3–5× on main road", demand:"High",      yoy:"↑ +10%", type:"Commercial/Residential" },
+  { n:"Green Road",         d:"Dhaka City · Dhanmondi Thana",       t:3, pk:450,   note:"Near Dhanmondi, hospital hub, good connectivity.", road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
+  { n:"Eskaton",            d:"Dhaka City · Ramna Thana",           t:3, pk:480,   note:"Embassy proximity, Minto Road area, upmarket quiet enclave.", road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Nikunja 1",          d:"Dhaka City · Khilkhet Thana",        t:3, pk:350,   note:"Airport adjacent planned housing. Popular with airline staff and expats.", road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Nikunja 2",          d:"Dhaka City · Khilkhet Thana",        t:3, pk:320,   note:"Slightly newer than Nikunja 1, growing tech and corporate presence.", road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential/Commercial" },
+  { n:"Cantonment",         d:"Dhaka City · Cantonment Thana",      t:3, pk:550,   note:"Military zone, very well managed, limited civilian land available. Rare to buy.", road:"2–3× on main road", demand:"Low",       yoy:"↑ +5%",  type:"Residential" },
+  { n:"Mirpur DOHS",        d:"Dhaka City · Mirpur Thana",          t:3, pk:380,   note:"Military residential, secure and organized. The most premium area in the Mirpur zone.", road:"1.5–2.5× main",     demand:"High",    yoy:"↑ +9%",  type:"Residential" },
+  
+  // Bashundhara Further Breakdown
+  { n:"Bashundhara Block A",d:"Dhaka City · Khilkhet Thana",        t:3, pk:450,   note:"Original core block of Bashundhara. Fully developed.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +11%", type:"Residential" },
+  { n:"Bashundhara Block B",d:"Dhaka City · Khilkhet Thana",        t:3, pk:420,   note:"Fully developed, close to Apollo/Evercare Hospital.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Bashundhara Block C",d:"Dhaka City · Khilkhet Thana",        t:3, pk:400,   note:"Well established, highly residential.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +10%", type:"Residential" },
+  { n:"Bashundhara Block D",d:"Dhaka City · Khilkhet Thana",        t:3, pk:380,   note:"Highly sought after, rapid apartment developments.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +12%", type:"Residential" },
+  
+  // Purbachal Premium Sectors
+  { n:"Purbachal Sector 1", d:"Dhaka Division · Rupganj",           t:3, pk:350,   note:"Adjacent to 300ft road. Highest demand in RAJUK's mega project.", road:"2-3× main", demand:"Very High", yoy:"↑ +15%", type:"Residential/Commercial" },
+  { n:"Purbachal Sector 2", d:"Dhaka Division · Rupganj",           t:3, pk:330,   note:"Premium sector, easy access to Kuril flyover.", road:"2-3× main", demand:"Very High", yoy:"↑ +15%", type:"Residential" },
+  { n:"Purbachal Sector 3", d:"Dhaka Division · Rupganj",           t:3, pk:320,   note:"Very close to highway, highly developed infrastructure.", road:"2-3× main", demand:"Very High", yoy:"↑ +14%", type:"Residential" },
+  { n:"Purbachal Sector 4", d:"Dhaka Division · Rupganj",           t:3, pk:310,   note:"Premium plots in Purbachal mega city.", road:"1.5-2.5× main", demand:"High", yoy:"↑ +14%", type:"Residential" },
 
   // ══════════════════════════════════════
   // DHAKA CITY — MID-RANGE (Tier 2)
   // ══════════════════════════════════════
-  { n:"Banasree",           d:"Dhaka City · Rampura Thana",         t:2, pk:200,   note:"Well-planned blocks with parks and schools. Very popular family area. Strong demand.",                             road:"1.5–2.5× main",     demand:"Very High", yoy:"↑ +12%", type:"Residential" },
-  { n:"Aftabnagar",         d:"Dhaka City · Rampura Thana",         t:2, pk:180,   note:"Adjacent to Banasree, lakeside plots command premium. Developing fast.",                                           road:"1.5–2× main",       demand:"High",      yoy:"↑ +11%", type:"Residential" },
-  { n:"Rampura",            d:"Dhaka City · Rampura Thana",         t:2, pk:170,   note:"TV station area, Banasree proximity, older mid-range residential.",                                                road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
-  { n:"Badda",              d:"Dhaka City · Badda Thana",           t:2, pk:160,   note:"Near Bashundhara access road, affordable, IT park proximity boosting prices.",                                     road:"1.5–2× main",       demand:"High",      yoy:"↑ +10%", type:"Residential/Commercial" },
-  { n:"Merul Badda",        d:"Dhaka City · Badda Thana",           t:2, pk:180,   note:"Gulshan link road access. Affordable entry to the premium eastern corridor.",                                      road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
-  { n:"Khilkhet",           d:"Dhaka City · Khilkhet Thana",        t:2, pk:190,   note:"Airport road proximity, growing IT hub. Good investment prospect.",                                                road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +11%", type:"Residential/Commercial" },
-  { n:"Mohammadpur",        d:"Dhaka City · Mohammadpur Thana",     t:2, pk:220,   note:"Dense residential area, Adabar/Shyamoli adjacent, well-established.",                                             road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +7%",  type:"Residential" },
-  { n:"Shyamoli",           d:"Dhaka City · Mohammadpur Thana",     t:2, pk:250,   note:"Planned colony, near Dhanmondi, popular with middle-upper class families.",                                        road:"1.5–3× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Adabar",             d:"Dhaka City · Adabar Thana",          t:2, pk:200,   note:"Mohammadpur subzone, large residential blocks, good amenities.",                                                   road:"1.5–2× main",       demand:"High",      yoy:"↑ +7%",  type:"Residential" },
-  { n:"Kalabagan",          d:"Dhaka City · Dhanmondi Thana",       t:2, pk:280,   note:"Dhanmondi lake proximity, popular with young professionals. Dense development.",                                   road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
-  { n:"Indira Road",        d:"Dhaka City · Farmgate Thana",        t:2, pk:240,   note:"Between Farmgate and Dhanmondi, mixed residential zone.",                                                          road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
-  { n:"Farmgate",           d:"Dhaka City · Farmgate Thana",        t:2, pk:260,   note:"Busy commercial node, metro-connected, high commercial land value.",                                               road:"2–4× on main road", demand:"High",      yoy:"↑ +8%",  type:"Commercial/Residential" },
-  { n:"Agargaon",           d:"Dhaka City · Sher-e-Bangla Nagar",   t:2, pk:200,   note:"Government hub, NID & passport offices, metro accessible. Good for institutional plots.",                         road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +10%", type:"Residential/Institutional" },
-  { n:"Tejgaon",            d:"Dhaka City · Tejgaon Thana",         t:2, pk:220,   note:"Industrial and commercial zone transitioning to mixed use. High commercial value.",                                road:"2–4× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Commercial/Industrial" },
-  { n:"Karwan Bazar",       d:"Dhaka City · Tejgaon Thana",         t:2, pk:280,   note:"Media and IT cluster, commercial land very high value. Near kitchen market.",                                      road:"3–5× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial" },
-  { n:"Malibagh",           d:"Dhaka City · Sabujbagh Thana",       t:2, pk:190,   note:"Mid-range, schools and hospitals nearby, consistent demand.",                                                      road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +7%",  type:"Residential" },
-  { n:"Shantinagar",        d:"Dhaka City · Paltan Thana",          t:2, pk:200,   note:"Central east Dhaka, good transport, older mid-range area.",                                                        road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +7%",  type:"Residential/Commercial" },
-  { n:"Mouchak",            d:"Dhaka City · Ramna Thana",           t:2, pk:210,   note:"Shopping area, Malibagh-Shantinagar corridor, commercial demand rising.",                                          road:"2–3× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Commercial/Residential" },
-  { n:"Segunbagicha",       d:"Dhaka City · Ramna Thana",           t:2, pk:230,   note:"Press Club zone, government quarter adjacency, stable pricing.",                                                   road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +5%",  type:"Residential/Institutional" },
-  { n:"Motijheel",          d:"Dhaka City · Motijheel Thana",       t:2, pk:300,   note:"Bangladesh's financial district, Dilkusha. Commercial land very high.",                                            road:"3–5× on main road", demand:"Medium",    yoy:"↑ +5%",  type:"Commercial" },
-  { n:"Wari",               d:"Dhaka City · Wari Thana",            t:2, pk:180,   note:"Historic residential, near Buriganga river. Old plots with good titles.",                                          road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +4%",  type:"Residential" },
-  { n:"Shahbag",            d:"Dhaka City · Ramna Thana",           t:2, pk:280,   note:"Cultural epicenter, BSMMU hospital, TSC proximity. Commercial values high.",                                       road:"2–4× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial/Residential" },
-  { n:"Azimpur",            d:"Dhaka City · Lalbagh Thana",         t:2, pk:200,   note:"Near Dhaka University and BUET, government housing estate, popular with academics.",                              road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +6%",  type:"Residential/Institutional" },
-  { n:"Elephant Road",      d:"Dhaka City · Ramna Thana",           t:2, pk:250,   note:"Near New Market, high pedestrian and commercial traffic. Good retail land.",                                       road:"2–4× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial/Residential" },
-  { n:"New Market Area",    d:"Dhaka City · Newmarket Thana",       t:2, pk:260,   note:"Major shopping district, high commercial land value, busy location.",                                              road:"3–5× on main road", demand:"High",      yoy:"↑ +6%",  type:"Commercial" },
+  { n:"Banasree",           d:"Dhaka City · Rampura Thana",         t:2, pk:220,   note:"Well-planned blocks with parks and schools. Very popular family area. Strong demand.", road:"1.5–2.5× main",     demand:"Very High", yoy:"↑ +12%", type:"Residential" },
+  { n:"Aftabnagar",         d:"Dhaka City · Rampura Thana",         t:2, pk:200,   note:"Adjacent to Banasree, lakeside plots command premium. Developing incredibly fast.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +13%", type:"Residential" },
+  { n:"Rampura",            d:"Dhaka City · Rampura Thana",         t:2, pk:180,   note:"TV station area, Banasree proximity, older mid-range residential.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
+  { n:"Badda (Middle)",     d:"Dhaka City · Badda Thana",           t:2, pk:170,   note:"Affordable entry point near premium Gulshan/Bashundhara zones.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +10%", type:"Residential/Commercial" },
+  { n:"Merul Badda",        d:"Dhaka City · Badda Thana",           t:2, pk:190,   note:"Gulshan link road access. Affordable entry to the premium eastern corridor.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
+  { n:"Khilkhet",           d:"Dhaka City · Khilkhet Thana",        t:2, pk:200,   note:"Airport road proximity, growing IT hub. Great connection to 300ft.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +11%", type:"Residential/Commercial" },
+  { n:"Kuril",              d:"Dhaka City · Vatara Thana",          t:2, pk:210,   note:"Adjacent to flyover, Bashundhara, and 300ft road. Massive commercial growth.", road:"2-3× main", demand:"Very High", yoy:"↑ +14%", type:"Commercial/Residential" },
+  { n:"Vatara",             d:"Dhaka City · Vatara Thana",          t:2, pk:160,   note:"Near Bashundhara, transitioning from semi-urban to urban.", road:"1.5-2× main", demand:"High", yoy:"↑ +12%", type:"Residential" },
+  { n:"Mohammadpur",        d:"Dhaka City · Mohammadpur Thana",     t:2, pk:240,   note:"Dense residential area, Adabar/Shyamoli adjacent, well-established blocks.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Shyamoli",           d:"Dhaka City · Mohammadpur Thana",     t:2, pk:260,   note:"Planned colony, near Dhanmondi, popular with middle-upper class families.", road:"1.5–3× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Adabar",             d:"Dhaka City · Adabar Thana",          t:2, pk:220,   note:"Mohammadpur subzone, large residential blocks, good amenities.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Kalabagan",          d:"Dhaka City · Dhanmondi Thana",       t:2, pk:300,   note:"Dhanmondi lake proximity, popular with young professionals. Dense development.", road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential/Commercial" },
+  { n:"Farmgate",           d:"Dhaka City · Farmgate Thana",        t:2, pk:320,   note:"Busy commercial node, elevated expressway & metro-connected, high commercial land value.", road:"2–4× on main road", demand:"High",      yoy:"↑ +8%",  type:"Commercial/Residential" },
+  { n:"Indira Road",        d:"Dhaka City · Farmgate Thana",        t:2, pk:280,   note:"Between Farmgate and Dhanmondi, highly demanded mixed residential zone.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
+  { n:"Agargaon",           d:"Dhaka City · Sher-e-Bangla Nagar",   t:2, pk:260,   note:"Government hub, NID & passport offices, metro accessible. Good for institutional plots.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +11%", type:"Residential/Institutional" },
+  { n:"Tejgaon",            d:"Dhaka City · Tejgaon Thana",         t:2, pk:350,   note:"Industrial and commercial zone transitioning to high-end mixed use.", road:"2–4× on main road", demand:"High",    yoy:"↑ +10%",  type:"Commercial/Industrial" },
+  { n:"Karwan Bazar",       d:"Dhaka City · Tejgaon Thana",         t:2, pk:400,   note:"Media and IT cluster, commercial land very high value. Wholesale market relocating.", road:"3–5× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial" },
+  { n:"Malibagh",           d:"Dhaka City · Sabujbagh Thana",       t:2, pk:220,   note:"Mid-range, schools and hospitals nearby, flyover improved connectivity.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Shantinagar",        d:"Dhaka City · Paltan Thana",          t:2, pk:240,   note:"Central east Dhaka, good transport, older mid-range upscale area.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +7%",  type:"Residential/Commercial" },
+  { n:"Mouchak",            d:"Dhaka City · Ramna Thana",           t:2, pk:230,   note:"Shopping area, Malibagh-Shantinagar corridor, commercial demand rising.", road:"2–3× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Commercial/Residential" },
+  { n:"Segunbagicha",       d:"Dhaka City · Ramna Thana",           t:2, pk:280,   note:"Press Club zone, government quarter adjacency, central location.", road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Institutional" },
+  { n:"Motijheel",          d:"Dhaka City · Motijheel Thana",       t:2, pk:450,   note:"Bangladesh's traditional financial district, Dilkusha. Commercial land very high.", road:"3–5× on main road", demand:"Medium",    yoy:"↑ +5%",  type:"Commercial" },
+  { n:"Wari",               d:"Dhaka City · Wari Thana",            t:2, pk:250,   note:"Historic upscale residential of Old Dhaka. Highly desired by local businessmen.", road:"1.5–2× main",       demand:"High",    yoy:"↑ +6%",  type:"Residential/Commercial" },
+  { n:"Shahbag",            d:"Dhaka City · Ramna Thana",           t:2, pk:320,   note:"Cultural epicenter, BSMMU hospital, TSC proximity. Metro connected.", road:"2–4× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial/Residential" },
+  { n:"Azimpur",            d:"Dhaka City · Lalbagh Thana",         t:2, pk:220,   note:"Near Dhaka University and BUET, government housing estate, popular with academics.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +6%",  type:"Residential/Institutional" },
+  { n:"Elephant Road",      d:"Dhaka City · Ramna Thana",           t:2, pk:350,   note:"Near New Market, high pedestrian and commercial traffic. Great for tech/retail.", road:"2–4× on main road", demand:"High",      yoy:"↑ +7%",  type:"Commercial/Residential" },
+  { n:"New Market Area",    d:"Dhaka City · Newmarket Thana",       t:2, pk:380,   note:"Major shopping district, high commercial land value, incredibly busy location.", road:"3–5× on main road", demand:"High",      yoy:"↑ +6%",  type:"Commercial" },
+
+  // Uttara Mid-tier
+  { n:"Uttara Sector 10",   d:"Dhaka City · Uttara Thana",          t:2, pk:240,   note:"Newer sector with BRT connectivity. Rising fast.", road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +14%", type:"Residential" },
+  { n:"Uttara Sector 11",   d:"Dhaka City · Uttara Thana",          t:2, pk:230,   note:"Near Zamzam tower area. Excellent commercial and residential balance.", road:"1.5–2× main",       demand:"High",    yoy:"↑ +12%", type:"Residential/Commercial" },
+  { n:"Uttara Sector 12",   d:"Dhaka City · Uttara Thana",          t:2, pk:220,   note:"Quieter sector, family oriented, stable demand.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +10%", type:"Residential" },
+  { n:"Uttara Sector 13",   d:"Dhaka City · Uttara Thana",          t:2, pk:210,   note:"Developing area, more affordable entry to Uttara market.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +10%", type:"Residential" },
+  { n:"Uttara Sector 14",   d:"Dhaka City · Uttara Thana",          t:2, pk:200,   note:"Rapidly developing, great future prospects.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +11%", type:"Residential" },
+
+  // Bashundhara Mid-tier
+  { n:"Bashundhara Block E",d:"Dhaka City · Khilkhet Thana",        t:2, pk:350,   note:"Developing fast, great investment for future apartments.", road:"1.5-2× main", demand:"High", yoy:"↑ +12%", type:"Residential" },
+  { n:"Bashundhara Block F",d:"Dhaka City · Khilkhet Thana",        t:2, pk:320,   note:"Slightly further in, continuous development.", road:"1.5-2× main", demand:"High", yoy:"↑ +12%", type:"Residential" },
+  { n:"Bashundhara Block L",d:"Dhaka City · Khilkhet Thana",        t:2, pk:250,   note:"Deeper extension blocks, popular for long-term hold.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +14%", type:"Residential" },
+  { n:"Bashundhara Block M",d:"Dhaka City · Khilkhet Thana",        t:2, pk:230,   note:"Expansion area, roads are being paved.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +15%", type:"Residential" },
+
+  // Purbachal Mid-tier Sectors
+  { n:"Purbachal Sector 5", d:"Dhaka Division · Rupganj",           t:2, pk:250,   note:"Good central location within the Purbachal project.", road:"1.5-2× main", demand:"High", yoy:"↑ +12%", type:"Residential" },
+  { n:"Purbachal Sector 9", d:"Dhaka Division · Rupganj",           t:2, pk:220,   note:"Growing demand as infrastructure completes.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +11%", type:"Residential" },
+  { n:"Purbachal Sector 14",d:"Dhaka Division · Rupganj",           t:2, pk:200,   note:"Middle zone of Purbachal, affordable for investors.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +11%", type:"Residential" },
 
   // ══════════════════════════════════════
-  // DHAKA CITY — BUDGET ZONES (Tier 1)
+  // DHAKA CITY — BUDGET ZONES & PERIPHERY (Tier 1)
   // ══════════════════════════════════════
-  { n:"Mirpur 1",           d:"Dhaka City · Mirpur Thana",          t:1, pk:80,    note:"Metro-connected, very affordable. Zoo and botanical garden proximity.",                                            road:"1.5–2.5× main",     demand:"Very High", yoy:"↑ +9%",  type:"Residential" },
-  { n:"Mirpur 2",           d:"Dhaka City · Mirpur Thana",          t:1, pk:85,    note:"Stadium area, budget residential, high density. Metro connectivity added value.",                                 road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Mirpur 10",          d:"Dhaka City · Mirpur Thana",          t:1, pk:100,   note:"Major metro hub, busy commercial zone. Commercial plots valuable.",                                               road:"2–3× on main road", demand:"Very High", yoy:"↑ +10%", type:"Residential/Commercial" },
-  { n:"Mirpur 11",          d:"Dhaka City · Mirpur Thana",          t:1, pk:90,    note:"Quiet mixed blocks, DOHS adjacent, budget entry to Mirpur.",                                                      road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Mirpur 12",          d:"Dhaka City · Mirpur Thana",          t:1, pk:90,    note:"Near Pallabi, large residential catchment, budget housing.",                                                       road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Pallabi",            d:"Dhaka City · Pallabi Thana",         t:1, pk:75,    note:"Budget residential zone, Mirpur DOHS adjacent. Very affordable entry.",                                           road:"1.5–2× main",       demand:"High",      yoy:"↑ +7%",  type:"Residential" },
-  { n:"Kafrul",             d:"Dhaka City · Kafrul Thana",          t:1, pk:80,    note:"Near Cantonment border, mixed residential. Relatively affordable.",                                               road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +6%",  type:"Residential" },
-  { n:"Shewrapara",         d:"Dhaka City · Mirpur Thana",          t:1, pk:85,    note:"Metro accessible, budget-friendly Mirpur neighborhood. Good connectivity.",                                       road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Kazipara",           d:"Dhaka City · Mirpur Thana",          t:1, pk:80,    note:"Metro station hub, affordable Mirpur neighborhood.",                                                              road:"1.5–2× main",       demand:"High",      yoy:"↑ +9%",  type:"Residential" },
-  { n:"Paikpara",           d:"Dhaka City · Mirpur Thana",          t:1, pk:70,    note:"Working class area, very affordable Mirpur zone.",                                                                road:"1.5–2× main",       demand:"High",      yoy:"↑ +6%",  type:"Residential" },
-  { n:"Darussalam",         d:"Dhaka City · Darussalam Thana",      t:1, pk:65,    note:"Northwest Dhaka, affordable area, mostly old housing stock.",                                                      road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential" },
-  { n:"Gabtoli",            d:"Dhaka City · Mirpur Thana",          t:1, pk:55,    note:"Bus terminal area, transit hub, very affordable. Industrial/commercial fringe.",                                  road:"2–3× on main road", demand:"Medium",    yoy:"↑ +4%",  type:"Residential/Commercial" },
-  { n:"Khilgaon",           d:"Dhaka City · Khilgaon Thana",        t:1, pk:95,    note:"Old residential area, Taltola market, affordable east Dhaka.",                                                    road:"1.5–2× main",       demand:"High",      yoy:"↑ +6%",  type:"Residential" },
-  { n:"Mugda",              d:"Dhaka City · Mugda Thana",           t:1, pk:80,    note:"Dense old Dhaka periphery, budget plots, improving infrastructure.",                                              road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential" },
-  { n:"Basabo",             d:"Dhaka City · Sabujbagh Thana",       t:1, pk:70,    note:"Old Dhaka outskirts, community living, very affordable.",                                                          road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +4%",  type:"Residential" },
-  { n:"Jatrabari",          d:"Dhaka City · Jatrabari Thana",       t:1, pk:65,    note:"South Dhaka gateway, Dhaka-Chittagong highway junction. Good commercial prospects.",                             road:"2–3× on main road", demand:"Medium",    yoy:"↑ +5%",  type:"Residential/Commercial" },
-  { n:"Demra",              d:"Dhaka City · Demra Thana",           t:1, pk:45,    note:"Industrial area near Buriganga, cheap land, EPZ proximity.",                                                       road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Industrial" },
-  { n:"Kadamtali",          d:"Dhaka City · Kadamtali Thana",       t:1, pk:40,    note:"Near Keraniganj ferry, southern Dhaka, very budget area.",                                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential" },
-  { n:"Hazaribagh",         d:"Dhaka City · Hazaribagh Thana",      t:1, pk:90,    note:"Near Dhaka University, popular with students and academics.",                                                      road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential" },
-  { n:"Lalbagh",            d:"Dhaka City · Lalbagh Thana",         t:1, pk:70,    note:"Old Dhaka fort area, dense and historical. Old plot titles available.",                                           road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +3%",  type:"Residential" },
-  { n:"Chawkbazar",         d:"Dhaka City · Chawkbazar Thana",      t:1, pk:65,    note:"Historic old Dhaka, very dense, commerce-heavy area.",                                                             road:"2–3× on main road", demand:"Medium",    yoy:"↑ +3%",  type:"Commercial/Residential" },
-  { n:"Sutrapur",           d:"Dhaka City · Sutrapur Thana",        t:1, pk:60,    note:"Old Dhaka neighborhood, traditional community feel.",                                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential" },
-  { n:"Sadarghat",          d:"Dhaka City · Kotwali Thana",         t:1, pk:55,    note:"River port area, flood-risk zone, older buildings. Commercial plots near ferry terminal.",                        road:"2–3× on main road", demand:"Low",       yoy:"→ 0%",   type:"Commercial/Residential" },
-  { n:"Kotwali",            d:"Dhaka City · Kotwali Thana",         t:1, pk:60,    note:"Old Dhaka commercial zone, dense, historical.",                                                                    road:"2–3× on main road", demand:"Low",       yoy:"↑ +2%",  type:"Commercial" },
-  { n:"Aminbazar",          d:"Dhaka City · Mirpur Thana",          t:1, pk:35,    note:"Dhaka-Manikganj border, very cheap, far from center. Industrial fringe.",                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Industrial" },
-  { n:"Nilkhet",            d:"Dhaka City · Newmarket Thana",       t:1, pk:130,   note:"University zone, book market. High density, good commercial value near DU.",                                      road:"2–3× on main road", demand:"High",      yoy:"↑ +6%",  type:"Commercial/Residential" },
-
+  { n:"Mirpur 1",           d:"Dhaka City · Mirpur Thana",          t:1, pk:120,   note:"Busy commercial zone, very affordable compared to central Dhaka.", road:"1.5–2.5× main",     demand:"Very High", yoy:"↑ +9%",  type:"Residential" },
+  { n:"Mirpur 2",           d:"Dhaka City · Mirpur Thana",          t:1, pk:130,   note:"Stadium area, high density. Metro connectivity added massive value.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +10%",  type:"Residential/Commercial" },
+  { n:"Mirpur 10",          d:"Dhaka City · Mirpur Thana",          t:1, pk:180,   note:"Major metro hub, incredibly busy commercial zone. Commercial plots valuable.", road:"2–3× on main road", demand:"Very High", yoy:"↑ +12%", type:"Residential/Commercial" },
+  { n:"Mirpur 11",          d:"Dhaka City · Mirpur Thana",          t:1, pk:110,   note:"Quiet mixed blocks, DOHS adjacent, metro accessible.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +9%",  type:"Residential" },
+  { n:"Mirpur 12",          d:"Dhaka City · Mirpur Thana",          t:1, pk:100,   note:"Near Pallabi, large residential catchment, decent housing.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential" },
+  { n:"Pallabi",            d:"Dhaka City · Pallabi Thana",         t:1, pk:90,    note:"Budget residential zone, Mirpur DOHS adjacent. Very affordable entry.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +7%",  type:"Residential" },
+  { n:"Kafrul",             d:"Dhaka City · Kafrul Thana",          t:1, pk:110,   note:"Near Cantonment border, mixed residential. Relatively affordable.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +6%",  type:"Residential" },
+  { n:"Shewrapara",         d:"Dhaka City · Mirpur Thana",          t:1, pk:130,   note:"Metro accessible, budget-friendly Mirpur neighborhood. Great connectivity.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +10%",  type:"Residential" },
+  { n:"Kazipara",           d:"Dhaka City · Mirpur Thana",          t:1, pk:120,   note:"Metro station hub, affordable Mirpur neighborhood.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +9%",  type:"Residential" },
+  { n:"Paikpara",           d:"Dhaka City · Mirpur Thana",          t:1, pk:90,    note:"Working class area, very affordable Mirpur zone.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +6%",  type:"Residential" },
+  { n:"Darussalam",         d:"Dhaka City · Darussalam Thana",      t:1, pk:80,    note:"Northwest Dhaka, affordable area, mostly old housing stock.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential" },
+  { n:"Gabtoli",            d:"Dhaka City · Mirpur Thana",          t:1, pk:70,    note:"Bus terminal area, transit hub, very affordable. Industrial/commercial fringe.", road:"2–3× on main road", demand:"Medium",    yoy:"↑ +4%",  type:"Residential/Commercial" },
+  { n:"Bosila",             d:"Dhaka City · Mohammadpur",           t:1, pk:80,    note:"Mohammadpur extension, booming affordable housing, river side developments.", road:"1.5-2× main", demand:"Very High", yoy:"↑ +15%", type:"Residential" },
+  { n:"Dakshinkhan",        d:"Dhaka City · Dakshinkhan Thana",     t:1, pk:65,    note:"Behind Uttara and Airport. High density, narrow roads, very affordable.", road:"1.5-2× main", demand:"High", yoy:"↑ +10%", type:"Residential" },
+  { n:"Uttarkhan",          d:"Dhaka City · Uttarkhan Thana",       t:1, pk:55,    note:"Further north of Dakshinkhan, transitioning from rural to urban.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +9%", type:"Residential" },
+  { n:"Beraid",             d:"Dhaka City · Badda Thana",           t:1, pk:75,    note:"East of Bashundhara/Badda. Rapidly urbanizing, good investment.", road:"1.5-2× main", demand:"High", yoy:"↑ +12%", type:"Residential" },
+  { n:"Khilgaon",           d:"Dhaka City · Khilgaon Thana",        t:1, pk:120,   note:"Old residential area, Taltola market, great food scene, affordable east Dhaka.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
+  { n:"Mugda",              d:"Dhaka City · Mugda Thana",           t:1, pk:90,    note:"Dense old Dhaka periphery, budget plots, improving infrastructure.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +6%",  type:"Residential" },
+  { n:"Basabo",             d:"Dhaka City · Sabujbagh Thana",       t:1, pk:100,   note:"Old Dhaka outskirts, community living, very affordable.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential" },
+  { n:"Jatrabari",          d:"Dhaka City · Jatrabari Thana",       t:1, pk:85,    note:"South Dhaka gateway, Dhaka-Ctg highway junction. Good commercial prospects.", road:"2–3× on main road", demand:"Medium",    yoy:"↑ +7%",  type:"Residential/Commercial" },
+  { n:"Shanir Akhra",       d:"Dhaka City · Jatrabari Thana",       t:1, pk:80,    note:"Dense residential near highway, working class hub.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +6%", type:"Residential" },
+  { n:"Jurain",             d:"Dhaka City · Shyampur Thana",        t:1, pk:70,    note:"South Dhaka, near Padma Bridge rail link. High density.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +5%", type:"Residential" },
+  { n:"Demra",              d:"Dhaka City · Demra Thana",           t:1, pk:55,    note:"Industrial area near Buriganga, cheap land, eastern bypass proximity.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +6%",  type:"Residential/Industrial" },
+  { n:"Kadamtali",          d:"Dhaka City · Kadamtali Thana",       t:1, pk:50,    note:"Near Keraniganj ferry, southern Dhaka, very budget area.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential" },
+  { n:"Kamrangirchar",      d:"Dhaka City · Kamrangirchar Thana",   t:1, pk:40,    note:"Riverbank, highly dense, very narrow roads, extremely cheap land.", road:"1.5-2× main", demand:"Low", yoy:"↑ +4%", type:"Residential/Industrial" },
+  { n:"Hazaribagh",         d:"Dhaka City · Hazaribagh Thana",      t:1, pk:100,   note:"Former tannery area, gentrifying slowly. Near Dhanmondi.", road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +8%",  type:"Residential" },
+  { n:"Lalbagh",            d:"Dhaka City · Lalbagh Thana",         t:1, pk:90,    note:"Old Dhaka fort area, dense and historical. Old plot titles available.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +4%",  type:"Residential" },
+  { n:"Chawkbazar",         d:"Dhaka City · Chawkbazar Thana",      t:1, pk:110,   note:"Historic old Dhaka, very dense, commerce-heavy area.", road:"2–3× on main road", demand:"Medium",    yoy:"↑ +4%",  type:"Commercial/Residential" },
+  { n:"Sutrapur",           d:"Dhaka City · Sutrapur Thana",        t:1, pk:80,    note:"Old Dhaka neighborhood, traditional community feel.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential" },
+  { n:"Sadarghat",          d:"Dhaka City · Kotwali Thana",         t:1, pk:75,    note:"River port area, flood-risk zone, older buildings. Commercial plots near terminal.", road:"2–3× on main road", demand:"Low",       yoy:"→ 0%",   type:"Commercial/Residential" },
+  { n:"Kotwali",            d:"Dhaka City · Kotwali Thana",         t:1, pk:85,    note:"Old Dhaka commercial zone, dense, historical.", road:"2–3× on main road", demand:"Low",       yoy:"↑ +2%",  type:"Commercial" },
+  { n:"Aminbazar",          d:"Dhaka City · Savar Upazila",         t:1, pk:45,    note:"Dhaka-Manikganj border, cheap, industrial fringe.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Industrial" },
+  { n:"Nilkhet",            d:"Dhaka City · Newmarket Thana",       t:1, pk:160,   note:"University zone, book market. High density, good commercial value near DU.", road:"2–3× on main road", demand:"High",      yoy:"↑ +6%",  type:"Commercial/Residential" },
+  { n:"Purbachal Sector 20+", d:"Dhaka Division · Rupganj",         t:1, pk:120,   note:"Outer sectors of Purbachal. Long term investment.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +9%", type:"Residential" },
+  
   // ══════════════════════════════════════
   // DHAKA DIVISION — SUBURBS & DISTRICTS
   // ══════════════════════════════════════
-  { n:"Savar",              d:"Dhaka Division · Savar Upazila",     t:1, pk:40,    note:"Garment industry hub, EPZ, large workforce. Industrial land in demand.",                                           road:"1.5–2× main",       demand:"High",      yoy:"↑ +7%",  type:"Residential/Industrial" },
-  { n:"Ashulia",            d:"Dhaka Division · Savar Upazila",     t:1, pk:25,    note:"Industrial zone, factory land cheap, residential plots budget-level.",                                             road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Industrial/Residential" },
-  { n:"Tongi",              d:"Dhaka Division · Gazipur",           t:1, pk:30,    note:"Industrial corridor, Ijtema grounds. Budget land near Dhaka border.",                                              road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Industrial/Residential" },
-  { n:"Gazipur City",       d:"Dhaka Division · Gazipur",           t:1, pk:35,    note:"Industrial city, large EPZ. Commercial along main road valuable.",                                                 road:"2–3× on main road", demand:"High",      yoy:"↑ +7%",  type:"Industrial/Residential" },
-  { n:"Narayanganj",        d:"Dhaka Division · Narayanganj",       t:1, pk:55,    note:"Textile city, river port. Commercial plots near old city center valuable.",                                        road:"2–3× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
-  { n:"Keraniganj",         d:"Dhaka Division · Keraniganj",        t:1, pk:30,    note:"Across Buriganga river, affordable land, Padma Bridge corridor beneficiary.",                                     road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential" },
-  { n:"Manikganj",          d:"Dhaka Division · Manikganj",         t:1, pk:10,    note:"Agricultural district town near Dhaka. Cheap farmland, some residential plots.",                                  road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Munshiganj",         d:"Dhaka Division · Munshiganj",        t:1, pk:12,    note:"Hilsa fish district, close to Dhaka. Padma Bridge corridor, rising values.",                                      road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Narsingdi",          d:"Dhaka Division · Narsingdi",         t:1, pk:10,    note:"Textile & garment district east of Dhaka. Budget residential land.",                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Faridpur",           d:"Dhaka Division · Faridpur",          t:1, pk:9,     note:"Padma riverbank district. Padma Bridge boosting land values.",                                                     road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Agricultural" },
-  { n:"Madaripur",          d:"Dhaka Division · Madaripur",         t:1, pk:8,     note:"Padma Bridge corridor beneficiary, growing fast.",                                                                 road:"1.5–2× main",       demand:"Low",       yoy:"↑ +6%",  type:"Residential/Agricultural" },
-  { n:"Shariatpur",         d:"Dhaka Division · Shariatpur",        t:1, pk:7,     note:"Padma Bridge beneficiary district, land values climbing.",                                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +7%",  type:"Residential/Agricultural" },
-  { n:"Gopalganj",          d:"Dhaka Division · Gopalganj",         t:1, pk:7,     note:"Bongobandhu's birthplace, quiet district town.",                                                                   road:"1.5–2× main",       demand:"Low",       yoy:"↑ +2%",  type:"Residential/Agricultural" },
-  { n:"Rajbari",            d:"Dhaka Division · Rajbari",           t:1, pk:7,     note:"Padma riverbank, agricultural district. Budget land.",                                                             road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Tangail",            d:"Dhaka Division · Tangail",           t:1, pk:12,    note:"Tangail saree district, Jamuna bridge side. District town prices.",                                               road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Kishoreganj",        d:"Dhaka Division · Kishoreganj",       t:1, pk:9,     note:"Haor district. District town residential plots available.",                                                        road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-
-  // ══════════════════════════════════════
-  // CHATTOGRAM DIVISION
-  // ══════════════════════════════════════
-  { n:"Khulshi",            d:"Chattogram Division · Chattogram",   t:4, pk:600,   note:"Chattogram's most premium hilltop address. Luxury villas and penthouses.",                                        road:"2–4× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential" },
-  { n:"Panchlaish",         d:"Chattogram Division · Chattogram",   t:3, pk:350,   note:"CDA planned residential area, upscale Chattogram living.",                                                        road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Nasirabad",          d:"Chattogram Division · Chattogram",   t:3, pk:320,   note:"Near Chittagong polytechnic and stadium. Premium residential.",                                                   road:"2–3× on main road", demand:"High",      yoy:"↑ +7%",  type:"Residential" },
-  { n:"Agrabad",            d:"Chattogram Division · Chattogram",   t:3, pk:400,   note:"Chattogram CBD. Commercial land very valuable, banks and corporate HQs.",                                         road:"3–5× on main road", demand:"High",      yoy:"↑ +8%",  type:"Commercial/Residential" },
-  { n:"GEC Circle",         d:"Chattogram Division · Chattogram",   t:3, pk:300,   note:"Government Employees Colony area, busy commercial and residential node.",                                         road:"2–3× on main road", demand:"High",      yoy:"↑ +7%",  type:"Residential/Commercial" },
-  { n:"Halishahar",         d:"Chattogram Division · Chattogram",   t:2, pk:120,   note:"Port area, affordable residential. Near Chittagong port.",                                                        road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential/Commercial" },
-  { n:"Oxygen Morr Area",   d:"Chattogram Division · Chattogram",   t:2, pk:100,   note:"North Chattogram, affordable, decent amenities and connectivity.",                                                road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +6%",  type:"Residential" },
-  { n:"Chawkbazar Ctg",     d:"Chattogram Division · Chattogram",   t:1, pk:60,    note:"Old city center Chattogram, traditional market hub.",                                                             road:"2–3× on main road", demand:"Medium",    yoy:"↑ +4%",  type:"Commercial/Residential" },
-  { n:"Cox's Bazar City",   d:"Chattogram Division · Cox's Bazar",  t:3, pk:250,   note:"World's longest beach destination. Tourism-driven demand. Beachfront premium.",                                  road:"3–6× beachfront",   demand:"High",      yoy:"↑ +12%", type:"Commercial/Residential" },
-  { n:"Comilla City",       d:"Chattogram Division · Comilla",      t:2, pk:90,    note:"EPZ, Mainamati ruins, education hub. District town premium prices.",                                              road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
-  { n:"Brahmanbaria",       d:"Chattogram Division · Brahmanbaria", t:1, pk:40,    note:"Cultural town, natural gas area. Budget district town prices.",                                                    road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Noakhali",           d:"Chattogram Division · Noakhali",     t:1, pk:30,    note:"Coastal district, remittance economy. Budget land.",                                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Feni",               d:"Chattogram Division · Feni",         t:1, pk:35,    note:"Border education hub. Midway Comilla-Chattogram. Budget land.",                                                   road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Rangamati",          d:"Chattogram Division · Rangamati",    t:1, pk:20,    note:"Hill tracts. Land title regulations restrict non-CHT purchases.",                                                 road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential" },
-  { n:"Bandarban",          d:"Chattogram Division · Bandarban",    t:1, pk:18,    note:"Highest peak BD, CHT tourism. Land ownership restricted.",                                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential" },
-
-  // ══════════════════════════════════════
-  // SYLHET DIVISION
-  // ══════════════════════════════════════
-  { n:"Sylhet City",        d:"Sylhet Division · Sylhet",           t:3, pk:200,   note:"Tea garden city, expat remittance economy. Clean and cosmopolitan.",                                              road:"2–3× on main road", demand:"High",      yoy:"↑ +10%", type:"Residential/Commercial" },
-  { n:"Shahjalal Uposohor", d:"Sylhet Division · Sylhet",           t:3, pk:250,   note:"SUST area, planned housing. Premium Sylhet address.",                                                             road:"2–3× on main road", demand:"High",      yoy:"↑ +11%", type:"Residential" },
-  { n:"Zindabazar",         d:"Sylhet Division · Sylhet",           t:3, pk:280,   note:"Sylhet city center. Highest commercial land value in Sylhet.",                                                    road:"3–5× on main road", demand:"Very High", yoy:"↑ +9%",  type:"Commercial" },
-  { n:"Ambarkhana",         d:"Sylhet Division · Sylhet",           t:2, pk:150,   note:"Major bus stand area, busy commercial zone. Mid-range residential nearby.",                                       road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
-  { n:"Tilagarh",           d:"Sylhet Division · Sylhet",           t:3, pk:220,   note:"Upscale residential, university adjacency. Popular with returning expats.",                                       road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential" },
-  { n:"Moulvibazar",        d:"Sylhet Division · Moulvibazar",      t:1, pk:35,    note:"Tea capital, Lawachara forest. District town budget prices.",                                                      road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Sunamganj",          d:"Sylhet Division · Sunamganj",        t:1, pk:25,    note:"Haor wetlands, Tanguar Haor. Very cheap land, flooding risk.",                                                    road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Habiganj",           d:"Sylhet Division · Habiganj",         t:1, pk:30,    note:"Remittance district, natural gas production. Budget land.",                                                        road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-
-  // ══════════════════════════════════════
-  // RAJSHAHI DIVISION
-  // ══════════════════════════════════════
-  { n:"Rajshahi City",      d:"Rajshahi Division · Rajshahi",       t:2, pk:80,    note:"Silk city, mango capital. Clean city with growing real estate demand.",                                           road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +7%",  type:"Residential/Commercial" },
-  { n:"Rajshahi Upashahar", d:"Rajshahi Division · Rajshahi",       t:2, pk:100,   note:"Planned residential area adjacent to Rajshahi University. Premium Rajshahi.",                                    road:"2–3× on main road", demand:"High",      yoy:"↑ +9%",  type:"Residential" },
-  { n:"Motihar",            d:"Rajshahi Division · Rajshahi",       t:2, pk:90,    note:"Near Rajshahi University, faculty and student housing demand.",                                                   road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Bogura",             d:"Rajshahi Division · Bogura",         t:1, pk:45,    note:"North BD commercial hub, agro-processing. District town premium.",                                                road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
-  { n:"Naogaon",            d:"Rajshahi Division · Naogaon",        t:1, pk:20,    note:"Mango & paddy district. Paharpur ruins nearby. Budget land.",                                                     road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Pabna",              d:"Rajshahi Division · Pabna",          t:1, pk:22,    note:"Hardinge Bridge town. Jamuna fertilizer factory area. Budget.",                                                   road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Sirajganj",          d:"Rajshahi Division · Sirajganj",      t:1, pk:25,    note:"Handloom & yarn city. Jamuna Bridge beneficiary. Growing values.",                                                road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Commercial" },
-
-  // ══════════════════════════════════════
-  // KHULNA DIVISION
-  // ══════════════════════════════════════
-  { n:"Khulna City",        d:"Khulna Division · Khulna",           t:2, pk:90,    note:"Industrial port city, Sundarbans gateway. Growing real estate demand.",                                           road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
-  { n:"Sonadanga",          d:"Khulna Division · Khulna",           t:2, pk:110,   note:"Planned KDA residential area. Premium Khulna address.",                                                           road:"2–3× on main road", demand:"High",      yoy:"↑ +7%",  type:"Residential" },
-  { n:"Jessore",            d:"Khulna Division · Jessore",          t:1, pk:50,    note:"First liberated city 1971. Flower cultivation district. Budget land.",                                            road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Residential/Commercial" },
-  { n:"Kushtia",            d:"Khulna Division · Kushtia",          t:1, pk:35,    note:"Lalon Shah birthplace, tobacco district. Mid-budget land.",                                                       road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Satkhira",           d:"Khulna Division · Satkhira",         t:1, pk:20,    note:"Sundarbans border. Shrimp farming zone. Budget land.",                                                            road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Bagerhat",           d:"Khulna Division · Bagerhat",         t:1, pk:18,    note:"60 Dome Mosque UNESCO site. Sundarbans tourism. Budget.",                                                         road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-
-  // ══════════════════════════════════════
-  // BARISAL DIVISION
-  // ══════════════════════════════════════
-  { n:"Barisal City",       d:"Barisal Division · Barisal",         t:2, pk:70,    note:"River city, floating market. Launch terminal hub. Growing city.",                                                 road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
-  { n:"Band Road Barisal",  d:"Barisal Division · Barisal",         t:2, pk:85,    note:"Barisal's main commercial strip. Premium location.",                                                              road:"2–3× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Commercial/Residential" },
-  { n:"Patuakhali",         d:"Barisal Division · Patuakhali",      t:1, pk:20,    note:"Kuakata beach access, coastal district. Padma Bridge beneficiary.",                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Agricultural" },
-  { n:"Bhola",              d:"Barisal Division · Bhola",           t:1, pk:12,    note:"Bangladesh's largest island district. Isolated, budget land.",                                                    road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-
-  // ══════════════════════════════════════
-  // RANGPUR DIVISION
-  // ══════════════════════════════════════
-  { n:"Rangpur City",       d:"Rangpur Division · Rangpur",         t:2, pk:60,    note:"Northern BD hub. Tobacco & jute district. Growing city.",                                                         road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +7%",  type:"Residential/Commercial" },
-  { n:"Dinajpur",           d:"Rangpur Division · Dinajpur",        t:1, pk:35,    note:"Rice granary, Kantajew temple. University town. Budget land.",                                                    road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Agricultural" },
-  { n:"Gaibandha",          d:"Rangpur Division · Gaibandha",       t:1, pk:15,    note:"Char areas, flood-vulnerable. Very cheap land.",                                                                  road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Nilphamari",         d:"Rangpur Division · Nilphamari",      t:1, pk:18,    note:"Saidpur airport city. Cold winter region. Budget.",                                                               road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Panchagarh",         d:"Rangpur Division · Panchagarh",      t:1, pk:12,    note:"Northernmost district, tea cultivation, India border. Very cheap.",                                              road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Thakurgaon",         d:"Rangpur Division · Thakurgaon",      t:1, pk:14,    note:"Sugarcane belt, cold northern climate. Budget.",                                                                  road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-
-  // ══════════════════════════════════════
-  // MYMENSINGH DIVISION
-  // ══════════════════════════════════════
-  { n:"Mymensingh City",    d:"Mymensingh Division · Mymensingh",   t:2, pk:70,    note:"Agricultural university city, Brahmaputra riverside. Growing city.",                                              road:"1.5–2.5× main",     demand:"Medium",    yoy:"↑ +7%",  type:"Residential/Commercial" },
-  { n:"BAU Area",           d:"Mymensingh Division · Mymensingh",   t:2, pk:85,    note:"Bangladesh Agricultural University campus zone. Strong student demand.",                                          road:"1.5–2.5× main",     demand:"High",      yoy:"↑ +8%",  type:"Residential" },
-  { n:"Jamalpur",           d:"Mymensingh Division · Jamalpur",     t:1, pk:25,    note:"Handloom district. Jamuna char area. Budget land.",                                                               road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
-  { n:"Netrokona",          d:"Mymensingh Division · Netrokona",    t:1, pk:18,    note:"Haor region, Birishiri, indigenous culture. Very budget.",                                                        road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
-  { n:"Sherpur",            d:"Mymensingh Division · Sherpur",      t:1, pk:15,    note:"Border district, Garo hills proximity. Budget.",                                                                  road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Savar (Central)",    d:"Dhaka Division · Savar Upazila",     t:1, pk:50,    note:"Garment industry hub, EPZ, large workforce. Good residential demand.", road:"1.5–2× main",       demand:"High",      yoy:"↑ +8%",  type:"Residential/Commercial" },
+  { n:"Ashulia",            d:"Dhaka Division · Savar Upazila",     t:1, pk:30,    note:"Industrial zone, factory land cheap, residential plots budget-level.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +5%",  type:"Industrial/Residential" },
+  { n:"Tongi",              d:"Dhaka Division · Gazipur",           t:1, pk:40,    note:"Industrial corridor, Ijtema grounds. Budget land near Dhaka border. BRT route.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +7%",  type:"Industrial/Residential" },
+  { n:"Gazipur City",       d:"Dhaka Division · Gazipur",           t:1, pk:45,    note:"Industrial city, large EPZ. Commercial along main road valuable.", road:"2–3× on main road", demand:"High",      yoy:"↑ +8%",  type:"Industrial/Residential" },
+  { n:"Narayanganj City",   d:"Dhaka Division · Narayanganj",       t:1, pk:75,    note:"Textile city, river port. Commercial plots near Chashara and old city center valuable.", road:"2–3× on main road", demand:"Medium",    yoy:"↑ +6%",  type:"Residential/Commercial" },
+  { n:"Rupganj",            d:"Dhaka Division · Narayanganj",       t:1, pk:35,    note:"Industrial sprawl near Purbachal. Factory plots in high demand.", road:"1.5-2× main", demand:"High", yoy:"↑ +8%", type:"Industrial" },
+  { n:"Sonargaon",          d:"Dhaka Division · Narayanganj",       t:1, pk:25,    note:"Historic area, tourism and agriculture. Highway-adjacent land rising.", road:"1.5-2× main", demand:"Medium", yoy:"↑ +5%", type:"Residential/Agricultural" },
+  { n:"Keraniganj (Jhilmil)",d:"Dhaka Division · Keraniganj",       t:1, pk:65,    note:"RAJUK planned Jhilmil project. Across Buriganga, great future prospects.", road:"1.5-2× main", demand:"High", yoy:"↑ +10%", type:"Residential" },
+  { n:"Keraniganj (General)",d:"Dhaka Division · Keraniganj",       t:1, pk:40,    note:"Across Buriganga river, affordable land, Padma Bridge corridor beneficiary.", road:"1.5–2× main",       demand:"Medium",    yoy:"↑ +7%",  type:"Residential/Commercial" },
+  { n:"Manikganj",          d:"Dhaka Division · Manikganj",         t:1, pk:15,    note:"Agricultural district town near Dhaka. Cheap farmland, some residential plots.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Munshiganj",         d:"Dhaka Division · Munshiganj",        t:1, pk:18,    note:"Close to Dhaka. Padma Bridge corridor, rising values.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Agricultural" },
+  { n:"Narsingdi",          d:"Dhaka Division · Narsingdi",         t:1, pk:16,    note:"Textile & garment district east of Dhaka. Budget residential land.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Faridpur",           d:"Dhaka Division · Faridpur",          t:1, pk:12,    note:"Padma riverbank district. Padma Bridge boosting land values.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +5%",  type:"Residential/Agricultural" },
+  { n:"Madaripur",          d:"Dhaka Division · Madaripur",         t:1, pk:10,    note:"Padma Bridge corridor beneficiary, growing fast.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +6%",  type:"Residential/Agricultural" },
+  { n:"Shariatpur",         d:"Dhaka Division · Shariatpur",        t:1, pk:9,     note:"Padma Bridge beneficiary district, land values climbing.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +7%",  type:"Residential/Agricultural" },
+  { n:"Gopalganj",          d:"Dhaka Division · Gopalganj",         t:1, pk:10,    note:"Quiet district town, improving infrastructure.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Rajbari",            d:"Dhaka Division · Rajbari",           t:1, pk:8,     note:"Padma riverbank, agricultural district. Budget land.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" },
+  { n:"Tangail",            d:"Dhaka Division · Tangail",           t:1, pk:15,    note:"Handloom district, Jamuna bridge side. District town prices.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +4%",  type:"Residential/Agricultural" },
+  { n:"Kishoreganj",        d:"Dhaka Division · Kishoreganj",       t:1, pk:12,    note:"Haor district. District town residential plots available.", road:"1.5–2× main",       demand:"Low",       yoy:"↑ +3%",  type:"Residential/Agricultural" }
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -540,13 +506,13 @@ function loadResult(loc) {
   bg.className = 'liquid-container ' + tier.bg;
   $('meter').style.backgroundColor = tier.color;
   $('meter').style.width = '0%';
-  // Scale: max reference ~1200 lac
-  setTimeout(() => { $('meter').style.width = Math.min(pk / 12, 100) + '%'; }, 80);
+  // Scale: max reference ~1250 lac
+  setTimeout(() => { $('meter').style.width = Math.min(pk / 12.5, 100) + '%'; }, 80);
 }
 
 function shareOnTwitter() {
   if (!current) return;
-  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Land price in ${current.n}, Bangladesh is approx ${formatL(current.pk)} per katha. Check your area: https://sadmansamin21.github.io/land-price-dhaka`)}`, '_blank');
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Land price in ${current.n}, Dhaka is approx ${formatL(current.pk)} per katha. Check your area: https://sadmansamin21.github.io/land-price-dhaka`)}`, '_blank');
 }
 function shareOnFacebook() {
   window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://sadmansamin21.github.io/land-price-dhaka')}`, '_blank');
@@ -562,8 +528,7 @@ function copyLink() {
 
 search.addEventListener('keyup', e => { if (e.key==='Enter' && !search.value) resetToHome(); });
 document.addEventListener('keydown', e => { if (e.key==='Escape' && current) resetToHome(); });
-
-console.log(`Land Price Estimator BD: ${locations.length} locations loaded.`);
+console.log(`Dhaka Land Price Estimator: ${locations.length} locations loaded.`);
 </script>
 </body>
 </html>

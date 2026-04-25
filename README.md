@@ -9,7 +9,7 @@ A minimalist, liquid-glass themed personal portfolio website for **Sadman Samin*
 ---
 
 ## 🚀 Features
-- **Liquid Glass Design** — Modern, fluid interface.
+- **Minimalist Design** — A core functionality focused interface.
 - **SEO Optimized** — Configured for the `sadmansamin21.github.io` domain.
 - **Monolith Labs** — AI research project integration.
 

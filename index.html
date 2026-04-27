@@ -644,80 +644,99 @@ section {
   padding: 4px 10px;
 }
   
-/* Blogs Styling */
-.blog-list {
-  display: flex;
-  flex-direction: column;
+/* --- Journal Section Styles --- */
+.journal-list {
+  margin-top: 40px;
   border-top: 1px solid var(--border-color);
 }
 
-.blog-item {
+.journal-card {
   display: grid;
-  grid-template-columns: 180px 1fr 50px;
-  padding: 40px 0;
+  grid-template-columns: 160px 1fr 60px;
+  padding: 50px 0;
   border-bottom: 1px solid var(--border-color);
   text-decoration: none;
   color: var(--text-color);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.blog-item:hover {
-  background: var(--hover-bg); /* Use your existing hover variable */
+/* Matching your site's Project Hover effect */
+.journal-card:hover {
+  background: var(--hover-bg); 
   padding-left: 20px;
+  padding-right: 20px;
 }
 
-.blog-item:hover .blog-heading {
-  color: var(--accent-color); /* Use your green or blue accent */
-}
-
-.blog-meta {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+.journal-meta {
+  font-size: 0.7rem;
   color: var(--muted-text);
-  padding-top: 5px;
+  letter-spacing: 0.15em;
+  padding-top: 8px;
 }
 
-.blog-heading {
+.journal-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  line-height: 1.2;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
 }
 
-.blog-preview {
-  font-size: 0.95rem;
+.journal-card:hover .journal-title {
+  color: var(--accent-color); /* Matches your site's highlight color */
+}
+
+.journal-excerpt {
+  font-size: 1rem;
   color: var(--muted-text);
-  max-width: 600px;
-  line-height: 1.6;
+  max-width: 550px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-weight: 300;
 }
 
-.blog-arrow {
+.journal-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 4px 10px;
+  border: 1px solid var(--border-color);
+  color: var(--muted-text);
+  border-radius: 2px;
+}
+
+.journal-link {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  font-size: 1.5rem;
-  color: var(--muted-text);
-  transition: transform 0.3s ease;
 }
 
-.blog-item:hover .blog-arrow {
-  transform: translateX(10px);
+.journal-link .arrow {
+  font-size: 1.5rem;
+  color: var(--muted-text);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.journal-card:hover .arrow {
+  transform: translateX(10px) scale(1.2);
   color: var(--accent-color);
 }
 
-/* Mobile Responsiveness */
+/* Mobile Optimization matching your site's responsive logic */
 @media (max-width: 768px) {
-  .blog-item {
+  .journal-card {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 20px;
+    padding: 40px 0;
   }
-  .blog-arrow {
-    display: none;
-  }
-  .blog-meta {
-    order: -1;
-  }
+  
+  .journal-meta { order: -1; }
+  
+  .journal-link { display: none; }
+  
+  .journal-title { font-size: 1.4rem; }
 }
   
 /* ===== RESEARCH ===== */
@@ -1518,19 +1537,22 @@ footer {
   </div>
 </div>
 
-  <section id="writing" class="section">
-  <div class="section-header">
-    <h2 class="section-title">Blogs<span class="mono-fade">/03</span></h2>
+ <section id="writing" class="section">
+  <div class="section-header fade-in">
+    <h2 class="section-title">Blogs <span class="mono-fade">/03</span></h2>
   </div>
 
-  <div class="blog-list">
-    <a href="blogs/fractional-management-ai-era.html" class="blog-item">
-      <div class="blog-meta mono">APR 2026 — BUSINESS</div>
-      <div class="blog-content">
-        <h3 class="blog-heading">The Fractional C-Suite: How AI is Killing the Full-Time Executive</h3>
-        <p class="blog-preview">Exploring the "Great Decoupling" where AI agents handle data assembly, turning the executive into a pure synthesis engine.</p>
+  <div class="journal-list">
+    <a href="blogs/fractional-management-ai-era.html" class="journal-card">
+      <div class="journal-meta mono">APR — 2026</div>
+      <div class="journal-main">
+        <h3 class="journal-title">The Fractional C-Suite: How AI is Killing the Full-Time Executive</h3>
+        <p class="journal-excerpt">Exploring the "Great Decoupling" where AI agents handle data assembly, turning the executive into a pure synthesis engine.</p>
+        <div class="journal-tag mono">STRATEGY</div>
       </div>
-      <div class="blog-arrow">→</div>
+      <div class="journal-link">
+        <span class="arrow">→</span>
+      </div>
     </a>
 
     </div>

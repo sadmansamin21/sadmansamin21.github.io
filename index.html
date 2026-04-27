@@ -643,7 +643,83 @@ section {
   border: 1px solid rgba(200, 150, 62, 0.3);
   padding: 4px 10px;
 }
+  
+/* Blogs Styling */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-color);
+}
 
+.blog-item {
+  display: grid;
+  grid-template-columns: 180px 1fr 50px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border-color);
+  text-decoration: none;
+  color: var(--text-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blog-item:hover {
+  background: var(--hover-bg); /* Use your existing hover variable */
+  padding-left: 20px;
+}
+
+.blog-item:hover .blog-heading {
+  color: var(--accent-color); /* Use your green or blue accent */
+}
+
+.blog-meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--muted-text);
+  padding-top: 5px;
+}
+
+.blog-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.blog-preview {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.blog-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.5rem;
+  color: var(--muted-text);
+  transition: transform 0.3s ease;
+}
+
+.blog-item:hover .blog-arrow {
+  transform: translateX(10px);
+  color: var(--accent-color);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .blog-item {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .blog-arrow {
+    display: none;
+  }
+  .blog-meta {
+    order: -1;
+  }
+}
+  
 /* ===== RESEARCH ===== */
 .research-grid {
   display: grid;
@@ -1441,6 +1517,24 @@ footer {
     </div>
   </div>
 </div>
+
+  <section id="writing" class="section">
+  <div class="section-header">
+    <h2 class="section-title">Blogs<span class="mono-fade">/03</span></h2>
+  </div>
+
+  <div class="blog-list">
+    <a href="blogs/fractional-management-ai-era.html" class="blog-item">
+      <div class="blog-meta mono">APR 2026 — BUSINESS</div>
+      <div class="blog-content">
+        <h3 class="blog-heading">The Fractional C-Suite: How AI is Killing the Full-Time Executive</h3>
+        <p class="blog-preview">Exploring the "Great Decoupling" where AI agents handle data assembly, turning the executive into a pure synthesis engine.</p>
+      </div>
+      <div class="blog-arrow">→</div>
+    </a>
+
+    </div>
+</section>
 
 <section id="research" class="reveal" style="border-top:1px solid var(--border);">
   <span class="section-label">In-depth Research</span>

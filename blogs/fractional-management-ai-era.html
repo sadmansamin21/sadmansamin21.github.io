@@ -1,302 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How AI and Fractional Management are reshaping startup economics.">
-    <title>The Fractional C-Suite: How AI is Killing the Full-Time Executive</title>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "The Fractional C-Suite: How AI is Killing the Full-Time Executive",
-      "author": {
-        "@type": "Person",
-        "name": "Sadman Samin",
-        "url": "https://sadmansamin21.github.io"
-      },
-      "datePublished": "2026-04-27",
-      "about": "Business Economics, Fractional Management, AI integration in C-Suite"
-    }
-    </script>
-    
-    <style>
-        /* Minimalist Theming via CSS Variables */
-        :root {
-            --bg-color: #121212;
-            --text-color: #e4e4e7;
-            --heading-color: #ffffff;
-            --muted-text: #a1a1aa;
-            --link-color: #60a5fa;
-            --border-color: #27272a;
-            --table-bg: #18181b;
-            --code-bg: #1f1f22;
-        }
-        
-        .light-mode {
-            --bg-color: #ffffff;
-            --text-color: #18181b;
-            --heading-color: #111827;
-            --muted-text: #52525b;
-            --link-color: #2563eb;
-            --border-color: #e4e4e7;
-            --table-bg: #f4f4f5;
-            --code-bg: #f1f5f9;
-        }
-        
-        /* Base Styles & Forced Inheritance */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        h1, h2, h3, h4, strong, th, td, p, li, span {
-            color: inherit; /* Prevents browser default black text */
-        }
-        
-        h1, h2, h3 {
-            color: var(--heading-color);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Fractional C-Suite — Sadman Samin</title>
+  <meta name="description" content="How AI agents and fractional leadership are redefining startup economics and executive roles.">
+  
+  <link rel="canonical" href="https://sadmansamin21.github.io/blogs/fractional-management-ai-era.html" />
 
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-        
-        header {
-            margin-bottom: 3rem;
-        }
-        
-        h1 {
-            font-size: 2.25rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-        
-        .meta {
-            color: var(--muted-text);
-            font-size: 0.95rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .tldr {
-            background-color: var(--table-bg);
-            padding: 1.5rem;
-            border-left: 3px solid var(--link-color);
-            border-radius: 0 6px 6px 0;
-            margin-bottom: 2.5rem;
-            font-size: 0.95rem;
-            color: var(--text-color);
-        }
-        
-        .tldr strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--heading-color);
-        }
-        
-        p, li {
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        ul, ol {
-            padding-left: 1.5rem;
-        }
-        
-        li {
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Table Styling Optimized for LLM Scraping */
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 2rem 0;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-            text-align: left;
-            color: var(--text-color);
-        }
-        
-        th, td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        th {
-            background-color: var(--table-bg);
-            font-weight: 600;
-        }
-        
-        /* Theme Toggle Button */
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .theme-toggle:hover {
-            background-color: var(--table-bg);
-        }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #050505;
+      --text: #ffffff;
+      --text-muted: #a1a1a1;
+      --accent: #ffffff;
+      --border: rgba(255, 255, 255, 0.1);
+      --card-bg: #0a0a0a;
+      --hover-bg: rgba(255, 255, 255, 0.03);
+      --success: #00ff41;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .mono { font-family: 'Space Mono', monospace; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; }
+
+    /* Navigation */
+    nav {
+      padding: 30px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    .logo { font-weight: 700; font-size: 1.2rem; text-decoration: none; color: var(--text); letter-spacing: -0.02em; }
+
+    /* Layout */
+    .content-wrapper {
+      max-width: 850px;
+      margin: 80px auto;
+      padding: 0 25px;
+    }
+
+    header { margin-bottom: 80px; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; font-weight: 700; margin-bottom: 25px; letter-spacing: -0.04em; }
+    .post-meta { color: var(--text-muted); display: flex; gap: 20px; margin-bottom: 15px; }
+
+    .lead { font-size: 1.5rem; font-weight: 300; color: var(--text-muted); margin-bottom: 50px; line-height: 1.4; }
+
+    /* Content Body Styles */
+    .blog-content p { font-size: 1.15rem; margin-bottom: 35px; color: #d1d1d1; font-weight: 300; }
+    h2 { font-size: 2rem; margin: 80px 0 30px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 15px; letter-spacing: -0.02em; }
+    strong { color: #fff; font-weight: 600; }
+
+    /* Section 01: Table */
+    .table-container { margin: 50px 0; border: 1px solid var(--border); overflow-x: auto; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; background: var(--card-bg); font-size: 0.9rem; }
+    th, td { padding: 25px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text-muted); background: rgba(255,255,255,0.02); }
+    .delta-positive { color: var(--success); font-family: 'Space Mono', monospace; font-weight: 700; }
+
+    /* Section 02: Optimized Tech Stack Grid */
+    .tech-stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .stack-card {
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .stack-card:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-5px);
+    }
+    .stack-header {
+      padding: 20px 25px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stack-header h4 { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; }
+    .stack-body { padding: 25px; }
+    .tool-item { margin-bottom: 20px; }
+    .tool-item:last-child { margin-bottom: 0; }
+    .tool-name { display: block; font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text); margin-bottom: 4px; }
+    .tool-role { display: block; font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; font-weight: 300; }
+
+    /* Section 03: Roadmap */
+    .roadmap { list-style: none; margin: 60px 0; border-top: 1px solid var(--border); }
+    .roadmap li {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 30px;
+      transition: background 0.3s ease;
+    }
+    .roadmap li:hover { background: var(--hover-bg); }
+    .roadmap-step { color: var(--text-muted); font-size: 0.8rem; }
+    .roadmap-content strong { display: block; font-size: 1.3rem; margin-bottom: 10px; }
+
+    footer {
+      padding: 80px 5%;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      margin-top: 120px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.8rem; }
+      .roadmap li { grid-template-columns: 1fr; gap: 10px; }
+      .tech-stack-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>The Fractional C-Suite: How AI is Killing the Full-Time Executive</h1>
-            <div class="meta">
-                <span>By <a href="https://sadmansamin21.github.io" target="_blank" rel="noopener">Sadman Samin</a></span>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Light Mode">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    Light Mode
-                </button>
+
+  <nav>
+    <a href="../index.html" class="logo">SADMAN SAMIN</a>
+    <div class="mono">JOURNAL / RESEARCH</div>
+  </nav>
+
+  <div class="content-wrapper">
+    <header>
+      <div class="post-meta mono">
+        <span>Published 27.04.26</span>
+        <span>•</span>
+        <span>Business Economics</span>
+      </div>
+      <h1>The Fractional C-Suite: How AI is Killing the Full-Time Executive</h1>
+      <p class="lead">The traditional $250k/year executive is becoming an obsolete startup cost. In the age of agentic workflows, the most successful companies will scale compute, not headcount.</p>
+    </header>
+
+    <div class="blog-content">
+      <p>The standard benchmark for B2B growth used to follow a strict headcount formula: Cross $2M in ARR, hire a CMO. Hit $5M, bring in a full-time CFO. This model artificially inflated burn rates, forcing founders into a cycle of venture dependency.</p>
+      
+      <p>Today, we are witnessing the <strong>Great Decoupling</strong>. The administrative "work-about-work" that previously consumed 70% of a C-level's schedule—data aggregation, report synthesis, and coordination—has been automated by agentic AI. The human executive has transitioned from a manager of people to an <strong>architect of systems</strong>.</p>
+
+      <h2 id="arbitrage">01. The Efficiency Arbitrage</h2>
+      <p>Historically, founders paid for "presence"—40 hours a week of an executive's time, regardless of whether 40 hours of strategic thinking were actually required. By pairing a fractional strategist with an automated data pipeline, you acquire the <strong>cognitive delta</strong> of a Tier-1 executive at 20% of the cost.</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>EXECUTIVE ROLE</th>
+              <th>LEGACY SALARY (FT)</th>
+              <th>FRACTIONAL + AI STACK</th>
+              <th>DELTA (SAVINGS)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chief Financial Officer</td>
+              <td>$210,000 + Equity</td>
+              <td>$42,000 /yr</td>
+              <td class="delta-positive">▲ 80.0%</td>
+            </tr>
+            <tr>
+              <td>Chief Marketing Officer</td>
+              <td>$185,000 + Equity</td>
+              <td>$48,000 /yr</td>
+              <td class="delta-positive">▲ 74.1%</td>
+            </tr>
+            <tr>
+              <td>VP of Engineering</td>
+              <td>$225,000 + Equity</td>
+              <td>$65,000 /yr</td>
+              <td class="delta-positive">▲ 71.1%</td>
+            </tr>
+            <tr>
+              <td>Chief People Officer</td>
+              <td>$170,000 + Equity</td>
+              <td>$30,000 /yr</td>
+              <td class="delta-positive">▲ 82.3%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="architecture">02. The Agentic Tech Stack</h2>
+      <p>A "Ghost C-Suite" only functions if your data is structured for autonomous synthesis. You are no longer managing departments; you are managing <strong>Information Pipelines</strong> that feed these specific executive functions.</p>
+
+      <div class="tech-stack-grid">
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">PILLAR_01</span>
+            <h4>FINANCE_OPS</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">Planful</span>
+              <span class="tool-role">Autonomous driver modeling and scenario planning.</span>
             </div>
-        </header>
-
-        <article>
-            <div class="tldr">
-                <strong>TL;DR</strong>
-                The traditional hyper-growth playbook is dead. Instead of inflating burn rates with $200,000 full-time executives, sub-50 person startups are adopting a "Ghost C-Suite." By pairing a Fractional Executive with agentic AI workflows, founders are acquiring tier-one strategic talent at 20% of the standard operational cost. 
+            <div class="tool-item">
+              <span class="tool-name">Datarails</span>
+              <span class="tool-role">Real-time FP&A consolidation from fragmented sources.</span>
             </div>
-
-            <p>The standard benchmark for B2B growth used to involve a strict headcount formula. Cross $2M in ARR, hire a Chief Marketing Officer. Hit $5M, bring in a full-time CFO. This model artificially inflated overhead, forcing founders to raise continuous rounds of venture capital simply to fund administrative salaries.</p>
-
-            <p>That paradigm is collapsing. We are entering the era of the <strong>Fractional + AI Arbitrage</strong>.</p>
-
-            <h2>The Death of the "Busy Work" Premium</h2>
-            <p>Historically, the fractional management model had a fatal flaw. A part-time CFO or CTO was expensive ($150-$300/hour) and required massive administrative onboarding. Founders paid elite hourly rates for executives to spend 60% of their time aggregating data, building Excel models, or writing briefs. Strategy was a minority of the billed hours.</p>
-
-            <p>Large Language Models (LLMs) and automated data pipelines have stripped away this administrative friction. Today, an AI agent pulls raw Stripe data, maps it to a profit and loss statement, and flags variance anomalies <em>before</em> the Fractional CFO ever logs in.</p>
-
-            <p>The executive is no longer paid to organize information. They are paid purely for cognitive synthesis—reviewing the AI's output, making a capital allocation decision, and moving on to their next client.</p>
-
-            <h2>The Economic Arbitrage: A Cost Comparison</h2>
-            <p>The math heavily favors the lean, AI-enabled startup. Here is the operational expenditure (OPEX) breakdown comparing a traditional full-time hire versus the modern fractional approach.</p>
-
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Executive Role</th>
-                            <th>Traditional Full-Time Cost (Annual)</th>
-                            <th>Fractional + AI Stack Cost (Annual)</th>
-                            <th>Net Savings</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Chief Financial Officer</td>
-                            <td>$185,000 + Equity</td>
-                            <td>$36,000 (Consulting) + $1,200 (AI Tools)</td>
-                            <td>$147,800</td>
-                        </tr>
-                        <tr>
-                            <td>Chief Marketing Officer</td>
-                            <td>$160,000 + Equity</td>
-                            <td>$40,000 (Consulting) + $2,400 (AI SaaS)</td>
-                            <td>$117,600</td>
-                        </tr>
-                        <tr>
-                            <td>Chief Technology Officer</td>
-                            <td>$210,000 + Equity</td>
-                            <td>$60,000 (Advisory) + $3,000 (AI Coding)</td>
-                            <td>$147,000</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="tool-item">
+              <span class="tool-name">Ramp</span>
+              <span class="tool-role">AI-driven spend control and automated accounting.</span>
             </div>
+          </div>
+        </div>
 
-            <h2>How to Implement the "Ghost C-Suite"</h2>
-            <p>Transitioning to this model requires founders to change how they delegate. You are no longer managing people; you are managing automated workflows directed by highly-paid, part-time supervisors.</p>
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">PILLAR_02</span>
+            <h4>MARKETING_AI</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">Jasper</span>
+              <span class="tool-role">Global brand-voice orchestration and asset scaling.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Revealbot</span>
+              <span class="tool-role">Algorithmic ad budget scaling and ROAS automation.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">TheGrower</span>
+              <span class="tool-role">Full-funnel lead scoring and automated nurturing.</span>
+            </div>
+          </div>
+        </div>
 
-            <ol>
-                <li><strong>Deploy the Data Infrastructure First:</strong> A fractional executive is useless if they have to spend hours finding your data. Use automated ETL (Extract, Transform, Load) tools to feed your financial, marketing, and sales data into a centralized, AI-readable dashboard.</li>
-                <li><strong>Hire for High-Level Context, Not Execution:</strong> Your fractional CMO should not be writing copy or running A/B tests. AI does that. Hire them to dictate brand positioning, define target unit economics, and review the AI's output.</li>
-                <li><strong>Establish Asynchronous Reporting:</strong> Fractional leaders work best asynchronously. Set up AI agents to summarize weekly metrics and route them to the executive. The executive responds with strategic adjustments via text or a 15-minute brief.</li>
-            </ol>
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">PILLAR_03</span>
+            <h4>DEV_GOVERNANCE</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">Cursor</span>
+              <span class="tool-role">AI-native pairing for rapid feature deployment.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Devin</span>
+              <span class="tool-role">Autonomous software engineering for backlog clearing.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Honeycomb</span>
+              <span class="tool-role">AI-driven observability and system health audits.</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <h2>The Final Squeeze on the Middle Manager</h2>
-            <p>The rise of the Fractional C-Suite is great news for founders and elite executives, but it signals the end of the line for the corporate middle manager. When AI handles the execution and fractional leaders handle the strategy, the need for a full-time "director of operations" vanishes.</p>
-            
-            <p>The most successful companies of the next decade will likely have fewer than ten full-time employees, zero physical offices, and a valuation north of $100 million. They won't scale headcount; they will scale compute.</p>
+      <h2 id="governance">03. Transition Roadmap</h2>
+      <p>Moving to a fractional model requires a fundamental shift in how a founder delegates. You must move from synchronous meetings to asynchronous decision-making.</p>
 
-        </article>
+      <ul class="roadmap">
+        <li>
+          <div class="roadmap-step mono">STEP_01</div>
+          <div class="roadmap-content">
+            <strong>Audit for Logic Gaps</strong>
+            <p>Identify where your decision-making stalls. If you have the data but lack the <em>direction</em>, you need a fractional strategist. If you have the direction but lack the <em>data</em>, you need better AI infrastructure.</p>
+          </div>
+        </li>
+        <li>
+          <div class="roadmap-step mono">STEP_02</div>
+          <div class="roadmap-content">
+            <strong>Implement Asynchronous Briefs</strong>
+            <p>Replace weekly 1-hour "syncs" with 5-minute AI-summarized video briefs. Your fractional leads should spend their limited time on capital allocation and strategic pivots, not status updates.</p>
+          </div>
+        </li>
+        <li>
+          <div class="roadmap-step mono">STEP_03</div>
+          <div class="roadmap-content">
+            <strong>Hire for "Problem Sprints"</strong>
+            <p>Instead of hiring for a broad role, hire fractional leaders to solve specific 90-day sprints. E.g., "Build a $1M ARR outbound engine" or "Prepare the data room for Series B."</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2 id="summary">04. Final Thoughts</h2>
+      <p>By 2027, the most successful startups will not be the ones with the largest office floorplans, but the ones with the <strong>highest output-per-human</strong>. The Fractional C-Suite is not a cost-cutting measure—it is an evolutionary survival strategy.</p>
     </div>
+  </div>
 
-    <script>
-        const btn = document.getElementById('themeToggle');
-        
-        // Check for saved user preference, if any, on load
-        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-        if (currentTheme === 'light') {
-            document.body.classList.add('light-mode');
-            updateButtonUI(true);
-        }
+  <footer>
+    <div class="mono">© 2026 SADMAN SAMIN — DHAKA, BD</div>
+    <p style="font-size: 0.7rem; margin-top: 10px; letter-spacing: 0.05em;">RESEARCH AT THE INTERSECTION OF BUSINESS & TECH</p>
+  </footer>
 
-        btn.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            const isLight = document.body.classList.contains('light-mode');
-            
-            updateButtonUI(isLight);
-            
-            // Save preference
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        });
-
-        function updateButtonUI(isLight) {
-            if (isLight) {
-                btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> Dark Mode';
-                btn.setAttribute('aria-label', 'Toggle Dark Mode');
-            } else {
-                btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg> Light Mode';
-                btn.setAttribute('aria-label', 'Toggle Light Mode');
-            }
-        }
-    </script>
 </body>
 </html>

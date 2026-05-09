@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIFA World Cup 2026 — The Business of the Beautiful Game | Sadman Samin</title>
+  <meta name="description" content="The complete business breakdown of FIFA World Cup 2026 — sponsors, revenue, broadcasting deals, ticket prices, prize money, and economic impact. By Sadman Samin.">
+  <link rel="canonical" href="https://sadmansamin21.github.io/blogs/fifa-world-cup-2026-business-model.html" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --gold: #F4B942;
+  --gold-dim: #c9952e;
+  --red: #E8332A;
+  --green: #1DB954;
+  --bg-dark: #0A0A0F;
+  --bg-card-dark: #111118;
+  --bg-card2-dark: #18181F;
+  --border-dark: rgba(255,255,255,0.07);
+  --text-primary-dark: #F0EFE8;
+  --text-secondary-dark: rgba(240,239,232,0.55);
+  --bg-light: #F5F3EE;
+  --bg-card-light: #FFFFFF;
+  --bg-card2-light: #EDEBE4;
+  --border-light: rgba(0,0,0,0.1);
+  --text-primary-light: #1A1916;
+  --text-secondary-light: rgba(26,25,22,0.55);
+}
+
+[data-theme="dark"] {
+  --bg: var(--bg-dark);
+  --bg-card: var(--bg-card-dark);
+  --bg-card2: var(--bg-card2-dark);
+  --border: var(--border-dark);
+  --text: var(--text-primary-dark);
+  --text-muted: var(--text-secondary-dark);
+  --header-glow: rgba(244,185,66,0.12);
+}
+[data-theme="light"] {
+  --bg: var(--bg-light);
+  --bg-card: var(--bg-card-light);
+  --bg-card2: var(--bg-card2-light);
+  --border: var(--border-light);
+  --text: var(--text-primary-light);
+  --text-muted: var(--text-secondary-light);
+  --header-glow: rgba(244,185,66,0.08);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; }
+
+/* ===== HEADER ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+  height: 64px;
+}
+.site-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.site-logo span { color: var(--text); }
+.header-nav {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  align-items: center;
+}
+.header-nav a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.header-nav a:hover { color: var(--gold); text-decoration: none; }
+.theme-toggle {
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  width: 52px;
+  height: 28px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 20px;
+  background: var(--gold);
+  border-radius: 50%;
+  top: 3px; left: 4px;
+  transition: transform 0.3s;
+}
+[data-theme="light"] .theme-toggle::after { transform: translateX(24px); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; display: block; }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 3rem);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, var(--header-glow), transparent 70%);
+}
+.hero-pitch {
+  position: absolute;
+  bottom: -20px; left: 50%;
+  transform: translateX(-50%);
+  width: min(700px, 100%);
+  opacity: 0.04;
+}
+[data-theme="light"] .hero-pitch { opacity: 0.08; }
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(244,185,66,0.3);
+  border-radius: 50px;
+  padding: 0.35rem 1rem;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-eyebrow::before { content: '⚽'; font-size: 0.9em; }
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  animation: fadeUp 0.8s 0.15s ease both;
+  margin-bottom: 0.5rem;
+}
+.hero-title .accent { color: var(--gold); }
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 1.2rem auto 2rem;
+  animation: fadeUp 0.8s 0.3s ease both;
+  font-weight: 300;
+  font-style: italic;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  animation: fadeUp 0.8s 0.45s ease both;
+  flex-wrap: wrap;
+}
+.hero-meta .author {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.6s ease both;
+}
+.hero-stat {
+  text-align: center;
+  padding: 1.2rem 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  min-width: 130px;
+}
+.hero-stat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+.hero-stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* ===== CONTAINER ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+.section { padding: clamp(3rem, 6vw, 5rem) 0; }
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin: 1rem 0 1.5rem;
+}
+
+/* ===== TOC ===== */
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: var(--text);
+}
+.toc-item:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(244,185,66,0.1);
+  text-decoration: none;
+  color: var(--text);
+}
+.toc-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.toc-text { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover { border-color: rgba(244,185,66,0.25); }
+.card-grid { display: grid; gap: 1.2rem; }
+.card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.card-grid-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+/* ===== STAT CARDS ===== */
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+}
+.stat-card.red::before { background: var(--red); }
+.stat-card.green::before { background: var(--green); }
+.stat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+.stat-card.red .stat-val { color: var(--red); }
+.stat-card.green .stat-val { color: var(--green); }
+.stat-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 0.4rem; display: block; }
+.stat-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-style: italic; }
+
+/* ===== REVENUE PIE CHART (CSS) ===== */
+.chart-wrapper { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
+.chart-canvas-wrap { flex-shrink: 0; }
+.chart-legend { flex: 1; min-width: 200px; }
+.legend-item { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; }
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+.legend-label { font-size: 0.85rem; color: var(--text); flex: 1; }
+.legend-val { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--gold); font-weight: 500; }
+
+/* ===== BAR CHART ===== */
+.bar-chart { width: 100%; }
+.bar-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.bar-label { width: 140px; flex-shrink: 0; font-size: 0.82rem; color: var(--text); text-align: right; }
+.bar-track { flex: 1; height: 32px; background: var(--bg-card2); border-radius: 6px; overflow: hidden; position: relative; }
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding-left: 0.8rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: #000;
+  font-weight: 600;
+  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 0%;
+}
+.bar-fill.gold { background: linear-gradient(90deg, var(--gold-dim), var(--gold)); color: #1a1200; }
+.bar-fill.red { background: linear-gradient(90deg, #c0261f, var(--red)); color: #fff; }
+.bar-fill.blue { background: linear-gradient(90deg, #1a4fa0, #3b72d0); color: #fff; }
+.bar-fill.green { background: linear-gradient(90deg, #13873c, var(--green)); color: #fff; }
+.bar-fill.purple { background: linear-gradient(90deg, #6B3FA0, #9B59B6); color: #fff; }
+.bar-fill.teal { background: linear-gradient(90deg, #0d7e7e, #1bbaba); color: #fff; }
+
+/* ===== SPONSOR TIERS ===== */
+.tier-block { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; }
+.tier-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.tier-header.gold-tier { background: linear-gradient(90deg, rgba(244,185,66,0.15), transparent); border-bottom: 1px solid rgba(244,185,66,0.2); }
+.tier-header.silver-tier { background: linear-gradient(90deg, rgba(180,180,200,0.1), transparent); border-bottom: 1px solid var(--border); }
+.tier-header.bronze-tier { background: linear-gradient(90deg, rgba(180,120,60,0.12), transparent); border-bottom: 1px solid var(--border); }
+.tier-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+}
+.tier-gold { color: var(--gold); }
+.tier-silver { color: #B8B8C8; }
+.tier-bronze { color: #C8895A; }
+.tier-price {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+}
+.sponsor-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 1.2rem 1.5rem; }
+.sponsor-chip {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--bg-card2);
+  color: var(--text);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sponsor-chip .flag { font-size: 1rem; }
+.sponsor-chip.highlight { border-color: rgba(244,185,66,0.4); background: rgba(244,185,66,0.06); }
+
+/* ===== INFOGRAPH — REVENUE BREAKDOWN ===== */
+.revenue-vis { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.rev-block {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+}
+.rev-block::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+}
+.rev-block.b1::after { background: var(--gold); }
+.rev-block.b2::after { background: #3b72d0; }
+.rev-block.b3::after { background: var(--green); }
+.rev-block.b4::after { background: #9B59B6; }
+.rev-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+.rev-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  line-height: 1;
+  display: block;
+}
+.b1 .rev-amount { color: var(--gold); }
+.b2 .rev-amount { color: #3b72d0; }
+.b3 .rev-amount { color: var(--green); }
+.b4 .rev-amount { color: #9B59B6; }
+.rev-name { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 0.3rem; }
+.rev-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.7rem; line-height: 1.6; }
+
+/* ===== PRIZE MONEY TABLE ===== */
+.prize-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.prize-table thead th {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  font-weight: 500;
+  font-family: 'DM Mono', monospace;
+}
+.prize-table tbody td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.prize-table tbody tr:last-child td { border-bottom: none; }
+.prize-table tbody tr:hover { background: var(--bg-card2); }
+.prize-pos { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--text-muted); }
+.prize-amt {
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: var(--gold);
+}
+.prize-bar-cell { width: 140px; }
+.prize-mini-bar { height: 6px; background: var(--bg-card2); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.prize-mini-fill { height: 100%; border-radius: 3px; background: var(--gold); transition: width 1s ease; }
+.medal { font-size: 1.1rem; }
+
+/* ===== TIMELINE ===== */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 2px; background: var(--border); }
+.tl-item { position: relative; padding-bottom: 2rem; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--bg);
+  transform: translateX(4px);
+}
+.tl-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.tl-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+.tl-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ===== HOST CITIES GRID ===== */
+.cities-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+.city-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.city-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.city-flag { font-size: 1.6rem; margin-bottom: 0.5rem; }
+.city-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+.city-country { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.city-matches { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--gold); margin-top: 0.6rem; }
+.city-impact { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+/* ===== DONUT CHART ===== */
+.donut-wrap { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.donut-svg { flex-shrink: 0; }
+.donut-legend { flex: 1; min-width: 180px; }
+.donut-legend-item { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.9rem; }
+.donut-dot { width: 14px; height: 14px; border-radius: 4px; flex-shrink: 0; }
+
+/* ===== TICKET SECTION ===== */
+.ticket-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.ticket-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+  background: var(--bg-card);
+  position: relative;
+}
+.ticket-card.featured {
+  border-color: var(--gold);
+  background: rgba(244,185,66,0.05);
+}
+.ticket-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #1a1200;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.7rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.ticket-tier-name {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.ticket-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--text);
+  line-height: 1;
+}
+.ticket-range { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.3rem; }
+.ticket-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.8rem; line-height: 1.6; }
+
+/* ===== BROADCAST TABLE ===== */
+.broadcast-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.broadcast-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  background: var(--bg-card);
+}
+.bc-region { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 0.4rem; font-family: 'DM Mono', monospace; }
+.bc-network { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
+.bc-value { font-family: 'DM Mono', monospace; color: var(--gold); font-size: 0.82rem; }
+.bc-detail { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.6; }
+
+/* ===== ECONOMIC IMPACT ===== */
+.impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+.impact-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+}
+.impact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+}
+.impact-card.usa::before { background: var(--red); }
+.impact-card.can::before { background: #cc0000; }
+.impact-card.mex::before { background: #006600; }
+.impact-card.global::before { background: var(--gold); }
+.impact-flag { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.impact-country { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+.impact-figure {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--gold);
+  line-height: 1.1;
+  margin-top: 0.2rem;
+}
+.impact-desc { font-size: 0.83rem; color: var(--text-muted); margin-top: 0.6rem; line-height: 1.65; }
+
+/* ===== COMPARISON TABLE ===== */
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th, .compare-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.87rem;
+  text-align: left;
+}
+.compare-table th {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 500;
+  background: var(--bg-card2);
+  font-family: 'DM Mono', monospace;
+}
+.compare-table tr:hover td { background: var(--bg-card2); }
+.compare-table td:first-child { font-weight: 600; }
+.compare-table .highlight-row td { color: var(--gold); font-weight: 700; }
+.compare-table td .val { font-family: 'DM Mono', monospace; }
+
+/* ===== QUOTE ===== */
+.pull-quote {
+  border-left: 4px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  background: var(--bg-card);
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.8;
+}
+.pull-quote cite { display: block; margin-top: 0.5rem; font-style: normal; font-size: 0.78rem; color: var(--text-muted); }
+
+/* ===== ARTICLE BODY ===== */
+.article-p {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+  max-width: 800px;
+}
+.article-h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: var(--text);
+  margin: 2rem 0 0.8rem;
+  letter-spacing: 0.03em;
+}
+.highlight-text { color: var(--gold); font-weight: 700; }
+
+/* ===== SOURCES ===== */
+.sources-list { list-style: none; }
+.sources-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+}
+.sources-list li:last-child { border-bottom: none; }
+.src-num {
+  font-family: 'DM Mono', monospace;
+  color: var(--gold);
+  font-size: 0.72rem;
+  flex-shrink: 0;
+  width: 24px;
+}
+.src-link { color: var(--text); font-size: 0.83rem; }
+.src-link:hover { color: var(--gold); }
+
+/* ===== FOOTER ===== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem clamp(1rem, 4vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--gold); letter-spacing: 0.05em; }
+.footer-text { font-size: 0.78rem; color: var(--text-muted); max-width: 500px; line-height: 1.7; }
+.footer-note { font-size: 0.72rem; color: var(--text-muted); font-family: 'DM Mono', monospace; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .header-nav { display: none; }
+  .header-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px; left: 0; right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem;
+    z-index: 1000;
+    gap: 1rem;
+  }
+  .hamburger { display: flex; }
+  .bar-label { width: 90px; font-size: 0.72rem; }
+  .prize-bar-cell { display: none; }
+  .donut-wrap { flex-direction: column; }
+  .chart-wrapper { flex-direction: column; }
+  .hero-stat { min-width: 100px; padding: 1rem; }
+  .compare-table { font-size: 0.78rem; }
+  .compare-table th, .compare-table td { padding: 0.6rem 0.7rem; }
+}
+@media (max-width: 480px) {
+  .hero-stats { gap: 0.6rem; }
+  .hero-stat { flex: 1; min-width: 80px; }
+  .ticket-tiers { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: var(--gold);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ===== INLINE CHART SVG ===== */
+.canvas-container {
+  width: 100%;
+  overflow-x: auto;
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="site-logo">⚽ <span>FIFA 2026</span> BUSINESS</div>
+  <ul class="header-nav" id="navMenu">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#revenue">Revenue</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#broadcast">Broadcast</a></li>
+    <li><a href="#tickets">Tickets</a></li>
+    <li><a href="#economics">Economics</a></li>
+    <li><a href="#prize">Prize Money</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ul>
+  <div style="display:flex;gap:1rem;align-items:center;">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg class="hero-pitch" viewBox="0 0 600 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="380" rx="8" stroke="currentColor" stroke-width="2"/>
+      <circle cx="300" cy="190" r="60" stroke="currentColor" stroke-width="2"/>
+      <circle cx="300" cy="190" r="5" fill="currentColor"/>
+      <line x1="300" y1="0" x2="300" y2="380" stroke="currentColor" stroke-width="2"/>
+      <rect x="0" y="130" width="80" height="120" stroke="currentColor" stroke-width="2"/>
+      <rect x="520" y="130" width="80" height="120" stroke="currentColor" stroke-width="2"/>
+      <rect x="0" y="160" width="30" height="60" stroke="currentColor" stroke-width="2"/>
+      <rect x="570" y="160" width="30" height="60" stroke="currentColor" stroke-width="2"/>
+      <rect x="20" y="30" width="160" height="80" rx="4" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="420" y="30" width="160" height="80" rx="4" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">The Business of the Beautiful Game · 2026 Edition</div>
+    <h1 class="hero-title">FIFA WORLD<br>CUP <span class="accent">2026</span></h1>
+    <p class="hero-subtitle">The most lucrative sporting event in human history — dissected, charted, and decoded.</p>
+    <div class="hero-meta">
+      <span class="author">By Sadman Samin</span>
+      <span>·</span>
+      <span>May 2026</span>
+      <span>·</span>
+      <span>In-Depth Analysis</span>
+      <span>·</span>
+      <span>~25 min read</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-val">$8.9B</span>
+        <span class="hero-stat-label">Total Revenue</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">104</span>
+        <span class="hero-stat-label">Total Matches</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">48</span>
+        <span class="hero-stat-label">Nations</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">6.5M</span>
+        <span class="hero-stat-label">Attendance Est.</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">$871M</span>
+        <span class="hero-stat-label">Prize Money</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<section class="section" style="padding-top: 2rem; padding-bottom: 2rem; background: var(--bg-card2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">Navigation</span>
+    <div class="toc-grid">
+      <a href="#overview" class="toc-item reveal">
+        <span class="toc-num">01</span>
+        <span class="toc-text">Tournament Overview</span>
+      </a>
+      <a href="#revenue" class="toc-item reveal">
+        <span class="toc-num">02</span>
+        <span class="toc-text">Revenue Breakdown</span>
+      </a>
+      <a href="#sponsors" class="toc-item reveal">
+        <span class="toc-num">03</span>
+        <span class="toc-text">Sponsors & Partners</span>
+      </a>
+      <a href="#broadcast" class="toc-item reveal">
+        <span class="toc-num">04</span>
+        <span class="toc-text">Broadcasting Rights</span>
+      </a>
+      <a href="#tickets" class="toc-item reveal">
+        <span class="toc-num">05</span>
+        <span class="toc-text">Tickets & Hospitality</span>
+      </a>
+      <a href="#hostcities" class="toc-item reveal">
+        <span class="toc-num">06</span>
+        <span class="toc-text">Host Cities</span>
+      </a>
+      <a href="#economics" class="toc-item reveal">
+        <span class="toc-num">07</span>
+        <span class="toc-text">Economic Impact</span>
+      </a>
+      <a href="#prize" class="toc-item reveal">
+        <span class="toc-num">08</span>
+        <span class="toc-text">Prize Money</span>
+      </a>
+      <a href="#expenses" class="toc-item reveal">
+        <span class="toc-num">09</span>
+        <span class="toc-text">Costs & Expenses</span>
+      </a>
+      <a href="#history" class="toc-item reveal">
+        <span class="toc-num">10</span>
+        <span class="toc-text">Historical Growth</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 1: OVERVIEW ===== -->
+<section class="section" id="overview">
+  <div class="container">
+    <span class="section-label">01 — Tournament Overview</span>
+    <h2 class="section-title">THE BIGGEST SPORTING EVENT EVER STAGED</h2>
+    <div class="divider"></div>
+    <p class="article-p">The 2026 FIFA World Cup is not just a football tournament — it is the most commercially ambitious sporting event in history. For the first time, the World Cup spans three countries — the <strong>United States (11 cities), Canada (2 cities), and Mexico (3 cities)</strong> — creating a tri-national mega-event unlike anything seen before. The tournament runs from <span class="highlight-text">June 11 to July 19, 2026</span>, featuring 48 teams and a record 104 matches across 16 host cities.</p>
+    <p class="article-p">The expansion from 32 to 48 teams alone increased the number of matches by 62.5% — from 64 to 104 — creating enormous additional broadcast inventory, ticketing revenue, sponsorship activations, and hospitality packages. Every additional match adds approximately $85M to FIFA's balance sheet when all revenue streams are accounted for.</p>
+    <div class="pull-quote">
+      "The 2026 World Cup is the biggest commercial media event ever staged. The brands that bought into it early bought the most valuable property in global sport."
+      <cite>— Sports Value Analysis, February 2026</cite>
+    </div>
+
+    <div class="card-grid card-grid-4 reveal" style="margin-top: 2rem;">
+      <div class="stat-card">
+        <span class="stat-val">48</span>
+        <span class="stat-label">Participating Nations</span>
+        <span class="stat-note">Up from 32 in Qatar 2022</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-val">104</span>
+        <span class="stat-label">Total Matches</span>
+        <span class="stat-note">Up from 64 in Qatar 2022</span>
+      </div>
+      <div class="stat-card green">
+        <span class="stat-val green">3</span>
+        <span class="stat-label">Host Nations</span>
+        <span class="stat-note">USA · Canada · Mexico</span>
+      </div>
+      <div class="stat-card red">
+        <span class="stat-val">16</span>
+        <span class="stat-label">Host Cities</span>
+        <span class="stat-note">11 USA · 2 Canada · 3 Mexico</span>
+      </div>
+    </div>
+    <div class="card-grid card-grid-4 reveal" style="margin-top: 1rem;">
+      <div class="stat-card">
+        <span class="stat-val">$13B</span>
+        <span class="stat-label">2023–26 Cycle Revenue</span>
+        <span class="stat-note">72% increase vs 2022 cycle</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-val">$8.9B</span>
+        <span class="stat-label">2026 WC Revenue</span>
+        <span class="stat-note">Tournament year alone</span>
+      </div>
+      <div class="stat-card green">
+        <span class="stat-val">500M+</span>
+        <span class="stat-label">Ticket Requests</span>
+        <span class="stat-note">Only ~7M tickets available</span>
+      </div>
+      <div class="stat-card red">
+        <span class="stat-val">$40.9B</span>
+        <span class="stat-label">Global GDP Impact</span>
+        <span class="stat-note">FIFA–WTO joint study</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: REVENUE ===== -->
+<section class="section" id="revenue" style="background: var(--bg-card2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">02 — Revenue Breakdown</span>
+    <h2 class="section-title">HOW $8.9 BILLION IS MADE</h2>
+    <div class="divider"></div>
+    <p class="article-p">FIFA's 2026 World Cup revenue is built on four main pillars: broadcasting rights, sponsorship/marketing, ticketing &amp; hospitality, and licensing. The North American time zone advantage is crucial — matches airing in prime time across the US, Canada, and Mexico simultaneously reach European audiences in commercially viable late-evening slots and Asian audiences in morning windows, creating a near-perfect global broadcasting scenario.</p>
+
+    <div class="revenue-vis reveal">
+      <div class="rev-block b1">
+        <div class="rev-icon">📡</div>
+        <span class="rev-amount">$3.92B</span>
+        <div class="rev-name">Broadcasting Rights</div>
+        <div class="rev-desc">Largest single revenue stream. Fox/Telemundo alone contribute $1.25B. Covering 200+ territories with 104 matches, a 30–36% jump over the Qatar cycle.</div>
+      </div>
+      <div class="rev-block b2">
+        <div class="rev-icon">🤝</div>
+        <span class="rev-amount">$2.69B</span>
+        <div class="rev-name">Marketing &amp; Sponsorship</div>
+        <div class="rev-desc">15 global partners across 3 tiers. 152% increase over the 2010 cycle. Chinese and Middle Eastern brands have driven aggressive bidding wars.</div>
+      </div>
+      <div class="rev-block b3">
+        <div class="rev-icon">🎟️</div>
+        <span class="rev-amount">$3.0B</span>
+        <div class="rev-name">Ticketing &amp; Hospitality</div>
+        <div class="rev-desc">A 216% jump over Qatar's $950M matchday revenue. Dynamic pricing introduced for first time. 5M+ tickets already sold; 500M+ applications received.</div>
+      </div>
+      <div class="rev-block b4">
+        <div class="rev-icon">©️</div>
+        <span class="rev-amount">$670M</span>
+        <div class="rev-name">Licensing Rights</div>
+        <div class="rev-desc">Merchandise, video games, digital content licensing. Includes TikTok preferred platform deal and clip-package sales to YouTube and social platforms.</div>
+      </div>
+    </div>
+
+    <h3 class="article-h3">Revenue Comparison: World Cup vs. Other Events</h3>
+    <div class="card reveal" style="margin-top: 1rem;">
+      <div class="bar-chart" id="compareChart">
+        <div class="bar-row">
+          <div class="bar-label">FIFA WC 2026</div>
+          <div class="bar-track"><div class="bar-fill gold" data-width="100">$8.9B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">FIFA WC 2022</div>
+          <div class="bar-track"><div class="bar-fill blue" data-width="78">$7.0B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">FIFA WC 2018</div>
+          <div class="bar-track"><div class="bar-fill teal" data-width="59">$5.3B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Paris Olympics '24</div>
+          <div class="bar-track"><div class="bar-fill purple" data-width="59">$5.24B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Super Bowl (annual)</div>
+          <div class="bar-track"><div class="bar-fill red" data-width="15">~$600M</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">FIFA WC 2014</div>
+          <div class="bar-track"><div class="bar-fill green" data-width="50">$4.5B</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="article-h3">Revenue Distribution Donut</h3>
+    <div class="card reveal" style="margin-top: 1rem; padding: 2rem;">
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="200" height="200" viewBox="0 0 200 200">
+          <!-- Broadcasting 44% -->
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#111" stroke-width="30"/>
+          <!-- Segments drawn as stroke-dasharray on a circle circumference = 2π×70 ≈ 439.8 -->
+          <!-- Broadcasting 44% = 193.5 -->
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#F4B942" stroke-width="30"
+            stroke-dasharray="193.5 246.3" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+          <!-- Sponsorship 30% = 131.9 -->
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#3b72d0" stroke-width="30"
+            stroke-dasharray="131.9 307.9" stroke-dashoffset="-193.5" transform="rotate(-90 100 100)"/>
+          <!-- Ticketing 34% ~= 149.5 (adjusted) -->
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#1DB954" stroke-width="30"
+            stroke-dasharray="105 334.8" stroke-dashoffset="-325.4" transform="rotate(-90 100 100)"/>
+          <!-- Licensing 8% -->
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#9B59B6" stroke-width="30"
+            stroke-dasharray="35 404.8" stroke-dashoffset="-430.4" transform="rotate(-90 100 100)"/>
+          <text x="100" y="96" text-anchor="middle" font-family="'Bebas Neue'" font-size="20" fill="currentColor">$8.9B</text>
+          <text x="100" y="114" text-anchor="middle" font-family="'DM Sans'" font-size="9" fill="currentColor" opacity="0.6">TOTAL REVENUE</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="donut-legend-item">
+            <div class="donut-dot" style="background:#F4B942;"></div>
+            <div style="flex:1;">
+              <div style="font-size:0.85rem;font-weight:600;">Broadcasting Rights</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">44% — $3.92B</div>
+            </div>
+          </div>
+          <div class="donut-legend-item">
+            <div class="donut-dot" style="background:#3b72d0;"></div>
+            <div style="flex:1;">
+              <div style="font-size:0.85rem;font-weight:600;">Marketing &amp; Sponsorship</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">30% — $2.69B</div>
+            </div>
+          </div>
+          <div class="donut-legend-item">
+            <div class="donut-dot" style="background:#1DB954;"></div>
+            <div style="flex:1;">
+              <div style="font-size:0.85rem;font-weight:600;">Ticketing &amp; Hospitality</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">18% — $3.0B (est.)</div>
+            </div>
+          </div>
+          <div class="donut-legend-item">
+            <div class="donut-dot" style="background:#9B59B6;"></div>
+            <div style="flex:1;">
+              <div style="font-size:0.85rem;font-weight:600;">Licensing &amp; Other</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">8% — $670M</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: SPONSORS ===== -->
+<section class="section" id="sponsors">
+  <div class="container">
+    <span class="section-label">03 — Sponsors & Partners</span>
+    <h2 class="section-title">THE $2.7 BILLION SPONSORSHIP MACHINE</h2>
+    <div class="divider"></div>
+    <p class="article-p">FIFA operates a three-tier sponsorship structure that maximizes exclusivity and revenue. Each category (e.g., beverages, automotive, tech) can only have one brand per tier, making World Cup sponsorship one of the most coveted properties in global marketing. As of March 2026, all 16 global partnership positions are fully sold out — a first in World Cup history.</p>
+    <p class="article-p">A notable shift in the 2026 cycle is the <span class="highlight-text">dramatic entry of Chinese brands</span>: Mengniu Dairy, Hisense, Lenovo, and Wanda Group together represent over $500M in sponsorship commitments, reflecting China's strategic investment in football's global footprint despite not qualifying for the tournament itself.</p>
+
+    <!-- Tier 1 -->
+    <div class="tier-block reveal">
+      <div class="tier-header gold-tier">
+        <div>
+          <div class="tier-name tier-gold">⭐ Tier 1 — FIFA Partners</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Global rights · All FIFA events · 4-year cycle</div>
+        </div>
+        <div class="tier-price">~$95M–$150M+ per deal · Est. $700M–$1B+ total</div>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-chip highlight"><span class="flag">🇩🇪</span> Adidas</div>
+        <div class="sponsor-chip highlight"><span class="flag">🇺🇸</span> Coca-Cola</div>
+        <div class="sponsor-chip highlight"><span class="flag">🇸🇦</span> Aramco</div>
+        <div class="sponsor-chip highlight"><span class="flag">🇰🇷</span> Hyundai·Kia</div>
+        <div class="sponsor-chip highlight"><span class="flag">🇨🇳</span> Lenovo</div>
+        <div class="sponsor-chip highlight"><span class="flag">🇶🇦</span> Qatar Airways</div>
+        <div class="sponsor-chip highlight"><span class="flag">🇺🇸</span> Visa</div>
+      </div>
+      <div style="padding: 0 1.5rem 1rem; font-size: 0.78rem; color: var(--text-muted);">
+        7 brands · Global exclusivity across all FIFA competitions including Women's World Cup, Club World Cup, and all international tournaments.
+      </div>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="tier-block reveal">
+      <div class="tier-header silver-tier">
+        <div>
+          <div class="tier-name tier-silver">🥈 Tier 2 — FIFA World Cup 2026 Sponsors</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Global rights · 2026 tournament edition only</div>
+        </div>
+        <div class="tier-price">$65M–$95M per deal · Est. $560M–$760M total</div>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-chip"><span class="flag">🇺🇸</span> AB InBev (Budweiser)</div>
+        <div class="sponsor-chip"><span class="flag">🇺🇸</span> Bank of America</div>
+        <div class="sponsor-chip"><span class="flag">🇺🇸</span> Frito-Lay / PepsiCo</div>
+        <div class="sponsor-chip"><span class="flag">🇨🇳</span> Hisense</div>
+        <div class="sponsor-chip"><span class="flag">🇺🇸</span> McDonald's</div>
+        <div class="sponsor-chip"><span class="flag">🇨🇳</span> Mengniu Dairy</div>
+        <div class="sponsor-chip"><span class="flag">🇬🇧</span> Unilever</div>
+        <div class="sponsor-chip"><span class="flag">🇺🇸</span> Verizon</div>
+      </div>
+      <div style="padding: 0 1.5rem 1rem; font-size: 0.78rem; color: var(--text-muted);">
+        8 brands · Tournament-specific global rights. The presence of Bank of America and Verizon signals FIFA's aggressive push into the North American corporate market, while Hisense and Mengniu represent China's 4th consecutive World Cup participation at sponsorship level.
+      </div>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="tier-block reveal">
+      <div class="tier-header bronze-tier">
+        <div>
+          <div class="tier-name tier-bronze">🥉 Tier 3 — Regional Supporters</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Territory-restricted rights · Multiple regional packages</div>
+        </div>
+        <div class="tier-price">$5M–$30M per deal · Variable</div>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-chip">Wanda Group 🇨🇳</div>
+        <div class="sponsor-chip">IHG Hotels 🇬🇧</div>
+        <div class="sponsor-chip">Betano 🇦🇹</div>
+        <div class="sponsor-chip">Modelo (North America) 🇲🇽</div>
+        <div class="sponsor-chip">Various Regional Telcos</div>
+        <div class="sponsor-chip">+ Several Undisclosed</div>
+      </div>
+    </div>
+
+    <h3 class="article-h3" style="margin-top: 2.5rem;">Sponsorship Revenue Growth</h3>
+    <div class="card reveal" style="margin-top: 1rem;">
+      <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1.2rem;font-family:'DM Mono';">Marketing/sponsorship revenue by World Cup cycle</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">2026 (USA/CAN/MEX)</div>
+          <div class="bar-track"><div class="bar-fill gold" data-width="100">$2.69B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">2022 (Qatar)</div>
+          <div class="bar-track"><div class="bar-fill blue" data-width="60">$1.63B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">2018 (Russia)</div>
+          <div class="bar-track"><div class="bar-fill teal" data-width="46">$1.24B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">2014 (Brazil)</div>
+          <div class="bar-track"><div class="bar-fill green" data-width="41">$1.1B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">2010 (South Africa)</div>
+          <div class="bar-track"><div class="bar-fill purple" data-width="40">$1.07B</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="article-h3" style="margin-top: 2.5rem;">Chinese Brand Dominance: A New Axis</h3>
+    <p class="article-p">One of the most striking commercial stories of 2026 is China's sponsorship footprint. Despite the Chinese national team not qualifying, <span class="highlight-text">Chinese brands collectively invested over $500M</span> in World Cup commercial rights — more than any single country except the USA. This includes Lenovo (Tier 1 Partner), Wanda Group (longstanding partner), Hisense (4th consecutive tournament), and Mengniu Dairy. The strategy reflects Chinese brands' use of the World Cup as a platform for global consumer brand-building.</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: BROADCASTING ===== -->
+<section class="section" id="broadcast" style="background: var(--bg-card2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">04 — Broadcasting Rights</span>
+    <h2 class="section-title">THE $3.92 BILLION TV MACHINE</h2>
+    <div class="divider"></div>
+    <p class="article-p">Broadcasting rights remain FIFA's single largest income source, and the 2026 cycle represents the most explosive growth in this category. The North American hosting creates the near-perfect commercial scenario: matches air in prime time US Eastern (8PM ET), reaching European audiences at 1AM–2AM in commercially viable late-night slots, while Latin American audiences watch in evening hours. This simultaneous global prime-time window is the broadcasting "golden ticket" that justifies record deals.</p>
+    <p class="article-p">In January 2026, FIFA also signed a landmark deal making <span class="highlight-text">TikTok a "preferred platform"</span> for short-form World Cup video content — the first time a social media platform of this scale has had formal broadcast partnership status with FIFA, signaling the organization's intent to monetize the under-25 digital audience more aggressively.</p>
+
+    <div class="broadcast-grid reveal">
+      <div class="broadcast-card">
+        <div class="bc-region">🇺🇸 United States</div>
+        <div class="bc-network">Fox Sports + Telemundo (NBCUniversal)</div>
+        <div class="bc-value">~$1.25 Billion</div>
+        <div class="bc-detail">Most valuable territorial deal in World Cup history. FOX holds English rights (FOX + FS1 + FOX One streaming in 4K). Telemundo/Peacock holds Spanish rights. 40 matches in primetime. Every knockout round on FOX main network. 700 hours of Telemundo programming — most ever for Spanish-language World Cup. Rights locked in since 2015.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">🇬🇧 United Kingdom</div>
+        <div class="bc-network">BBC + ITV</div>
+        <div class="bc-value">~$150–200M est.</div>
+        <div class="bc-detail">BBC iPlayer and ITVX provide free-to-air streaming. UK fans are among the best-served globally. Both broadcasters share match rights; major knockouts expected on BBC. Free access for all UK households.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">🇩🇪 Germany</div>
+        <div class="bc-network">ARD / ZDF / Deutsche Telekom</div>
+        <div class="bc-value">~$120–150M est.</div>
+        <div class="bc-detail">Public broadcasters ARD and ZDF handle main coverage. MagentaTV carries all 104 matches digitally. Germany's significant football viewership makes this one of Europe's most valuable markets.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">🌍 Rest of Europe</div>
+        <div class="bc-network">EBU + Multiple National Broadcasters</div>
+        <div class="bc-value">~$850M (combined)</div>
+        <div class="bc-detail">European Broadcasting Union (EBU) secured multi-country packages. M6/TF1 (France), RTVE (Spain), Mediapro regional deals. Free-to-air coverage is standard across most EU markets due to "listed events" regulations.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">🇧🇷 Brazil</div>
+        <div class="bc-network">Grupo Globo + CazéTV + SBT + N Sports</div>
+        <div class="bc-value">~$80–100M est.</div>
+        <div class="bc-detail">Brazil has richest broadcast lineup in Latin America. CazéTV will stream entire tournament FREE on YouTube — a landmark deal making Brazil the first major market where YouTube is primary digital distribution for the World Cup. Globo handles select marquee matches on TV.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">🇨🇦 Canada</div>
+        <div class="bc-network">Bell Media (CTV / TSN / RDS)</div>
+        <div class="bc-value">Included in US deal</div>
+        <div class="bc-detail">Rights renewed alongside US deal in 2015. CTV airs English coverage free over-the-air. TSN handles cable English broadcasts. RDS provides French coverage. Streaming via TSN+ and CTV App.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">🌏 MENA Region</div>
+        <div class="bc-network">beIN Sports</div>
+        <div class="bc-value">~$200M+ est.</div>
+        <div class="bc-detail">beIN Sports holds rights across Middle East and North Africa. Strong demand given the region's intense football culture and proximity to 2022 Qatar legacy viewers. Qatar Airways (Tier 1 sponsor) connection reinforces the Gulf market relationship.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">🌍 Sub-Saharan Africa</div>
+        <div class="bc-network">SuperSport (MultiChoice)</div>
+        <div class="bc-value">~$60–80M est.</div>
+        <div class="bc-detail">SuperSport covers most of sub-Saharan Africa. A key growth market for FIFA given Africa's 54 CAFU nations and strong football culture. Pan-African free-to-air options vary by country.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">🇮🇳 India (Unresolved)</div>
+        <div class="bc-network">TBD — Negotiations Ongoing</div>
+        <div class="bc-value">~$60M+ potential</div>
+        <div class="bc-detail">As of May 2026, no broadcaster confirmed. Viacom18 paid ~$60M for Qatar 2022 rights, generating 32M viewers for the Argentina-France final. Late-night US time zones complicate ad revenue models. Prasar Bharati (DD Sports) in discussions with FIFA. India's Sports Broadcasting Act mandates key matches on free-to-air DD Sports regardless of deal.</div>
+      </div>
+      <div class="broadcast-card">
+        <div class="bc-region">✈️ In-Flight / Cruise</div>
+        <div class="bc-network">Sport24</div>
+        <div class="bc-value">Undisclosed</div>
+        <div class="bc-detail">Sport24 secured rights for international in-flight and maritime broadcasts, covering 600+ aircraft and 100+ cruise ships. Airlines include Emirates, Turkish Airlines, Singapore Airlines. Royal Caribbean and Carnival cruise lines also carry the channel.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: TICKETS ===== -->
+<section class="section" id="tickets">
+  <div class="container">
+    <span class="section-label">05 — Tickets & Hospitality</span>
+    <h2 class="section-title">THE MOST EXPENSIVE WORLD CUP FOR FANS</h2>
+    <div class="divider"></div>
+    <p class="article-p">The 2026 World Cup introduces <span class="highlight-text">dynamic pricing</span> for the first time in tournament history — a variable pricing model where ticket costs increase automatically as demand surges. Combined with the largest stadiums ever used (SoFi Stadium capacity: 70,240; MetLife Stadium: 82,500; AT&T Stadium: 80,000), and an unprecedented 5 million+ tickets sold, the matchday revenue is projected to hit $3 billion — a staggering 216% increase over Qatar's $950M.</p>
+    <p class="article-p">However, the cost of attendance has sparked significant debate. The England Supporters Travel Club estimated that following England to the final could cost a fan over $7,000 in tickets and basic expenses alone — before airfare or accommodation. Critics argue the World Cup is increasingly a premium product for wealthy fans and corporate guests rather than ordinary supporters.</p>
+
+    <div class="ticket-tiers reveal">
+      <div class="ticket-card">
+        <div class="ticket-tier-name">Supporter Entry</div>
+        <div class="ticket-price">$60</div>
+        <div class="ticket-range">Starting from</div>
+        <div class="ticket-desc">Most limited allocation. Extremely restricted conditions. Available for select group matches only under specific criteria. Effectively symbolic — very few tickets at this price.</div>
+      </div>
+      <div class="ticket-card featured">
+        <div class="ticket-badge">Base Price</div>
+        <div class="ticket-tier-name">Group Stage (Official)</div>
+        <div class="ticket-price">$400–675</div>
+        <div class="ticket-range">On FIFA.com (April 2026)</div>
+        <div class="ticket-desc">Official FIFA website prices for standard group stage matches. Dynamic pricing means popular matchups (US, Mexico, Brazil games) are significantly higher.</div>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-tier-name">Secondary Market</div>
+        <div class="ticket-price">$1,479+</div>
+        <div class="ticket-range">Per ticket on resale platforms</div>
+        <div class="ticket-desc">Resale marketplace starting prices. High-demand group games with major nations can reach $3,000–$5,000 per seat in the weeks before kickoff.</div>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-tier-name">Quarterfinals / Semis</div>
+        <div class="ticket-price">$4,986+</div>
+        <div class="ticket-range">Secondary market peak</div>
+        <div class="ticket-desc">Knockout round pricing is several multiples higher. Premium seats at major US venues regularly listed at $4,986–$8,000 on secondary markets.</div>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-tier-name">Final Premium Seats</div>
+        <div class="ticket-price">$10,000+</div>
+        <div class="ticket-range">Premium seating category</div>
+        <div class="ticket-desc">Official premium seats for the final at MetLife Stadium (NY/NJ). Luxury packages with lounge access and exclusive services can reach $15,000 per person.</div>
+      </div>
+      <div class="ticket-card featured">
+        <div class="ticket-badge">Ultra Premium</div>
+        <div class="ticket-tier-name">VIP Final Package</div>
+        <div class="ticket-price">$15,000+</div>
+        <div class="ticket-range">Hospitality & VIP bundle</div>
+        <div class="ticket-desc">Full VIP Final experience including lounge access, premium hospitality, exclusive services. Reports of 4-ticket final VIP packages offered at $2.3M on secondary markets.</div>
+      </div>
+    </div>
+
+    <div class="pull-quote" style="margin-top: 2.5rem;">
+      "For the first time, many fans are openly saying that the World Cup is moving away from ordinary supporters and turning into a premium sports product aimed primarily at corporations, VIP guests, and wealthy travelers."
+      <cite>— Euronews, May 8, 2026</cite>
+    </div>
+
+    <h3 class="article-h3">Cost of Attendance by US Host City (Full Trip)</h3>
+    <p class="article-p" style="font-size:0.85rem;">Including one ticket, travel, 2-night lodging, food, local transport, and sightseeing.</p>
+    <div class="card reveal" style="margin-top: 1rem;">
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Boston</div>
+          <div class="bar-track"><div class="bar-fill red" data-width="100">$7,589</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Philadelphia</div>
+          <div class="bar-track"><div class="bar-fill red" data-width="92">$6,965</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">New York/NJ</div>
+          <div class="bar-track"><div class="bar-fill gold" data-width="84">$6,380</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Los Angeles</div>
+          <div class="bar-track"><div class="bar-fill gold" data-width="78">$5,900</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">San Francisco</div>
+          <div class="bar-track"><div class="bar-fill gold" data-width="76">$5,760</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Average (all 11)</div>
+          <div class="bar-track"><div class="bar-fill blue" data-width="72">$5,440</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Dallas</div>
+          <div class="bar-track"><div class="bar-fill green" data-width="54">$4,100</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Seattle</div>
+          <div class="bar-track"><div class="bar-fill green" data-width="43">$3,287</div></div>
+        </div>
+      </div>
+      <div style="font-size:0.72rem;color:var(--text-muted);margin-top:1rem;font-family:'DM Mono';">Source: SoFi cost analysis, April 2026. Prices include secondary-market tickets.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: HOST CITIES ===== -->
+<section class="section" id="hostcities" style="background: var(--bg-card2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">06 — Host Cities</span>
+    <h2 class="section-title">16 CITIES, 3 NATIONS, ONE TOURNAMENT</h2>
+    <div class="divider"></div>
+    <p class="article-p">The geographic spread of the 2026 World Cup across North America means the tournament's economic footprint is uniquely distributed. Dallas hosts the most US matches of any city. The Final will be played at MetLife Stadium in New York/New Jersey — the largest stadium in the tournament. All 16 host cities have existing NFL or major sports stadiums, meaning FIFA avoided the Qatar-style $6.9 billion stadium construction cost.</p>
+    <div class="cities-grid reveal">
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">New York / New Jersey</div><div class="city-country">United States</div><div class="city-matches">8 matches incl. FINAL</div><div class="city-impact">MetLife Stadium — 82,500 cap.</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Los Angeles</div><div class="city-country">United States</div><div class="city-matches">8 matches incl. Semi-Final</div><div class="city-impact">SoFi Stadium — $594M economic impact</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Dallas</div><div class="city-country">United States</div><div class="city-matches">9 matches — most in USA</div><div class="city-impact">AT&T Stadium — $1.5–2.1B impact</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Atlanta</div><div class="city-country">United States</div><div class="city-matches">8 matches incl. Semi-Final</div><div class="city-impact">Mercedes-Benz Stadium — $1B impact</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">San Francisco Bay Area</div><div class="city-country">United States</div><div class="city-matches">6 matches</div><div class="city-impact">Levi's Stadium, Santa Clara</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Miami</div><div class="city-country">United States</div><div class="city-matches">6 matches</div><div class="city-impact">Hard Rock Stadium</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Seattle</div><div class="city-country">United States</div><div class="city-matches">5 matches</div><div class="city-impact">Lumen Field — most affordable WC city</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Boston</div><div class="city-country">United States</div><div class="city-matches">6 matches</div><div class="city-impact">Gillette Stadium — most expensive city</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Philadelphia</div><div class="city-country">United States</div><div class="city-matches">6 matches</div><div class="city-impact">Lincoln Financial Field</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Kansas City</div><div class="city-country">United States</div><div class="city-matches">5 matches</div><div class="city-impact">Arrowhead Stadium</div></div>
+      <div class="city-card"><div class="city-flag">🇺🇸</div><div class="city-name">Houston</div><div class="city-country">United States</div><div class="city-matches">6 matches</div><div class="city-impact">NRG Stadium — bookings below forecast</div></div>
+      <div class="city-card"><div class="city-flag">🇨🇦</div><div class="city-name">Toronto</div><div class="city-country">Canada</div><div class="city-matches">7 matches</div><div class="city-impact">BMO Field — expanded capacity</div></div>
+      <div class="city-card"><div class="city-flag">🇨🇦</div><div class="city-name">Vancouver</div><div class="city-country">Canada</div><div class="city-matches">6 matches</div><div class="city-impact">BC Place — retractable roof</div></div>
+      <div class="city-card"><div class="city-flag">🇲🇽</div><div class="city-name">Mexico City</div><div class="city-country">Mexico</div><div class="city-matches">5 matches incl. Opening</div><div class="city-impact">Estadio Azteca — iconic venue, 3rd WC</div></div>
+      <div class="city-card"><div class="city-flag">🇲🇽</div><div class="city-name">Guadalajara</div><div class="city-country">Mexico</div><div class="city-matches">4 matches</div><div class="city-impact">Estadio Akron</div></div>
+      <div class="city-card"><div class="city-flag">🇲🇽</div><div class="city-name">Monterrey</div><div class="city-country">Mexico</div><div class="city-matches">4 matches</div><div class="city-impact">Estadio BBVA</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: ECONOMICS ===== -->
+<section class="section" id="economics">
+  <div class="container">
+    <span class="section-label">07 — Economic Impact</span>
+    <h2 class="section-title">$40.9 BILLION GLOBAL GDP CONTRIBUTION</h2>
+    <div class="divider"></div>
+    <p class="article-p">The 2026 World Cup's economic footprint extends far beyond FIFA's own balance sheet. A joint FIFA–World Trade Organization study projects <span class="highlight-text">$40.9 billion in contribution to global GDP</span>, with $13.9 billion in direct visitor spending and approximately 824,000 jobs created. However, economists caution that these projections often overstate long-term impact and that the distribution is highly uneven — concentrated in specific sectors (hospitality, tourism, security, retail) and geographic zones near stadiums.</p>
+    <p class="article-p">A warning sign emerged in early 2026: Dallas and Houston hotels reported bookings tracking closer to a typical summer than a major-event surge, with international visitors held back by high US visa processing times, elevated airfares, and record-high ticket prices. Only about <span class="highlight-text">25–30% of host markets</span> are seeing meaningful gains tied directly to the World Cup, per the American Hotel &amp; Lodging Association.</p>
+
+    <div class="impact-grid reveal">
+      <div class="impact-card global">
+        <div class="impact-flag">🌍</div>
+        <div class="impact-country">Global</div>
+        <div class="impact-figure">$40.9B</div>
+        <div class="impact-desc">Projected contribution to global GDP. $13.9B in direct visitor spending. 824,000 jobs created worldwide. Source: FIFA–WTO Joint Study.</div>
+      </div>
+      <div class="impact-card usa">
+        <div class="impact-flag">🇺🇸</div>
+        <div class="impact-country">United States</div>
+        <div class="impact-figure">$17.2B</div>
+        <div class="impact-desc">Economic activity in the US alone, per 2025 FIFA study. ~185,000 jobs (mostly temporary) in hospitality, tourism, security, and retail. Each host city sees $160M–$620M in incremental economic activity.</div>
+      </div>
+      <div class="impact-card can">
+        <div class="impact-flag">🇨🇦</div>
+        <div class="impact-country">Canada</div>
+        <div class="impact-figure">CAD $3.8B</div>
+        <div class="impact-desc">Projected economic benefit across Toronto and Vancouver. Particularly significant as soccer has historically been a secondary sport in Canada — this is the first time Canadian cities host a football mega-event at this scale.</div>
+      </div>
+      <div class="impact-card mex">
+        <div class="impact-flag">🇲🇽</div>
+        <div class="impact-country">Mexico</div>
+        <div class="impact-figure">$1.5B+</div>
+        <div class="impact-desc">Estimated economic impact across Mexico City, Guadalajara, and Monterrey. Estadio Azteca becomes the first stadium to host 3 FIFA World Cups. Domestic football enthusiasm provides strong baseline attendance and hospitality demand.</div>
+      </div>
+    </div>
+
+    <h3 class="article-h3" style="margin-top: 2.5rem;">US Host City Economic Impact Projections</h3>
+    <div class="card reveal" style="margin-top: 1rem;">
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Dallas</div>
+          <div class="bar-track"><div class="bar-fill gold" data-width="100">$1.5–2.1B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">New York/NJ</div>
+          <div class="bar-track"><div class="bar-fill blue" data-width="87">$1.1B (Final)</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Atlanta</div>
+          <div class="bar-track"><div class="bar-fill green" data-width="79">$1.0B</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Los Angeles</div>
+          <div class="bar-track"><div class="bar-fill teal" data-width="47">$594M</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Other cities avg.</div>
+          <div class="bar-track"><div class="bar-fill purple" data-width="30">$160–350M</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote" style="margin-top: 2rem;">
+      "Stadiums are expected to be full, but whether that translates into the level of economic boost cities anticipated may depend on who ultimately makes the trip — domestic fans or international, higher-spending visitors."
+      <cite>— FOX 4 Dallas / American Hotel & Lodging Association Report, May 2026</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: PRIZE MONEY ===== -->
+<section class="section" id="prize" style="background: var(--bg-card2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">08 — Prize Money</span>
+    <h2 class="section-title">$871 MILLION IN PRIZE MONEY — WHO GETS WHAT</h2>
+    <div class="divider"></div>
+    <p class="article-p">FIFA has set record prize money of <span class="highlight-text">$871 million</span> for the 2026 World Cup, guaranteeing each of the 48 participating nations a minimum of <span class="highlight-text">$12.5 million</span>. However, the distribution model has drawn criticism: clubs that release players for national duty receive $355 million through the FIFA Club Benefit Programme (CBP), but players themselves are not directly compensated by FIFA — their national associations control how money is distributed domestically.</p>
+    <p class="article-p">There is also the complication of US taxation. FIFA was in negotiations to secure federal tax exemption for participating teams on their prize money, but teams may still be subject to state and local taxes in US host cities — a situation described by The Guardian as a significant concern for smaller football federations whose prize money might not fully cover their participation costs after tax deductions.</p>
+
+    <div class="card reveal" style="overflow-x: auto;">
+      <table class="prize-table">
+        <thead>
+          <tr>
+            <th>Finish</th>
+            <th>Prize Money</th>
+            <th>Teams</th>
+            <th style="min-width:140px;">Visual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="prize-pos">🏆</span> <strong>Champion</strong></td>
+            <td class="prize-amt">$40M</td>
+            <td>1 team</td>
+            <td class="prize-bar-cell"><div class="prize-mini-bar"><div class="prize-mini-fill" data-width="100" style="width:0%"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="prize-pos">🥈</span> Runner-Up</td>
+            <td class="prize-amt">$30M</td>
+            <td>1 team</td>
+            <td class="prize-bar-cell"><div class="prize-mini-bar"><div class="prize-mini-fill" data-width="75" style="width:0%"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="prize-pos">🥉</span> Third Place</td>
+            <td class="prize-amt">$27M</td>
+            <td>1 team</td>
+            <td class="prize-bar-cell"><div class="prize-mini-bar"><div class="prize-mini-fill" data-width="67" style="width:0%"></div></div></td>
+          </tr>
+          <tr>
+            <td>Fourth Place</td>
+            <td class="prize-amt">$25M</td>
+            <td>1 team</td>
+            <td class="prize-bar-cell"><div class="prize-mini-bar"><div class="prize-mini-fill" data-width="62" style="width:0%"></div></div></td>
+          </tr>
+          <tr>
+            <td>Quarter-Finalists</td>
+            <td class="prize-amt">$20M</td>
+            <td>4 teams</td>
+            <td class="prize-bar-cell"><div class="prize-mini-bar"><div class="prize-mini-fill" data-width="50" style="width:0%"></div></div></td>
+          </tr>
+          <tr>
+            <td>Round of 16 Exit</td>
+            <td class="prize-amt">$17M</td>
+            <td>8 teams</td>
+            <td class="prize-bar-cell"><div class="prize-mini-bar"><div class="prize-mini-fill" data-width="42" style="width:0%"></div></div></td>
+          </tr>
+          <tr>
+            <td>Round of 32 Exit</td>
+            <td class="prize-amt">$14M</td>
+            <td>16 teams</td>
+            <td class="prize-bar-cell"><div class="prize-mini-bar"><div class="prize-mini-fill" data-width="35" style="width:0%"></div></div></td>
+          </tr>
+          <tr>
+            <td>Group Stage Exit</td>
+            <td class="prize-amt">$12.5M</td>
+            <td>16 teams</td>
+            <td class="prize-bar-cell"><div class="prize-mini-bar"><div class="prize-mini-fill" data-width="31" style="width:0%"></div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-grid card-grid-3 reveal" style="margin-top: 1.5rem;">
+      <div class="stat-card">
+        <span class="stat-val">$871M</span>
+        <span class="stat-label">Total Prize Pool</span>
+        <span class="stat-note">Record — up from $440M in 2022</span>
+      </div>
+      <div class="stat-card green">
+        <span class="stat-val green">$355M</span>
+        <span class="stat-label">Club Benefit Programme</span>
+        <span class="stat-note">Paid to clubs releasing players</span>
+      </div>
+      <div class="stat-card red">
+        <span class="stat-val">$12.5M</span>
+        <span class="stat-label">Minimum Guarantee</span>
+        <span class="stat-note">Per team, for group stage exit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 9: EXPENSES ===== -->
+<section class="section" id="expenses">
+  <div class="container">
+    <span class="section-label">09 — Costs & Expenditure</span>
+    <h2 class="section-title">WHERE THE MONEY GOES</h2>
+    <div class="divider"></div>
+    <p class="article-p">While revenue numbers dominate the headlines, the World Cup is also an enormous cost center. FIFA's total investment budget for the 2023–2026 cycle is <span class="highlight-text">$10.9 billion</span>, producing a result before taxes of approximately $100 million — relatively modest margins for the world's richest sporting event. The bulk of expenditure covers three areas: football development funds ($2.25B), operating costs ($3.8B), and prize money distribution.</p>
+
+    <div class="card reveal" style="margin-top: 1rem;">
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Operational Costs</div>
+          <div class="bar-track"><div class="bar-fill red" data-width="100">$3.8B (2026 only)</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Development (FIFA Fwd)</div>
+          <div class="bar-track"><div class="bar-fill gold" data-width="59">$2.25B (cycle)</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Prize Money</div>
+          <div class="bar-track"><div class="bar-fill green" data-width="23">$871M</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Club Benefit Programme</div>
+          <div class="bar-track"><div class="bar-fill blue" data-width="21">$355M</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Broadcast Production</div>
+          <div class="bar-track"><div class="bar-fill purple" data-width="14">~$300M est.</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Admin &amp; Other</div>
+          <div class="bar-track"><div class="bar-fill teal" data-width="10">~$277M</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-2 reveal" style="margin-top: 2rem;">
+      <div class="card">
+        <div class="section-label" style="margin-bottom:0.5rem;">Key Expense: Stadium Infrastructure</div>
+        <p class="article-p" style="font-size:0.88rem;margin-bottom:0;">Unlike Qatar (which built 8 new stadiums at ~$6.9B), the USA/Canada/Mexico are using existing NFL stadiums. This avoided a massive capital outlay. FIFA's contribution to stadium upgrades and temporary infrastructure is estimated at $200–400M — a fraction of Qatar's spend. The 16 existing venues represent decades of prior capital investment by NFL franchises and local governments.</p>
+      </div>
+      <div class="card">
+        <div class="section-label" style="margin-bottom:0.5rem;">Key Expense: Security & Operations</div>
+        <p class="article-p" style="font-size:0.88rem;margin-bottom:0;">Hosting across 3 countries, 16 cities, and 104 matches creates extraordinary security and logistical complexity. The US federal government is coordinating multi-agency security operations. The International Broadcast Center (IBC) alone — located at the Kay Bailey Hutchison Convention Center in Dallas — represents a major operational investment for FIFA's production infrastructure.</p>
+      </div>
+    </div>
+
+    <h3 class="article-h3">FIFA Forward 3.0: Development Spend</h3>
+    <p class="article-p">A significant portion of revenue — $2.25 billion over the 2023–2026 cycle — flows back into global football development through FIFA Forward 3.0. Every one of FIFA's 211 member associations receives a baseline of $1.5 million per year from this program. The total investment represents a nearly sevenfold increase in development spending compared to programs in place before 2016, reflecting FIFA's stated mission as a non-profit organization reinvesting $11.67 billion in football worldwide.</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 10: HISTORICAL GROWTH ===== -->
+<section class="section" id="history" style="background: var(--bg-card2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">10 — Historical Growth</span>
+    <h2 class="section-title">FROM $3.3B TO $8.9B IN 20 YEARS</h2>
+    <div class="divider"></div>
+    <p class="article-p">The World Cup's revenue trajectory is one of the most remarkable financial growth stories in global sport. The 170% increase from 2006 to 2026 has outpaced inflation, GDP growth, and virtually every commercial sports benchmark. Three compounding forces drove this: the explosion in sports broadcasting value (particularly in the US and Asia), the globalisation of sponsorship spending, and the structural expansion of the tournament itself.</p>
+
+    <div class="card reveal" style="margin-top: 1rem;">
+      <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1.5rem;font-family:'DM Mono';">FIFA World Cup revenue by edition (USD Billions)</div>
+      <!-- SVG Line Chart -->
+      <svg width="100%" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+        <defs>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F4B942" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#F4B942" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Grid lines -->
+        <line x1="60" y1="30" x2="680" y2="30" stroke="currentColor" stroke-opacity="0.08" stroke-width="1"/>
+        <line x1="60" y1="80" x2="680" y2="80" stroke="currentColor" stroke-opacity="0.08" stroke-width="1"/>
+        <line x1="60" y1="130" x2="680" y2="130" stroke="currentColor" stroke-opacity="0.08" stroke-width="1"/>
+        <line x1="60" y1="180" x2="680" y2="180" stroke="currentColor" stroke-opacity="0.08" stroke-width="1"/>
+        <line x1="60" y1="230" x2="680" y2="230" stroke="currentColor" stroke-opacity="0.08" stroke-width="1"/>
+        <!-- Y axis labels -->
+        <text x="50" y="34" text-anchor="end" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.5">$10B</text>
+        <text x="50" y="84" text-anchor="end" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.5">$8B</text>
+        <text x="50" y="134" text-anchor="end" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.5">$6B</text>
+        <text x="50" y="184" text-anchor="end" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.5">$4B</text>
+        <text x="50" y="234" text-anchor="end" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.5">$2B</text>
+        <!-- Data: 2006=3.3, 2010=3.7, 2014=4.5, 2018=5.3, 2022=7.0, 2026=8.9 -->
+        <!-- Scale: 0B=260, 10B=30 → pixel = 30 + (10-val)/10 * 230... y = 260 - val*23 -->
+        <!-- 2006 x=100, y=260-3.3*23=184 -->
+        <!-- 2010 x=200, y=260-3.7*23=175 -->
+        <!-- 2014 x=300, y=260-4.5*23=156.5 -->
+        <!-- 2018 x=400, y=260-5.3*23=138 -->
+        <!-- 2022 x=500, y=260-7.0*23=99 -->
+        <!-- 2026 x=620, y=260-8.9*23=55.3 -->
+        <polygon points="100,184 200,175 300,156 400,138 500,99 620,55 620,260 100,260" fill="url(#lineGrad)"/>
+        <polyline points="100,184 200,175 300,156 400,138 500,99 620,55" fill="none" stroke="#F4B942" stroke-width="3" stroke-linejoin="round"/>
+        <!-- Data points -->
+        <circle cx="100" cy="184" r="5" fill="#F4B942"/>
+        <circle cx="200" cy="175" r="5" fill="#F4B942"/>
+        <circle cx="300" cy="156" r="5" fill="#F4B942"/>
+        <circle cx="400" cy="138" r="5" fill="#F4B942"/>
+        <circle cx="500" cy="99" r="5" fill="#F4B942"/>
+        <circle cx="620" cy="55" r="7" fill="#F4B942" stroke="var(--bg)" stroke-width="2"/>
+        <!-- Labels -->
+        <text x="100" y="272" text-anchor="middle" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.6">2006</text>
+        <text x="200" y="272" text-anchor="middle" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.6">2010</text>
+        <text x="300" y="272" text-anchor="middle" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.6">2014</text>
+        <text x="400" y="272" text-anchor="middle" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.6">2018</text>
+        <text x="500" y="272" text-anchor="middle" font-family="DM Mono" font-size="10" fill="currentColor" opacity="0.6">2022</text>
+        <text x="620" y="272" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#F4B942" font-weight="bold">2026</text>
+        <!-- Value labels -->
+        <text x="100" y="174" text-anchor="middle" font-family="DM Mono" font-size="9" fill="currentColor" opacity="0.7">$3.3B</text>
+        <text x="200" y="165" text-anchor="middle" font-family="DM Mono" font-size="9" fill="currentColor" opacity="0.7">$3.7B</text>
+        <text x="300" y="146" text-anchor="middle" font-family="DM Mono" font-size="9" fill="currentColor" opacity="0.7">$4.5B</text>
+        <text x="400" y="128" text-anchor="middle" font-family="DM Mono" font-size="9" fill="currentColor" opacity="0.7">$5.3B</text>
+        <text x="500" y="89" text-anchor="middle" font-family="DM Mono" font-size="9" fill="currentColor" opacity="0.7">$7.0B</text>
+        <text x="620" y="44" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#F4B942" font-weight="bold">$8.9B</text>
+      </svg>
+    </div>
+
+    <h3 class="article-h3">World Cup by the Numbers: Edition Comparison</h3>
+    <div class="card reveal" style="overflow-x:auto; margin-top: 1rem;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Edition</th>
+            <th>Host</th>
+            <th>Teams</th>
+            <th>Matches</th>
+            <th>Total Revenue</th>
+            <th>Broadcast Rights</th>
+            <th>Sponsorship</th>
+            <th>Prize Money</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2006</td>
+            <td>Germany</td>
+            <td>32</td>
+            <td>64</td>
+            <td class="val">$3.3B</td>
+            <td class="val">$1.9B</td>
+            <td class="val">$0.8B</td>
+            <td class="val">$362M</td>
+          </tr>
+          <tr>
+            <td>2010</td>
+            <td>South Africa</td>
+            <td>32</td>
+            <td>64</td>
+            <td class="val">$3.7B</td>
+            <td class="val">$2.1B</td>
+            <td class="val">$1.07B</td>
+            <td class="val">$420M</td>
+          </tr>
+          <tr>
+            <td>2014</td>
+            <td>Brazil</td>
+            <td>32</td>
+            <td>64</td>
+            <td class="val">$4.5B</td>
+            <td class="val">$2.4B</td>
+            <td class="val">$1.1B</td>
+            <td class="val">$576M</td>
+          </tr>
+          <tr>
+            <td>2018</td>
+            <td>Russia</td>
+            <td>32</td>
+            <td>64</td>
+            <td class="val">$5.3B</td>
+            <td class="val">$2.9B</td>
+            <td class="val">$1.24B</td>
+            <td class="val">$791M</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td>Qatar</td>
+            <td>32</td>
+            <td>64</td>
+            <td class="val">$7.0B</td>
+            <td class="val">$3.2B</td>
+            <td class="val">$1.63B</td>
+            <td class="val">$440M</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>2026 ★</td>
+            <td>USA/CAN/MEX</td>
+            <td>48</td>
+            <td>104</td>
+            <td class="val">$8.9B</td>
+            <td class="val">$3.92B</td>
+            <td class="val">$2.69B</td>
+            <td class="val">$871M</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE BIGGER PICTURE ===== -->
+<section class="section" id="bigpicture">
+  <div class="container">
+    <span class="section-label">The Bigger Picture</span>
+    <h2 class="section-title">FOOTBALL AS FINANCIAL INFRASTRUCTURE</h2>
+    <div class="divider"></div>
+    <p class="article-p">The 2026 FIFA World Cup represents a fundamental transformation in how sporting events are monetized. FIFA has evolved the World Cup from a prestigious football tournament into what analysts now describe as the "single most lucrative recurring commercial property in global sport." The $13 billion 2023–2026 cycle — revised upward twice from $11 billion — reflects not just organic growth but deliberate architectural choices: the 48-team expansion adding 40 matches of broadcast inventory, the North American hosting creating the optimal global time zone scenario, and the diversification of the sponsor base to include Chinese, Middle Eastern, and North American corporations in direct competition for exclusive categories.</p>
+    <p class="article-p">Yet the financial success story carries real tensions. Ticket prices that average $5,440 per person to attend a single US match — before accommodation or airfare — have sparked genuine debate about accessibility. Hotel bookings in Dallas and Houston running below projections, international visitor numbers uncertain amid US visa processing complexities and elevated airfares, and only 25–30% of host markets seeing event-specific economic gains all suggest the macro projections may be optimistic for local economies, even as FIFA's own balance sheet breaks every record.</p>
+    <p class="article-p">For brands, however, the calculus is straightforward: <span class="highlight-text">5 billion global viewers</span>, 104 matches of broadcast inventory, the world's most emotionally engaged fan base, and an event that comes only once every four years. The World Cup is not just the biggest sporting event in the world. It is the largest concentrated commercial media event ever staged — and 2026 is its most ambitious expression yet.</p>
+
+    <div class="timeline reveal" style="margin-top: 2rem;">
+      <div class="tl-item">
+        <div class="tl-date">June 11, 2026</div>
+        <div class="tl-title">Opening Match — Mexico City</div>
+        <div class="tl-body">Mexico vs South Africa at Estadio Azteca — the first ever match of the expanded 48-team World Cup, making Azteca the first stadium to host 3 World Cup tournaments.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">June 12, 2026</div>
+        <div class="tl-title">USA vs Paraguay — Los Angeles</div>
+        <div class="tl-body">USA's opening match at SoFi Stadium. One of only two matches streamed free on Tubi in 4K. Expected to be one of the highest-rated US soccer broadcasts in history.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">July 4, 2026</div>
+        <div class="tl-title">Quarter-Finals Begin</div>
+        <div class="tl-body">All knockout matches from this point on air on FOX main network (English) — maximizing primetime US audience reach during the most commercially valuable part of the tournament.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">July 19, 2026</div>
+        <div class="tl-title">THE FINAL — MetLife Stadium, NY/NJ</div>
+        <div class="tl-body">World Cup Final at MetLife Stadium, East Rutherford, NJ. Capacity: 82,500. Primary ticket face value: $800–$1,500. Secondary market: $5,000–$15,000+. VIP hospitality packages reported up to $2.3M for 4 seats.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOURCES ===== -->
+<section class="section" id="sources" style="background: var(--bg-card2); border-top: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">Sources & References</span>
+    <h2 class="section-title">CITED SOURCES</h2>
+    <div class="divider"></div>
+    <p class="article-p" style="font-size:0.9rem;">All figures and claims in this article are sourced from official FIFA documents, independent financial analysis, and reputable journalism. Financial projections may vary slightly between sources due to different reporting periods and methodologies.</p>
+    <ul class="sources-list reveal">
+      <li><span class="src-num">[1]</span><span class="src-link">FIFA Official Publications — 2023–2026 Cycle Budget & 2024 Detailed Budget. <em>publications.fifa.com</em></span></li>
+      <li><span class="src-num">[2]</span><span class="src-link">The World Data — "FIFA World Cup 2026 Sponsorship Statistics | Brands, Deals & Facts." <em>theworlddata.com</em> (May 2026)</span></li>
+      <li><span class="src-num">[3]</span><span class="src-link">The Global Statistics — "FIFA World Cup 2026 Revenue Statistics | Key Facts." <em>theglobalstatistics.com</em> (April 2026)</span></li>
+      <li><span class="src-num">[4]</span><span class="src-link">Sports Value — "The 2026 FIFA World Cup will be the most lucrative in history." <em>sportsvalue.com.br</em> (February 2026)</span></li>
+      <li><span class="src-num">[5]</span><span class="src-link">SoFi — "Economics of the 2026 World Cup: How Much Americans Will Spend in Host Cities." <em>sofi.com</em> (April 2026)</span></li>
+      <li><span class="src-num">[6]</span><span class="src-link">Euronews — "Can you afford the 2026 World Cup? What fans paid for a seat over the years." <em>euronews.com</em> (May 8, 2026)</span></li>
+      <li><span class="src-num">[7]</span><span class="src-link">FOX 4 Dallas / FOX 26 Houston — "Texas' economic forecast weakens as international hotel bookings lag." <em>fox4news.com</em> (May 2026)</span></li>
+      <li><span class="src-num">[8]</span><span class="src-link">Salary Leaks — "FIFA World Cup 2026 Total Revenue & Distribution (Breakdown)." <em>salaryleaks.com</em></span></li>
+      <li><span class="src-num">[9]</span><span class="src-link">Salary Leaks — "FIFA World Cup 2026 Broadcasting Deals Value (Breakdown)." <em>salaryleaks.com</em></span></li>
+      <li><span class="src-num">[10]</span><span class="src-link">Profile News — "2026 World Cup revenues: FIFA, US taxes top winners." <em>profilenews.com</em> (May 2026)</span></li>
+      <li><span class="src-num">[11]</span><span class="src-link">Wikipedia — "2026 FIFA World Cup broadcasting rights." <em>en.wikipedia.org</em> (Updated May 2026)</span></li>
+      <li><span class="src-num">[12]</span><span class="src-link">The Dakia / World Cup Wiki — "FIFA World Cup 2026 Broadcasting Rights: Full Countries List." <em>thedakia.com</em> (May 2026)</span></li>
+      <li><span class="src-num">[13]</span><span class="src-link">Sponsorship Marketing Association — "The FIFA World Cup 2026 Sponsorship Impact." <em>sponsorshipassociation.com</em> (December 2025)</span></li>
+      <li><span class="src-num">[14]</span><span class="src-link">Pobitro — "Brand Endorsement & Sponsor Economy in FIFA World Cup 2026." <em>pobitro.com</em> (April 2026)</span></li>
+      <li><span class="src-num">[15]</span><span class="src-link">FIFA–WTO Joint Study — Economic impact projections. Cited in <em>theglobalstatistics.com</em> and <em>sofi.com</em></span></li>
+      <li><span class="src-num">[16]</span><span class="src-link">American Hotel & Lodging Association — Host city hotel booking analysis. Cited in FOX regional outlets (May 2026)</span></li>
+    </ul>
+
+    <div style="margin-top: 2rem; padding: 1.2rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); font-size: 0.78rem; color: var(--text-muted); line-height: 1.7;">
+      <strong style="color: var(--text);">Disclaimer:</strong> All financial figures are based on official FIFA documents, independent analysis, and journalism available as of May 2026. Some projections are estimates and may differ from final reported figures. Prize money and economic impact projections are subject to revision. This article is for informational and analytical purposes only.
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-logo">FIFA 2026 · BUSINESS</div>
+  <p class="footer-text">An in-depth analysis of the business model, revenue streams, sponsorships, broadcasting deals, and economic impact of the 2026 FIFA World Cup — the most commercially significant sporting event in history.</p>
+  <p class="footer-note">Written by Sadman Samin · May 2026 · All data sourced from publicly available official and journalistic sources</p>
+  <p class="footer-note" style="margin-top: 0.3rem;">⚽ USA · Canada · Mexico · June 11 – July 19, 2026</p>
+</footer>
+
+<script>
+// ===== THEME TOGGLE =====
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+const savedTheme = localStorage.getItem('theme') || 'dark';
+html.setAttribute('data-theme', savedTheme);
+themeToggle.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+// ===== HAMBURGER =====
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('open');
+});
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+    navMenu.classList.remove('open');
+  }
+});
+
+// ===== SCROLL PROGRESS =====
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  scrollProgress.style.width = progress + '%';
+});
+
+// ===== REVEAL ON SCROLL =====
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Trigger bar animations
+      const bars = entry.target.querySelectorAll('.bar-fill[data-width]');
+      bars.forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      const prizeBars = entry.target.querySelectorAll('.prize-mini-fill[data-width]');
+      prizeBars.forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => revealObserver.observe(el));
+
+// ===== TRIGGER BARS IN NON-REVEAL PARENTS TOO =====
+const allBarFills = document.querySelectorAll('.bar-fill[data-width]');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.width = entry.target.dataset.width + '%';
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+allBarFills.forEach(bar => {
+  if (bar.style.width === '' || bar.style.width === '0%') {
+    bar.style.width = '0%';
+    barObserver.observe(bar);
+  }
+});
+
+const allPrizeBars = document.querySelectorAll('.prize-mini-fill[data-width]');
+const prizeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.width = entry.target.dataset.width + '%';
+      prizeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+allPrizeBars.forEach(bar => {
+  prizeObserver.observe(bar);
+});
+
+// ===== SMOOTH ACTIVE NAV =====
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.header-nav a[href^="#"]');
+const activeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === '#' + entry.target.id ? 'var(--gold)' : '';
+      });
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => activeObserver.observe(s));
+</script>
+</body>
+</html>

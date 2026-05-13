@@ -1562,10 +1562,141 @@ footer {
   }
 </style>
 
-<section class="projects-teaser">
+<!-- PROJECTS PREVIEW SECTION -->
+<style>
+  :root {
+    --p-forest: #1B3022;
+    --p-sage: #2D5A47;
+    --p-gold: #C5A059;
+    --p-cream: #F9F8F3;
+    --p-white: #ffffff;
+  }
+
+  /* Added id styling for smooth alignment */
+  #projects {
+    scroll-margin-top: 80px; /* Adjust this value based on your nav height */
+  }
+
+  .projects-teaser {
+    background-color: var(--p-forest);
+    color: var(--p-white);
+    padding: 100px 6%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .teaser-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .teaser-info h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    line-height: 0.9;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  .teaser-info h2 span {
+    color: var(--p-gold);
+  }
+
+  .teaser-info p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 400px;
+    margin-bottom: 40px;
+  }
+
+  .view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 36px;
+    background: var(--p-gold);
+    color: var(--p-forest);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .view-all-btn:hover {
+    background: var(--p-white);
+    transform: translateY(-3px);
+  }
+
+  .teaser-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .mini-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .mini-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--p-gold);
+    transform: translateX(15px);
+  }
+
+  .mini-card-content h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: var(--p-white);
+  }
+
+  .mini-card-content p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 350px;
+  }
+
+  .mini-card-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--p-gold);
+    letter-spacing: 0.15em;
+    border: 1px solid var(--p-gold);
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 992px) {
+    .teaser-container {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .teaser-info h2 { font-size: 4rem; }
+  }
+</style>
+
+<!-- Added ID "projects" here -->
+<section class="projects-teaser" id="projects">
   <div class="teaser-container">
     
-    <!-- Left: Branding & CTA -->
     <div class="teaser-info">
       <h2>SELECTED<br/><span>INITIATIVES.</span></h2>
       <p>Exploring the intersection of AI research, economic modeling, and public utility tools.</p>
@@ -1575,11 +1706,9 @@ footer {
       </a>
     </div>
 
-    <!-- Right: Quick Previews -->
     <div class="teaser-cards">
       
-      <!-- Preview 01 -->
-      <a href="monolith-labs.html" class="mini-card">
+      <a href="https://sadmansamin21.github.io/monolith-labs.html" class="mini-card" target="_blank">
         <div class="mini-card-content">
           <span class="mini-card-tag">Research Flagship</span>
           <h3>Monolith Labs</h3>
@@ -1588,8 +1717,7 @@ footer {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--p-gold)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
       </a>
 
-      <!-- Preview 02 -->
-      <a href="house-rent-bd.html" class="mini-card">
+      <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="mini-card" target="_blank">
         <div class="mini-card-content">
           <span class="mini-card-tag">Public Tool</span>
           <h3>Rent Estimator BD</h3>

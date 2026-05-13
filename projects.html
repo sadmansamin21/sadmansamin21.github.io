@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="canonical" href="https://sadmansamin21.github.io/projects.html" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Sadman Samin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f2f0eb;
+      --black: #111111;
+      --red: #e02020;
+      --grey: #888;
+      --border: #c8c5bd;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--black);
+      font-family: 'Barlow', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 2rem;
+      border-bottom: 2px solid var(--black);
+      background: var(--black);
+      color: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .topbar-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+    }
+
+    .topbar-center {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .topbar-back {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--bg);
+      padding: 0.5rem 1rem;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      transition: background 0.2s, color 0.2s;
+    }
+    .topbar-back:hover { background: var(--bg); color: var(--black); }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      padding: 3rem 2rem 2rem;
+      border-bottom: 2px solid var(--black);
+      gap: 2rem;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(6rem, 18vw, 16rem);
+      line-height: 0.85;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-title span { color: var(--red); }
+
+    .hero-meta {
+      text-align: right;
+      padding-bottom: 1rem;
+    }
+
+    .hero-meta .num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--red);
+    }
+
+    .hero-meta .label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .hero-meta .desc {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--grey);
+      max-width: 22ch;
+      line-height: 1.5;
+      margin-top: 0.8rem;
+      text-align: right;
+    }
+
+    /* ── FILTER ── */
+    .filters {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--black);
+      overflow-x: auto;
+    }
+    .filters::-webkit-scrollbar { display: none; }
+
+    .f-btn {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.6rem;
+      border: none;
+      border-right: 1.5px solid var(--border);
+      background: none;
+      color: var(--grey);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .f-btn:hover { background: var(--black); color: var(--bg); }
+    .f-btn.active { background: var(--red); color: #fff; }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 2px solid var(--black);
+    }
+
+    /* ── CARD ── */
+    .card {
+      border-right: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+      padding: 1.6rem 1.5rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      background: var(--bg);
+      transition: background 0.18s;
+      min-height: 240px;
+    }
+
+    .card:hover { background: var(--black); color: var(--bg); }
+    .card:hover .card-num { color: var(--red); }
+    .card:hover .card-tags span { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
+    .card:hover .card-desc { color: rgba(255,255,255,0.6); }
+    .card:hover .card-type { color: rgba(255,255,255,0.35); }
+    .card:hover .card-link { color: var(--red); border-color: var(--red); }
+    .card:hover .card-year { color: rgba(255,255,255,0.3); }
+
+    .card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+      letter-spacing: 0.03em;
+      line-height: 1.0;
+      margin-bottom: 0.8rem;
+      flex: 0;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .card-tags span {
+      font-size: 0.55rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border: 1.5px solid var(--border);
+      color: var(--grey);
+    }
+
+    .card-desc {
+      font-size: 0.78rem;
+      font-weight: 500;
+      line-height: 1.6;
+      color: #555;
+      flex: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .card-year {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--border);
+    }
+
+    .card-type {
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-align: center;
+      flex: 1;
+    }
+
+    .card-link {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      border: 1.5px solid var(--black);
+      padding: 0.35rem 0.7rem;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .card-link:hover { background: var(--red); color: #fff; border-color: var(--red); }
+
+    /* FEATURED card — spans 2 cols */
+    .card.featured {
+      grid-column: span 2;
+      min-height: 280px;
+    }
+
+    .card.featured .card-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .card.featured .card-desc {
+      font-size: 0.85rem;
+      max-width: 52ch;
+    }
+
+    /* STAT row inside featured */
+    .card-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--red);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-lbl {
+      font-size: 0.55rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .card:hover .stat-lbl { color: rgba(255,255,255,0.4); }
+    .card:hover .stat-val { color: var(--red); }
+
+    /* ARCHIVE card — smaller */
+    .card.archive {
+      background: #e8e5de;
+      min-height: 180px;
+    }
+    .card.archive:hover { background: #222; }
+    .card.archive .card-title { font-size: 1.3rem; }
+
+    /* COMING SOON card */
+    .card.soon {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--bg),
+        var(--bg) 6px,
+        #e5e2db 6px,
+        #e5e2db 12px
+      );
+    }
+    .card.soon:hover { background: var(--black); }
+
+    /* WIDE = full width */
+    .card.wide { grid-column: span 4; min-height: 160px; flex-direction: row; align-items: center; gap: 3rem; }
+    .card.wide .card-title { font-size: clamp(2rem, 4vw, 3.5rem); flex-shrink: 0; width: 35%; }
+    .card.wide .card-desc { margin-bottom: 0; }
+    .card.wide .card-footer { flex-direction: column; align-items: flex-end; gap: 0.5rem; min-width: 100px; }
+    .card.wide .card-type { text-align: right; }
+
+    /* ── TICKER ── */
+    .ticker {
+      border-top: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+      background: var(--red);
+      padding: 0.7rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-top: 0;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: tick 20s linear infinite;
+    }
+
+    .ticker-inner span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: #fff;
+      padding: 0 2rem;
+    }
+
+    .ticker-inner .dot {
+      color: rgba(255,255,255,0.4);
+      padding: 0;
+    }
+
+    @keyframes tick {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── BOTTOM BAR ── */
+    .bottombar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      border-top: 2px solid var(--black);
+      background: var(--bg);
+    }
+
+    .bottombar span {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    /* ── HIDDEN ── */
+    .card.hidden { display: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      .card.featured { grid-column: span 2; }
+      .card.wide { grid-column: span 3; flex-direction: column; align-items: flex-start; gap: 0; }
+      .card.wide .card-title { width: 100%; font-size: 2rem; }
+      .card.wide .card-footer { flex-direction: row; align-items: center; }
+    }
+
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-meta { text-align: left; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .card.featured, .card.wide { grid-column: span 2; }
+      .card.wide { flex-direction: column; gap: 0; }
+      .card.wide .card-title { width: 100%; }
+    }
+
+    @media (max-width: 500px) {
+      .grid { grid-template-columns: 1fr; }
+      .card.featured, .card.wide { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-name">Sadman Samin</div>
+  <div class="topbar-center">Project Index</div>
+  <a href="index.html" class="topbar-back">← Back to Home</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 class="hero-title">ALL<br/><span>WORK.</span></h1>
+  <div class="hero-meta">
+    <div class="num" id="count">9</div>
+    <div class="label">Projects</div>
+    <div class="desc">Every venture, tool, and initiative — in one place.</div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters">
+  <button class="f-btn active" data-filter="all">All</button>
+  <button class="f-btn" data-filter="ai">AI & Research</button>
+  <button class="f-btn" data-filter="tool">Tools</button>
+  <button class="f-btn" data-filter="business">Business</button>
+  <button class="f-btn" data-filter="archive">Archive</button>
+</div>
+
+<!-- GRID -->
+<div class="grid" id="grid">
+
+  <!-- 01 FEATURED -->
+  <div class="card featured" data-cat="ai research">
+    <div class="card-num">01 — FLAGSHIP</div>
+    <div class="card-title">Monolith Labs</div>
+    <div class="card-tags">
+      <span>AI Research</span><span>Workforce</span><span>AGI Economy</span><span>Live</span>
+    </div>
+    <div class="card-stats">
+      <div><span class="stat-val">1,200+</span><span class="stat-lbl">Professions</span></div>
+      <div><span class="stat-val">94.2%</span><span class="stat-lbl">Reliability</span></div>
+    </div>
+    <div class="card-desc">A dedicated AI research lab mapping automation risk across professions — deconstructing workforce vulnerabilities and preparing frameworks for the post-AGI economy.</div>
+    <div class="card-footer">
+      <span class="card-year">2026</span>
+      <span class="card-type">Research Platform</span>
+      <a href="https://sadmansamin21.github.io/monolith-labs.html" class="card-link" target="_blank">Visit ↗</a>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="card" data-cat="tool">
+    <div class="card-num">02</div>
+    <div class="card-title">House Rent Estimator BD</div>
+    <div class="card-tags">
+      <span>Free Tool</span><span>Bangladesh</span><span>Real Estate</span>
+    </div>
+    <div class="card-desc">Instant monthly rent estimates for any division, district, or neighbourhood in Bangladesh. Dhaka, Chittagong, Sylhet, Rajshahi — free, no login.</div>
+    <div class="card-footer">
+      <span class="card-year">2026</span>
+      <span class="card-type">Public Tool</span>
+      <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="card-link" target="_blank">Try ↗</a>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="card" data-cat="tool">
+    <div class="card-num">03</div>
+    <div class="card-title">Land Price Estimator Dhaka</div>
+    <div class="card-tags">
+      <span>Free Tool</span><span>Dhaka</span><span>Property</span>
+    </div>
+    <div class="card-desc">Per-katha land price estimates for any Dhaka neighborhood, block, sector, or district. Built on granular local market data.</div>
+    <div class="card-footer">
+      <span class="card-year">2026</span>
+      <span class="card-type">Public Tool</span>
+      <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="card-link" target="_blank">Explore ↗</a>
+    </div>
+  </div>
+
+  <!-- 04 WIDE -->
+  <div class="card wide" data-cat="business ai">
+    <div class="card-title">Beta Economic Model</div>
+    <div style="flex:1;">
+      <div class="card-tags" style="margin-bottom:0.8rem;">
+        <span>Research</span><span>Supply Chain</span><span>Macro</span>
+      </div>
+      <div class="card-desc">Exploratory research mapping regional supply chain vulnerabilities during macroeconomic shifts. Predictive frameworks for institutional instability in emerging markets.</div>
+    </div>
+    <div class="card-footer">
+      <span class="card-year">2025</span>
+      <span class="card-type">Research</span>
+    </div>
+  </div>
+
+  <!-- 05 ARCHIVE -->
+  <div class="card archive" data-cat="archive ai">
+    <div class="card-num">05 — ARCHIVE</div>
+    <div class="card-title">Initiative Alpha</div>
+    <div class="card-tags">
+      <span>Archive</span><span>Neural Networks</span>
+    </div>
+    <div class="card-desc">Predictive analytics and localized market data interpretation using early iteration neural networks.</div>
+    <div class="card-footer">
+      <span class="card-year">2024</span>
+      <span class="card-type">Research</span>
+    </div>
+  </div>
+
+  <!-- 06 ARCHIVE -->
+  <div class="card archive" data-cat="archive tool">
+    <div class="card-num">06 — ARCHIVE</div>
+    <div class="card-title">Delta Web Dashboard</div>
+    <div class="card-tags">
+      <span>Archive</span><span>Dashboard</span>
+    </div>
+    <div class="card-desc">Real-time data visualization deployed for local business intelligence tracking and decision support.</div>
+    <div class="card-footer">
+      <span class="card-year">2024</span>
+      <span class="card-type">Tool</span>
+    </div>
+  </div>
+
+  <!-- 07 ARCHIVE -->
+  <div class="card archive" data-cat="archive business">
+    <div class="card-num">07 — ARCHIVE</div>
+    <div class="card-title">Previous Initiative Gamma</div>
+    <div class="card-tags">
+      <span>Archive</span><span>Strategy</span>
+    </div>
+    <div class="card-desc">Early business intelligence project. Foundational work that informed later data and research directions.</div>
+    <div class="card-footer">
+      <span class="card-year">2024</span>
+      <span class="card-type">Strategy</span>
+    </div>
+  </div>
+
+  <!-- 08 COMING SOON -->
+  <div class="card soon" data-cat="ai research">
+    <div class="card-num">08 — UPCOMING</div>
+    <div class="card-title">Next Research Initiative</div>
+    <div class="card-tags">
+      <span>In Development</span><span>2026</span>
+    </div>
+    <div class="card-desc">Research infrastructure being assembled. Details to follow.</div>
+    <div class="card-footer">
+      <span class="card-year">2026 →</span>
+      <span class="card-type">TBA</span>
+      <a href="index.html#contact" class="card-link">Enquire ↗</a>
+    </div>
+  </div>
+
+  <!-- 09 COMING SOON -->
+  <div class="card soon" data-cat="tool">
+    <div class="card-num">09 — UPCOMING</div>
+    <div class="card-title">New Tool — TBA</div>
+    <div class="card-tags">
+      <span>In Development</span>
+    </div>
+    <div class="card-desc">Another free public tool in the works. Announcement soon.</div>
+    <div class="card-footer">
+      <span class="card-year">2026 →</span>
+      <span class="card-type">Tool</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>AI Research</span><span class="dot">·</span><span>Business Strategy</span><span class="dot">·</span><span>Free Tools</span><span class="dot">·</span><span>Workforce Economics</span><span class="dot">·</span><span>Data Intelligence</span><span class="dot">·</span><span>Entrepreneurship</span><span class="dot">·</span><span>Bangladesh</span><span class="dot">·</span><span>AGI Economy</span><span class="dot">·</span><span>AI Research</span><span class="dot">·</span><span>Business Strategy</span><span class="dot">·</span><span>Free Tools</span><span class="dot">·</span><span>Workforce Economics</span><span class="dot">·</span><span>Data Intelligence</span><span class="dot">·</span><span>Entrepreneurship</span><span class="dot">·</span><span>Bangladesh</span><span class="dot">·</span><span>AGI Economy</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- BOTTOM BAR -->
+<div class="bottombar">
+  <span>Sadman Samin / Dhaka, BD</span>
+  <span>© 2026</span>
+</div>
+
+<script>
+  // Count
+  const cards = () => document.querySelectorAll('.card:not(.hidden):not(.wide)');
+
+  // Filter
+  const fBtns = document.querySelectorAll('.f-btn');
+  const allCards = document.querySelectorAll('.card');
+
+  fBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      fBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      let count = 0;
+      allCards.forEach(card => {
+        const cats = card.dataset.cat || '';
+        const show = f === 'all' || cats.includes(f);
+        card.classList.toggle('hidden', !show);
+        if (show) count++;
+      });
+      document.getElementById('count').textContent = count;
+    });
+  });
+</script>
+</body>
+</html>

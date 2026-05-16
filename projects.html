@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <link rel="canonical" href="https://sadmansamin21.github.io/projects.html" />
   <meta charset="UTF-8"/>
@@ -7,249 +7,618 @@
   <title>Projects — Sadman Samin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='6' y='24' font-family='serif' font-size='20' fill='%23fff'>S</text></svg>">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
     :root {
-      --bg: #F9F8F3;
-      --text-main: #1B3022;
-      --accent: #2D5A47;
-      --accent-light: #E8EBE4;
-      --white: #ffffff;
-      --gold: #C5A059;
-      --shadow: 0 10px 30px rgba(27, 48, 34, 0.05);
+      --bg-color: #0a0a0a;
+      --text-color: #f5f5f0;
+      --gray: #888;
+      --gray-light: #555;
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.25);
+      --nav-bg: rgba(10, 10, 10, 0.85);
+      --item-bg: #151515;
+      --item-hover: #111;
+      --accent-cyan: #00d4d4;
+      --accent-gold: #c8963e;
+      --font-main: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
     }
+
+    [data-theme="light"] {
+      --bg-color: #f5f5f0;
+      --text-color: #0a0a0a;
+      --gray: #666;
+      --gray-light: #888;
+      --border: rgba(0,0,0,0.1);
+      --border-hover: rgba(0,0,0,0.3);
+      --nav-bg: rgba(245, 245, 240, 0.85);
+      --item-bg: #ebebeb;
+      --item-hover: #e0e0e0;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { max-width: 100vw; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.6;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-main);
       -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* ── NAVIGATION ── */
-    .nav {
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg-color); }
+    ::-webkit-scrollbar-thumb { background: var(--gray); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.5rem 4%;
-      background: rgba(249, 248, 243, 0.8);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(27, 48, 34, 0.1);
+      padding: 22px 48px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
-    .nav-brand {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-color);
+      text-decoration: none;
       letter-spacing: 0.05em;
-      color: var(--text-main);
     }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .theme-toggle:hover { opacity: 1; }
+
     .nav-back {
-      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
       text-decoration: none;
-      color: var(--text-main);
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
-      border: 1px solid var(--text-main);
-      transition: all 0.3s ease;
+      color: var(--text-color);
+      border: 1px solid var(--border-hover);
+      padding: 10px 22px;
+      transition: background 0.2s, color 0.2s;
     }
-    .nav-back:hover { background: var(--text-main); color: var(--bg); }
+    .nav-back:hover { background: var(--text-color); color: var(--bg-color); }
 
-    /* ── HERO SECTION ── */
+    @media(max-width:768px) {
+      nav { padding: 16px 24px; }
+      .nav-back { padding: 8px 16px; font-size: 10px; }
+    }
+
+    /* ── GRADIENT BAR ── */
+    .gradient-bar {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-gold) 100%);
+      width: 100%;
+      display: block;
+    }
+
+    /* ── HERO ── */
     .hero {
-      padding: 6rem 4% 4rem;
+      padding: 140px 48px 80px;
       max-width: 1400px;
       margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto;
       align-items: flex-end;
-    }
-    .hero-content h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 12vw, 10rem);
-      line-height: 0.9;
-      color: var(--text-main);
-    }
-    .hero-content h1 span { color: var(--gold); }
-    
-    .hero-stats { text-align: right; }
-    .hero-stats .count {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 5rem;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .hero-stats p {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--gold);
+      gap: 40px;
     }
 
-    /* ── FILTER SYSTEM ── */
-    .filter-wrap {
-      padding: 0 4%;
-      margin-bottom: 3rem;
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--gray);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
+
+    .hero-title {
+      font-family: var(--font-main);
+      font-size: clamp(64px, 13vw, 160px);
+      font-weight: 700;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--text-color);
+    }
+
+    .hero-title span {
+      display: block;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-stats {
+      text-align: right;
+      padding-bottom: 12px;
+    }
+
+    .hero-stats .count {
+      font-family: var(--font-mono);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 700;
+      color: var(--text-color);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-stats .count-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-top: 8px;
+    }
+
+    @media(max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; }
+      .hero-stats { text-align: left; }
+    }
+
+    /* ── FILTER ── */
+    .filter-wrap {
+      padding: 0 48px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .filter-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
     .filters {
       display: flex;
-      gap: 1rem;
+      gap: 0;
+      border: 1px solid var(--border);
+      width: fit-content;
       overflow-x: auto;
-      padding-bottom: 1rem;
     }
     .filters::-webkit-scrollbar { display: none; }
+
     .f-btn {
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      border: 1px solid rgba(27, 48, 34, 0.15);
-      background: var(--white);
-      color: var(--text-main);
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border: none;
+      border-right: 1px solid var(--border);
+      background: none;
+      color: var(--gray);
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.3s ease;
+      transition: background 0.2s, color 0.2s;
     }
-    .f-btn:hover { border-color: var(--accent); background: var(--accent-light); }
-    .f-btn.active { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .f-btn:last-child { border-right: none; }
+    .f-btn:hover { color: var(--text-color); }
+    .f-btn.active { background: var(--text-color); color: var(--bg-color); }
 
-    /* ── PROJECT GRID ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 2rem;
-      padding: 0 4% 6rem;
+    @media(max-width: 768px) {
+      .filter-wrap { padding: 0 24px 40px; }
+      .filters { max-width: 100%; }
+    }
+
+    /* ── PROJECTS LIST (row style matching main site) ── */
+    .projects-section {
       max-width: 1400px;
       margin: 0 auto;
+      padding: 0 48px 120px;
     }
 
-    .card {
-      grid-column: span 4;
-      background: var(--white);
-      padding: 2.5rem;
-      border-radius: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(27, 48, 34, 0.1); }
+    @media(max-width: 768px) { .projects-section { padding: 0 24px 80px; } }
 
-    .card-meta {
+    /* ── CATEGORY DIVIDER ── */
+    .cat-divider {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
+      gap: 20px;
+      padding: 40px 0 16px;
+      border-top: 1px solid var(--border);
     }
-    .card-num { font-size: 0.7rem; font-weight: 800; color: var(--gold); letter-spacing: 0.1em; }
-    .card-year { font-size: 0.7rem; font-weight: 600; opacity: 0.5; }
 
-    .card-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      color: var(--text-main);
-      letter-spacing: 0.02em;
-    }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-    .card-tags span {
-      font-size: 0.6rem;
-      font-weight: 700;
+    .cat-divider:first-of-type { border-top: none; padding-top: 0; }
+
+    .cat-divider-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 0.4rem 0.8rem;
-      background: var(--accent-light);
-      border-radius: 4px;
-      color: var(--accent);
+      color: var(--accent-gold);
+      white-space: nowrap;
     }
 
-    .card-desc {
-      font-size: 0.9rem;
-      color: #5a6b5f;
-      margin-bottom: 2rem;
-      flex-grow: 1;
+    .cat-divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
 
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(27, 48, 34, 0.05);
-    }
-    .card-link {
+    /* ── PROJECT ROW ── */
+    .project-row {
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 32px;
+      align-items: start;
       text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .project-row:last-child { border-bottom: 1px solid var(--border); }
+    .project-row.hidden { display: none !important; }
+
+    /* Cyan underline on hover */
+    .project-row::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s cubic-bezier(.2,.9,.4,1);
+    }
+    .project-row:hover::after { transform: scaleX(1); }
+    .project-row:hover .project-row-title { opacity: 0.65; }
+
+    .project-row-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--gray);
+      padding-top: 6px;
+      letter-spacing: 0.06em;
+    }
+
+    .project-row-category {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 10px;
+    }
+
+    .project-row-title {
+      font-size: clamp(22px, 3vw, 38px);
       font-weight: 700;
-      font-size: 0.75rem;
-      color: var(--text-main);
+      letter-spacing: -0.025em;
+      color: var(--text-color);
+      margin-bottom: 12px;
+      transition: opacity 0.2s;
+      line-height: 1.1;
+    }
+
+    .project-row-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .project-row-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-color);
+      opacity: 0.5;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+    }
+
+    .project-row-tag.featured-tag {
+      color: var(--accent-cyan);
+      border-color: rgba(0,212,212,0.3);
+      opacity: 1;
+    }
+
+    .project-row-desc {
+      font-size: 14px;
+      color: var(--text-color);
+      opacity: 0.55;
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    .project-row-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-color);
+      margin-top: 18px;
+      opacity: 0.35;
+      transition: opacity 0.2s;
+    }
+    .project-row:hover .project-row-arrow { opacity: 1; }
+
+    .project-row-year {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--gray);
+      padding-top: 6px;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      margin-top: 12px;
+      color: var(--gray);
+    }
+
+    .status-badge.live {
+      color: var(--accent-cyan);
+      border-color: rgba(0,212,212,0.3);
+    }
+
+    .status-badge.upcoming {
+      color: var(--accent-gold);
+      border-color: rgba(200,150,62,0.3);
+    }
+
+    .status-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* FLAGSHIP highlight */
+    .project-row.flagship {
+      background: #0d0d0d;
+      padding: 36px 24px;
+      border-left: 2px solid var(--accent-cyan);
+    }
+
+    [data-theme="light"] .project-row.flagship {
+      background: #ebebeb;
+    }
+
+    /* ARCHIVE rows — slightly dimmed */
+    .project-row.archive-row {
+      opacity: 0.65;
+      transition: opacity 0.2s, background 0.2s;
+    }
+    .project-row.archive-row:hover { opacity: 1; }
+
+    @media(max-width: 768px) {
+      .project-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 28px 0;
+      }
+      .project-row.flagship { padding: 28px 16px; }
+      .project-row-num { padding-top: 0; }
+      .project-row-year { padding-top: 0; }
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 0;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: tick 35s linear infinite;
+    }
+
+    .ticker-inner span {
+      font-family: var(--font-mono);
+      color: var(--gray);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0 3rem;
+    }
+
+    .ticker-inner span.accent { color: var(--accent-gold); }
+
+    @keyframes tick {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(.2,.9,.4,1), transform 0.7s cubic-bezier(.2,.9,.4,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-color);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text-color); }
+
+    @media(max-width: 600px) {
+      footer { flex-direction: column; gap: 16px; padding: 24px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 48px;
+      height: 48px;
+      background: var(--bg-color);
+      color: var(--text-color);
+      border: 1px solid var(--border-hover);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
       transition: all 0.3s ease;
     }
-    .card-link:hover { color: var(--gold); }
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--text-color); color: var(--bg-color); }
 
-    /* FEATURED STYLING */
-    .card.featured { grid-column: span 8; background: var(--text-main); color: var(--white); }
-    .card.featured .card-title { font-size: 4rem; color: var(--white); }
-    .card.featured .card-desc { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 80%; }
-    .card.featured .card-link { color: var(--white); border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 50px; }
-    .card.featured .card-tags span { background: rgba(255,255,255,0.1); color: var(--white); }
-
-    /* WIDE STYLING */
-    .card.wide { grid-column: span 12; flex-direction: row; align-items: center; gap: 4rem; }
-    .card.wide .card-title { margin-bottom: 0; min-width: 300px; }
-
-    /* ARCHIVE STYLING */
-    .card.archive { background: transparent; border: 1px solid rgba(27, 48, 34, 0.1); box-shadow: none; }
-
-    /* TICKER */
-    .ticker { background: var(--gold); padding: 1rem 0; overflow: hidden; white-space: nowrap; }
-    .ticker-inner { display: inline-block; animation: tick 30s linear infinite; }
-    .ticker-inner span { font-family: 'Bebas Neue', sans-serif; color: var(--white); font-size: 1.2rem; padding: 0 3rem; }
-
-    @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    .hidden { display: none !important; }
-
-    @media (max-width: 1024px) {
-      .card, .card.featured { grid-column: span 6; }
-      .card.wide { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    @media(max-width: 768px) {
+      .back-to-top { bottom: 24px; right: 24px; width: 40px; height: 40px; font-size: 16px; }
     }
-    @media (max-width: 640px) {
-      .card, .card.featured, .card.wide { grid-column: span 12; }
+
+    /* count update animation */
+    @keyframes countPop {
+      0% { transform: scale(1.3); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
     }
+    .count-pop { animation: countPop 0.3s cubic-bezier(.2,.9,.4,1); }
   </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-brand">SADMAN SAMIN</div>
-  <a href="index.html" class="nav-back">Return Home</a>
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">SS</a>
+  <div class="nav-actions">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+      <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
+    <a href="index.html" class="nav-back">← Return Home</a>
+  </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-content">
-    <h1>PROJECT<br/><span>ARCHIVE.</span></h1>
+<span class="gradient-bar"></span>
+
+<!-- ── HERO ── -->
+<header class="hero reveal">
+  <div>
+    <p class="hero-eyebrow">Dhaka, Bangladesh · 2024—</p>
+    <h1 class="hero-title">
+      PROJECT<br/>
+      <span>ARCHIVE.</span>
+    </h1>
   </div>
   <div class="hero-stats">
     <div class="count" id="count">9</div>
-    <p>Active Initiatives</p>
+    <div class="count-label">Active Initiatives</div>
   </div>
 </header>
 
-<div class="filter-wrap">
+<!-- ── FILTER ── -->
+<div class="filter-wrap reveal">
+  <div class="filter-label">Filter by category</div>
   <div class="filters">
     <button class="f-btn active" data-filter="all">All Projects</button>
     <button class="f-btn" data-filter="ai">AI Research</button>
@@ -259,149 +628,307 @@
   </div>
 </div>
 
-<main class="grid" id="grid">
-  <!-- 01 FEATURED -->
-  <div class="card featured" data-cat="ai research">
-    <div class="card-meta">
-      <span class="card-num">FLAGSHIP PROJECT</span>
-      <span class="card-year">2026</span>
-    </div>
-    <h2 class="card-title">Monolith Labs</h2>
-    <div class="card-tags">
-      <span>AI Research</span><span>Post-AGI Economy</span>
-    </div>
-    <p class="card-desc">Mapping the intersection of artificial intelligence and global workforce displacement. Developing frameworks for human-AI economic synergy.</p>
-    <div class="card-footer">
-      <a href="https://sadmansamin21.github.io/monolith-labs.html" class="card-link" target="_blank">View Documentation ↗</a>
-    </div>
+<!-- ── PROJECTS LIST ── -->
+<main class="projects-section reveal" id="grid">
+
+  <!-- ── ACTIVE PROJECTS ── -->
+  <div class="cat-divider" id="div-active">
+    <span class="cat-divider-label">Active Initiatives</span>
+    <div class="cat-divider-line"></div>
   </div>
+
+  <!-- 01 FLAGSHIP -->
+  <a class="project-row flagship" data-cat="ai research" href="https://sadmansamin21.github.io/monolith-labs.html" target="_blank" rel="noopener noreferrer">
+    <div class="project-row-num">01</div>
+    <div>
+      <div class="project-row-category">Research Flagship</div>
+      <h2 class="project-row-title">Monolith Labs</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag featured-tag">AI Research</span>
+        <span class="project-row-tag">Post-AGI Economy</span>
+        <span class="project-row-tag">Workforce Displacement</span>
+      </div>
+      <p class="project-row-desc">Mapping the intersection of artificial intelligence and global workforce displacement. Developing long-term frameworks for human-AI economic synergy and institutional resilience in the post-AGI transition.</p>
+      <div class="status-badge live"><span class="status-dot"></span> Live · Ongoing</div>
+      <div class="project-row-arrow">View Documentation ↗</div>
+    </div>
+    <div class="project-row-year">2024—</div>
+  </a>
 
   <!-- 02 -->
-  <div class="card" data-cat="tool">
-    <div class="card-meta">
-      <span class="card-num">PROJECT 02</span>
-      <span class="card-year">2026</span>
+  <a class="project-row" data-cat="tool" href="https://sadmansamin21.github.io/house-rent-bd.html" target="_blank" rel="noopener noreferrer">
+    <div class="project-row-num">02</div>
+    <div>
+      <div class="project-row-category">Public Tool</div>
+      <h2 class="project-row-title">Rent Estimator BD</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag">Real Estate</span>
+        <span class="project-row-tag">Data Tool</span>
+        <span class="project-row-tag">Bangladesh</span>
+      </div>
+      <p class="project-row-desc">A data-driven engine providing localized housing market intelligence across 50+ districts in Bangladesh. Making real estate transparency accessible to everyone.</p>
+      <div class="status-badge live"><span class="status-dot"></span> Live</div>
+      <div class="project-row-arrow">Launch Tool ↗</div>
     </div>
-    <h2 class="card-title">Rent Estimator</h2>
-    <div class="card-tags"><span>Real Estate</span><span>Data Tool</span></div>
-    <p class="card-desc">A data-driven engine providing localized housing market intelligence across Bangladesh. Making real estate transparency accessible.</p>
-    <div class="card-footer">
-      <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="card-link" target="_blank">Launch Tool ↗</a>
-    </div>
-  </div>
+    <div class="project-row-year">2024</div>
+  </a>
 
   <!-- 03 -->
-  <div class="card" data-cat="tool">
-    <div class="card-meta">
-      <span class="card-num">PROJECT 03</span>
-      <span class="card-year">2026</span>
+  <a class="project-row" data-cat="tool" href="https://sadmansamin21.github.io/land-price-dhaka.html" target="_blank" rel="noopener noreferrer">
+    <div class="project-row-num">03</div>
+    <div>
+      <div class="project-row-category">Public Tool · GIS</div>
+      <h2 class="project-row-title">Land Price Dhaka</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag">GIS Data</span>
+        <span class="project-row-tag">Public Utility</span>
+        <span class="project-row-tag">Market Analysis</span>
+      </div>
+      <p class="project-row-desc">Analyzing granular per-katha pricing metrics for Dhaka's sectors. Built on proprietary market scraping and local field data for maximum accuracy.</p>
+      <div class="status-badge live"><span class="status-dot"></span> Live</div>
+      <div class="project-row-arrow">Explore Map ↗</div>
     </div>
-    <h2 class="card-title">Land Price Dhaka</h2>
-    <div class="card-tags"><span>GIS Data</span><span>Public Utility</span></div>
-    <p class="card-desc">Analyzing granular per-katha pricing metrics for Dhaka's sectors. Built on proprietary market scraping and local field data.</p>
-    <div class="card-footer">
-      <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="card-link" target="_blank">Explore Map ↗</a>
+    <div class="project-row-year">2025</div>
+  </a>
+
+  <!-- 04 -->
+  <div class="project-row" data-cat="business ai">
+    <div class="project-row-num">04</div>
+    <div>
+      <div class="project-row-category">Strategic Model</div>
+      <h2 class="project-row-title">Beta Economic Model</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag">Macro Economics</span>
+        <span class="project-row-tag">Supply Chain</span>
+        <span class="project-row-tag">Risk Assessment</span>
+      </div>
+      <p class="project-row-desc">Predictive modeling for emerging market stability during high-volatility shifts. Used for institutional risk assessment across regional economic corridors.</p>
     </div>
+    <div class="project-row-year">Q4 2025</div>
   </div>
 
-  <!-- 04 WIDE -->
-  <div class="card wide" data-cat="business ai">
-    <h2 class="card-title">Beta Economic Model</h2>
-    <div style="flex-grow: 1;">
-      <div class="card-tags"><span>Macro Economics</span><span>Supply Chain</span></div>
-      <p class="card-desc">Predictive modeling for emerging market stability during high-volatility shifts. Used for institutional risk assessment.</p>
-    </div>
-    <div class="card-year">Q4 2025</div>
+  <!-- ── IN DEVELOPMENT ── -->
+  <div class="cat-divider" id="div-upcoming">
+    <span class="cat-divider-label">In Development</span>
+    <div class="cat-divider-line"></div>
   </div>
 
-  <!-- 05 ARCHIVE -->
-  <div class="card archive" data-cat="archive ai">
-    <div class="card-num">ARCHIVE 05</div>
-    <h2 class="card-title">Alpha Initiative</h2>
-    <p class="card-desc">Foundational neural network experiments focused on localized market interpretation.</p>
-    <div class="card-footer">
-      <span class="card-year">2024</span>
+  <!-- 08 -->
+  <div class="project-row" data-cat="ai research">
+    <div class="project-row-num">08</div>
+    <div>
+      <div class="project-row-category">Research</div>
+      <h2 class="project-row-title">Future Research Initiative</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag">In Development</span>
+      </div>
+      <p class="project-row-desc">Next-generation research infrastructure being assembled. Expanding the Monolith Labs thesis with new quantitative frameworks and sector-level data.</p>
+      <div class="status-badge upcoming">
+        <span class="status-dot"></span> Q3 2026
+      </div>
+      <div class="project-row-arrow" style="pointer-events:none; text-decoration:none;">Enquire →</div>
     </div>
+    <div class="project-row-year">2026</div>
   </div>
 
-  <!-- 06 ARCHIVE -->
-  <div class="card archive" data-cat="archive tool">
-    <div class="card-num">ARCHIVE 06</div>
-    <h2 class="card-title">Delta Dashboard</h2>
-    <p class="card-desc">Real-time data visualization deployed for local business intelligence tracking.</p>
-    <div class="card-footer">
-      <span class="card-year">2024</span>
+  <!-- 09 -->
+  <div class="project-row" data-cat="tool">
+    <div class="project-row-num">09</div>
+    <div>
+      <div class="project-row-category">Public Tool</div>
+      <h2 class="project-row-title">New Tool — TBA</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag">In Development</span>
+      </div>
+      <p class="project-row-desc">Another public utility tool in the works for the Bangladesh market sector. Focused on democratizing data access for local decision-making.</p>
+      <div class="status-badge upcoming">
+        <span class="status-dot"></span> TBA
+      </div>
     </div>
+    <div class="project-row-year">2026</div>
   </div>
 
-  <!-- 07 ARCHIVE -->
-  <div class="card archive" data-cat="archive business">
-    <div class="card-num">ARCHIVE 07</div>
-    <h2 class="card-title">Initiative Gamma</h2>
-    <p class="card-desc">Early business intelligence project informing later data and research directions.</p>
-    <div class="card-footer">
-      <span class="card-year">2024</span>
-    </div>
+  <!-- ── ARCHIVE ── -->
+  <div class="cat-divider" id="div-archive">
+    <span class="cat-divider-label">Archive</span>
+    <div class="cat-divider-line"></div>
   </div>
 
-  <!-- 08 UPCOMING -->
-  <div class="card" data-cat="ai research">
-    <div class="card-meta">
-      <span class="card-num">PROJECT 08</span>
-      <span class="card-year">2026</span>
+  <!-- 05 -->
+  <div class="project-row archive-row" data-cat="archive ai">
+    <div class="project-row-num">A01</div>
+    <div>
+      <div class="project-row-category">Archive · AI</div>
+      <h2 class="project-row-title">Alpha Initiative</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag">Neural Networks</span>
+        <span class="project-row-tag">Market Intelligence</span>
+      </div>
+      <p class="project-row-desc">Foundational neural network experiments focused on localized market interpretation. The groundwork that informed Monolith Labs.</p>
     </div>
-    <h2 class="card-title">Future Research</h2>
-    <div class="card-tags"><span>In Development</span></div>
-    <p class="card-desc">Next-generation research infrastructure being assembled. Details to follow in Q3.</p>
-    <div class="card-footer">
-      <a href="index.html#contact" class="card-link">Enquire ↗</a>
-    </div>
+    <div class="project-row-year">2024</div>
   </div>
 
-  <!-- 09 UPCOMING -->
-  <div class="card" data-cat="tool">
-    <div class="card-meta">
-      <span class="card-num">PROJECT 09</span>
-      <span class="card-year">2026</span>
+  <!-- 06 -->
+  <div class="project-row archive-row" data-cat="archive tool">
+    <div class="project-row-num">A02</div>
+    <div>
+      <div class="project-row-category">Archive · Tool</div>
+      <h2 class="project-row-title">Delta Dashboard</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag">Data Visualization</span>
+        <span class="project-row-tag">Business Intelligence</span>
+      </div>
+      <p class="project-row-desc">Real-time data visualization deployed for local business intelligence tracking. First iteration of the public-facing data work.</p>
     </div>
-    <h2 class="card-title">New Tool — TBA</h2>
-    <div class="card-tags"><span>In Development</span></div>
-    <p class="card-desc">Another public utility tool in the works for the Bangladesh market sector.</p>
-    <div class="card-footer">
-      <span class="card-year">TBA</span>
+    <div class="project-row-year">2024</div>
+  </div>
+
+  <!-- 07 -->
+  <div class="project-row archive-row" data-cat="archive business">
+    <div class="project-row-num">A03</div>
+    <div>
+      <div class="project-row-category">Archive · Strategy</div>
+      <h2 class="project-row-title">Initiative Gamma</h2>
+      <div class="project-row-tags">
+        <span class="project-row-tag">Business Intelligence</span>
+        <span class="project-row-tag">Research</span>
+      </div>
+      <p class="project-row-desc">Early business intelligence project that informed later data and research directions. Established the analytical frameworks still in use.</p>
     </div>
+    <div class="project-row-year">2024</div>
   </div>
 
 </main>
 
+<!-- ── TICKER ── -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span>AI RESEARCH</span><span>STRATEGIC GROWTH</span><span>DATA VISUALIZATION</span><span>WORKFORCE ECONOMICS</span><span>AI RESEARCH</span><span>STRATEGIC GROWTH</span><span>DATA VISUALIZATION</span><span>WORKFORCE ECONOMICS</span>
+    <span>AI Research</span><span class="accent">·</span>
+    <span>Strategic Growth</span><span class="accent">·</span>
+    <span>Data Visualization</span><span class="accent">·</span>
+    <span>Workforce Economics</span><span class="accent">·</span>
+    <span>Post-AGI Economy</span><span class="accent">·</span>
+    <span>Public Utility Tools</span><span class="accent">·</span>
+    <span>Monolith Labs</span><span class="accent">·</span>
+    <span>Bangladesh Market</span><span class="accent">·</span>
+    <span>AI Research</span><span class="accent">·</span>
+    <span>Strategic Growth</span><span class="accent">·</span>
+    <span>Data Visualization</span><span class="accent">·</span>
+    <span>Workforce Economics</span><span class="accent">·</span>
+    <span>Post-AGI Economy</span><span class="accent">·</span>
+    <span>Public Utility Tools</span><span class="accent">·</span>
+    <span>Monolith Labs</span><span class="accent">·</span>
+    <span>Bangladesh Market</span><span class="accent">·</span>
   </div>
 </div>
 
-<footer style="padding: 3rem 4%; text-align: center; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--accent); opacity: 0.6;">
-  © 2026 SADMAN SAMIN — DHAKA, BD
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="index.html" class="footer-logo">SS</a>
+  <div class="footer-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Index</a>
+    <a href="index.html#now">Now</a>
+    <a href="index.html#research">Research</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Sadman Samin · Dhaka, BD</div>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
 <script>
+  // ── THEME ──
+  function toggleTheme() {
+    const html = document.documentElement;
+    const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+  }
+
+  function updateThemeIcon(theme) {
+    const icon = document.getElementById('themeIcon');
+    if (theme === 'light') {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    } else {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+    }
+  }
+
+  // Persist theme from main site
+  (function() {
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    window.addEventListener('DOMContentLoaded', () => updateThemeIcon(saved));
+  })();
+
+  // ── FILTER ──
   const fBtns = document.querySelectorAll('.f-btn');
-  const allCards = document.querySelectorAll('.card');
+  const allRows = document.querySelectorAll('.project-row');
+  const countEl = document.getElementById('count');
 
   fBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       fBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
       const f = btn.dataset.filter;
       let count = 0;
-      allCards.forEach(card => {
-        const cats = card.dataset.cat || '';
+
+      allRows.forEach(row => {
+        const cats = row.dataset.cat || '';
         const show = f === 'all' || cats.includes(f);
-        card.classList.toggle('hidden', !show);
+        row.classList.toggle('hidden', !show);
         if (show) count++;
       });
-      document.getElementById('count').textContent = count;
+
+      // Animate count
+      countEl.classList.remove('count-pop');
+      void countEl.offsetWidth;
+      countEl.textContent = count;
+      countEl.classList.add('count-pop');
+
+      // Hide/show category dividers
+      const divActive = document.getElementById('div-active');
+      const divUpcoming = document.getElementById('div-upcoming');
+      const divArchive = document.getElementById('div-archive');
+
+      const hasActive = f === 'all' || f === 'ai' || f === 'tool' || f === 'business';
+      const hasUpcoming = f === 'all' || f === 'ai' || f === 'tool';
+      const hasArchive = f === 'all' || f === 'archive';
+
+      divActive.style.display = hasActive ? '' : 'none';
+      divUpcoming.style.display = hasUpcoming ? '' : 'none';
+      divArchive.style.display = hasArchive ? '' : 'none';
     });
+  });
+
+  // ── SCROLL REVEAL ──
+  window.addEventListener('DOMContentLoaded', () => {
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.06 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+  });
+
+  // ── BACK TO TOP ──
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ── KEYBOARD ESC ──
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 </script>
 </body>

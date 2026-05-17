@@ -461,6 +461,43 @@ nav {
   display: block;
 }
 
+  /* ===== CV DOWNLOAD BUTTON ===== */
+.cv-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #000000;
+  text-decoration: none;
+  border: 1px solid #ffffff;
+  padding: 12px 24px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  margin-top: 24px; /* Adjust spacing as needed based on placement */
+}
+
+.cv-dl-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Ensure strict black & white inversion on light mode */
+[data-theme="light"] .cv-dl-btn {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #000000;
+}
+
+[data-theme="light"] .cv-dl-btn:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
 /* ===== HERO ===== */
 .hero {
   position: relative;
@@ -1810,6 +1847,7 @@ footer {
   </ul>
   <div class="nav-actions">
     
+    
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
       <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="5"></circle>
@@ -1819,6 +1857,14 @@ footer {
         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
     </button>
+    <a href="/Sadman_Samin_CV.pdf" download="Sadman_Samin_CV.pdf" class="cv-dl-btn">
+  Download CV
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+    <polyline points="7 10 12 15 17 10"></polyline>
+    <line x1="12" y1="15" x2="12" y2="3"></line>
+  </svg>
+</a>
     <a href="mailto:sadmansamin78@gmail.com" class="nav-cta">Get In Touch</a>
     <button class="mobile-nav-toggle" onclick="openMobileMenu()">☰</button>
   </div>

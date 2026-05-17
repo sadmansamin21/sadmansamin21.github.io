@@ -510,50 +510,71 @@ nav {
   z-index: 2;
 }
 
-  /* ===== HERO CV BUTTON INLINE BLEND ===== */
-.hero-title {
-  display: inline-flex;
+
+  /* ===== HERO DOWNLOAD BUTTON ===== */
+.hero-actions {
+  margin-top: 34px;
+  display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: clamp(12px, 2vw, 24px); /* Scales spacing seamlessly with title font size */
 }
 
-.hero-cv-btn {
+.hero-download-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  background-color: #000000;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  /* Matches the height/width dynamically relative to the title height */
-  width: clamp(40px, 6vw, 70px);
-  height: clamp(40px, 6vw, 70px);
-  border-radius: 0; /* Keeps the brutalist sharp aesthetic of your site */
-  transition: background-color 0.2s ease, color 0.2s ease;
-  cursor: pointer;
+  gap: 12px;
+
   text-decoration: none;
+  color: var(--text-color);
+
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  padding: 16px 28px;
+  border: 1px solid var(--border-hover);
+
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.hero-cv-btn svg {
-  width: clamp(16px, 2.5vw, 28px);
-  height: clamp(16px, 2.5vw, 28px);
+.hero-download-btn svg {
+  transition: transform 0.25s ease;
 }
 
-.hero-cv-btn:hover {
-  background-color: #ffffff;
-  color: #000000;
+.hero-download-btn:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+  transform: translateY(-2px);
 }
 
-/* Light Theme Strict Inversion Hook */
-[data-theme="light"] .hero-cv-btn {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #000000;
+.hero-download-btn:hover svg {
+  transform: translateY(2px);
 }
 
-[data-theme="light"] .hero-cv-btn:hover {
-  background-color: #000000;
-  color: #ffffff;
+.hero-download-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile */
+@media(max-width:768px) {
+  .hero-actions {
+    margin-top: 26px;
+  }
+
+  .hero-download-btn {
+    width: fit-content;
+    padding: 14px 22px;
+    font-size: 12px;
+  }
 }
 
 /* ===== SECTION COMMON ===== */
@@ -1874,21 +1895,43 @@ footer {
 </nav>
 
 <!-- ===== HERO ===== -->
+<!-- ===== HERO ===== -->
 <section class="hero">
   <div style="max-width:1400px; width:100%; margin:0 auto; padding: 0; position: relative; z-index: 2;">
     <p class="hero-eyebrow">Dhaka, Bangladesh · Businessman & Researcher</p>
-    <h1 class="hero-title">SADMAN<br>SAMIN</h1>
+
+    <h1 class="hero-title">
+      SADMAN<br>SAMIN
+    </h1>
+
+    <!-- NEW DOWNLOAD BUTTON -->
+    <div class="hero-actions">
+      <a
+        href="Sadman_Samin_CV.pdf"
+        download="Sadman_Samin_CV.pdf"
+        class="hero-download-btn"
+        aria-label="Download Sadman Samin CV"
+      >
+        <span>Download CV</span>
+
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 3v12"></path>
+          <path d="M7 10l5 5 5-5"></path>
+          <path d="M5 21h14"></path>
+        </svg>
+      </a>
+    </div>
   </div>
 
-  <a href="path/to/Sadman_Samin_CV.pdf" download="Sadman_Samin_CV.pdf" class="cv-dl-btn">
-  Download CV
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-    <polyline points="7 10 12 15 17 10"></polyline>
-    <line x1="12" y1="15" x2="12" y2="3"></line>
-  </svg>
-</a>
-  
   <div class="hero-subtitle">
     Ventures and research at the intersection of<br>
     business strategy, AI, and resilient leadership.<br>
@@ -1898,7 +1941,7 @@ footer {
 
 <span class="gradient-bar"></span>
 
-   <section id="ventures" class="reveal" style="border-top:none;">
+   <section id="monolith" class="reveal" style="border-top:none;">
   <span class="section-label">Newly Founded</span>
   <div class="about-layout" style="align-items: center;">
     <div style="font-size: clamp(40px, 6vw, 80px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--text-color); text-transform: uppercase;">
@@ -1914,6 +1957,7 @@ footer {
     </div>
   </div>
 </section>
+
 
 <!-- ===== ABOUT ===== -->
 <section id="about" class="reveal" style="border-top:none;">

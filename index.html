@@ -461,42 +461,6 @@ nav {
   display: block;
 }
 
-  /* ===== CV DOWNLOAD BUTTON ===== */
-.cv-dl-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-main);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #ffffff;
-  background-color: #000000;
-  text-decoration: none;
-  border: 1px solid #ffffff;
-  padding: 12px 24px;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  cursor: pointer;
-  margin-top: 24px; /* Adjust spacing as needed based on placement */
-}
-
-.cv-dl-btn:hover {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-/* Ensure strict black & white inversion on light mode */
-[data-theme="light"] .cv-dl-btn {
-  color: #000000;
-  background-color: #ffffff;
-  border-color: #000000;
-}
-
-[data-theme="light"] .cv-dl-btn:hover {
-  background-color: #000000;
-  color: #ffffff;
-}
 
 /* ===== HERO ===== */
 .hero {
@@ -544,6 +508,52 @@ nav {
   color: var(--text-color);
   position: relative;
   z-index: 2;
+}
+
+  /* ===== HERO CV BUTTON INLINE BLEND ===== */
+.hero-title {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 24px); /* Scales spacing seamlessly with title font size */
+}
+
+.hero-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  /* Matches the height/width dynamically relative to the title height */
+  width: clamp(40px, 6vw, 70px);
+  height: clamp(40px, 6vw, 70px);
+  border-radius: 0; /* Keeps the brutalist sharp aesthetic of your site */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hero-cv-btn svg {
+  width: clamp(16px, 2.5vw, 28px);
+  height: clamp(16px, 2.5vw, 28px);
+}
+
+.hero-cv-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Light Theme Strict Inversion Hook */
+[data-theme="light"] .hero-cv-btn {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+[data-theme="light"] .hero-cv-btn:hover {
+  background-color: #000000;
+  color: #ffffff;
 }
 
 /* ===== SECTION COMMON ===== */
@@ -1857,14 +1867,7 @@ footer {
         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
     </button>
-    <a href="/Sadman_Samin_CV.pdf" download="Sadman_Samin_CV.pdf" class="cv-dl-btn">
-  Download CV
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-    <polyline points="7 10 12 15 17 10"></polyline>
-    <line x1="12" y1="15" x2="12" y2="3"></line>
-  </svg>
-</a>
+  
     <a href="mailto:sadmansamin78@gmail.com" class="nav-cta">Get In Touch</a>
     <button class="mobile-nav-toggle" onclick="openMobileMenu()">☰</button>
   </div>
@@ -1876,6 +1879,16 @@ footer {
     <p class="hero-eyebrow">Dhaka, Bangladesh · Businessman & Researcher</p>
     <h1 class="hero-title">SADMAN<br>SAMIN</h1>
   </div>
+
+  <a href="path/to/Sadman_Samin_CV.pdf" download="Sadman_Samin_CV.pdf" class="cv-dl-btn">
+  Download CV
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+    <polyline points="7 10 12 15 17 10"></polyline>
+    <line x1="12" y1="15" x2="12" y2="3"></line>
+  </svg>
+</a>
+  
   <div class="hero-subtitle">
     Ventures and research at the intersection of<br>
     business strategy, AI, and resilient leadership.<br>

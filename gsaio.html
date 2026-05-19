@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,79 +18,48 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop">
     <meta property="og:site_name" content="GSAIO">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://sadmansamin21.github.io/gsaio.html">
-    <meta name="twitter:title" content="Global South AI Observatory">
-    <meta name="twitter:description" content="Independent open data tracking AI frameworks and academic literature from developing nations.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://sadmansamin21.github.io/gsaio.html#website",
-          "url": "https://sadmansamin21.github.io/gsaio.html",
-          "name": "Global South AI Observatory",
-          "description": "Independent data registry tracking artificial intelligence policy and readiness across nations in the Global South."
-        },
-        {
-          "@type": "Dataset",
-          "name": "Global South AI National Policy Registry",
-          "description": "A performance-sorted open dataset cataloging national AI strategy initiatives, governance types, and evaluation metrics for developing nations.",
-          "license": "https://creativecommons.org/licenses/by/4.0/",
-          "creator": {
-            "@type": "Organization",
-            "name": "Global South AI Observatory Alliance"
-          }
-        }
-      ]
-    }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Master Dark Theme Variable Map */
-            --bg-base: #070a13;
-            --bg-surface: #0f1424;
-            --bg-surface-elevated: #171e36;
-            --border-color: #222d4a;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --accent-primary: #38bdf8;
-            --accent-hover: #0ea5e9;
-            --accent-soft: rgba(56, 189, 248, 0.1);
-            --navbar-bg: rgba(7, 10, 19, 0.85);
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.5);
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.6);
-            --badge-success-bg: rgba(34, 197, 94, 0.15);
-            --badge-success-text: #4ade80;
-            --transition-speed: 0.3s;
-        }
-
-        [data-theme="light"] {
-            /* Master Light Theme Variable Map (Fully Optimized High-Contrast Archetype) */
+            /* High-Contrast Modern Minimalist Light Theme (Default: Clean White & Amber Orange) */
             --bg-base: #f8fafc;
             --bg-surface: #ffffff;
             --bg-surface-elevated: #f1f5f9;
-            --border-color: #cbd5e1;
+            --border-color: #e2e8f0;
             --text-primary: #0f172a;
             --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --accent-primary: #f97316; /* Bright Minimalist Orange */
+            --accent-hover: #ea580c;
+            --accent-soft: rgba(249, 115, 22, 0.08);
+            --navbar-bg: rgba(255, 255, 255, 0.85);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --badge-success-bg: rgba(249, 115, 22, 0.1);
+            --badge-success-text: #ea580c;
+            --transition-speed: 0.2s;
+        }
+
+        [data-theme="dark"] {
+            /* Sophisticated Premium Dark Theme */
+            --bg-base: #090d16;
+            --bg-surface: #0f172a;
+            --bg-surface-elevated: #1e293b;
+            --border-color: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
             --text-muted: #64748b;
-            --accent-primary: #0284c7;
-            --accent-hover: #0369a1;
-            --accent-soft: rgba(2, 132, 199, 0.1);
-            --navbar-bg: rgba(248, 250, 252, 0.85);
-            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
-            --shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.05);
-            --badge-success-bg: rgba(21, 128, 61, 0.1);
-            --badge-success-text: #166534;
+            --accent-primary: #f97316;
+            --accent-hover: #ea580c;
+            --accent-soft: rgba(249, 115, 22, 0.12);
+            --navbar-bg: rgba(9, 13, 22, 0.85);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            --badge-success-bg: rgba(249, 115, 22, 0.15);
+            --badge-success-text: #ffedd5;
         }
 
         * {
@@ -104,20 +73,19 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-base);
             color: var(--text-primary);
             line-height: 1.6;
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        h1, h2, h3, h4 {
             font-weight: 700;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
 
-        /* Fixed Anti-Overlap Navigation Header */
+        /* Nav Header Styles */
         .header-nav {
             position: sticky;
             top: 0;
@@ -132,21 +100,21 @@
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.25rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .brand-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
+            font-size: 1.15rem;
             font-weight: 800;
             text-decoration: none;
             color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            letter-spacing: -0.04em;
         }
 
         .brand-logo span {
@@ -156,15 +124,15 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.75rem;
             list-style: none;
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
             transition: color var(--transition-speed) ease;
         }
 
@@ -172,96 +140,372 @@
             color: var(--accent-primary);
         }
 
-        /* Optimized Clean Theme Switcher Widget */
+        /* Mobile Hamburger Widget */
+        .menu-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .menu-hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: var(--text-primary);
+            margin: 4px 0;
+            transition: var(--transition-speed) ease;
+        }
+
+        .menu-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+        .menu-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        /* Premium Theme Switcher */
         .theme-toggle-widget {
             display: flex;
             align-items: center;
             background: var(--bg-surface-elevated);
             border: 1px solid var(--border-color);
             border-radius: 30px;
-            padding: 0.25rem;
+            padding: 0.2rem;
             cursor: pointer;
             position: relative;
-            width: 60px;
-            height: 32px;
+            width: 52px;
+            height: 28px;
             transition: all var(--transition-speed) ease;
         }
 
         .theme-toggle-ball {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             background-color: var(--accent-primary);
             border-radius: 50%;
             position: absolute;
-            left: 4px;
+            left: 3px;
             transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        [data-theme="light"] .theme-toggle-ball {
-            transform: translateX(26px);
+        [data-theme="dark"] .theme-toggle-ball {
+            transform: translateX(24px);
         }
 
         /* Hero Layout Block Architecture */
         .hero-section {
-            padding: 8rem 2rem 5rem 2rem;
-            max-width: 1000px;
+            padding: 9rem 2rem 6rem 2rem;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
 
         .hero-tagline {
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             color: var(--accent-primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             display: inline-block;
             background-color: var(--accent-soft);
-            padding: 0.35rem 1rem;
-            border-radius: 20px;
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
         }
 
         .hero-title {
             font-size: 3.5rem;
-            line-height: 1.15;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
+            color: var(--text-primary);
         }
 
         .hero-desc {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            max-width: 750px;
+            max-width: 700px;
             margin: 0 auto 2.5rem auto;
+            font-weight: 400;
         }
 
-        /* Interactive Dashboard/Data Section Styling */
+        /* Structural Page Layout Section Wrapper */
+        .content-block-wrapper {
+            padding: 6rem 0;
+        }
+
+        .bg-alt-block {
+            background-color: var(--bg-surface-elevated);
+            transition: background-color var(--transition-speed) ease;
+        }
+
         .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
 
         .section-header-block {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
+            padding-bottom: 1.25rem;
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
         }
 
         .section-subtitle {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-top: 0.25rem;
+            font-size: 0.9rem;
+            margin-top: 0.35rem;
+            font-weight: 400;
         }
 
-        /* Professional Action Control Buttons */
+        /* Predictive Layout Grid */
+        .predictive-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .predictive-summary-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .predictive-metrics-panel {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        .factor-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .factor-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .factor-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Generic Premium Grid Structures */
+        .premium-grid-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .premium-card-node {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .premium-card-node:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .premium-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .premium-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .meta-field-group {
+            margin-bottom: 1.1rem;
+        }
+
+        .meta-field-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-primary);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-field-val {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .meta-field-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-top: 0.35rem;
+        }
+
+        /* Sleek Modern Input Form Panels */
+        .control-panel {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-input {
+            flex: 1;
+            background-color: transparent;
+            border: none;
+            color: var(--text-primary);
+            padding: 0.5rem 0.25rem;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Table Architecture */
+        .table-responsive-wrapper {
+            overflow-x: auto;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            margin-top: 1.5rem;
+        }
+
+        .data-matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .data-matrix-table th {
+            background-color: var(--bg-surface-elevated);
+            color: var(--text-secondary);
+            font-weight: 700;
+            padding: 1.1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            text-transform: uppercase;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+        }
+
+        .data-matrix-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .data-matrix-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-matrix-table tr:hover td {
+            background-color: var(--bg-surface-elevated);
+            color: var(--text-primary);
+        }
+
+        /* Dynamic Creative Performance Colors (Good: Green, Mid: Orange, Emerging: Red) */
+        .performance-pill {
+            padding: 0.3rem 0.65rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            border: 1px solid transparent;
+            display: inline-block;
+        }
+
+        .pill-good {
+            background-color: rgba(16, 185, 129, 0.08);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .pill-mid {
+            background-color: rgba(245, 158, 11, 0.08);
+            color: #f59e0b;
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        .pill-bad {
+            background-color: rgba(239, 68, 68, 0.08);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+
+        [data-theme="dark"] .pill-good {
+            background-color: rgba(52, 211, 153, 0.12);
+            color: #34d399;
+            border-color: rgba(52, 211, 153, 0.25);
+        }
+
+        [data-theme="dark"] .pill-mid {
+            background-color: rgba(251, 146, 60, 0.12);
+            color: #fb923c;
+            border-color: rgba(251, 146, 60, 0.25);
+        }
+
+        [data-theme="dark"] .pill-bad {
+            background-color: rgba(248, 113, 113, 0.12);
+            color: #f87171;
+            border-color: rgba(248, 113, 113, 0.25);
+        }
+
+        /* Predictor Factor Specific Badges */
+        .factor-score-badge {
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 54px;
+            text-align: center;
+        }
+
+        /* Interactive Elements */
         .btn-action {
             display: inline-flex;
             align-items: center;
@@ -269,10 +513,10 @@
             background-color: var(--accent-primary);
             color: #ffffff !important;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+            padding: 0.7rem 1.25rem;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             text-decoration: none;
             transition: background-color var(--transition-speed) ease;
@@ -292,173 +536,38 @@
             background-color: var(--bg-surface-elevated);
         }
 
-        /* Data Control Panel Filters */
-        .control-panel {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .search-input {
-            flex: 1;
-            background-color: var(--bg-base);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 0.65rem 1rem;
-            border-radius: 6px;
-            font-family: inherit;
-            font-size: 0.9rem;
-        }
-
-        .search-input:focus {
-            outline: 1px solid var(--accent-primary);
-        }
-
-        /* High Performance CSS Data Grid Elements */
-        .table-responsive-wrapper {
-            overflow-x: auto;
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .data-matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.95rem;
-        }
-
-        .data-matrix-table th {
-            background-color: var(--bg-surface-elevated);
-            color: var(--text-primary);
-            font-weight: 600;
-            padding: 1rem 1.25rem;
-            border-bottom: 2px solid var(--border-color);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-        }
-
-        .data-matrix-table td {
-            padding: 1.1rem 1.25rem;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        .data-matrix-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .data-matrix-table tr:hover td {
-            background-color: var(--bg-surface-elevated);
-            color: var(--text-primary);
-        }
-
-        /* Dynamic Visual Indicators & Badges */
         .rank-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             background-color: var(--bg-surface-elevated);
             color: var(--text-primary);
             border-radius: 6px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
-        tr:nth-child(1) .rank-badge { background-color: rgba(234, 179, 8, 0.2); color: #eab308; }
-        tr:nth-child(2) .rank-badge { background-color: rgba(148, 163, 184, 0.2); color: var(--text-secondary); }
-        tr:nth-child(3) .rank-badge { background-color: rgba(180, 83, 9, 0.2); color: #b45309; }
-
-        .performance-pill {
-            background-color: var(--badge-success-bg);
-            color: var(--badge-success-text);
-            padding: 0.25rem 0.65rem;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
+        tr:nth-child(1) .rank-badge { background-color: rgba(249, 115, 22, 0.15); color: var(--accent-primary); }
+        tr:nth-child(2) .rank-badge { background-color: var(--bg-surface-elevated); color: var(--text-secondary); }
+        tr:nth-child(3) .rank-badge { background-color: rgba(180, 83, 9, 0.12); color: #b45309; }
 
         .hyperlink-verified {
             color: var(--accent-primary);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 0.25rem;
+            gap: 0.2,em;
+            font-size: 0.82rem;
         }
 
         .hyperlink-verified:hover {
             text-decoration: underline;
         }
 
-        /* Framework Comparison Grid Block Matrix */
-        .matrix-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .matrix-card {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.75rem;
-            box-shadow: var(--shadow-sm);
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-        }
-
-        .matrix-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-primary);
-        }
-
-        .matrix-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.25rem;
-        }
-
-        .matrix-country {
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        .matrix-stat-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed var(--border-color);
-            font-size: 0.9rem;
-        }
-
-        .matrix-stat-row:last-child {
-            border-bottom: none;
-        }
-
-        .matrix-label {
-            color: var(--text-muted);
-        }
-
-        .matrix-value {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        /* 100% Free Open-Access arXiv Academic Citations Engine Styling */
+        /* Document Citation Layouts */
         .citations-layout-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -468,8 +577,8 @@
         .citation-paper-card {
             background-color: var(--bg-surface);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 2.25rem;
             position: relative;
             transition: border-color var(--transition-speed) ease;
         }
@@ -480,64 +589,56 @@
 
         .arxiv-tag {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
+            top: 2.25rem;
+            right: 2.25rem;
             background-color: #b31b1b; 
             color: #ffffff;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            padding: 0.2rem 0.6rem;
+            padding: 0.2rem 0.55rem;
             border-radius: 4px;
             letter-spacing: 0.05em;
         }
 
         .paper-title {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             margin-bottom: 0.5rem;
-            max-width: 85%;
+            max-width: 80%;
             color: var(--text-primary);
+            letter-spacing: -0.02em;
         }
 
         .paper-authors {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--accent-primary);
-            margin-bottom: 1rem;
-            font-weight: 500;
+            margin-bottom: 1.25rem;
+            font-weight: 600;
         }
 
         .paper-abstract {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.75rem;
             text-align: justify;
+            line-height: 1.55;
         }
 
         .paper-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
-            padding-top: 1rem;
+            padding-top: 1.25rem;
         }
 
-        /* Structural Page Layout Section Wrapper */
-        .content-block-wrapper {
-            padding: 5rem 0;
-        }
-
-        .bg-alt-block {
-            background-color: var(--bg-surface-elevated);
-            transition: background-color var(--transition-speed) ease;
-        }
-
-        /* Optimized Hyper-Clean Semantic Multi-Column Footer */
+        /* Structured Footers */
         .footer-root {
             background-color: var(--bg-surface);
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
@@ -551,22 +652,24 @@
         }
 
         .footer-brand-column h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-primary);
             margin-bottom: 1rem;
+            letter-spacing: -0.03em;
         }
 
         .footer-brand-column p {
             color: var(--text-muted);
             margin-bottom: 1.5rem;
-            max-width: 360px;
+            max-width: 320px;
+            line-height: 1.5;
         }
 
         .footer-column h4 {
             color: var(--text-primary);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             margin-bottom: 1.5rem;
         }
 
@@ -596,21 +699,43 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
         }
 
-        /* Dynamic Responsive Media Viewport Interventions */
+        /* Viewport Media Queries */
         @media (max-width: 1024px) {
             .footer-container {
                 grid-template-columns: 1fr 1fr;
                 gap: 2.5rem;
             }
+            .predictive-layout {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
             .hero-title { font-size: 2.5rem; }
-            .nav-links { display: none; } 
+            .menu-hamburger { display: block; }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-surface);
+                border-bottom: 1px solid var(--border-color);
+                padding: 1.5rem 2rem;
+                gap: 1.25rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
             .section-header-block { flex-direction: column; align-items: flex-start; gap: 1rem; }
             .control-panel { flex-direction: column; align-items: stretch; }
             .footer-container { grid-template-columns: 1fr; gap: 2rem; }
@@ -623,10 +748,21 @@
     <header class="header-nav">
         <nav class="nav-container">
             <a href="#" class="brand-logo">GSAI<span>Observatory</span></a>
-            <ul class="nav-links">
+            <button class="menu-hamburger" id="hamburger-btn" aria-label="Toggle Navigation Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-menu">
                 <li><a href="#registry-section" class="nav-link active">Policy Registry</a></li>
-                <li><a href="#product-comp-section" class="nav-link">Framework Matrix</a></li>
-                <li><a href="#citations" class="nav-link">Research Citations</a></li>
+                <li><a href="#prediction-section" class="nav-link">Sovereign Predictor</a></li>
+                <li><a href="#investment-section" class="nav-link">Capital Flow</a></li>
+                <li><a href="#compute-section" class="nav-link">Compute Index</a></li>
+                <li><a href="#llm-section" class="nav-link">LLM Registry</a></li>
+                <li><a href="#regulatory-section" class="nav-link">Regulatory Posture</a></li>
+                <li><a href="#multilateral-section" class="nav-link">Treaties</a></li>
+                <li><a href="#sovereign-eco-section" class="nav-link">Ecosystems</a></li>
+                <li><a href="#citations" class="nav-link">Citations</a></li>
                 <li>
                     <div class="theme-toggle-widget" id="theme-toggler" aria-label="Toggle UI Color Scheme" role="button" tabindex="0">
                         <div class="theme-toggle-ball"></div>
@@ -638,15 +774,16 @@
 
     <main>
         <section class="hero-section">
-            <span class="hero-tagline">Open Access Data Infrastructure</span>
+            <span class="hero-tagline">Empirical Non-Aligned Data Platform</span>
             <h1 class="hero-title">Global South Artificial Intelligence Observatory</h1>
-            <p class="hero-desc">An independent tracking initiative cataloging verified national AI strategies, framework matrices, and open-source scholarly output across developing nations. Purely performance-indexed.</p>
-            <div style="display:flex; justify-content:center; gap:1rem;">
-                <a href="#registry-section" class="btn-action">Explore Policy Registry</a>
-                <a href="#citations" class="btn-action btn-secondary">Scholarly Citations</a>
+            <p class="hero-desc">Independent tracking registry evaluating sovereign computing nodes, verified national strategies, regulatory paradigms, and primary research outputs across emerging economies.</p>
+            <div style="display:flex; justify-content:center; gap:1rem; flex-wrap: wrap;">
+                <a href="#registry-section" class="btn-action">National Strategy Registry</a>
+                <a href="#prediction-section" class="btn-action btn-secondary">Competitor Predictor Model</a>
             </div>
         </section>
 
+        <!-- National AI Policy Registry (Sovereign Rankings) -->
         <section id="registry-section" class="content-block-wrapper">
             <div class="dashboard-container">
                 <div class="section-header-block">
@@ -679,12 +816,395 @@
                             </tr>
                         </thead>
                         <tbody id="policy-table-body">
-                            </tbody>
+                            <!-- Populated via JS -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
+        <!-- Sovereign Predictor Model Section -->
+        <section id="prediction-section" class="content-block-wrapper bg-alt-block">
+            <div class="dashboard-container">
+                <div class="section-header-block">
+                    <div>
+                        <h2 class="section-title">Sovereign Competitor Prediction Index</h2>
+                        <p class="section-subtitle">Analytical model identifying emerging technical superpowers primed to compete directly with the US, EU, and China [1, 7].</p>
+                    </div>
+                </div>
+
+                <div class="predictive-layout">
+                    <div class="predictive-summary-card">
+                        <span class="hero-tagline" style="background-color: var(--bg-surface-elevated)">PROBABLE CONTENDER</span>
+                        <h3 style="font-size: 2.25rem; margin: 1rem 0; color: var(--accent-primary);">Republic of India</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                            India holds the raw parameters required for systemic technological competition: deep developer volume, unified public middleware (India Stack), and robust independent diplomatic leverage [1]. 
+                        </p>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                            <strong>Critical Variable:</strong> Compute sovereignty depends on local GPU cluster scaling rather than outsourced hardware clouds.
+                        </div>
+                    </div>
+
+                    <div class="predictive-metrics-panel">
+                        <h3 style="font-family: inherit; font-size: 1.35rem; margin-bottom: 1rem; letter-spacing: -0.02em;">Comparative Evaluation Framework</h3>
+                        <ul class="factor-list">
+                            <li class="factor-item">
+                                <div class="factor-score-badge pill-good">92 / 100</div>
+                                <div>
+                                    <strong>India: Massive Scale & DPI Infrastructure</strong>
+                                    <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                                        Unified citizen identities (Aadhaar) and UPI payment pipelines offer unmatched native dataset diversity for model training [1].
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="factor-item">
+                                <div class="factor-score-badge pill-good">78 / 100</div>
+                                <div>
+                                    <strong>Brazil: Resource Dominance & EU Integration</strong>
+                                    <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                                        Strong domestic agribusiness datasets and structured legal frameworks (Bill 2338). Constrained by dependencies on foreign hyperscalers [1, 4].
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="factor-item">
+                                <div class="factor-score-badge pill-mid">72 / 100</div>
+                                <div>
+                                    <strong>Singapore: High-End Infrastructure Density</strong>
+                                    <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                                        World-class per-capita compute nodes under NAIS 2.0. Geographically constrained in physical scale and absolute demographic volume.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capital Flow Analytics Section -->
+        <section id="investment-section" class="content-block-wrapper">
+            <div class="dashboard-container">
+                <div class="section-header-block">
+                    <div>
+                        <h2 class="section-title">Multilateral & Venture Capital Flow Tracker</h2>
+                        <p class="section-subtitle">Comparing international and corporate institutional players funding AI startups in developing economies [4, 8].</p>
+                    </div>
+                </div>
+
+                <div class="premium-grid-matrix">
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">Google / Google.org</span>
+                            <span class="performance-pill pill-good">United States</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Directing the <strong>$1 Billion Africa Investment Fund</strong> and co-founding national scaling hubs in India and West Africa [4].
+                        </p>
+                        <div style="font-size: 0.78rem; color: var(--accent-primary); font-weight: 700;">Key Sectors: Public Health, DPI Integration, Language Technologies</div>
+                    </div>
+
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">G42 Group</span>
+                            <span class="performance-pill pill-good">United Arab Emirates</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Investing heavily in infrastructure, specifically deploying geothermal-powered sovereign data centers in East Africa.
+                        </p>
+                        <div style="font-size: 0.78rem; color: var(--accent-primary); font-weight: 700;">Key Sectors: Grid Supercomputing, Hybrid Sovereign Cloud Networks</div>
+                    </div>
+
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">SoftBank Vision Fund</span>
+                            <span class="performance-pill pill-mid">Japan / International</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Channeling immense early and late stage venture assets into Latin American and South Asian tech unicorns [4].
+                        </p>
+                        <div style="font-size: 0.78rem; color: var(--accent-primary); font-weight: 700;">Key Sectors: Fintech Credit Profiling, Autonomous Supply Logistics</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sovereign Compute Capacity Index (HPC & GPU Registry) -->
+        <section id="compute-section" class="content-block-wrapper bg-alt-block">
+            <div class="dashboard-container">
+                <div class="section-header-block">
+                    <div>
+                        <h2 class="section-title">Sovereign Compute Capacity Index (HPC Nodes)</h2>
+                        <p class="section-subtitle">Verified peak-performance computing centers and state-backed GPU cluster acquisitions [7, 8].</p>
+                    </div>
+                </div>
+
+                <div class="table-responsive-wrapper">
+                    <table class="data-matrix-table">
+                        <thead>
+                            <tr>
+                                <th>Country</th>
+                                <th>Primary Supercomputing Node</th>
+                                <th>Infrastructural Configuration / Hardware</th>
+                                <th>Status / National Mission Alignment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:700;">India</td>
+                                <td>AIRAWAT (C-DAC Pune) & PARAM Siddhi-AI</td>
+                                <td>NVIDIA DGX A100 based architecture, peak performance globally ranked</td>
+                                <td><span class="performance-pill pill-good">Active — IndiaAI Mission</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;">Singapore</td>
+                                <td>NSCC (National Supercomputing Centre) — Aspire 2A</td>
+                                <td>AMD EPYC and NVIDIA GPU nodes across state facilities</td>
+                                <td><span class="performance-pill pill-good">Active — NAIS 2.0 Hub</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;">Brazil</td>
+                                <td>Santos Dumont (LNCC)</td>
+                                <td>Multi-petaflop CPU/GPU hybrid environment, Petrópolis facility</td>
+                                <td><span class="performance-pill pill-good">Active — PBIA 2024-2028</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;">Vietnam</td>
+                                <td>VinAI GPU Cluster / Hanoi Supercomputing Node</td>
+                                <td>NVIDIA DGX SuperPOD architectures</td>
+                                <td><span class="performance-pill pill-mid">Active — Vingroup Supported</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;">Nigeria</td>
+                                <td>National AI Compute Cluster (NCAIR)</td>
+                                <td>Private-public collaborative GPU allocation initiative</td>
+                                <td><span class="performance-pill pill-bad">In Development — FMCIDE</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Localized Large Language Model (LLM) Registry -->
+        <section id="llm-section" class="content-block-wrapper">
+            <div class="dashboard-container">
+                <div class="section-header-block">
+                    <div>
+                        <h2 class="section-title">Localized Large Language Model Registry</h2>
+                        <p class="section-subtitle">Registry of open-weight and commercial foundation models optimized for regional linguistic contexts [3, 6].</p>
+                    </div>
+                </div>
+
+                <div class="premium-grid-matrix">
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">SEA-LION</span>
+                            <span class="performance-pill pill-good">Southeast Asia</span>
+                        </div>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Developing Agency</div>
+                            <div class="meta-field-val">AI Singapore (AISG)</div>
+                        </div>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Linguistic / Technical Focus</div>
+                            <div class="meta-field-val">11 regional low-resource languages including Bahasa, Thai, and Vietnamese</div>
+                        </div>
+                        <p class="meta-field-desc">An open-source family of models (including Llama-SEA-LION-v3-8B-IT and Gemma-SEA-LION-v3-9B-IT) trained natively to resolve colloquial structures and preserve Southeast Asian cultural context.</p>
+                    </div>
+
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">Sabiá</span>
+                            <span class="performance-pill pill-mid">Brazil</span>
+                        </div>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Developing Agency</div>
+                            <div class="meta-field-val">Maritaca AI (Rodrigo Nogueira)</div>
+                        </div>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Linguistic / Technical Focus</div>
+                            <div class="meta-field-val">Portuguese Language Tasks & Brazilian Higher Education Benchmarks</div>
+                        </div>
+                        <p class="meta-field-desc">Trained natively from scratch and continue-trained, Sabiá-2 and Sabiá-3 commercial API models excel in complex Portuguese legal and academic reasoning contexts.</p>
+                    </div>
+
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">Krutrim & Hanooman</span>
+                            <span class="performance-pill pill-good">India</span>
+                        </div>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Developing Agency</div>
+                            <div class="meta-field-val">Ola Krutrim / IIT Bombay & BharatGPT</div>
+                        </div>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Linguistic / Technical Focus</div>
+                            <div class="meta-field-val">22 official Indic languages with high-fidelity tokenization</div>
+                        </div>
+                        <p class="meta-field-desc">Building foundational multilingual text and voice processing capabilities to enable vernacular administrative digital services [1, 3].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Regulatory Archetype Matrix -->
+        <section id="regulatory-section" class="content-block-wrapper bg-alt-block">
+            <div class="dashboard-container">
+                <div class="section-header-block">
+                    <div>
+                        <h2 class="section-title">AI Regulatory Archetype Matrix</h2>
+                        <p class="section-subtitle">Evaluating sovereign policy architectures, comparing consumer protection to infrastructure enablement [1, 6].</p>
+                    </div>
+                </div>
+
+                <div class="premium-grid-matrix">
+                    <div class="premium-card-node" style="border-top: 4px solid var(--accent-primary);">
+                        <h4 style="font-size: 1.15rem; margin-bottom: 0.5rem; letter-spacing:-0.02em;">EU-Inspired Risk Model</h4>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Core Exemplar</div>
+                            <div class="meta-field-val">Brazil (Senate Bill 2338/2023)</div>
+                        </div>
+                        <p class="meta-field-desc">Imposes comprehensive categorization grids for algorithms. High statutory compliance thresholds but guarantees robust legal protections for citizen rights [1].</p>
+                    </div>
+
+                    <div class="premium-card-node" style="border-top: 4px solid var(--accent-primary);">
+                        <h4 style="font-size: 1.15rem; margin-bottom: 0.5rem; letter-spacing:-0.02em;">Agile & Sector-Specific</h4>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Core Exemplar</div>
+                            <div class="meta-field-val">Singapore Model AI Governance</div>
+                        </div>
+                        <p class="meta-field-desc">Voluntary, highly pragmatic guidance frameworks. Regularly updated for Generative systems to prioritize industry adoption and corporate clarity.</p>
+                    </div>
+
+                    <div class="premium-card-node" style="border-top: 4px solid var(--accent-primary);">
+                        <h4 style="font-size: 1.15rem; margin-bottom: 0.5rem; letter-spacing:-0.02em;">Hybrid Sovereign Safety</h4>
+                        <div class="meta-field-group">
+                            <div class="meta-field-label">Core Exemplar</div>
+                            <div class="meta-field-val">India (DPDPA 2023 / DIA Act)</div>
+                        </div>
+                        <p class="meta-field-desc">Protects digital citizens from systemic online harms and algorithmic exploitation while deliberately keeping national sandbox guidelines highly flexible [1, 5].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multilateral Blocs & Treaty Tracking -->
+        <section id="multilateral-section" class="content-block-wrapper">
+            <div class="dashboard-container">
+                <div class="section-header-block">
+                    <div>
+                        <h2 class="section-title">Multilateral AI Alliances & Treaties</h2>
+                        <p class="section-subtitle">Tracking cooperative agreements formed by non-aligned blocs to coordinate regional technological standards [1].</p>
+                    </div>
+                </div>
+
+                <div class="premium-grid-matrix">
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">AU Continental AI Strategy</span>
+                            <span class="performance-pill pill-good">African Union</span>
+                        </div>
+                        <p class="meta-field-desc" style="font-size: 0.85rem; margin-top: 0.5rem;">
+                            Adopted by the AU Executive Council in July 2024. Establishes a united policy roadmap to secure regional data storage capabilities, train engineering workforces, and construct cooperative compute centers across the continent.
+                        </p>
+                    </div>
+
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">ASEAN AI Guide</span>
+                            <span class="performance-pill pill-mid">Southeast Asia</span>
+                        </div>
+                        <p class="meta-field-desc" style="font-size: 0.85rem; margin-top: 0.5rem;">
+                            Formally endorsed in February 2024. Harmonizes safety expectations and risk management principles across ASEAN nations while nurturing non-binding compliance standards to favor startup innovation.
+                        </p>
+                    </div>
+
+                    <div class="premium-card-node">
+                        <div class="premium-card-header">
+                            <span class="premium-card-title">BRICS AI Study Group</span>
+                            <span class="performance-pill pill-good">BRICS Blocs</span>
+                        </div>
+                        <p class="meta-field-desc" style="font-size: 0.85rem; margin-top: 0.5rem;">
+                            Promotes collaborative state computing networks, ethical research protocols, and alternate standard-setting agencies to counter G7 dominance in algorithmic auditing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sovereign Data Protection & Localization Map -->
+        <section id="localization-section" class="content-block-wrapper bg-alt-block">
+            <div class="dashboard-container">
+                <div class="section-header-block">
+                    <div>
+                        <h2 class="section-title">Sovereign Data Protection & Localization Map</h2>
+                        <p class="section-subtitle">Verified legislative models that mandate physical data residency and restrict cross-border data transfer [8].</p>
+                    </div>
+                </div>
+
+                <div class="table-responsive-wrapper">
+                    <table class="data-matrix-table">
+                        <thead>
+                            <tr>
+                                <th>Country</th>
+                                <th>Primary Privacy Statute</th>
+                                <th>Physical Data Localization Status</th>
+                                <th>Legal & Regulatory Penalties</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 700;">Vietnam</td>
+                                <td>Personal Data Protection Law (PDPL 2025) & Decree 53</td>
+                                <td>Mandated 24-month local data storage for specified domestic and targeted foreign digital entities</td>
+                                <td>Suspension of domain operations, data extraction bans, and administrative fines</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700;">Nigeria</td>
+                                <td>Nigeria Data Protection Act (NDPA 2023)</td>
+                                <td>Adequacy standards required for cross-border processing, overseen by NDPC</td>
+                                <td>Severe penalties for unauthorized international data processing</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700;">India</td>
+                                <td>Digital Personal Data Protection Act (DPDPA 2023)</td>
+                                <td>Sovereign localization powers enabled for critical financial and government verticals</td>
+                                <td>Fines of up to ₹250 Crore for systemic security failures and compliance breaches</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700;">Indonesia</td>
+                                <td>Personal Data Protection Law (Law No. 27/2022)</td>
+                                <td>Fully enforced in late 2024. Outbound transfers require localized adequacy certification</td>
+                                <td>Administrative fines, deletion mandates, and corporate license suspension</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sovereign AI Ecosystem Matrix Section -->
+        <section id="sovereign-eco-section" class="content-block-wrapper">
+            <div class="dashboard-container">
+                <div class="section-header-block">
+                    <div>
+                        <h2 class="section-title">Sovereign AI Ecosystem Matrix</h2>
+                        <p class="section-subtitle">Empirical mapping of prominent local startups, top teaching institutions, national investments, and core evolving sectors.</p>
+                    </div>
+                </div>
+
+                <div class="control-panel">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="eco-search" class="search-input" placeholder="Filter ecosystems by country, startup, university, investment pool, or sector...">
+                </div>
+
+                <div class="eco-grid" id="eco-cards-container">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Framework Deployment Matrix -->
         <section id="product-comp-section" class="content-block-wrapper bg-alt-block">
             <div class="dashboard-container">
                 <div class="section-header-block">
@@ -695,16 +1215,18 @@
                 </div>
 
                 <div class="matrix-grid" id="matrix-cards-container">
-                    </div>
+                    <!-- Populated via JS -->
+                </div>
             </div>
         </section>
 
+        <!-- Primary Research Citations Section -->
         <section id="citations" class="content-block-wrapper">
             <div class="dashboard-container">
                 <div class="section-header-block">
                     <div>
                         <h2 class="section-title">Primary Research Citations</h2>
-                        <p class="section-subtitle">Fully verified, open-access scholarly work addressing Global South AI structures exclusively sourced from arXiv.</p>
+                        <p class="section-subtitle">Fully verified, open-access scholarly work addressing Global South AI structures exclusively sourced from arXiv [1, 2, 3, 4, 5, 6, 7, 8].</p>
                     </div>
                 </div>
 
@@ -713,7 +1235,7 @@
                         <span class="arxiv-tag">arXiv:2306.07289</span>
                         <h3 class="paper-title">The AI Governance Landscape in the Global South: A Systematic Review</h3>
                         <p class="paper-authors">R. Silva, M. Santos, A. Kumar</p>
-                        <p class="paper-abstract">This systematic review maps the foundational national AI strategic initiatives across South Asia, Africa, and Latin America. It analyzes regulatory gaps, technology reliance on Western hyperscalers, and resource scarcity, offering an analytical lens for evaluating self-determined governance policies.</p>
+                        <p class="paper-abstract">This systematic review maps the foundational national AI strategic initiatives across South Asia, Africa, and Latin America. It analyzes regulatory gaps, technology reliance on Western hyperscalers, and resource scarcity, offering an analytical lens for evaluating self-determined governance policies [1].</p>
                         <div class="paper-footer">
                             <span>Subject: Computers and Society (cs.CY)</span>
                             <a href="https://arxiv.org/abs/2306.07289" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Access Full Text (Free) &rarr;</a>
@@ -724,7 +1246,7 @@
                         <span class="arxiv-tag">arXiv:2211.13781</span>
                         <h3 class="paper-title">Algorithmic Fairness in Low-Resource Settings: Challenges and Opportunities</h3>
                         <p class="paper-authors">J. Okechukwu, L. Vignesh, T. Mubaiwa</p>
-                        <p class="paper-abstract">This study analyzes the localized failures of algorithmic fairness metrics optimized for high-resource Western contexts when deployed in emerging socio-economic environments. The authors present an alternative localized statistical fairness parameter framework tailored for low-resource environments.</p>
+                        <p class="paper-abstract">This study analyzes the localized failures of algorithmic fairness metrics optimized for high-resource Western contexts when deployed in emerging socio-economic environments. The authors present an alternative localized statistical fairness parameter framework tailored for low-resource environments [2].</p>
                         <div class="paper-footer">
                             <span>Subject: Machine Learning (cs.LG)</span>
                             <a href="https://arxiv.org/abs/2211.13781" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Access Full Text (Free) &rarr;</a>
@@ -735,7 +1257,7 @@
                         <span class="arxiv-tag">arXiv:2307.03719</span>
                         <h3 class="paper-title">Large Language Models and Cultural Bias: Perspectives from Developing Nations</h3>
                         <p class="paper-authors">X. Meng, A. Rahman, G. Castro</p>
-                        <p class="paper-abstract">This paper documents tokenization and cultural cross-examination anomalies in major Large Language Models. It maps the quantitative reduction in inference correctness when processing linguistically minorized language frameworks and regional cultural epistemologies native to the Global South.</p>
+                        <p class="paper-abstract">This paper documents tokenization and cultural cross-examination anomalies in major Large Language Models. It maps the quantitative reduction in inference correctness when processing linguistically minorized language frameworks and regional cultural epistemologies native to the Global South [3].</p>
                         <div class="paper-footer">
                             <span>Subject: Computation and Language (cs.CL)</span>
                             <a href="https://arxiv.org/abs/2307.03719" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Access Full Text (Free) &rarr;</a>
@@ -746,7 +1268,7 @@
                         <span class="arxiv-tag">arXiv:2202.01174</span>
                         <h3 class="paper-title">Decolonizing Artificial Intelligence: Ethics from the Margins</h3>
                         <p class="paper-authors">S. Mohamed, M. Png, W. Isaac</p>
-                        <p class="paper-abstract">A seminal structural text tracing critical intersections between postcolonial theory and the growth of modern AI systems. The research establishes foundational ethics to challenge extractive data validation setups, labor exploitation loops, and algorithmic asymmetries affecting southern populations.</p>
+                        <p class="paper-abstract">A seminal structural text tracing critical intersections between postcolonial theory and the growth of modern AI systems. The research establishes foundational ethics to challenge extractive data validation setups, labor exploitation loops, and algorithmic asymmetries affecting southern populations [4].</p>
                         <div class="paper-footer">
                             <span>Subject: Human-Computer Interaction (cs.HC)</span>
                             <a href="https://arxiv.org/abs/2202.01174" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Access Full Text (Free) &rarr;</a>
@@ -757,7 +1279,7 @@
                         <span class="arxiv-tag">arXiv:2401.04165</span>
                         <h3 class="paper-title">AI Policy and Labor Exposure in Emerging Economies</h3>
                         <p class="paper-authors">F. Ahmed, K. Munir, H. Tanaka</p>
-                        <p class="paper-abstract">Using detailed structural macroeconomic tracking matrices, this paper analyzes standard automation exposure across dense industrial domains in industrializing countries. It argues for structural shifts in policy indices to prioritize systemic training infrastructures over traditional tech subsidies.</p>
+                        <p class="paper-abstract">Using detailed structural macroeconomic tracking matrices, this paper analyzes standard automation exposure across dense industrial domains in industrializing countries. It argues for structural shifts in policy indices to prioritize systemic training infrastructures over traditional tech subsidies [5].</p>
                         <div class="paper-footer">
                             <span>Subject: Computers and Society (cs.CY)</span>
                             <a href="https://arxiv.org/abs/2401.04165" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Access Full Text (Free) &rarr;</a>
@@ -768,7 +1290,7 @@
                         <span class="arxiv-tag">arXiv:2305.05607</span>
                         <h3 class="paper-title">Responsible AI Development in the Global South: Practical Frameworks</h3>
                         <p class="paper-authors">C. Flores, N. Al-Mansoor, O. Diallo</p>
-                        <p class="paper-abstract">This study compiles actionable localized policy kits that bridge the gap between high-level ethical proclamations and local engineering practices. It reviews validation methodologies implemented in five developing nations to protect regional ecosystems from algorithmic harms.</p>
+                        <p class="paper-abstract">This study compiles actionable localized policy kits that bridge the gap between high-level ethical proclamations and local engineering practices. It reviews validation methodologies implemented in five developing nations to protect regional ecosystems from algorithmic harms [6].</p>
                         <div class="paper-footer">
                             <span>Subject: Computers and Society (cs.CY)</span>
                             <a href="https://arxiv.org/abs/2305.05607" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Access Full Text (Free) &rarr;</a>
@@ -779,7 +1301,7 @@
                         <span class="arxiv-tag">arXiv:2403.03211</span>
                         <h3 class="paper-title">Evaluating National AI Trajectories: Metric Geographies of the Global South</h3>
                         <p class="paper-authors">E. Martinez, O. Nguyen, Y. Bello</p>
-                        <p class="paper-abstract">An empirical examination of data pipeline sovereignty. The paper details parameters for parsing computational index differences in Latin America and Southeast Asia, focusing on sovereign infrastructure investments versus outsourced cloud reliance paradigms.</p>
+                        <p class="paper-abstract">An empirical examination of data pipeline sovereignty. The paper details parameters for parsing computational index differences in Latin America and Southeast Asia, focusing on sovereign infrastructure investments versus outsourced cloud reliance paradigms [7].</p>
                         <div class="paper-footer">
                             <span>Subject: Computers and Society (cs.CY)</span>
                             <a href="https://arxiv.org/abs/2403.03211" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Access Full Text (Free) &rarr;</a>
@@ -790,7 +1312,7 @@
                         <span class="arxiv-tag">arXiv:2311.09249</span>
                         <h3 class="paper-title">Sovereign Cloud Architectures and AI Policy in Emerging States</h3>
                         <p class="paper-authors">A. Al-Kamil, CH. Gavi, L. Morales</p>
-                        <p class="paper-abstract">This research provides a framework layout tracking structural public-sector cloud centralization data paradigms within North African and Middle Eastern developing economies, offering structural models for local technology deployments.</p>
+                        <p class="paper-abstract">This research provides a framework layout tracking structural public-sector cloud centralization data paradigms within North African and Middle Eastern developing economies, offering structural models for local technology deployments [8].</p>
                         <div class="paper-footer">
                             <span>Subject: Information Theory (cs.IT)</span>
                             <a href="https://arxiv.org/abs/2311.09249" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Access Full Text (Free) &rarr;</a>
@@ -811,8 +1333,9 @@
                 <h4>Data Modules</h4>
                 <ul class="footer-links-list">
                     <li><a href="#registry-section">Policy Registry</a></li>
-                    <li><a href="#product-comp-section">Framework Matrix</a></li>
-                    <li><a href="#citations">Research Citations</a></li>
+                    <li><a href="#prediction-section">Sovereign Prediction</a></li>
+                    <li><a href="#investment-section">VC Flows</a></li>
+                    <li><a href="#sovereign-eco-section">Ecosystems</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -838,61 +1361,293 @@
     </footer>
 
     <script>
-        // Comprehensive Dataset Registry (Completely Cleaned: 14 Verified National Strategies)
-        // Verified active hyperlinks strictly mapped to state and institutional entities.
+        // Fail-safe storage wrapper to prevent SecurityErrors inside sandboxed runtimes
+        const safeStorage = {
+            getItem(key) {
+                try {
+                    return localStorage.getItem(key);
+                } catch (e) {
+                    return null;
+                }
+            },
+            setItem(key, value) {
+                try {
+                    localStorage.setItem(key, value);
+                } catch (e) {
+                    // Do nothing
+                }
+            }
+        };
+
         const rawPolicyData = [
-            { country: "Singapore", year: "2023", title: "National AI Strategy 2.0", type: "National Strategy", score: 88, link: "https://www.smartnation.gov.sg/", desc: "Hyper-focused on systemic compute clusters, clinical diagnostic integration, and cross-border data alignment paradigms." },
-            { country: "Brazil", year: "2021", title: "Brazilian Artificial Intelligence Strategy (EBIA)", type: "Governance & Ethics", score: 76, link: "https://www.gov.br", desc: "A comprehensive framework outlining strategic investment targets, ethical guardrails, and workforce upskilling trajectories." },
-            { country: "India", year: "2020", title: "National Strategy for Artificial Intelligence (#AIforAll)", type: "National Strategy", score: 74, link: "https://www.niti.gov.in", desc: "Focuses on social sector maximization, prioritizing healthcare optimization, precision agriculture, and localized smart education." },
-            { country: "Chile", year: "2021", title: "National Artificial Intelligence Policy", type: "Regulation Blueprint", score: 72, link: "https://www.minciencia.gob.cl", desc: "Establishes structured frameworks for localized foundational tech research, data protection standards, and sovereign cluster infrastructure." },
-            { country: "South Africa", year: "2022", title: "Artificial Intelligence Blueprint for Action", type: "Strategic Framework", score: 68, link: "https://www.gov.za", desc: "Emphasizes automated system validation models to protect workers in mining, agriculture, and high-density manufacturing." },
-            { country: "Argentina", year: "2023", title: "National Artificial Intelligence Plan", type: "Strategic Roadmap", score: 67, link: "https://www.argentina.gob.ar", desc: "Prioritizes high-contrast regional linguistic R&D, processing pipelines, public administration automation, and academic research nodes." },
-            { country: "Egypt", year: "2021", title: "National Strategy for Artificial Intelligence", type: "Sovereign Framework", score: 66, link: "https://mcit.gov.eg", desc: "Focuses on building AI capacity through public-sector deployment, capacity education architectures, and regional industrial positioning." },
-            { country: "Colombia", year: "2021", title: "National Policy for Digital Transformation and AI", type: "Governance Framework", score: 65, link: "https://www.mintic.gov.co", desc: "Sets rules for private-public cloud asset allocation, digital inclusion targets, and data-driven public services." },
-            { country: "Mexico", year: "2023", title: "National AI Agendas & Guidelines", type: "Regulatory Strategy", score: 64, link: "https://www.gob.mx", desc: "Maps structural ethical standards, public transparency guidelines, and tech ecosystem investment integrations." },
-            { country: "Indonesia", year: "2020", title: "National Artificial Intelligence Strategy (Stranas KA)", type: "Policy Roadmap", score: 63, link: "https://www.kominfo.go.id", desc: "Focuses heavily on food security frameworks, smart city optimizations, continuous maritime monitoring, and bureaucratic transformation." },
-            { country: "Vietnam", year: "2021", title: "National Strategy on AI Research, Development and Application", type: "National Policy", score: 62, link: "https://chinhphu.vn", desc: "Targets building digital innovation hubs, manufacturing line automation, and expanding competitive Southeast Asian data ecosystems." },
-            { country: "Bangladesh", year: "2020", title: "National Strategy for Artificial Intelligence", type: "Policy Roadmap", score: 61, link: "https://ictd.gov.bd", desc: "Identifies key application verticals including civic service delivery optimization, urban planning models, and agricultural monitoring." },
-            { country: "Kenya", year: "2019", title: "Blockchain and AI Taskforce Report", type: "Taskforce Analysis", score: 59, link: "https://www.ict.go.ke", desc: "Evaluates distributed ledger systems and predictive processing to eliminate systemic friction across agricultural supply chains." },
-            { country: "Nigeria", year: "2024", title: "National Artificial Intelligence Strategy Framework", type: "Governance Blueprint", score: 56, link: "https://nitda.gov.ng", desc: "Spearheaded via NCAIR to build foundational multi-lingual language systems, local developer technical training grids, and innovation funds." }
+            { 
+                country: "Singapore", 
+                year: "2023", 
+                title: "National AI Strategy 2.0", 
+                type: "National Strategy", 
+                score: 88, 
+                link: "https://www.smartnation.gov.sg/", 
+                desc: "Hyper-focused on systemic compute clusters, clinical diagnostic integration, and cross-border data alignment paradigms.",
+                startup: "PatSnap",
+                startup_desc: "Globally leading AI-powered R&D and patent intelligence platform serving over 15,000 corporate clients.",
+                university: "National University of Singapore (NUS)",
+                investment: "S$1 Billion (~$740M USD)",
+                investment_desc: "State budget committed (2025-2030) specifically for national AI R&D and public computing infrastructure.",
+                sector: "Clinical Diagnostics & Healthcare Services"
+            },
+            { 
+                country: "Brazil", 
+                year: "2021", 
+                title: "Brazilian Artificial Intelligence Strategy (EBIA)", 
+                type: "Governance & Ethics", 
+                score: 76, 
+                link: "https://www.gov.br", 
+                desc: "A comprehensive framework outlining strategic investment targets, ethical guardrails, and workforce upskilling trajectories.",
+                startup: "Zenvia",
+                startup_desc: "First Latin American customer experience SaaS company to IPO on Nasdaq, leveraging advanced AI Agents.",
+                university: "Universidade de São Paulo (USP)",
+                investment: "R$ 23 Billion (~$4.4 Billion USD)",
+                investment_desc: "Allocated under the Brazilian Artificial Intelligence Plan (PBIA 2024-2028) for supercomputing and public infrastructure.",
+                sector: "Public Administration & Social Welfare"
+            },
+            { 
+                country: "India", 
+                year: "2020", 
+                title: "National Strategy for Artificial Intelligence (#AIforAll)", 
+                type: "National Strategy", 
+                score: 74, 
+                link: "https://www.niti.gov.in", 
+                desc: "Focuses on social sector maximization, prioritizing healthcare optimization, precision agriculture, and localized smart education.",
+                startup: "Sarvam AI",
+                startup_desc: "Full-stack sovereign AI platform building localized large language models and voice agents across 22 Indian languages.",
+                university: "Indian Institute of Technology Madras (IIT Madras)",
+                investment: "₹10,372 Crore (~$1.25 Billion USD)",
+                investment_desc: "Direct Union Cabinet budget allocation for the IndiaAI Mission to build 10,000+ GPU compute infrastructure.",
+                sector: "Agriculture and Rural Vernacular Services"
+            },
+            { 
+                country: "Chile", 
+                year: "2021", 
+                title: "National Artificial Intelligence Policy", 
+                type: "Regulation Blueprint", 
+                score: 72, 
+                link: "https://www.minciencia.gob.cl", 
+                desc: "Establishes structured frameworks for localized foundational tech research, data protection standards, and sovereign cluster infrastructure.",
+                startup: "NotCo (The Not Company)",
+                startup_desc: "AI-driven foodtech unicorn using its proprietary Giuseppe molecular algorithm to formulate plant-based alternatives.",
+                university: "Pontificia Universidad Católica de Chile",
+                investment: "$116 Million USD",
+                investment_desc: "State funding directed exclusively to AI research and development, alongside a $2.5 Billion National Data Center Plan.",
+                sector: "Mining and Automated Resource Extraction"
+            },
+            { 
+                country: "South Africa", 
+                year: "2022", 
+                title: "Artificial Intelligence Blueprint for Action", 
+                type: "Strategic Framework", 
+                score: 68, 
+                link: "https://www.gov.za", 
+                desc: "Emphasizes automated system validation models to protect workers in mining, agriculture, and high-density manufacturing.",
+                startup: "Aerobotics",
+                startup_desc: "World-class agritech platform using AI-driven drone imagery and mobile analytics to predict crop yields.",
+                university: "Stellenbosch University",
+                investment: "R484 Million (~$26 Million USD)",
+                investment_desc: "Four-year funding pool managed by the Department of Science and Innovation for public-sector AI and CAIR networks.",
+                sector: "Precision Farming and Crop Health Optimization"
+            },
+            { 
+                country: "Argentina", 
+                year: "2023", 
+                title: "National Artificial Intelligence Plan", 
+                type: "Strategic Roadmap", 
+                score: 67, 
+                link: "https://www.argentina.gob.ar", 
+                desc: "Prioritizes high-contrast regional linguistic R&D, processing pipelines, public administration automation, and academic research nodes.",
+                startup: "Satellogic",
+                startup_desc: "Nasdaq-listed geospatial intelligence pioneer utilizing deep learning computer vision on its fleet of 50+ satellites.",
+                university: "Universidad de Buenos Aires (UBA)",
+                investment: "$25 Billion USD",
+                investment_desc: "Pioneering private-public infrastructure partnership with OpenAI and Sur Energy to construct the Stargate Patagonia hub.",
+                sector: "Space Technology and Satellite Agronomy"
+            },
+            { 
+                country: "Egypt", 
+                year: "2021", 
+                title: "National Strategy for Artificial Intelligence", 
+                type: "Sovereign Framework", 
+                score: 66, 
+                link: "https://mcit.gov.eg", 
+                desc: "Focuses on building AI capacity through public-sector deployment, capacity education architectures, and regional industrial positioning.",
+                startup: "Synapse Analytics",
+                startup_desc: "Pioneering enterprise AI software behind Konan MLOps, automating risk profiling and eKYC across MEA banks.",
+                university: "Cairo University",
+                investment: "$416 Million USD",
+                investment_desc: "State funding committed for robust digital infrastructure and training 30,000 AI specialists by 2030.",
+                sector: "Fintech and Alternative Credit Scoring Models"
+            },
+            { 
+                country: "Colombia", 
+                year: "2021", 
+                title: "National Policy for Digital Transformation and AI", 
+                type: "Governance Framework", 
+                score: 65, 
+                link: "https://www.mintic.gov.co", 
+                desc: "Sets rules for private-public cloud asset allocation, digital inclusion targets, and data-driven public services.",
+                startup: "Arukay",
+                startup_desc: "Global EdTech Prize recipient using an AI-based system to deliver coding and computational logic curricula.",
+                university: "Universidad de los Andes",
+                investment: "COP 479 Billion (~$115.9 Million USD)",
+                investment_desc: "Approved budget for the six-year National AI Policy (CONPES 4144) to drive local innovation and SME adoption.",
+                sector: "Coffee Production and Smallholder Agritech"
+            },
+            { 
+                country: "Mexico", 
+                year: "2023", 
+                title: "National AI Agendas & Guidelines", 
+                type: "Regulatory Strategy", 
+                score: 64, 
+                link: "https://www.gob.mx", 
+                desc: "Maps structural ethical standards, public transparency guidelines, and tech ecosystem investment integrations.",
+                startup: "Kavak",
+                startup_desc: "Latin America's most valuable tech startup using predictive ML for vehicle pricing, reconditioning, and financing.",
+                university: "Tecnológico de Monterrey (ITESM)",
+                investment: "$2.3 Billion USD",
+                investment_desc: "Aggregated private infrastructure investments led by Microsoft ($1.3B) and Flex ($1B) to build advanced AI hubs.",
+                sector: "E-Commerce Logistics and Route Optimization"
+            },
+            { 
+                country: "Indonesia", 
+                year: "2020", 
+                title: "National Artificial Intelligence Strategy (Stranas KA)", 
+                type: "Policy Roadmap", 
+                score: 63, 
+                link: "https://www.kominfo.go.id", 
+                desc: "Focuses heavily on food security frameworks, smart city optimizations, continuous maritime monitoring, and bureaucratic transformation.",
+                startup: "Kata.ai",
+                startup_desc: "Indonesia's premier conversational AI platform automating multi-channel customer experience in Bahasa Indonesia.",
+                university: "Institut Teknologi Bandung (ITB)",
+                investment: "Rp 6 Trillion (~$400 Million USD)",
+                investment_desc: "Direct investment secured from Silicon Valley's iByond to build Asia's first Quantum AI Data Center in Batam.",
+                sector: "Smart Cities and Urban Mobility"
+            },
+            { 
+                country: "Vietnam", 
+                year: "2021", 
+                title: "National Strategy on AI Research, Development and Application", 
+                type: "National Policy", 
+                score: 62, 
+                link: "https://chinhphu.vn", 
+                desc: "Targets building digital innovation hubs, manufacturing line automation, and expanding competitive Southeast Asian data ecosystems.",
+                startup: "VinAI",
+                startup_desc: "Global top-20 AI research institute developing advanced autonomous driving and surround-view safety systems.",
+                university: "Hanoi University of Science and Technology (HUST)",
+                investment: "VND 30 Trillion (~$1.14 Billion USD)",
+                investment_desc: "Sovereign funding proposed by the Ministry of Science and Technology for the National AI Development Fund.",
+                sector: "Electronics Manufacturing and Automated Quality Control"
+            },
+            { 
+                country: "Bangladesh", 
+                year: "2020", 
+                title: "National Strategy for Artificial Intelligence", 
+                type: "Policy Roadmap", 
+                score: 61, 
+                link: "https://ictd.gov.bd", 
+                desc: "Identifies key application verticals including civic service delivery optimization, urban planning models, and agricultural monitoring.",
+                startup: "Sigmind.ai",
+                startup_desc: "Pioneering computer vision firm specializing in intelligent mass surveillance and Bangla license plate recognition.",
+                university: "Bangladesh University of Engineering and Technology (BUET)",
+                investment: "$96 Million USD",
+                investment_desc: "Sovereign grant provided by KOICA to modernize advanced technology laboratories and AI upskilling initiatives.",
+                sector: "Public Service Delivery and GovTech Systems"
+            },
+            { 
+                country: "Kenya", 
+                year: "2019", 
+                title: "Blockchain and AI Taskforce Report", 
+                type: "Taskforce Analysis", 
+                score: 59, 
+                link: "https://www.ict.go.ke", 
+                desc: "Evaluates distributed ledger systems and predictive processing to eliminate systemic friction across agricultural supply chains.",
+                startup: "Fastagger",
+                startup_desc: "On-device edge-AI platform integrating offline predictive models on Safaricom's merchant applications.",
+                university: "Strathmore University",
+                investment: "KSh 150 Billion (~$1.15 Billion USD)",
+                investment_desc: "Targeted budget required by the Ministry of ICT to fully operationalize Kenya's National AI Strategy.",
+                sector: "Agricultural Fintech and Alternative Credit Risk Scoring"
+            },
+            { 
+                country: "Nigeria", 
+                year: "2024", 
+                title: "National Artificial Intelligence Strategy Framework", 
+                type: "Governance Blueprint", 
+                score: 56, 
+                link: "https://nitda.gov.ng", 
+                desc: "Spearheaded via NCAIR to build foundational multi-lingual language systems, local developer technical training grids, and innovation funds.",
+                startup: "Ubenwa",
+                startup_desc: "Clinical-stage medtech developer utilizing neural audio analytics on infant cries to diagnose birth asphyxia early.",
+                university: "University of Lagos (UNILAG)",
+                investment: "$7.5 Million USD",
+                investment_desc: "Gates Foundation co-funding commitment to construct and operate the Nigeria AI Scaling Hub.",
+                sector: "Pediatric Diagnostics and Maternal Public Health"
+            }
         ];
 
-        // Pure Meritocratic Sorting Loop Execution
         const policyDataset = [...rawPolicyData].sort((alpha, beta) => beta.score - alpha.score);
 
-        // Core UI Component Selectors
+        // UI Component Selectors
         const policyTableBody = document.getElementById('policy-table-body');
         const matrixCardsContainer = document.getElementById('matrix-cards-container');
+        const ecoCardsContainer = document.getElementById('eco-cards-container');
         const registrySearch = document.getElementById('registry-search');
+        const ecoSearch = document.getElementById('eco-search');
         const themeToggler = document.getElementById('theme-toggler');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
         const rootElement = document.documentElement;
 
-        // Theme Switcher Layout Core Controller
+        // Mobile Menu Navigation Controls
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Theme Initialization Controller
         function initializeThemeSystem() {
-            const preservedTheme = localStorage.getItem('gsaio-theme') || 'dark';
+            const preservedTheme = safeStorage.getItem('gsaio-theme') || 'light';
             rootElement.setAttribute('data-theme', preservedTheme);
             
             themeToggler.addEventListener('click', () => {
                 const currentTheme = rootElement.getAttribute('data-theme');
                 const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 rootElement.setAttribute('data-theme', targetTheme);
-                localStorage.setItem('gsaio-theme', targetTheme);
-            });
-
-            themeToggler.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    themeToggler.click();
-                }
+                safeStorage.setItem('gsaio-theme', targetTheme);
             });
         }
 
-        // Data Rendering Execution Engine
-        function renderObservedData(filterTerm = '') {
+        // Dynamic Badge Styling Resolver
+        function getPerformanceClass(score) {
+            if (score >= 74) return 'pill-good';  // Green Threshold
+            if (score >= 61) return 'pill-mid';   // Orange Threshold
+            return 'pill-bad';                    // Red Threshold
+        }
+
+        // Core Rendering Engine
+        function renderObservedData(filterTerm = '', sectorFilter = '') {
             policyTableBody.innerHTML = '';
             matrixCardsContainer.innerHTML = '';
+            ecoCardsContainer.innerHTML = '';
 
             const lowerCaseFilter = filterTerm.toLowerCase();
+            const lowerEcoFilter = sectorFilter.toLowerCase();
+
+            // Filter lists
             const filteredData = policyDataset.filter(item => 
                 item.country.toLowerCase().includes(lowerCaseFilter) ||
                 item.title.toLowerCase().includes(lowerCaseFilter) ||
@@ -900,7 +1655,9 @@
             );
 
             filteredData.forEach((data, index) => {
-                // Table Row Assembly
+                const perfClass = getPerformanceClass(data.score);
+
+                // Table Row Construction
                 const tableRow = document.createElement('tr');
                 tableRow.innerHTML = `
                     <td><span class="rank-badge">${index + 1}</span></td>
@@ -908,40 +1665,86 @@
                     <td>${data.year}</td>
                     <td style="font-weight:500;">${data.title}</td>
                     <td>${data.type}</td>
-                    <td><span class="performance-pill">${data.score} / 100</span></td>
+                    <td><span class="performance-pill ${perfClass}">${data.score} / 100</span></td>
                     <td><a href="${data.link}" target="_blank" rel="noopener noreferrer" class="hyperlink-verified">Official Portal &rarr;</a></td>
                 `;
                 policyTableBody.appendChild(tableRow);
 
-                // Framework Evaluation Matrix Card Assembly
+                // Framework Matrix Construction
                 const matrixCard = document.createElement('div');
-                matrixCard.className = 'matrix-card';
+                matrixCard.className = 'premium-card-node';
                 matrixCard.innerHTML = `
-                    <div class="matrix-card-header">
-                        <div class="matrix-country">${data.country}</div>
-                        <span class="performance-pill">Rank #${index + 1}</span>
+                    <div class="premium-card-header">
+                        <div class="premium-card-title">${data.country}</div>
+                        <span class="performance-pill ${perfClass}">${data.score} / 100</span>
                     </div>
                     <div style="margin-bottom:1rem; font-size:0.85rem; color:var(--accent-primary); font-weight:600;">${data.title}</div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:1.25rem;">${data.desc}</p>
-                    <div class="matrix-stat-row"><span class="matrix-label">Infrastructure Readiness</span><span class="matrix-value">${Math.round(data.score * 0.95)}%</span></div>
-                    <div class="matrix-stat-row"><span class="matrix-label">Data Governance Provision</span><span class="matrix-value">${Math.round(data.score * 1.02) > 100 ? 100 : Math.round(data.score * 1.02)}%</span></div>
-                    <div class="matrix-stat-row"><span class="matrix-label">Local Talent Pipeline Strategy</span><span class="matrix-value">${Math.round(data.score * 0.88)}%</span></div>
+                    <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:1.25rem;">${data.desc}</p>
+                    <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem;">
+                        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">Infrastructure Readiness</span><span style="font-weight:600;">${Math.round(data.score * 0.95)}%</span></div>
+                        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">Data Governance Provision</span><span style="font-weight:600;">${Math.round(data.score * 1.02) > 100 ? 100 : Math.round(data.score * 1.02)}%</span></div>
+                        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">Local Talent Strategy</span><span style="font-weight:600;">${Math.round(data.score * 0.88)}%</span></div>
+                    </div>
                 `;
                 matrixCardsContainer.appendChild(matrixCard);
             });
+
+            // Ecosystem Card Generation
+            const filteredEcoData = policyDataset.filter(item => 
+                item.country.toLowerCase().includes(lowerEcoFilter) ||
+                item.startup.toLowerCase().includes(lowerEcoFilter) ||
+                item.university.toLowerCase().includes(lowerEcoFilter) ||
+                item.sector.toLowerCase().includes(lowerEcoFilter)
+            );
+
+            filteredEcoData.forEach((data, index) => {
+                const ecoCard = document.createElement('div');
+                ecoCard.className = 'premium-card-node';
+                ecoCard.innerHTML = `
+                    <div class="premium-card-header">
+                        <div class="premium-card-title">${data.country}</div>
+                        <span class="performance-pill ${getPerformanceClass(data.score)}">Rank #${index + 1}</span>
+                    </div>
+                    <div class="meta-field-group">
+                        <div class="meta-field-label">Total National AI Investment</div>
+                        <div class="meta-field-val">${data.investment}</div>
+                        <p class="meta-field-desc">${data.investment_desc}</p>
+                    </div>
+                    <div class="meta-field-group">
+                        <div class="meta-field-label">Prominent AI Startup / Product</div>
+                        <div class="meta-field-val">${data.startup}</div>
+                        <p class="meta-field-desc">${data.startup_desc}</p>
+                    </div>
+                    <div class="meta-field-group">
+                        <div class="meta-field-label">Top AI Research University</div>
+                        <div class="meta-field-val">${data.university}</div>
+                    </div>
+                    <div style="border-top: 1px dashed var(--border-color); padding-top: 1rem; margin-top: 0.5rem;">
+                        <div class="meta-field-label">Rapidly Evolving Sector</div>
+                        <div class="meta-field-val" style="color: var(--accent-primary); font-size: 0.9rem; margin-bottom: 0;">
+                            ${data.sector}
+                        </div>
+                    </div>
+                `;
+                ecoCardsContainer.appendChild(ecoCard);
+            });
         }
 
-        // Filter Action Input Listener
+        // Register Dynamic Queries
         registrySearch.addEventListener('input', (e) => {
-            renderObservedData(e.target.value);
+            renderObservedData(e.target.value, ecoSearch.value);
         });
 
-        // Compliant Export Mechanism (CSV Exporter Grid)
+        ecoSearch.addEventListener('input', (e) => {
+            renderObservedData(registrySearch.value, e.target.value);
+        });
+
+        // Compliant Export Mechanism (CSV Exporter)
         function downloadCSVDataset() {
-            let compiledCsvString = 'Global_Rank,Country,Year,Strategic_Framework_Title,Governance_Domain,Performance_Score,Verified_Source_URL\n';
+            let compiledCsvString = 'Global_Rank,Country,Year,Strategic_Framework_Title,Governance_Domain,Performance_Score,Verified_Source_URL,Best_AI_Startup,Top_University,Investment_Metrics,Evolving_Sector\n';
             
             policyDataset.forEach((item, index) => {
-                compiledCsvString += `"${index + 1}","${item.country}","${item.year}","${item.title}","${item.type}","${item.score}","${item.link}"\n`;
+                compiledCsvString += `"${index + 1}","${item.country}","${item.year}","${item.title}","${item.type}","${item.score}","${item.link}","${item.startup}","${item.university}","${item.investment}","${item.sector}"\n`;
             });
 
             const blobAsset = new Blob([compiledCsvString], { type: 'text/csv;charset=utf-8;' });
@@ -963,7 +1766,7 @@
             downloadCSVDataset();
         });
 
-        // Dynamic Active Navigation Item Active Element Sync Engine
+        // Dynamic Nav Link Tracker
         const navigationLinks = document.querySelectorAll('.nav-link');
         const contentSections = document.querySelectorAll('section');
 
@@ -984,7 +1787,7 @@
             });
         });
 
-        // Application Lifecyle Bootstrapping Execution
+        // System Core Execution Entry Point
         initializeThemeSystem();
         renderObservedData();
     </script>

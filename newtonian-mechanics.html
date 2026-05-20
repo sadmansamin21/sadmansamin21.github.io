@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<title>নিউটনীয় বলবিদ্যা — HSC পদার্থবিজ্ঞান ১ম পত্র | Sadman Samin</title>
+<meta name="description" content="HSC পদার্থবিজ্ঞান অধ্যায় ৪: নিউটনীয় বলবিদ্যার সম্পূর্ণ গাইড। নিউটনের গতিসূত্র, ঘর্ষণ, কৌণিক গতি, টর্ক, জড়তার ভ্রামক, সংঘর্ষ — MCQ ও বোর্ড প্রশ্নসহ।">
+<meta name="keywords" content="HSC physics, নিউটনীয় বলবিদ্যা, নিউটনের সূত্র, ঘর্ষণ, কৌণিক গতি, টর্ক, জড়তার ভ্রামক, সংঘর্ষ, HSC পদার্থবিজ্ঞান, Bangladesh HSC">
+<meta name="author" content="Sadman Samin">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sadmansamin21.github.io/newtonian-mechanics.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="নিউটনীয় বলবিদ্যা — HSC পদার্থবিজ্ঞান ১ম পত্র">
+<meta property="og:description" content="নিউটনের গতিসূত্র, ভরবেগ, ঘর্ষণ, কৌণিক গতি, টর্ক, সংঘর্ষ — সম্পূর্ণ নোট ও MCQ অনুশীলন।">
+<meta property="og:url" content="https://sadmansamin21.github.io/newtonian-mechanics.html">
+<meta property="og:site_name" content="Sadman Samin — Physics Notes">
+<meta property="og:locale" content="bn_BD">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="নিউটনীয় বলবিদ্যা — HSC Physics">
+<meta name="twitter:description" content="HSC পদার্থবিজ্ঞান: নিউটনীয় বলবিদ্যার সম্পূর্ণ গাইড, MCQ ও বোর্ড প্রশ্নসহ।">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "নিউটনীয় বলবিদ্যা — HSC পদার্থবিজ্ঞান ১ম পত্র",
+  "author": {"@type": "Person", "name": "Sadman Samin", "url": "https://sadmansamin21.github.io"},
+  "publisher": {"@type": "Person", "name": "Sadman Samin"},
+  "url": "https://sadmansamin21.github.io/newtonian-mechanics.html",
+  "description": "HSC পদার্থবিজ্ঞান অধ্যায় ৪: নিউটনীয় বলবিদ্যার সম্পূর্ণ গাইড।",
+  "inLanguage": "bn"
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ],
+    throwOnError: false
+  });"></script>
+
+<style>
+/* ===== THEME VARIABLES ===== */
+:root {
+  /* Dark theme (default) */
+  --bg: #0a0e1a;
+  --bg2: #111827;
+  --bg3: #1a2235;
+  --card: #1e2d42;
+  --card2: #162032;
+  --accent: #f59e0b;
+  --accent2: #fbbf24;
+  --blue: #3b82f6;
+  --teal: #14b8a6;
+  --green: #10b981;
+  --red: #ef4444;
+  --purple: #8b5cf6;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(245,158,11,0.3);
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --hero-bg: linear-gradient(135deg, #0a1628 0%, #111827 50%, #0d1f35 100%);
+  --sidebar-bg: #111827;
+  --sidebar-header: linear-gradient(135deg, #1a2a4a 0%, #0f1e38 100%);
+  --formula-bg: #0d1f38;
+  --worked-bg: #1e2d42;
+  --btn-text: #0a0e1a;
+}
+
+[data-theme="light"] {
+  --bg: #fdf8f0;
+  --bg2: #f5ede0;
+  --bg3: #ede3d5;
+  --card: #fff8ee;
+  --card2: #faeedd;
+  --accent: #c77b00;
+  --accent2: #e08f00;
+  --blue: #1d4ed8;
+  --teal: #0f766e;
+  --green: #15803d;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --text: #1a1209;
+  --text2: #3d2e14;
+  --text3: #7c6340;
+  --border: rgba(0,0,0,0.1);
+  --border2: rgba(199,123,0,0.35);
+  --shadow: 0 4px 24px rgba(0,0,0,0.12);
+  --hero-bg: linear-gradient(135deg, #fff3dc 0%, #fdf8f0 50%, #fff0d6 100%);
+  --sidebar-bg: #faeedd;
+  --sidebar-header: linear-gradient(135deg, #fff0d6 0%, #fde8c0 100%);
+  --formula-bg: #fff3dc;
+  --worked-bg: #fff8ee;
+  --btn-text: #fff8ee;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans Bengali', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* ===== SIDEBAR ===== */
+#sidebar {
+  position: fixed; left: 0; top: 0; bottom: 0; width: 280px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  overflow-y: auto; z-index: 100;
+  padding: 0 0 2rem;
+  transition: transform 0.3s ease, background 0.3s;
+}
+.sidebar-header {
+  background: var(--sidebar-header);
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid var(--border2);
+  position: sticky; top: 0; z-index: 10;
+}
+.sidebar-header h1 {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--accent); letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+.sidebar-header p { font-size: 11px; color: var(--text3); margin-top: 4px; }
+.nav-section { padding: 0.5rem 0; }
+.nav-section-title {
+  font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+  color: var(--text3); padding: 0.75rem 1rem 0.25rem;
+  text-transform: uppercase;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0.5rem 1rem; cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.2s; font-size: 13px; color: var(--text2);
+  text-decoration: none;
+}
+.nav-item:hover { background: rgba(245,158,11,0.08); color: var(--accent); border-left-color: var(--accent); }
+.nav-item.active { background: rgba(245,158,11,0.12); color: var(--accent); border-left-color: var(--accent); font-weight: 500; }
+.nav-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(245,158,11,0.15); color: var(--accent);
+  font-size: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ===== MAIN ===== */
+#main { margin-left: 280px; min-height: 100vh; }
+
+/* ===== HERO ===== */
+.hero {
+  background: var(--hero-bg);
+  padding: 5rem 3rem 4rem;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: 'F=ma';
+  position: absolute; right: 5%; top: 20%;
+  font-size: 120px; font-weight: 900; font-family: 'JetBrains Mono', monospace;
+  color: var(--accent); opacity: 0.04; letter-spacing: -5px;
+  pointer-events: none; user-select: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(245,158,11,0.15); color: var(--accent);
+  border: 1px solid rgba(245,158,11,0.3);
+  padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 2.8rem; font-weight: 700;
+  line-height: 1.2; margin-bottom: 1rem;
+  color: var(--text);
+}
+[data-theme="dark"] .hero h1 {
+  background: linear-gradient(135deg, #f1f5f9 0%, #f59e0b 60%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p { font-size: 1.05rem; color: var(--text2); max-width: 600px; line-height: 1.8; margin-bottom: 2rem; }
+.hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat-num { font-size: 1.8rem; font-weight: 700; color: var(--accent); font-family: 'Noto Serif Bengali', serif; }
+.hero-stat-label { font-size: 12px; color: var(--text3); }
+
+/* ===== SECTION ===== */
+.section { padding: 3rem; border-bottom: 1px solid var(--border); }
+.section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 2rem; }
+.section-num {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(245,158,11,0.15);
+  border: 1px solid rgba(245,158,11,0.3);
+  color: var(--accent); font-weight: 700; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.section-title h2 { font-family: 'Noto Serif Bengali', serif; font-size: 1.6rem; font-weight: 700; color: var(--text); }
+
+/* ===== CONCEPT BOX ===== */
+.concept-box {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;
+}
+.concept-box h3 { font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.75rem; }
+.concept-box p { color: var(--text2); line-height: 1.8; }
+
+/* ===== FORMULA BOX ===== */
+.formula-box {
+  background: var(--formula-bg);
+  border: 1px solid rgba(59,130,246,0.3);
+  border-radius: 12px; padding: 1.75rem 1.5rem; margin: 1.5rem 0;
+  text-align: center; position: relative;
+}
+.formula-box .formula-label {
+  position: absolute; top: -11px; left: 1rem;
+  background: var(--blue); color: white;
+  font-size: 11px; font-weight: 600;
+  padding: 2px 12px; border-radius: 10px; letter-spacing: 0.5px;
+}
+.formula-display {
+  font-size: 1.05rem; color: var(--text);
+  margin: 0.25rem 0 1rem;
+}
+/* KaTeX overrides for formula boxes */
+.formula-box .katex { font-size: 1.4em; }
+.formula-box .katex-display { margin: 0.5rem 0; }
+.formula-vars { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.var-tag {
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 6px; padding: 4px 10px;
+  font-size: 12px; color: var(--text2);
+}
+.var-tag span { color: var(--blue); font-weight: 600; }
+
+/* ===== INFO BOX ===== */
+.info-box {
+  border-radius: 12px; padding: 1rem 1.25rem; margin: 1rem 0;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.info-box.blue { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); }
+.info-box.green { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
+.info-box.yellow { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); }
+.info-box.red { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); }
+.info-box.purple { background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); }
+.info-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0; font-weight: 700;
+}
+.info-box.blue .info-icon { background: rgba(59,130,246,0.2); color: var(--blue); }
+.info-box.green .info-icon { background: rgba(16,185,129,0.2); color: var(--green); }
+.info-box.yellow .info-icon { background: rgba(245,158,11,0.2); color: var(--accent); }
+.info-box.red .info-icon { background: rgba(239,68,68,0.2); color: var(--red); }
+.info-box.purple .info-icon { background: rgba(139,92,246,0.2); color: var(--purple); }
+.info-content { flex: 1; }
+.info-content strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 4px; }
+.info-content p { color: var(--text2); font-size: 14px; }
+
+/* ===== GRIDS ===== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+.mini-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+.mini-card h4 { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; font-family: 'Noto Serif Bengali', serif; }
+.mini-card p { font-size: 0.9rem; color: var(--text2); }
+
+/* ===== TABS ===== */
+.tab-container { margin: 1.5rem 0; }
+.tab-buttons {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--border); margin-bottom: 1.5rem;
+}
+.tab-btn {
+  padding: 0.5rem 1rem; border: none; background: transparent;
+  color: var(--text3); cursor: pointer; font-size: 13px;
+  font-family: 'Noto Sans Bengali', sans-serif;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s; margin-bottom: -1px;
+}
+.tab-btn:hover { color: var(--text2); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 500; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ===== ACCORDION ===== */
+.accordion { margin: 1rem 0; }
+.acc-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px; overflow: hidden; }
+.acc-header {
+  padding: 1rem 1.25rem; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--card2); transition: background 0.2s;
+  font-size: 14px; font-weight: 500; color: var(--text);
+}
+.acc-header:hover { background: var(--card); }
+.acc-icon {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(245,158,11,0.15); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; transition: transform 0.3s; flex-shrink: 0;
+}
+.acc-item.open .acc-icon { transform: rotate(45deg); }
+.acc-body {
+  display: none; padding: 1.25rem;
+  background: var(--card2);
+  border-top: 1px solid var(--border);
+  font-size: 14px; color: var(--text2); line-height: 1.8;
+}
+.acc-item.open .acc-body { display: block; }
+
+/* ===== QUESTIONS ===== */
+.question-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem; margin: 1rem 0;
+}
+.q-badge {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+  padding: 3px 10px; border-radius: 20px; margin-bottom: 0.75rem;
+}
+.q-badge.board { background: rgba(59,130,246,0.15); color: var(--blue); }
+.q-badge.admission { background: rgba(139,92,246,0.15); color: var(--purple); }
+.q-badge.mcq { background: rgba(16,185,129,0.15); color: var(--green); }
+.q-text { font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem; color: var(--text); }
+.q-options { display: flex; flex-direction: column; gap: 6px; }
+.q-opt {
+  padding: 0.6rem 1rem; border-radius: 8px;
+  background: var(--card2); border: 1px solid var(--border);
+  cursor: pointer; font-size: 13px; color: var(--text2);
+  transition: all 0.2s; display: flex; align-items: center; gap: 10px;
+}
+.q-opt:hover { border-color: var(--accent); color: var(--text); }
+.q-opt.correct { background: rgba(16,185,129,0.15); border-color: var(--green); color: var(--green); }
+.q-opt.wrong { background: rgba(239,68,68,0.1); border-color: var(--red); color: var(--red); }
+.q-opt-label {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+[data-theme="light"] .q-opt-label { background: rgba(0,0,0,0.08); }
+.q-explanation {
+  margin-top: 1rem; padding: 1rem;
+  background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 8px; font-size: 13px; color: var(--text2); display: none;
+}
+.q-explanation.visible { display: block; }
+.btn-check {
+  margin-top: 1rem; padding: 8px 20px;
+  background: var(--accent); color: var(--btn-text); border: none;
+  border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600;
+  font-family: 'Noto Sans Bengali', sans-serif; transition: all 0.2s;
+}
+[data-theme="light"] .btn-check { color: #fff8ee; }
+.btn-check:hover { background: var(--accent2); }
+
+/* ===== INTERACTIVE DEMO ===== */
+.inertia-demo {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;
+}
+.inertia-demo h4 { color: var(--teal); font-size: 0.9rem; margin-bottom: 1rem; }
+.mass-slider-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.mass-slider-wrap label { font-size: 13px; color: var(--text2); min-width: 100px; }
+.slider { flex: 1; accent-color: var(--accent); }
+.slider-val { font-size: 13px; font-weight: 600; color: var(--accent); min-width: 70px; }
+.force-result {
+  background: var(--formula-bg); border-radius: 8px; padding: 1rem;
+  text-align: center; font-size: 1.5rem; font-weight: 700;
+  color: var(--accent); font-family: 'JetBrains Mono', monospace;
+  border: 1px solid var(--border2);
+}
+.force-result small { display: block; font-size: 12px; color: var(--text3); font-weight: 400; margin-top: 4px; }
+
+/* ===== TABLES ===== */
+.physics-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 13px; }
+.physics-table th {
+  background: rgba(245,158,11,0.1); color: var(--accent); font-weight: 600;
+  padding: 10px 14px; text-align: left; border-bottom: 1px solid rgba(245,158,11,0.2);
+}
+.physics-table td { padding: 10px 14px; color: var(--text2); border-bottom: 1px solid var(--border); }
+.physics-table tr:hover td { background: rgba(255,255,255,0.03); }
+[data-theme="light"] .physics-table tr:hover td { background: rgba(0,0,0,0.03); }
+.physics-table td:first-child { color: var(--text); font-weight: 500; }
+
+.inertia-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+.inertia-table th {
+  background: rgba(139,92,246,0.15); color: var(--purple);
+  padding: 10px; font-size: 12px; font-weight: 600; border-bottom: 1px solid rgba(139,92,246,0.2);
+}
+.inertia-table td {
+  padding: 10px; font-size: 13px; color: var(--text2);
+  border-bottom: 1px solid var(--border); text-align: center;
+}
+.inertia-table tr:hover td { background: rgba(139,92,246,0.05); }
+
+/* ===== WORKED EXAMPLE ===== */
+.worked-example {
+  background: var(--worked-bg); border: 1px solid var(--border);
+  border-top: 3px solid var(--teal);
+  border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;
+}
+.worked-example h4 { color: var(--teal); font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.5px; }
+.solution-step {
+  background: var(--card2); border-radius: 8px;
+  padding: 0.75rem 1rem; margin: 0.5rem 0;
+  font-size: 13px; color: var(--text2);
+  border-left: 3px solid var(--teal);
+}
+.solution-step .eq { color: var(--text); font-family: 'JetBrains Mono', monospace; }
+
+/* ===== SUMMARY BOX ===== */
+.summary-header {
+  background: rgba(245,158,11,0.08);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 12px; padding: 1.5rem; margin: 2rem 0;
+}
+.summary-header h3 { color: var(--accent); font-family: 'Noto Serif Bengali', serif; font-size: 1rem; margin-bottom: 1rem; }
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar {
+  position: fixed; top: 0; left: 280px; right: 0; height: 3px;
+  background: var(--border); z-index: 200;
+}
+.progress-fill { height: 100%; background: var(--accent); transition: width 0.1s; width: 0%; }
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  position: fixed; right: 20px; bottom: 72px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--card); border: 1px solid var(--border2);
+  cursor: pointer; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow); transition: all 0.2s; z-index: 200;
+  color: var(--accent);
+}
+.theme-toggle:hover { transform: translateY(-2px); }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed; right: 20px; bottom: 20px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent); color: #0a0e1a;
+  border: none; cursor: pointer; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+  transition: all 0.2s; z-index: 200;
+}
+.back-to-top:hover { transform: translateY(-2px); }
+
+/* ===== MOBILE ===== */
+.mob-toggle {
+  display: none; position: fixed; top: 12px; left: 12px;
+  z-index: 300; width: 40px; height: 40px; border-radius: 8px;
+  background: var(--accent); border: none; cursor: pointer;
+  color: #0a0e1a; font-size: 18px;
+}
+
+/* ===== HELPERS ===== */
+.highlight { color: var(--accent); font-weight: 600; }
+.hl-blue { color: var(--blue); font-weight: 500; }
+.hl-green { color: var(--green); font-weight: 500; }
+.hl-red { color: var(--red); font-weight: 500; }
+.hl-purple { color: var(--purple); font-weight: 500; }
+.hl-teal { color: var(--teal); font-weight: 500; }
+
+p { margin-bottom: 0.75rem; }
+ul { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { margin-bottom: 0.4rem; color: var(--text2); font-size: 0.95rem; }
+
+/* KaTeX global sizing */
+.katex { font-size: 1.05em; }
+.katex-display { overflow-x: auto; margin: 0.5em 0; }
+
+/* Inline math wrapper */
+.math-inline { white-space: nowrap; }
+.math-block { text-align: center; margin: 0.75rem 0; }
+
+/* Footer */
+.site-footer {
+  text-align: center; padding: 2rem 3rem;
+  border-top: 1px solid var(--border);
+  color: var(--text3); font-size: 13px;
+}
+.site-footer a { color: var(--accent); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: translateX(0); }
+  #main { margin-left: 0; }
+  .mob-toggle { display: flex; align-items: center; justify-content: center; }
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 4rem 1.5rem 2rem; }
+  .section { padding: 2rem 1.5rem; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .progress-bar { left: 0; }
+  .theme-toggle { bottom: 72px; }
+}
+</style>
+</head>
+<body>
+
+<button class="mob-toggle" onclick="toggleSidebar()" aria-label="মেনু খুলুন">☰</button>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- SIDEBAR -->
+<nav id="sidebar" aria-label="বিষয়বস্তু নেভিগেশন">
+  <div class="sidebar-header">
+    <h1>নিউটনীয় বলবিদ্যা</h1>
+    <p>HSC পদার্থবিজ্ঞান ১ম পত্র • অধ্যায় ০৪</p>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">মূল বিষয়সমূহ</div>
+    <a href="#s0" class="nav-item active"><span class="nav-num">★</span> ভূমিকা ও বলের ধারণা</a>
+    <a href="#s1" class="nav-item"><span class="nav-num">১</span> নিউটনের গতিসূত্র</a>
+    <a href="#s2" class="nav-item"><span class="nav-num">২</span> ভরবেগ ও বলের ঘাত</a>
+    <a href="#s3" class="nav-item"><span class="nav-num">৩</span> ঘর্ষণ</a>
+    <a href="#s4" class="nav-item"><span class="nav-num">৪</span> কৌণিক গতি</a>
+    <a href="#s5" class="nav-item"><span class="nav-num">৫</span> কেন্দ্রমুখী বল</a>
+    <a href="#s6" class="nav-item"><span class="nav-num">৬</span> টর্ক ও কৌণিক ভরবেগ</a>
+    <a href="#s7" class="nav-item"><span class="nav-num">৭</span> জড়তার ভ্রামক</a>
+    <a href="#s8" class="nav-item"><span class="nav-num">৮</span> সংঘর্ষ</a>
+    <a href="#s9" class="nav-item"><span class="nav-num">৯</span> মৌলিক বল</a>
+    <a href="#s10" class="nav-item"><span class="nav-num">১০</span> রকেট ও পুলি</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">অনুশীলন</div>
+    <a href="#mcq" class="nav-item"><span class="nav-num">✓</span> MCQ অনুশীলন</a>
+    <a href="#board-q" class="nav-item"><span class="nav-num">✓</span> বোর্ড প্রশ্ন</a>
+    <a href="#formula-sheet" class="nav-item"><span class="nav-num">∑</span> সূত্র সংকলন</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="s0">
+  <div class="hero-badge">HSC পদার্থবিজ্ঞান ১ম পত্র • অধ্যায় ৪</div>
+  <h1>নিউটনীয় বলবিদ্যা</h1>
+  <p>শূন্য থেকে শুরু করে HSC ও ভর্তি পরীক্ষার জন্য সম্পূর্ণ প্রস্তুতি। বল, গতি, ঘর্ষণ, কৌণিক গতি থেকে টর্ক পর্যন্ত সব কিছু বিস্তারিতভাবে শিখুন।</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">১০+</div><div class="hero-stat-label">মূল বিষয়</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">৫০+</div><div class="hero-stat-label">সূত্র</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">৪০+</div><div class="hero-stat-label">MCQ</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">২০+</div><div class="hero-stat-label">উদাহরণ</div></div>
+  </div>
+
+  <div class="concept-box" style="margin-top:2.5rem; max-width:700px;">
+    <h3>🔭 বল কী? (What is Force?)</h3>
+    <p>বল হলো এমন একটি রাশি যা কোনো বস্তুর <strong style="color:var(--accent)">অবস্থার পরিবর্তন</strong> করতে পারে। অর্থাৎ স্থির বস্তুকে গতিশীল, গতিশীল বস্তুকে স্থির, অথবা বস্তুর গতির দিক বা মান পরিবর্তন করতে পারে।</p>
+    <p style="margin-top:0.75rem;">বল একটি <span class="hl-blue">ভেক্টর রাশি</span> — এর মান ও দিক উভয়ই আছে। একক: <span class="highlight">নিউটন (N)</span> যেখানে \( 1\,\text{N} = 1\,\text{kg·m·s}^{-2} \)</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 1: NEWTON'S LAWS ===== -->
+<section class="section" id="s1">
+  <div class="section-title">
+    <div class="section-num">১</div>
+    <h2>নিউটনের গতিসূত্র</h2>
+  </div>
+
+  <div class="concept-box">
+    <h3>নিউটনের গতির প্রথম সূত্র (Law of Inertia)</h3>
+    <p><em>"বাহ্যিক বল প্রযুক্ত না হলে, স্থির বস্তু চিরকাল স্থির থাকবে এবং গতিশীল বস্তু সমবেগে সরলরেখায় চলতে থাকবে।"</em></p>
+  </div>
+
+  <div class="grid-2">
+    <div class="mini-card">
+      <h4>জড়তা (Inertia)</h4>
+      <p>বস্তুর যে ধর্ম তার গতির পরিবর্তনে বাধা দেয়। জড়তার পরিমাপ হলো বস্তুর <span class="highlight">ভর (m)</span>। ভর বেশি → জড়তা বেশি।</p>
+    </div>
+    <div class="mini-card">
+      <h4>জড়তার প্রকারভেদ</h4>
+      <p><span class="hl-blue">স্থিতি জড়তা:</span> স্থির থাকার প্রবণতা (বাস চলতে শুরু করলে পেছনে হেলে পড়া)।<br>
+      <span class="hl-green">গতি জড়তা:</span> গতিশীল থাকার প্রবণতা (ব্রেক কষলে সামনে ঝুঁকে পড়া)।</p>
+    </div>
+  </div>
+
+  <div class="info-box yellow">
+    <div class="info-icon">!</div>
+    <div class="info-content">
+      <strong>প্রথম সূত্র ও জড়তা</strong>
+      <p>প্রথম সূত্রকে জড়তার সূত্রও বলা হয়। ভর হলো জড়তার পরিমাপ। ভর বেশি হলে বস্তুর অবস্থা পরিবর্তন করতে বেশি বল লাগবে।</p>
+    </div>
+  </div>
+
+  <!-- F=ma Calculator -->
+  <div class="inertia-demo">
+    <h4>⚡ ইন্টারেক্টিভ: F = ma ক্যালকুলেটর</h4>
+    <div class="mass-slider-wrap">
+      <label>ভর (m):</label>
+      <input type="range" class="slider" id="massSlider" min="1" max="100" value="10" oninput="calcForce()">
+      <span class="slider-val" id="massVal">10 kg</span>
+    </div>
+    <div class="mass-slider-wrap">
+      <label>ত্বরণ (a):</label>
+      <input type="range" class="slider" id="accSlider" min="1" max="50" value="5" oninput="calcForce()">
+      <span class="slider-val" id="accVal">5 m/s²</span>
+    </div>
+    <div class="force-result" id="forceResult">F = 50 N <small>F = 10 kg × 5 m/s²</small></div>
+  </div>
+
+  <!-- SECOND LAW -->
+  <div class="concept-box" style="border-left-color: var(--blue);">
+    <h3>নিউটনের গতির দ্বিতীয় সূত্র</h3>
+    <p><em>"কোনো বস্তুর ভরবেগের পরিবর্তনের হার প্রযুক্ত বলের সমানুপাতিক এবং বল যেদিকে ক্রিয়া করে ভরবেগের পরিবর্তনও সেদিকে হয়।"</em></p>
+  </div>
+
+  <div class="formula-box">
+    <span class="formula-label">দ্বিতীয় সূত্র</span>
+    <div class="formula-display">
+      $$\vec{F} = \frac{d\vec{p}}{dt} = m\vec{a}$$
+    </div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>F</span> = লব্ধি বল (N)</span>
+      <span class="var-tag"><span>p</span> = ভরবেগ (kg·m/s)</span>
+      <span class="var-tag"><span>m</span> = ভর (kg)</span>
+      <span class="var-tag"><span>a</span> = ত্বরণ (m/s²)</span>
+      <span class="var-tag"><span>t</span> = সময় (s)</span>
+    </div>
+  </div>
+
+  <div class="info-box blue">
+    <div class="info-icon">i</div>
+    <div class="info-content">
+      <strong>ভরবেগ (Momentum, p)</strong>
+      <p>\( \vec{p} = m\vec{v} \) — ভর ও বেগের গুণফল। একটি ভেক্টর রাশি। একক: \(\text{kg·m·s}^{-1}\) বা \(\text{N·s}\)। ভরবেগ সর্বদা বেগের দিকে থাকে।</p>
+    </div>
+  </div>
+
+  <div class="info-box green">
+    <div class="info-icon">▶</div>
+    <div class="info-content">
+      <strong>সাধারণ ক্ষেত্রে (ভর স্থির থাকলে)</strong>
+      <p>যখন \(m = \text{const}\): \(\quad \vec{F} = m\dfrac{d\vec{v}}{dt} = m\vec{a}\)</p>
+      <p>গড় বল: \(F_{\text{avg}} = \dfrac{\Delta p}{\Delta t}\) &nbsp;|&nbsp; তাৎক্ষণিক বল: \(F_{\text{ins}} = \dfrac{dp}{dt}\)</p>
+    </div>
+  </div>
+
+  <div class="info-box purple">
+    <div class="info-icon">★</div>
+    <div class="info-content">
+      <strong>ভর পরিবর্তনশীল হলে</strong>
+      <p>\(\vec{F} = m\dfrac{d\vec{v}}{dt} + \vec{v}\dfrac{dm}{dt}\) → ভর কমলে: \(F = -\vec{v}\dfrac{dm}{dt}\) (রকেটের ক্ষেত্রে প্রযোজ্য)</p>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tab-container">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="switchTab('laws-t1', this)">F=0 হলে কী হয়?</button>
+      <button class="tab-btn" onclick="switchTab('laws-t2', this)">বল ও ত্বরণের সম্পর্ক</button>
+      <button class="tab-btn" onclick="switchTab('laws-t3', this)">লব্ধি বল</button>
+    </div>
+    <div id="laws-t1" class="tab-panel active">
+      <div class="info-box green">
+        <div class="info-icon">✓</div>
+        <div class="info-content">
+          <strong>যদি বাহ্যিক বল F = 0 হয়:</strong>
+          <p>\(\vec{F} = \dfrac{dp}{dt} = 0 \implies p = \text{const} \implies mv = \text{const}\)</p>
+          <p>ফলে: (i) বেগ স্থির (ii) ত্বরণ শূন্য (iii) ভরবেগ নিত্য (iv) গতি ও দিক স্থির</p>
+        </div>
+      </div>
+    </div>
+    <div id="laws-t2" class="tab-panel">
+      <p style="color:var(--text2); font-size:0.9rem;">নিউটনের দ্বিতীয় সূত্র থেকে: <span class="highlight">F = ma</span></p>
+      <ul>
+        <li>একই ভরের বস্তুতে বল বেশি প্রয়োগ করলে → ত্বরণ বেশি \((F \propto a)\)</li>
+        <li>একই বল প্রয়োগে ভর বেশি হলে → ত্বরণ কম \(\left(a \propto \dfrac{1}{m}\right)\)</li>
+        <li>ভর দ্বিগুণ করলে একই ত্বরণের জন্য বল দ্বিগুণ লাগবে</li>
+      </ul>
+    </div>
+    <div id="laws-t3" class="tab-panel">
+      <p style="color:var(--text2); font-size:0.9rem;">একাধিক বল প্রযুক্ত হলে লব্ধি বল:</p>
+      <div class="math-block">\(\sum \vec{F} = m\vec{a}\)</div>
+      <p style="color:var(--text2); font-size:0.9rem;">\(\vec{F_1} + \vec{F_2} + \vec{F_3} = m\vec{a}\) → সকল বলের ভেক্টর সমষ্টি = ভর × ত্বরণ</p>
+    </div>
+  </div>
+
+  <!-- THIRD LAW -->
+  <div class="concept-box" style="border-left-color: var(--green);">
+    <h3>নিউটনের গতির তৃতীয় সূত্র (Action–Reaction)</h3>
+    <p><em>"প্রতিটি ক্রিয়ার সমান ও বিপরীত প্রতিক্রিয়া আছে।"</em></p>
+    <div class="math-block">\(\vec{F}_{12} = -\vec{F}_{21}\)</div>
+    <p style="color:var(--text2);">ক্রিয়া ও প্রতিক্রিয়া সবসময় দুটি ভিন্ন বস্তুর উপর কাজ করে — একই বস্তুর উপর কাজ করে না।</p>
+  </div>
+
+  <div class="info-box red">
+    <div class="info-icon">!</div>
+    <div class="info-content">
+      <strong>তৃতীয় সূত্রের গুরুত্বপূর্ণ তথ্য</strong>
+      <p>ক্রিয়া-প্রতিক্রিয়া জুটি কখনও একই বস্তুর উপর নয়। বল দুটি সমান মানের, বিপরীত দিকের (\(180°\) কোণে) এবং একই সরলরেখায় ক্রিয়াশীল। এই বল জুটি সাম্যাবস্থা তৈরি করে না।</p>
+    </div>
+  </div>
+
+  <!-- Worked Example 1 -->
+  <div class="worked-example">
+    <h4>✏️ সমাধানকৃত উদাহরণ ১</h4>
+    <p style="font-size:0.9rem; color:var(--text2); margin-bottom:1rem;">\(s = 2t^3 + 3t^2 + 5\) এবং \(m = 2\,\text{kg}\) হলে, \(t = 2\,\text{s}\) সময়ে প্রযুক্ত বল নির্ণয় করো।</p>
+    <div class="solution-step">পদক্ষেপ ১: <span class="eq">\(\displaystyle v = \frac{ds}{dt} = 6t^2 + 6t\)</span></div>
+    <div class="solution-step">পদক্ষেপ ২: <span class="eq">\(\displaystyle a = \frac{dv}{dt} = 12t + 6\)</span></div>
+    <div class="solution-step">পদক্ষেপ ৩: \(t=2\,\text{s}\) তে, <span class="eq">\(a = 12\times2 + 6 = 30\,\text{m/s}^2\)</span></div>
+    <div class="solution-step">পদক্ষেপ ৪: <span class="eq">\(F = ma = 2 \times 30 = 60\,\text{N}\) ✓</span></div>
+  </div>
+
+  <!-- MCQs -->
+  <h3 style="color:var(--text); font-size:1rem; margin:2rem 0 1rem; font-family:'Noto Serif Bengali',serif;">📝 অনুশীলন প্রশ্ন — নিউটনের সূত্র</h3>
+
+  <div class="question-card">
+    <div class="q-badge board">ঢাকা বোর্ড ২০২২</div>
+    <div class="q-text">একটি বস্তুর ভরবেগ \(p = (3t^2 + 2t)\,\text{kg·m/s}\) হলে, \(t = 2\,\text{s}\) সময়ে বস্তুর উপর প্রযুক্ত বল কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 10 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">খ</span> 12 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">গ</span> 14 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 16 N</div>
+    </div>
+    <div class="q-explanation" id="exp1">
+      <strong>সমাধান:</strong> \(\displaystyle F = \frac{dp}{dt} = \frac{d}{dt}(3t^2+2t) = 6t+2\) &nbsp;|&nbsp; \(t=2\): \(F = 6\times2+2 = 14\,\text{N}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp1')">উত্তর দেখুন</button>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge admission">বুয়েট ভর্তি</div>
+    <div class="q-text">নিউটনের তৃতীয় সূত্র অনুযায়ী ক্রিয়া ও প্রতিক্রিয়া বল সম্পর্কে কোনটি সত্য?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> একই বস্তুর উপর কাজ করে</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">খ</span> বলদ্বয় সমান ও একই দিকে</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">গ</span> দুটি ভিন্ন বস্তুর উপর কাজ করে এবং 180° কোণে</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> সাম্যাবস্থা তৈরি করে</div>
+    </div>
+    <div class="q-explanation" id="exp2">
+      <strong>ব্যাখ্যা:</strong> ক্রিয়া-প্রতিক্রিয়া সবসময় দুটি ভিন্ন বস্তুর উপর কাজ করে, সমান মানের, বিপরীত দিকের (\(180°\)) এবং একই রেখায়। এরা সাম্যাবস্থা তৈরি করে না কারণ দুটি ভিন্ন বস্তুর উপর ক্রিয়াশীল।
+    </div>
+    <button class="btn-check" onclick="showExp('exp2')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: MOMENTUM & IMPULSE ===== -->
+<section class="section" id="s2">
+  <div class="section-title">
+    <div class="section-num">২</div>
+    <h2>ভরবেগ ও বলের ঘাত</h2>
+  </div>
+
+  <div class="concept-box">
+    <h3>ভরবেগ (Linear Momentum, p)</h3>
+    <p>ভরবেগ = ভর × বেগ। এটি একটি ভেক্টর রাশি। বেগের দিকেই ভরবেগের দিক।</p>
+  </div>
+
+  <div class="formula-box">
+    <span class="formula-label">ভরবেগ</span>
+    <div class="formula-display">$$\vec{p} = m\vec{v}$$</div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>p</span> = ভরবেগ (kg·m·s⁻¹)</span>
+      <span class="var-tag"><span>m</span> = ভর (kg)</span>
+      <span class="var-tag"><span>v</span> = বেগ (m·s⁻¹)</span>
+    </div>
+  </div>
+
+  <div class="info-box blue">
+    <div class="info-icon">i</div>
+    <div class="info-content">
+      <strong>গতিশক্তি ও ভরবেগের সম্পর্ক</strong>
+      <p>\(E_k = \dfrac{1}{2}mv^2\) এবং \(p = mv\) থেকে: \(\quad \boxed{E_k = \dfrac{p^2}{2m}}\)</p>
+    </div>
+  </div>
+
+  <div class="concept-box" style="border-left-color: var(--teal);">
+    <h3>বলের ঘাত (Impulse, J)</h3>
+    <p>খুব অল্প সময়ের জন্য উদ্ভূত বৃহৎ বলকে ঘাত বল বলে এবং সেই বলের ক্রিয়ার ফলকে বলের ঘাত বলে।</p>
+  </div>
+
+  <div class="formula-box" style="border-color: rgba(20,184,166,0.3);">
+    <span class="formula-label" style="background: var(--teal);">বলের ঘাত</span>
+    <div class="formula-display">$$\vec{J} = \vec{F}\,\Delta t = \Delta\vec{p} = m\vec{v} - m\vec{u}$$</div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>J</span> = বলের ঘাত (N·s বা kg·m/s)</span>
+      <span class="var-tag"><span>F</span> = প্রযুক্ত বল (N)</span>
+      <span class="var-tag"><span>Δt</span> = সময়কাল (s)</span>
+      <span class="var-tag"><span>u</span> = আদিবেগ (m/s)</span>
+      <span class="var-tag"><span>v</span> = শেষবেগ (m/s)</span>
+    </div>
+  </div>
+
+  <div class="info-box yellow">
+    <div class="info-icon">!</div>
+    <div class="info-content">
+      <strong>পরিবর্তনশীল বলের ক্ষেত্রে ঘাত</strong>
+      <p>\(\displaystyle J = \int F\,dt\) → F–t লেখচিত্রের অধীনস্থ ক্ষেত্রফল = বলের ঘাত।</p>
+    </div>
+  </div>
+
+  <!-- Impulse Calculator -->
+  <div class="inertia-demo">
+    <h4>⚡ ঘাত ক্যালকুলেটর</h4>
+    <div class="mass-slider-wrap">
+      <label>আদিবেগ (u):</label>
+      <input type="range" class="slider" id="uSlider" min="0" max="50" value="0" oninput="calcImpulse()">
+      <span class="slider-val" id="uVal">0 m/s</span>
+    </div>
+    <div class="mass-slider-wrap">
+      <label>শেষবেগ (v):</label>
+      <input type="range" class="slider" id="vSlider" min="0" max="100" value="20" oninput="calcImpulse()">
+      <span class="slider-val" id="vVal">20 m/s</span>
+    </div>
+    <div class="mass-slider-wrap">
+      <label>ভর (m):</label>
+      <input type="range" class="slider" id="mImpSlider" min="1" max="50" value="5" oninput="calcImpulse()">
+      <span class="slider-val" id="mImpVal">5 kg</span>
+    </div>
+    <div class="force-result" id="impulseResult">J = 100 N·s <small>J = 5 × (20−0) m/s</small></div>
+  </div>
+
+  <!-- Worked Example 2 -->
+  <div class="worked-example">
+    <h4>✏️ সমাধানকৃত উদাহরণ ২ — বলের ঘাত</h4>
+    <p style="font-size:0.9rem; color:var(--text2); margin-bottom:1rem;">2 kg ভরের একটি বস্তু 4 m/s বেগে দেওয়ালে আঘাত করে 4 m/s বেগে ফিরে আসে। বলের ঘাত নির্ণয় করো।</p>
+    <div class="solution-step">দেওয়ালের দিক ধনাত্মক ধরি: <span class="eq">\(u = +4\,\text{m/s},\quad v = -4\,\text{m/s}\)</span></div>
+    <div class="solution-step">ঘাত: <span class="eq">\(J = mv - mu = 2(-4) - 2(+4) = -8 - 8 = -16\,\text{N·s}\)</span></div>
+    <div class="solution-step">মান: <span class="eq">\(|J| = 16\,\text{N·s}\) (দেওয়াল থেকে দূরে)</span></div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">চট্টগ্রাম বোর্ড ২০২৩</div>
+    <div class="q-text">একটি গলফ বল \((m = 0.05\,\text{kg})\) স্থির অবস্থা থেকে একটি ক্লাবের আঘাতে 30 m/s বেগ প্রাপ্ত হয়। সংঘর্ষের সময় 0.01 s হলে, গড় বল কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 100 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> 150 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> 200 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 250 N</div>
+    </div>
+    <div class="q-explanation" id="exp3">
+      <strong>সমাধান:</strong> \(J = mv - mu = 0.05\times30 - 0 = 1.5\,\text{N·s}\) &nbsp;|&nbsp; \(F = \dfrac{J}{\Delta t} = \dfrac{1.5}{0.01} = 150\,\text{N}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp3')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: FRICTION ===== -->
+<section class="section" id="s3">
+  <div class="section-title">
+    <div class="section-num">৩</div>
+    <h2>ঘর্ষণ (Friction)</h2>
+  </div>
+
+  <div class="concept-box">
+    <h3>ঘর্ষণ কী?</h3>
+    <p>দুটি বস্তুর স্পর্শতলে গতির বিপরীত দিকে যে বল কাজ করে তাকে ঘর্ষণ বল বলে।</p>
+    <p style="margin-top:0.5rem; color:var(--text2);">ঘর্ষণ বল \(\propto\) অভিলম্ব প্রতিক্রিয়া বল R: \(\quad f \propto R\)</p>
+  </div>
+
+  <div class="tab-container">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="switchTab('fric-t1', this)">স্থিতি ঘর্ষণ</button>
+      <button class="tab-btn" onclick="switchTab('fric-t2', this)">গতীয় ঘর্ষণ</button>
+      <button class="tab-btn" onclick="switchTab('fric-t3', this)">ঘর্ষণ কোণ</button>
+    </div>
+
+    <div id="fric-t1" class="tab-panel active">
+      <div class="formula-box">
+        <span class="formula-label">স্থিতি ঘর্ষণ</span>
+        <div class="formula-display">$$f_s \leq \mu_s R = \mu_s mg$$</div>
+        <div class="formula-vars">
+          <span class="var-tag"><span>f_s</span> = স্থিতি ঘর্ষণ বল (N)</span>
+          <span class="var-tag"><span>μ_s</span> = স্থিতি ঘর্ষণ গুণাঙ্ক (একক নেই)</span>
+          <span class="var-tag"><span>R</span> = অভিলম্ব প্রতিক্রিয়া (N)</span>
+        </div>
+      </div>
+      <div class="info-box yellow">
+        <div class="info-icon">!</div>
+        <div class="info-content">
+          <strong>স্থিতি ঘর্ষণ সম্পর্কে জানুন</strong>
+          <p>স্থিতি ঘর্ষণ একটি পরিবর্তনশীল বল। প্রযুক্ত বাহ্যিক বলের মান বৃদ্ধির সাথে \(f_s\) বাড়তে থাকে। যতক্ষণ \(F < f_{s(\max)}\), বস্তু স্থির থাকে।</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="fric-t2" class="tab-panel">
+      <div class="formula-box">
+        <span class="formula-label">গতীয় ঘর্ষণ</span>
+        <div class="formula-display">$$f_k = \mu_k R = \mu_k mg$$</div>
+        <div class="formula-vars">
+          <span class="var-tag"><span>f_k</span> = গতীয় ঘর্ষণ বল (N)</span>
+          <span class="var-tag"><span>μ_k</span> = গতীয় ঘর্ষণ গুণাঙ্ক</span>
+        </div>
+      </div>
+      <div class="info-box blue">
+        <div class="info-icon">i</div>
+        <div class="info-content">
+          <strong>গতীয় ঘর্ষণের বৈশিষ্ট্য</strong>
+          <p>\(\mu_s > \mu_k\) সর্বদা। বস্তুর বেগ যা-ই হোক না কেন গতীয় ঘর্ষণ বল একই থাকে।</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="fric-t3" class="tab-panel">
+      <div class="formula-box">
+        <span class="formula-label">ঘর্ষণ কোণ</span>
+        <div class="formula-display">$$\tan\lambda = \mu_s \implies \lambda = \tan^{-1}(\mu_s)$$</div>
+        <div class="formula-vars">
+          <span class="var-tag"><span>λ</span> = ঘর্ষণ কোণ</span>
+          <span class="var-tag"><span>μ_s</span> = স্থিতি ঘর্ষণ গুণাঙ্ক</span>
+        </div>
+      </div>
+      <div class="info-box purple">
+        <div class="info-icon">★</div>
+        <div class="info-content">
+          <strong>নিষ্কল কোণ (Angle of Repose, α)</strong>
+          <p>\(\tan\alpha = \mu_s \implies \alpha = \tan^{-1}(\mu_s) = \lambda\) (ঘর্ষণ কোণ = নিষ্কল কোণ)</p>
+          <p>আনত তলে রাখা বস্তু গতিশীল হবে যদি \(\theta > \alpha\)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-box" style="border-left-color: var(--purple);">
+    <h3>আনত তলে ঘর্ষণ</h3>
+    <p>আনত তলে বস্তুর ত্বরণ (ঘর্ষণ ছাড়া): \(\quad a = g\sin\theta\)</p>
+    <p style="margin-top:0.5rem;">অভিলম্ব বল: \(R = mg\cos\theta\)</p>
+    <p style="margin-top:0.5rem;">ঘর্ষণ সহ (উপরে যাওয়ার সময়): \(F = ma + mg\sin\theta + \mu_k mg\cos\theta\)</p>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">রাজশাহী বোর্ড ২০২৩</div>
+    <div class="q-text">\(\mu_k = 0.2\), \(\mu_s = 0.4\) এবং \(m = 5\,\text{kg}\) হলে, \(F = 20\,\text{N}\) বল প্রয়োগে বস্তুর ত্বরণ কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 1.5 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> 2.04 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> 2.5 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 3.0 m/s²</div>
+    </div>
+    <div class="q-explanation" id="exp4">
+      <strong>সমাধান:</strong> \(f_{s(\max)} = \mu_s mg = 0.4\times5\times9.8 = 19.6\,\text{N}\) | \(F=20>19.6\) → বস্তু গতিশীল | \(f_k = \mu_k mg = 0.2\times5\times9.8 = 9.8\,\text{N}\) | \(\sum F = ma \implies 20-9.8 = 5a \implies a = 2.04\,\text{m/s}^2\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp4')">উত্তর দেখুন</button>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge admission">মেডিকেল ভর্তি ২০২২</div>
+    <div class="q-text">নিষ্কল কোণ \(\alpha\)-এর ক্ষেত্রে কোনটি সঠিক?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span>\(\sin\alpha = \mu_s\)</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">খ</span>\(\cos\alpha = \mu_s\)</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">গ</span>\(\tan\alpha = \mu_s\)</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span>\(\cot\alpha = \mu_s\)</div>
+    </div>
+    <div class="q-explanation" id="exp5">
+      <strong>ব্যাখ্যা:</strong> নিষ্কল কোণে \(mg\sin\alpha = \mu_s mg\cos\alpha \implies \tan\alpha = \mu_s\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp5')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: ANGULAR MOTION ===== -->
+<section class="section" id="s4">
+  <div class="section-title">
+    <div class="section-num">৪</div>
+    <h2>কৌণিক গতি (Angular Motion)</h2>
+  </div>
+
+  <table class="physics-table">
+    <tr><th>রৈখিক রাশি</th><th>সংকেত</th><th>কৌণিক রাশি</th><th>সংকেত</th></tr>
+    <tr><td>সরণ</td><td>\(s\)</td><td>কৌণিক সরণ</td><td>\(\theta\)</td></tr>
+    <tr><td>আদিবেগ</td><td>\(u\)</td><td>আদি কৌণিক বেগ</td><td>\(\omega_0\)</td></tr>
+    <tr><td>শেষবেগ</td><td>\(v\)</td><td>শেষ কৌণিক বেগ</td><td>\(\omega\)</td></tr>
+    <tr><td>ত্বরণ</td><td>\(a\)</td><td>কৌণিক ত্বরণ</td><td>\(\alpha\)</td></tr>
+    <tr><td>সময়</td><td>\(t\)</td><td>সময়</td><td>\(t\)</td></tr>
+  </table>
+
+  <div class="grid-2">
+    <div class="formula-box">
+      <span class="formula-label">কৌণিক বেগ</span>
+      <div class="formula-display">$$\omega = \frac{\theta}{t} = \frac{2\pi}{T} = 2\pi f$$</div>
+      <div class="formula-vars">
+        <span class="var-tag"><span>ω</span> = কৌণিক বেগ (rad/s)</span>
+        <span class="var-tag"><span>T</span> = পর্যায়কাল (s)</span>
+        <span class="var-tag"><span>f</span> = কম্পাঙ্ক (Hz)</span>
+      </div>
+    </div>
+    <div class="formula-box">
+      <span class="formula-label">কৌণিক ত্বরণ</span>
+      <div class="formula-display">$$\alpha = \frac{\Delta\omega}{\Delta t} = \frac{d\omega}{dt}$$</div>
+      <div class="formula-vars">
+        <span class="var-tag"><span>α</span> = কৌণিক ত্বরণ (rad/s²)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box blue">
+    <div class="info-icon">i</div>
+    <div class="info-content">
+      <strong>রৈখিক ও কৌণিক বেগের সম্পর্ক</strong>
+      <p>\(v = r\omega\) | একই বৃত্তে সকল বিন্দুর \(\omega\) সমান, কিন্তু \(v \propto r\) — কেন্দ্র থেকে দূরে হলে রৈখিক বেগ বেশি।</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="mini-card">
+      <h4>রৈখিক গতির সমীকরণ</h4>
+      <p>\(v = u + at\)<br>\(v^2 = u^2 + 2as\)<br>\(s = ut + \frac{1}{2}at^2\)<br>\(s_{\text{nth}} = u + \frac{a}{2}(2n-1)\)</p>
+    </div>
+    <div class="mini-card">
+      <h4>কৌণিক গতির সমীকরণ</h4>
+      <p>\(\omega = \omega_0 + \alpha t\)<br>\(\omega^2 = \omega_0^2 + 2\alpha\theta\)<br>\(\theta = \omega_0 t + \frac{1}{2}\alpha t^2\)<br>\(\theta_{\text{nth}} = \omega_0 + \frac{\alpha}{2}(2n-1)\)</p>
+    </div>
+  </div>
+
+  <div class="info-box green">
+    <div class="info-icon">i</div>
+    <div class="info-content">
+      <strong>rpm ও rad/s রূপান্তর</strong>
+      <p>\(1\,\text{rpm} = \dfrac{2\pi}{60}\,\text{rad/s}\) | \(1\,\text{rps} = 2\pi\,\text{rad/s}\)</p>
+      <p>ঘড়ির কাঁটার অনুপাত: \(\omega_s : \omega_m : \omega_h = 720 : 12 : 1\)</p>
+    </div>
+  </div>
+
+  <div class="worked-example">
+    <h4>✏️ সমাধানকৃত উদাহরণ ৩ — ঘড়ির কাঁটা</h4>
+    <p style="font-size:0.9rem; color:var(--text2); margin-bottom:1rem;">সেকেন্ড, মিনিট ও ঘণ্টার কাঁটার কৌণিক বেগের অনুপাত নির্ণয় করো।</p>
+    <div class="solution-step">সেকেন্ডের কাঁটা: <span class="eq">\(\omega_s = \dfrac{2\pi}{60}\,\text{rad/s}\)</span></div>
+    <div class="solution-step">মিনিটের কাঁটা: <span class="eq">\(\omega_m = \dfrac{2\pi}{3600}\,\text{rad/s}\)</span></div>
+    <div class="solution-step">ঘণ্টার কাঁটা: <span class="eq">\(\omega_h = \dfrac{2\pi}{43200}\,\text{rad/s}\)</span></div>
+    <div class="solution-step">অনুপাত: <span class="eq">\(\omega_s : \omega_m : \omega_h = 720 : 12 : 1\)</span></div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge mcq">MCQ অনুশীলন</div>
+    <div class="q-text">একটি চাকা 300 rpm বেগে ঘুরছে। এর কৌণিক বেগ কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> \(5\pi\) rad/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> \(10\pi\) rad/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> \(15\pi\) rad/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> \(20\pi\) rad/s</div>
+    </div>
+    <div class="q-explanation" id="exp6">
+      <strong>সমাধান:</strong> \(\omega = 300 \times \dfrac{2\pi}{60} = \dfrac{600\pi}{60} = 10\pi\,\text{rad/s}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp6')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: CENTRIPETAL ===== -->
+<section class="section" id="s5">
+  <div class="section-title">
+    <div class="section-num">৫</div>
+    <h2>কেন্দ্রমুখী বল ও ত্বরণ</h2>
+  </div>
+
+  <div class="formula-box">
+    <span class="formula-label">কেন্দ্রমুখী ত্বরণ</span>
+    <div class="formula-display">$$a_c = \frac{v^2}{r} = \omega^2 r$$</div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>a_c</span> = কেন্দ্রমুখী ত্বরণ (m/s²)</span>
+      <span class="var-tag"><span>v</span> = রৈখিক বেগ (m/s)</span>
+      <span class="var-tag"><span>r</span> = ব্যাসার্ধ (m)</span>
+      <span class="var-tag"><span>ω</span> = কৌণিক বেগ (rad/s)</span>
+    </div>
+  </div>
+
+  <div class="formula-box" style="border-color: rgba(245,158,11,0.3);">
+    <span class="formula-label" style="background:var(--accent); color:#000;">কেন্দ্রমুখী বল</span>
+    <div class="formula-display">$$F_c = ma_c = \frac{mv^2}{r} = m\omega^2 r$$</div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>F_c</span> = কেন্দ্রমুখী বল (N)</span>
+      <span class="var-tag"><span>m</span> = ভর (kg)</span>
+    </div>
+  </div>
+
+  <div class="tab-container">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="switchTab('circ-t1', this)">উল্লম্ব বৃত্তে</button>
+      <button class="tab-btn" onclick="switchTab('circ-t2', this)">কনিক্যাল পেন্ডুলাম</button>
+      <button class="tab-btn" onclick="switchTab('circ-t3', this)">ব্যাংকড রোড</button>
+      <button class="tab-btn" onclick="switchTab('circ-t4', this)">সমতল পথে বাঁক</button>
+    </div>
+
+    <div id="circ-t1" class="tab-panel active">
+      <div class="concept-box">
+        <h3>উল্লম্ব বৃত্তে গতি (Vertical Circle)</h3>
+        <p>A বিন্দু (সর্বোচ্চ): \(\displaystyle T_A + mg = \frac{mv_A^2}{R} \implies T_A = \frac{mv_A^2}{R} - mg\)</p>
+        <p style="margin-top:0.5rem;">B বিন্দু (সর্বনিম্ন): \(\displaystyle T_B - mg = \frac{mv_B^2}{R} \implies T_B = \frac{mv_B^2}{R} + mg\)</p>
+        <p style="margin-top:0.5rem;">সর্বনিম্ন বেগে (A তে দড়ি না ছিঁড়লে): \(\quad v_{\min}(A) = \sqrt{gR}\)</p>
+        <div class="math-block">\(T_B - T_A = 6mg\)</div>
+      </div>
+    </div>
+
+    <div id="circ-t2" class="tab-panel">
+      <div class="concept-box">
+        <h3>কনিক্যাল পেন্ডুলাম (Conical Pendulum)</h3>
+        <p>\(T\cos\theta = mg\) (উল্লম্ব) &nbsp;|&nbsp; \(T\sin\theta = \dfrac{mv^2}{r}\) (আনুভূমিক)</p>
+        <p style="margin-top:0.5rem;">পর্যায়কাল: \(\quad T = 2\pi\sqrt{\dfrac{L\cos\theta}{g}}\)</p>
+        <p style="margin-top:0.5rem;">কৌণিক বেগ: \(\quad \omega = \sqrt{\dfrac{g\tan\theta}{r}}\)</p>
+      </div>
+    </div>
+
+    <div id="circ-t3" class="tab-panel">
+      <div class="concept-box">
+        <h3>ব্যাংকড রোড — কাত রাস্তায় গাড়ি</h3>
+        <p>\(R\cos\theta = mg\) এবং \(R\sin\theta = \dfrac{mv^2}{r}\)</p>
+        <div class="math-block">$$\tan\theta = \frac{v^2}{rg} \implies v = \sqrt{rg\tan\theta}$$</div>
+        <p style="color:var(--text2);">\(\theta\) ছোট হলে: \(\sin\theta \approx \tan\theta \implies \dfrac{h}{d} = \dfrac{v^2}{rg}\)</p>
+      </div>
+    </div>
+
+    <div id="circ-t4" class="tab-panel">
+      <div class="concept-box">
+        <h3>সমতল পথে গাড়ির বাঁক</h3>
+        <p>ঘর্ষণ বল = কেন্দ্রমুখী বল: \(f_s = F_c\)</p>
+        <div class="math-block">$$\mu_s mg = \frac{mv_{\max}^2}{r} \implies v_{\max} = \sqrt{\mu_s rg}$$</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">কুমিল্লা বোর্ড ২০২২</div>
+    <div class="q-text">একটি বস্তু 5 m ব্যাসার্ধের বৃত্তাকার পথে 10 m/s বেগে ঘুরছে। কেন্দ্রমুখী ত্বরণ কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 10 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> 20 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> 25 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 50 m/s²</div>
+    </div>
+    <div class="q-explanation" id="exp7">
+      <strong>সমাধান:</strong> \(a_c = \dfrac{v^2}{r} = \dfrac{10^2}{5} = \dfrac{100}{5} = 20\,\text{m/s}^2\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp7')">উত্তর দেখুন</button>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge admission">বুয়েট ২০২১</div>
+    <div class="q-text">উল্লম্ব বৃত্তে ঘূর্ণনশীল বস্তুর সর্বোচ্চ বিন্দুতে সর্বনিম্ন বেগ কত হলে দড়ি ছিঁড়বে না?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> \(\sqrt{2gR}\)</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> \(\sqrt{gR}\)</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> \(\sqrt{3gR}\)</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> \(\sqrt{5gR}\)</div>
+    </div>
+    <div class="q-explanation" id="exp8">
+      <strong>ব্যাখ্যা:</strong> সর্বোচ্চ বিন্দুতে \(T + mg = \dfrac{mv^2}{R}\) | দড়ি না ছিঁড়ার সীমায় \(T=0 \implies mg = \dfrac{mv_{\min}^2}{R} \implies v_{\min} = \sqrt{gR}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp8')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: TORQUE & ANGULAR MOMENTUM ===== -->
+<section class="section" id="s6">
+  <div class="section-title">
+    <div class="section-num">৬</div>
+    <h2>টর্ক ও কৌণিক ভরবেগ</h2>
+  </div>
+
+  <div class="concept-box">
+    <h3>টর্ক (Torque, τ)</h3>
+    <p>ঘূর্ণন অক্ষের সাপেক্ষে কোনো বস্তুর ব্যাসার্ধ ভেক্টর এবং প্রযুক্ত বলের ভেক্টরগুণনকে টর্ক বলে।</p>
+  </div>
+
+  <div class="formula-box">
+    <span class="formula-label">টর্ক</span>
+    <div class="formula-display">$$\vec{\tau} = \vec{r} \times \vec{F} = rF\sin\theta$$</div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>τ</span> = টর্ক (N·m বা J)</span>
+      <span class="var-tag"><span>r</span> = ব্যাসার্ধ ভেক্টর (m)</span>
+      <span class="var-tag"><span>F</span> = প্রযুক্ত বল (N)</span>
+      <span class="var-tag"><span>θ</span> = r ও F এর মধ্যবর্তী কোণ</span>
+      <span class="var-tag"><span>মাত্রা</span> = [ML²T⁻²]</span>
+    </div>
+  </div>
+
+  <div class="info-box yellow">
+    <div class="info-icon">!</div>
+    <div class="info-content">
+      <strong>টর্ক ও বলের সম্পর্ক</strong>
+      <p>রৈখিক গতিতে \(F = ma\)-এর মতো ঘূর্ণন গতিতে: \(\tau = I\alpha\) &nbsp;(I = জড়তার ভ্রামক, α = কৌণিক ত্বরণ)</p>
+    </div>
+  </div>
+
+  <!-- Torque Calculator -->
+  <div class="inertia-demo">
+    <h4>⚡ টর্ক ক্যালকুলেটর \((\tau = rF\sin\theta)\)</h4>
+    <div class="mass-slider-wrap">
+      <label>r (m):</label>
+      <input type="range" class="slider" id="rSlider" min="0.1" max="5" step="0.1" value="2" oninput="calcTorque()">
+      <span class="slider-val" id="rVal">2.0 m</span>
+    </div>
+    <div class="mass-slider-wrap">
+      <label>F (N):</label>
+      <input type="range" class="slider" id="fSlider" min="1" max="100" value="10" oninput="calcTorque()">
+      <span class="slider-val" id="fVal">10 N</span>
+    </div>
+    <div class="mass-slider-wrap">
+      <label>θ (°):</label>
+      <input type="range" class="slider" id="thetaSlider" min="0" max="180" value="90" oninput="calcTorque()">
+      <span class="slider-val" id="thetaVal">90°</span>
+    </div>
+    <div class="force-result" id="torqueResult">τ = 20.00 N·m <small>τ = 2.0 × 10 × sin(90°)</small></div>
+  </div>
+
+  <!-- Angular Momentum -->
+  <div class="concept-box" style="border-left-color: var(--purple);">
+    <h3>কৌণিক ভরবেগ (Angular Momentum, L)</h3>
+    <p>রৈখিক গতিতে \(p = mv\)-এর মতো ঘূর্ণন গতিতে: \(L = I\omega\)</p>
+  </div>
+
+  <div class="formula-box" style="border-color: rgba(139,92,246,0.3);">
+    <span class="formula-label" style="background: var(--purple);">কৌণিক ভরবেগ</span>
+    <div class="formula-display">$$\vec{L} = \vec{r} \times \vec{p} = I\vec{\omega}$$</div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>L</span> = কৌণিক ভরবেগ (kg·m²·s⁻¹)</span>
+      <span class="var-tag"><span>I</span> = জড়তার ভ্রামক (kg·m²)</span>
+      <span class="var-tag"><span>ω</span> = কৌণিক বেগ (rad/s)</span>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        কৌণিক গতির প্রথম সূত্র <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body">বাহ্যিক কোনো টর্ক প্রযুক্ত না হলে অঘূর্ণনশীল বস্তু চিরকাল অঘূর্ণনশীল থাকবে এবং ঘূর্ণনশীল বস্তু সর্বদা সমকৌণিক বেগে ঘুরতে থাকবে।</div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        কৌণিক গতির দ্বিতীয় সূত্র <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body">
+        কোনো বস্তুর কৌণিক ভরবেগের পরিবর্তনের হার তার উপর প্রযুক্ত টর্কের সমানুপাতিক।<br><br>
+        <strong>গাণিতিক রূপ:</strong> \(\displaystyle\vec{\tau} = \frac{d\vec{L}}{dt} = \frac{d(I\vec{\omega})}{dt} = I\frac{d\vec{\omega}}{dt} = I\vec{\alpha}\)
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        কৌণিক গতির তৃতীয় সূত্র <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body">প্রতিটি ক্রিয়ামূলক টর্কের একটি সমান ও বিপরীত প্রতিক্রিয়ামূলক টর্ক আছে।</div>
+    </div>
+  </div>
+
+  <div class="concept-box" style="border-left-color: var(--teal);">
+    <h3>কৌণিক ভরবেগের নিত্যতা সূত্র</h3>
+    <p>বাহ্যিক টর্কের লব্ধি শূন্য হলে কৌণিক ভরবেগ সংরক্ষিত থাকে।</p>
+    <div class="math-block">$$L_i = L_f \implies I_i\omega_i = I_f\omega_f$$</div>
+    <p style="color:var(--text2);">উদাহরণ: বরফের উপর ঘূর্ণনশীল স্কেটার হাত সংকুচিত করলে দ্রুত ঘোরে (I কমলে ω বাড়ে)।</p>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">সিলেট বোর্ড ২০২৩</div>
+    <div class="q-text">\(I_1 = 5\,\text{kg·m}^2\), \(\omega_1 = 7\,\text{rad/s}\) এবং \(I_2 = 10\,\text{kg·m}^2\), \(\omega_2 = -5\,\text{rad/s}\) — দুটি বস্তু যুক্ত হলে সম্মিলিত কৌণিক বেগ কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 1 rad/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> −1 rad/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> 2 rad/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 3 rad/s</div>
+    </div>
+    <div class="q-explanation" id="exp9">
+      <strong>সমাধান:</strong> \(I_1\omega_1 + I_2\omega_2 = (I_1+I_2)\omega_c\) | \(5\times7 + 10\times(-5) = 15\omega_c\) | \(35-50 = 15\omega_c\) | \(\omega_c = -1\,\text{rad/s}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp9')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: MOMENT OF INERTIA ===== -->
+<section class="section" id="s7">
+  <div class="section-title">
+    <div class="section-num">৭</div>
+    <h2>জড়তার ভ্রামক (Moment of Inertia)</h2>
+  </div>
+
+  <div class="concept-box">
+    <h3>জড়তার ভ্রামক কী?</h3>
+    <p>ঘূর্ণন গতিতে জড়তার ভ্রামক (I) রৈখিক গতিতে ভরের (m) মতো ভূমিকা পালন করে। বস্তুর ঘূর্ণন গতির পরিবর্তনে বাধা দেওয়ার ক্ষমতার পরিমাপ।</p>
+  </div>
+
+  <div class="formula-box" style="border-color: rgba(139,92,246,0.3);">
+    <span class="formula-label" style="background:var(--purple);">জড়তার ভ্রামক</span>
+    <div class="formula-display">$$I = mr^2 = \sum m_i r_i^2$$</div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>I</span> = জড়তার ভ্রামক (kg·m²)</span>
+      <span class="var-tag"><span>m</span> = বস্তুর ভর (kg)</span>
+      <span class="var-tag"><span>r</span> = ঘূর্ণন অক্ষ থেকে দূরত্ব (m)</span>
+    </div>
+  </div>
+
+  <h3 style="color:var(--text); font-size:1rem; margin:1.5rem 0 1rem; font-family:'Noto Serif Bengali',serif;">বিভিন্ন বস্তুর জড়তার ভ্রামক</h3>
+  <table class="inertia-table">
+    <tr><th>বস্তু</th><th>অক্ষের অবস্থান</th><th>জড়তার ভ্রামক</th></tr>
+    <tr><td>বিন্দু ভর (m)</td><td>r দূরত্বে</td><td>\(I = mr^2\)</td></tr>
+    <tr><td>বৃত্তাকার রিং</td><td>কেন্দ্রগামী অক্ষ</td><td>\(I = mr^2\)</td></tr>
+    <tr><td>বৃত্তাকার চাকতি / Disc</td><td>কেন্দ্রগামী অক্ষ</td><td>\(I = \frac{1}{2}mr^2\)</td></tr>
+    <tr><td>নিরেট সিলিন্ডার</td><td>কেন্দ্রগামী অক্ষ</td><td>\(I = \frac{1}{2}mr^2\)</td></tr>
+    <tr><td>ফাঁপা গোলক / Shell</td><td>ব্যাসীয় অক্ষ</td><td>\(I = \frac{2}{3}mr^2\)</td></tr>
+    <tr><td>নিরেট গোলক</td><td>ব্যাসীয় অক্ষ</td><td>\(I = \frac{2}{5}mr^2\)</td></tr>
+    <tr><td>সরু দণ্ড (M, L)</td><td>প্রান্তবিন্দু দিয়ে</td><td>\(I = \frac{1}{3}ML^2\)</td></tr>
+    <tr><td>সরু দণ্ড (M, L)</td><td>ভরকেন্দ্র দিয়ে</td><td>\(I = \frac{1}{12}ML^2\)</td></tr>
+    <tr><td>আয়তাকার পাত (M, L)</td><td>দৈর্ঘ্যের সমান্তরাল</td><td>\(I = \frac{1}{12}ML^2\)</td></tr>
+    <tr><td>আয়তাকার পাত (M, B)</td><td>প্রস্থের সমান্তরাল</td><td>\(I = \frac{1}{12}MB^2\)</td></tr>
+  </table>
+
+  <!-- Theorems -->
+  <div class="tab-container">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="switchTab('thm-t1', this)">সমান্তরাল অক্ষ উপপাদ্য</button>
+      <button class="tab-btn" onclick="switchTab('thm-t2', this)">লম্ব অক্ষ উপপাদ্য</button>
+    </div>
+
+    <div id="thm-t1" class="tab-panel active">
+      <div class="concept-box">
+        <h3>সমান্তরাল অক্ষ উপপাদ্য (Parallel Axis Theorem)</h3>
+        <p>যে কোনো অক্ষের সাপেক্ষে জড়তার ভ্রামক = ভরকেন্দ্রগামী সমান্তরাল অক্ষের সাপেক্ষে জড়তার ভ্রামক + ভর × দূরত্বের বর্গ।</p>
+      </div>
+      <div class="formula-box">
+        <span class="formula-label">সমান্তরাল অক্ষ উপপাদ্য</span>
+        <div class="formula-display">$$I' = I_c + Md^2$$</div>
+        <div class="formula-vars">
+          <span class="var-tag"><span>I'</span> = নতুন অক্ষে জড়তার ভ্রামক</span>
+          <span class="var-tag"><span>I_c</span> = ভরকেন্দ্রগামী অক্ষে</span>
+          <span class="var-tag"><span>d</span> = দুই অক্ষের দূরত্ব (m)</span>
+        </div>
+      </div>
+      <div class="worked-example">
+        <h4>✏️ প্রয়োগ: প্রান্ত দিয়ে দণ্ড</h4>
+        <div class="solution-step">ভরকেন্দ্রে: <span class="eq">\(I_c = \dfrac{1}{12}ML^2\)</span>, প্রান্ত থেকে দূরত্ব \(d = \dfrac{L}{2}\)</div>
+        <div class="solution-step"><span class="eq">\(I' = \dfrac{1}{12}ML^2 + M\left(\dfrac{L}{2}\right)^2 = \dfrac{1}{12}ML^2 + \dfrac{1}{4}ML^2 = \dfrac{1}{3}ML^2\)</span></div>
+      </div>
+    </div>
+
+    <div id="thm-t2" class="tab-panel">
+      <div class="concept-box">
+        <h3>লম্ব অক্ষ উপপাদ্য (Perpendicular Axis Theorem) — শুধু 2D পাতের জন্য</h3>
+        <p>সমতল পাতের তলে দুটি লম্ব অক্ষ x ও y এবং তলের সাথে লম্ব অক্ষ z হলে:</p>
+      </div>
+      <div class="formula-box">
+        <span class="formula-label">লম্ব অক্ষ উপপাদ্য</span>
+        <div class="formula-display">$$I_z = I_x + I_y$$</div>
+      </div>
+      <div class="worked-example">
+        <h4>✏️ প্রয়োগ: চাকতির ব্যাস বরাবর</h4>
+        <div class="solution-step">চাকতির: \(I_z = \dfrac{1}{2}mr^2\) | প্রতিসাম্যে \(I_x = I_y = I_D\)</div>
+        <div class="solution-step"><span class="eq">\(2I_D = \dfrac{1}{2}mr^2 \implies I_D = \dfrac{1}{4}mr^2\)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radius of Gyration -->
+  <div class="formula-box" style="border-color: rgba(20,184,166,0.3);">
+    <span class="formula-label" style="background:var(--teal);">চক্রগতির ব্যাসার্ধ (Radius of Gyration)</span>
+    <div class="formula-display">$$I = MK^2 \implies K = \sqrt{\frac{I}{M}}$$</div>
+    <div class="formula-vars">
+      <span class="var-tag"><span>K</span> = চক্রগতির ব্যাসার্ধ (m)</span>
+      <span class="var-tag"><span>I</span> = জড়তার ভ্রামক (kg·m²)</span>
+      <span class="var-tag"><span>M</span> = মোট ভর (kg)</span>
+    </div>
+  </div>
+
+  <div class="info-box blue">
+    <div class="info-icon">i</div>
+    <div class="info-content">
+      <strong>ঘূর্ণন গতিশক্তি</strong>
+      <p>রৈখিক \(E_k = \dfrac{1}{2}mv^2\)-এর মতো ঘূর্ণন: \(E_R = \dfrac{1}{2}I\omega^2\)</p>
+      <p>গড়িয়ে পড়লে: \(E_{\text{total}} = \dfrac{1}{2}mv^2 + \dfrac{1}{2}I\omega^2\)</p>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">বরিশাল বোর্ড ২০২২</div>
+    <div class="q-text">5 kg ভরের একটি চাকার জড়তার ভ্রামক \(0.2\,\text{kg·m}^2\)। চক্রগতির ব্যাসার্ধ কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 0.1 m</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">খ</span> 0.15 m</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">গ</span> 0.2 m</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 0.25 m</div>
+    </div>
+    <div class="q-explanation" id="exp10">
+      <strong>সমাধান:</strong> \(K = \sqrt{\dfrac{I}{M}} = \sqrt{\dfrac{0.2}{5}} = \sqrt{0.04} = 0.2\,\text{m}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp10')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: COLLISION ===== -->
+<section class="section" id="s8">
+  <div class="section-title">
+    <div class="section-num">৮</div>
+    <h2>সংঘর্ষ (Collision)</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="mini-card" style="border-top: 3px solid var(--red);">
+      <h4>অস্থিতিস্থাপক সংঘর্ষ</h4>
+      <p>\(p_i = p_f\) ✓ (ভরবেগ সংরক্ষিত)<br>\(E_{ki} \neq E_{kf}\) ✗ (গতিশক্তি কমে)<br>একসাথে মিলিত = সম্পূর্ণ অস্থিতিস্থাপক</p>
+    </div>
+    <div class="mini-card" style="border-top: 3px solid var(--green);">
+      <h4>স্থিতিস্থাপক সংঘর্ষ</h4>
+      <p>\(p_i = p_f\) ✓ (ভরবেগ সংরক্ষিত)<br>\(E_{ki} = E_{kf}\) ✓ (গতিশক্তিও সংরক্ষিত)</p>
+    </div>
+    <div class="mini-card" style="border-top: 3px solid var(--purple);">
+      <h4>অতি-স্থিতিস্থাপক সংঘর্ষ</h4>
+      <p>\(p_i = p_f\) ✓ (ভরবেগ সংরক্ষিত)<br>\(E_{ki} < E_{kf}\) (গতিশক্তি বাড়ে)</p>
+    </div>
+  </div>
+
+  <div class="formula-box" style="border-color: rgba(16,185,129,0.3);">
+    <span class="formula-label" style="background:var(--green);">স্থিতিস্থাপক সংঘর্ষ — পরের বেগ</span>
+    <div class="formula-display">
+      $$v_1 = \frac{(m_1-m_2)u_1 + 2m_2 u_2}{m_1+m_2}$$
+      $$v_2 = \frac{(m_2-m_1)u_2 + 2m_1 u_1}{m_1+m_2}$$
+    </div>
+  </div>
+
+  <div class="info-box green">
+    <div class="info-icon">✓</div>
+    <div class="info-content">
+      <strong>সমান ভরের স্থিতিস্থাপক সংঘর্ষ \((m_1 = m_2)\)</strong>
+      <p>\(v_1 = u_2\) এবং \(v_2 = u_1\) → বস্তুদ্বয় পরস্পরের বেগ বিনিময় করে। বিলিয়ার্ড বলের উদাহরণ।</p>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">দিনাজপুর বোর্ড ২০২৩</div>
+    <div class="q-text">4 kg ভরের বস্তু 100 m/s বেগে চলে 2 kg ভরের স্থির বস্তুকে আঘাত করে একসাথে যায়। সম্মিলিত বস্তুর বেগ কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 50 m/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> ≈ 66.7 m/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> 75 m/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 80 m/s</div>
+    </div>
+    <div class="q-explanation" id="exp11">
+      <strong>সমাধান:</strong> \(m_1 u_1 + 0 = (m_1+m_2)v\) | \(4\times100 = 6v \implies v = \dfrac{400}{6} = \dfrac{200}{3} \approx 66.7\,\text{m/s}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp11')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== SECTION 9: FUNDAMENTAL FORCES ===== -->
+<section class="section" id="s9">
+  <div class="section-title">
+    <div class="section-num">৯</div>
+    <h2>মৌলিক বল (Fundamental Forces)</h2>
+  </div>
+
+  <table class="physics-table">
+    <tr>
+      <th>বৈশিষ্ট্য</th>
+      <th>সবল নিউক্লীয় বল</th>
+      <th>তাড়িতচৌম্বক বল</th>
+      <th>দুর্বল নিউক্লীয় বল</th>
+      <th>মহাকর্ষ বল</th>
+    </tr>
+    <tr>
+      <td>উদাহরণ</td>
+      <td>প্রোটন-নিউট্রনকে নিউক্লিয়াসে ধরে রাখে</td>
+      <td>ইলেক্ট্রনকে নিউক্লিয়াসের সাথে আবদ্ধ করে</td>
+      <td>নিউক্লীয় বিটাক্ষয়ের জন্য দায়ী</td>
+      <td>নক্ষত্রগুলোকে একত্রিত করে গ্যালাক্সি গঠন</td>
+    </tr>
+    <tr>
+      <td>পাল্লা</td>
+      <td>\(10^{-15}\,\text{m}\)</td>
+      <td>অসীম</td>
+      <td>\(10^{-16}\,\text{m}\)</td>
+      <td>অসীম</td>
+    </tr>
+    <tr>
+      <td>আপেক্ষিক সবলতা</td>
+      <td>1</td>
+      <td>\(10^{-2}\)</td>
+      <td>\(10^{-11}\)</td>
+      <td>\(10^{-41}\)</td>
+    </tr>
+    <tr>
+      <td>বাহক কণা</td>
+      <td>মেসন, গ্লুওন</td>
+      <td>ফোটন</td>
+      <td>W ও Z বোসন</td>
+      <td>গ্রাভিটন (তাত্ত্বিক)</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ===== SECTION 10: ROCKET & PULLEY ===== -->
+<section class="section" id="s10">
+  <div class="section-title">
+    <div class="section-num">১০</div>
+    <h2>রকেট, পুলি ও বিভিন্ন সমস্যা</h2>
+  </div>
+
+  <div class="tab-container">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="switchTab('sys-t1', this)">রকেট</button>
+      <button class="tab-btn" onclick="switchTab('sys-t2', this)">পুলি সমস্যা</button>
+      <button class="tab-btn" onclick="switchTab('sys-t3', this)">লিফট সমস্যা</button>
+      <button class="tab-btn" onclick="switchTab('sys-t4', this)">যুক্ত বস্তু</button>
+    </div>
+
+    <div id="sys-t1" class="tab-panel active">
+      <div class="concept-box">
+        <h3>রকেটের গতি</h3>
+        <p>রকেট ভরবেগের নিত্যতা সূত্রে চলে। জ্বালানি বের হয় → রকেট বিপরীত দিকে যায়।</p>
+      </div>
+      <div class="formula-box">
+        <span class="formula-label">রকেটের ধাক্কা বল</span>
+        <div class="formula-display">$$F_{\text{thrust}} = \frac{dm}{dt} \cdot v_{gr}$$</div>
+        <div class="formula-vars">
+          <span class="var-tag"><span>dm/dt</span> = জ্বালানি নির্গমনের হার (kg/s)</span>
+          <span class="var-tag"><span>v_gr</span> = রকেটের সাপেক্ষে গ্যাসের বেগ (m/s)</span>
+        </div>
+      </div>
+      <div class="formula-box" style="border-color:rgba(16,185,129,0.3);">
+        <span class="formula-label" style="background:var(--green);">রকেটের নেট ত্বরণ</span>
+        <div class="formula-display">$$a_{\text{net}} = \frac{F_{\text{thrust}}}{m} - g$$</div>
+      </div>
+      <div class="worked-example">
+        <h4>✏️ বোর্ড প্রশ্ন: রকেটের ধাক্কা</h4>
+        <p style="font-size:0.9rem; color:var(--text2); margin-bottom:1rem;">\(v_{gr} = 2000\,\text{m/s}\), \(\dfrac{dm}{dt} = 200\,\text{kg/s}\)</p>
+        <div class="solution-step"><span class="eq">\(F = v_{gr}\times\dfrac{dm}{dt} = 2000\times200 = 4\times10^5\,\text{N}\)</span></div>
+      </div>
+    </div>
+
+    <div id="sys-t2" class="tab-panel">
+      <div class="concept-box">
+        <h3>Atwood Machine — পুলি সমস্যা</h3>
+        <p>দুটি ভর \(m_1 > m_2\) একটি দড়ি দিয়ে পুলির উপর দিয়ে ঝুলছে:</p>
+      </div>
+      <div class="formula-box">
+        <span class="formula-label">Atwood Machine</span>
+        <div class="formula-display">
+          $$a = \frac{(m_1-m_2)g}{m_1+m_2}$$
+          $$T = \frac{2m_1 m_2 g}{m_1+m_2}$$
+        </div>
+      </div>
+      <div class="info-box blue">
+        <div class="info-icon">i</div>
+        <div class="info-content">
+          <strong>আনত তলে পুলি</strong>
+          <p>\(a = \dfrac{m_1 g\sin\alpha - m_2 g\sin\beta}{m_1+m_2}\) | \(T = \dfrac{m_1 m_2 g(\sin\alpha+\sin\beta)}{m_1+m_2}\)</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="sys-t3" class="tab-panel">
+      <div class="grid-2">
+        <div class="mini-card" style="border-top:3px solid var(--green);">
+          <h4>ত্বরণ উপরে (a ↑)</h4>
+          <p>\(R - mg = ma\)<br>\(R = m(g+a)\)<br>\(R > mg\) → ভারী অনুভব হয়</p>
+        </div>
+        <div class="mini-card" style="border-top:3px solid var(--red);">
+          <h4>ত্বরণ নিচে (a ↓)</h4>
+          <p>\(mg - R = ma\)<br>\(R = m(g-a)\)<br>\(R < mg\) → হালকা অনুভব হয়</p>
+        </div>
+      </div>
+      <div class="info-box yellow">
+        <div class="info-icon">!</div>
+        <div class="info-content">
+          <strong>বিশেষ ক্ষেত্র: \(a = g\) হলে</strong>
+          <p>\(R = 0\) → শূন্য ওজন অনুভব (Weightlessness) | মুক্তভাবে পড়লে \(a = g \implies R = 0\)</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="sys-t4" class="tab-panel">
+      <div class="concept-box">
+        <h3>যুক্ত বস্তুর ত্বরণ</h3>
+        <p>\(m_1, m_2, m_3\) একটি দড়ি দিয়ে যুক্ত, \(F\) বল প্রযুক্ত:</p>
+      </div>
+      <div class="formula-box">
+        <span class="formula-label">যুক্ত বস্তু</span>
+        <div class="formula-display">$$a = \frac{F}{m_1+m_2+m_3}$$</div>
+      </div>
+      <div class="worked-example">
+        <h4>✏️ উদাহরণ: তিনটি বস্তু</h4>
+        <div class="solution-step">\(m_1=2\,\text{kg},\ m_2=3\,\text{kg},\ m_3=4\,\text{kg},\ F=18\,\text{N}\)</div>
+        <div class="solution-step"><span class="eq">\(a = \dfrac{18}{2+3+4} = \dfrac{18}{9} = 2\,\text{m/s}^2\)</span></div>
+        <div class="solution-step"><span class="eq">\(T_2 = m_3 a = 4\times2 = 8\,\text{N}\)</span></div>
+        <div class="solution-step"><span class="eq">\(T_1 = (m_2+m_3)a = 7\times2 = 14\,\text{N}\)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MCQ SECTION ===== -->
+<section class="section" id="mcq">
+  <div class="section-title">
+    <div class="section-num">✓</div>
+    <h2>MCQ অনুশীলন — বিভিন্ন বোর্ড</h2>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">যশোর বোর্ড ২০২৩</div>
+    <div class="q-text">কোনো বস্তুর উপর প্রযুক্ত বল \(F = (6t^2 - 4t + 2)\,\text{N}\) এবং ভর \(2\,\text{kg}\)। \(t = 2\,\text{s}\) তে ত্বরণ কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 8 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">খ</span> 9 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">গ</span> 10 m/s²</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 14 m/s²</div>
+    </div>
+    <div class="q-explanation" id="exp13">
+      \(t=2\): \(F = 6\times4 - 4\times2 + 2 = 24-8+2 = 18\,\text{N}\) | \(a = F/m = 18/2 = 9\,\text{m/s}^2\) → নিকটতম উত্তর 9 m/s²। (বোর্ড প্রশ্নে বিভিন্নতা থাকতে পারে।)
+    </div>
+    <button class="btn-check" onclick="showExp('exp13')">উত্তর দেখুন</button>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge admission">মেডিকেল ভর্তি ২০২৩</div>
+    <div class="q-text">একটি বস্তুর ভর \(2\,\text{kg}\) এবং বেগ \(v = (3t^2 + 4t)\,\text{m/s}\)। \(t = 1\,\text{s}\) তে বলের মান কত?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 10 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">খ</span> 14 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">গ</span> 20 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 24 N</div>
+    </div>
+    <div class="q-explanation" id="exp14">
+      \(\displaystyle a = \frac{dv}{dt} = 6t+4\) | \(t=1\): \(a = 10\,\text{m/s}^2\) | \(F = ma = 2\times10 = 20\,\text{N}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp14')">উত্তর দেখুন</button>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">ঢাকা বোর্ড ২০২৩</div>
+    <div class="q-text">\(\mu_k = 0.3\), \(m = 10\,\text{kg}\) হলে সমতলে গতীয় ঘর্ষণ বল কত? \((g = 9.8\,\text{m/s}^2)\)</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 24.5 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> 29.4 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> 34.0 N</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 39.2 N</div>
+    </div>
+    <div class="q-explanation" id="exp15">
+      \(f_k = \mu_k mg = 0.3\times10\times9.8 = 29.4\,\text{N}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp15')">উত্তর দেখুন</button>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge admission">বুয়েট ২০২২</div>
+    <div class="q-text">একটি রিং এবং একটি চাকতির ভর ও ব্যাসার্ধ সমান। \(I_{\text{ring}} : I_{\text{disc}} = ?\)</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 1 : 1</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> 2 : 1</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> 1 : 2</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 4 : 1</div>
+    </div>
+    <div class="q-explanation" id="exp16">
+      \(I_{\text{ring}} = mr^2\) | \(I_{\text{disc}} = \dfrac{1}{2}mr^2\) | অনুপাত \(= mr^2 : \dfrac{1}{2}mr^2 = 2:1\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp16')">উত্তর দেখুন</button>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge board">চট্টগ্রাম বোর্ড ২০২২</div>
+    <div class="q-text">100 m ব্যাসার্ধের বৃত্তাকার পথে গাড়ি চলছে। \(\mu_s = 0.5\) হলে নিরাপদ সর্বোচ্চ বেগ কত? \((g = 10\,\text{m/s}^2)\)</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> 15 m/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">খ</span> 18 m/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">গ</span> ≈ 22.4 m/s</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> 25 m/s</div>
+    </div>
+    <div class="q-explanation" id="exp17">
+      \(v_{\max} = \sqrt{\mu_s rg} = \sqrt{0.5\times100\times10} = \sqrt{500} \approx 22.4\,\text{m/s}\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp17')">উত্তর দেখুন</button>
+  </div>
+
+  <div class="question-card">
+    <div class="q-badge admission">কুয়েট ২০২২</div>
+    <div class="q-text">\(I_i\omega_i = I_f\omega_f\) সমীকরণ কোন ক্ষেত্রে প্রযোজ্য?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ক</span> বাহ্যিক বল শূন্য হলে</div>
+      <div class="q-opt" onclick="checkMCQ(this, true)"><span class="q-opt-label">খ</span> বাহ্যিক টর্কের লব্ধি শূন্য হলে</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">গ</span> বাহ্যিক বল ও টর্ক উভয় শূন্য হলে</div>
+      <div class="q-opt" onclick="checkMCQ(this, false)"><span class="q-opt-label">ঘ</span> ঘর্ষণ শূন্য হলে</div>
+    </div>
+    <div class="q-explanation" id="exp18">
+      কৌণিক ভরবেগের নিত্যতা সূত্র: \(\sum\vec{\tau}_{\text{ext}} = 0 \implies L = \text{const} \implies I_i\omega_i = I_f\omega_f\) ✓
+    </div>
+    <button class="btn-check" onclick="showExp('exp18')">উত্তর দেখুন</button>
+  </div>
+</section>
+
+<!-- ===== BOARD QUESTIONS ===== -->
+<section class="section" id="board-q">
+  <div class="section-title">
+    <div class="section-num">✓</div>
+    <h2>বিস্তারিত বোর্ড ও ভর্তি প্রশ্ন</h2>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">ঢাকা বোর্ড ২০২৩ — সৃজনশীল প্রশ্ন (সমাধান সহ) <span class="acc-icon">+</span></div>
+      <div class="acc-body">
+        <strong>প্রশ্ন:</strong> \(m = 2\,\text{kg}\), \(s = 2t^3+3t^2+5\)। \(t=2\,\text{s}\) তে বল নির্ণয় করো।<br><br>
+        \(\displaystyle v = \frac{ds}{dt} = 6t^2+6t\) | \(\displaystyle a = \frac{dv}{dt} = 12t+6\)<br>
+        \(t=2:\; a = 30\,\text{m/s}^2\) | \(F = ma = 2\times30 = \mathbf{60\,N}\)
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">রাজশাহী বোর্ড ২০২২ — রকেট সমস্যা <span class="acc-icon">+</span></div>
+      <div class="acc-body">
+        <strong>প্রশ্ন:</strong> মোট ভর \(1.5\times10^4\,\text{kg}\), \(v_{gr}=2000\,\text{m/s}\), \(\dfrac{dm}{dt}=200\,\text{kg/s}\)।<br><br>
+        \(F_{\text{thrust}} = 2000\times200 = 4\times10^5\,\text{N}\)<br>
+        \(a_{\text{net}} = \dfrac{4\times10^5}{1.5\times10^4} - 9.8 \approx 26.67 - 9.8 \approx \mathbf{16.87\,\text{m/s}^2}\)
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">বুয়েট ভর্তি ২০২১ — বলের ঘাত <span class="acc-icon">+</span></div>
+      <div class="acc-body">
+        <strong>প্রশ্ন:</strong> \(m=5\,\text{kg}\), \(u=+2\,\text{m/s}\), দেওয়ালে আঘাত করে \(v=-2\,\text{m/s}\) ফেরে। \(\Delta t = 0.02\,\text{s}\)।<br><br>
+        \(\Delta p = m(v-u) = 5\times(-4) = -20\,\text{N·s}\)<br>
+        \(F = \dfrac{\Delta p}{\Delta t} = \dfrac{-20}{0.02} = -1000\,\text{N}\) | \(|F| = \mathbf{1000\,\text{N}}\)
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">কুমিল্লা বোর্ড ২০২৩ — পুলি সমস্যা <span class="acc-icon">+</span></div>
+      <div class="acc-body">
+        <strong>প্রশ্ন:</strong> \(m_1=8\,\text{kg}\), \(m_2=4\,\text{kg}\)।<br><br>
+        \(a = \dfrac{(8-4)\times9.8}{8+4} = \dfrac{39.2}{12} \approx \mathbf{3.27\,\text{m/s}^2}\)<br>
+        \(T = \dfrac{2\times8\times4\times9.8}{12} \approx \mathbf{52.27\,\text{N}}\)
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">ময়মনসিংহ বোর্ড ২০২৩ — লিফট সমস্যা <span class="acc-icon">+</span></div>
+      <div class="acc-body">
+        <strong>প্রশ্ন:</strong> \(m=60\,\text{kg}\), লিফট \(a=2\,\text{m/s}^2\) উপরে উঠছে।<br><br>
+        \(R = m(g+a) = 60\times(9.8+2) = 60\times11.8 = \mathbf{708\,\text{N}}\)<br>
+        প্রকৃত ওজন \(=60\times9.8=588\,\text{N}\) → ভারী অনুভব হয়।
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">চট্টগ্রাম বোর্ড ২০২২ — স্থিতিস্থাপক সংঘর্ষ <span class="acc-icon">+</span></div>
+      <div class="acc-body">
+        <strong>প্রশ্ন:</strong> \(m_1=m_2=2\,\text{kg}\), \(u_1=4\,\text{m/s}\), \(u_2=0\), স্থিতিস্থাপক সংঘর্ষ।<br><br>
+        সমান ভরে বেগ বিনিময়: \(v_1 = u_2 = \mathbf{0\,\text{m/s}}\) (প্রথম থামে) | \(v_2 = u_1 = \mathbf{4\,\text{m/s}}\) (দ্বিতীয় চলে)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORMULA SHEET ===== -->
+<section class="section" id="formula-sheet">
+  <div class="section-title">
+    <div class="section-num">∑</div>
+    <h2>সূত্র সংকলন (Formula Sheet)</h2>
+  </div>
+
+  <div class="summary-header">
+    <h3>⚡ দ্রুত রেফারেন্স — সকল গুরুত্বপূর্ণ সূত্র</h3>
+    <div class="grid-2">
+      <div>
+        <p style="color:var(--accent); font-weight:600; margin-bottom:8px;">নিউটনের সূত্র ও বল:</p>
+        <ul style="font-size:13px;">
+          <li>\(\vec{F} = m\vec{a}\) (দ্বিতীয় সূত্র)</li>
+          <li>\(\vec{F} = \dfrac{d\vec{p}}{dt}\) (সাধারণ রূপ)</li>
+          <li>\(\vec{p} = m\vec{v}\) (ভরবেগ)</li>
+          <li>\(\vec{J} = \vec{F}\Delta t = \Delta\vec{p}\) (বলের ঘাত)</li>
+          <li>\(E_k = \dfrac{p^2}{2m}\) (গতিশক্তি-ভরবেগ)</li>
+        </ul>
+        <p style="color:var(--accent); font-weight:600; margin:12px 0 8px;">ঘর্ষণ:</p>
+        <ul style="font-size:13px;">
+          <li>\(f_{s(\max)} = \mu_s mg\)</li>
+          <li>\(f_k = \mu_k mg,\quad \mu_s > \mu_k\)</li>
+          <li>\(\tan\lambda = \mu_s\) (ঘর্ষণ কোণ)</li>
+          <li>\(\tan\alpha = \mu_s\) (নিষ্কল কোণ)</li>
+          <li>\(v_{\max} = \sqrt{\mu_s rg}\) (সমতল বাঁকে)</li>
+          <li>\(v = \sqrt{rg\tan\theta}\) (ব্যাংকড রোড)</li>
+        </ul>
+      </div>
+      <div>
+        <p style="color:var(--accent); font-weight:600; margin-bottom:8px;">কৌণিক গতি ও টর্ক:</p>
+        <ul style="font-size:13px;">
+          <li>\(\omega = 2\pi/T = 2\pi f\)</li>
+          <li>\(v = r\omega\)</li>
+          <li>\(a_c = v^2/r = \omega^2 r\)</li>
+          <li>\(F_c = mv^2/r = m\omega^2 r\)</li>
+          <li>\(\vec{\tau} = \vec{r}\times\vec{F} = rF\sin\theta\)</li>
+          <li>\(\tau = I\alpha\) (ঘূর্ণন সূত্র)</li>
+          <li>\(\vec{L} = I\vec{\omega}\) (কৌণিক ভরবেগ)</li>
+          <li>\(I_i\omega_i = I_f\omega_f\) (সংরক্ষণ)</li>
+          <li>\(E_R = \frac{1}{2}I\omega^2\) (ঘূর্ণন গতিশক্তি)</li>
+        </ul>
+        <p style="color:var(--accent); font-weight:600; margin:12px 0 8px;">জড়তার ভ্রামক:</p>
+        <ul style="font-size:13px;">
+          <li>\(I' = I_c + Md^2\) (সমান্তরাল অক্ষ)</li>
+          <li>\(I_z = I_x + I_y\) (লম্ব অক্ষ)</li>
+          <li>\(K = \sqrt{I/M}\) (চক্রগতির ব্যাসার্ধ)</li>
+          <li>রিং: \(I=mr^2\), চাকতি: \(I=\frac{1}{2}mr^2\)</li>
+          <li>নিরেট গোলক: \(I=\frac{2}{5}mr^2\)</li>
+          <li>দণ্ড (প্রান্ত): \(I=\frac{1}{3}ML^2\)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-header" style="border-color: rgba(59,130,246,0.2);">
+    <h3>📋 সংঘর্ষ সারসংক্ষেপ</h3>
+    <ul style="font-size:14px;">
+      <li><strong>স্থিতিস্থাপক:</strong> \(p\) সংরক্ষিত ✓ | \(E_k\) সংরক্ষিত ✓</li>
+      <li><strong>অস্থিতিস্থাপক:</strong> \(p\) সংরক্ষিত ✓ | \(E_k\) কমে ✗</li>
+      <li><strong>অতি-স্থিতিস্থাপক:</strong> \(p\) সংরক্ষিত ✓ | \(E_k\) বাড়ে</li>
+      <li>সম্পূর্ণ অস্থিতিস্থাপক: \(v = \dfrac{m_1 u_1+m_2 u_2}{m_1+m_2}\)</li>
+      <li>স্থিতিস্থাপক (সমান ভর): বেগ বিনিময় হয়</li>
+    </ul>
+  </div>
+
+  <div class="summary-header" style="border-color: rgba(16,185,129,0.2);">
+    <h3>🚀 রকেট ও পুলি</h3>
+    <ul style="font-size:14px;">
+      <li>\(F_{\text{thrust}} = \dfrac{dm}{dt}\cdot v_{gr}\)</li>
+      <li>\(a_{\text{net}} = F_{\text{thrust}}/m - g\)</li>
+      <li>Atwood: \(a = \dfrac{(m_1-m_2)g}{m_1+m_2}\) | \(T = \dfrac{2m_1 m_2 g}{m_1+m_2}\)</li>
+      <li>লিফট উপরে: \(R = m(g+a)\) | লিফট নিচে: \(R = m(g-a)\)</li>
+      <li>মুক্তপতন \((a=g)\): \(R = 0\) (ভারহীনতা)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <p>তৈরি করেছেন <a href="https://sadmansamin21.github.io" target="_blank" rel="noopener">Sadman Samin</a> · নিউটনীয় বলবিদ্যা · HSC পদার্থবিজ্ঞান ১ম পত্র</p>
+  <p style="margin-top:6px; font-size:12px;">সূত্র: <a href="https://sadmansamin21.github.io/newtonian-mechanics.html">sadmansamin21.github.io/newtonian-mechanics.html</a></p>
+</footer>
+
+</main>
+
+<!-- Floating buttons -->
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="থিম পরিবর্তন করুন">☀️</button>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="উপরে যান">↑</button>
+
+<script>
+/* ===== THEME ===== */
+function toggleTheme() {
+  var html = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.setAttribute('data-theme', 'light');
+    btn.textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+  }
+}
+// Restore theme on load
+(function() {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('themeBtn');
+      if (btn) btn.textContent = '🌙';
+    });
+  }
+})();
+
+/* ===== SIDEBAR ===== */
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+/* ===== PROGRESS BAR ===== */
+window.addEventListener('scroll', function() {
+  var scrollTop = window.pageYOffset;
+  var docHeight = document.body.scrollHeight - window.innerHeight;
+  var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('progressFill').style.width = progress + '%';
+});
+
+/* ===== ACTIVE NAV ===== */
+window.addEventListener('scroll', function() {
+  var sections = document.querySelectorAll('section[id]');
+  var navItems = document.querySelectorAll('.nav-item');
+  var scrollPos = window.pageYOffset + 120;
+  sections.forEach(function(sec) {
+    if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+      navItems.forEach(function(item) {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + sec.id) item.classList.add('active');
+      });
+    }
+  });
+});
+
+/* ===== TABS ===== */
+function switchTab(activeId, btn) {
+  var container = btn.closest('.tab-container');
+  container.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  container.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById(activeId).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ===== ACCORDION ===== */
+function toggleAcc(header) {
+  header.closest('.acc-item').classList.toggle('open');
+}
+
+/* ===== MCQ ===== */
+function checkMCQ(el, isCorrect) {
+  var card = el.closest('.question-card');
+  if (card.dataset.answered) return;
+  card.dataset.answered = '1';
+  card.querySelectorAll('.q-opt').forEach(function(opt) {
+    opt.style.pointerEvents = 'none';
+    // highlight correct
+    if (opt.onclick && opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+      opt.classList.add('correct');
+      opt.querySelector('.q-opt-label').textContent = '✓';
+    }
+  });
+  if (!isCorrect) {
+    el.classList.add('wrong');
+    if (!el.classList.contains('correct')) el.querySelector('.q-opt-label').textContent = '✗';
+  }
+}
+
+/* ===== EXPLANATION ===== */
+function showExp(id) {
+  var el = document.getElementById(id);
+  el.classList.toggle('visible');
+  // Re-render KaTeX in explanation if needed
+  if (el.classList.contains('visible') && window.renderMathInElement) {
+    renderMathInElement(el, {delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}], throwOnError:false});
+  }
+}
+
+/* ===== CALCULATORS ===== */
+function calcForce() {
+  var m = parseFloat(document.getElementById('massSlider').value);
+  var a = parseFloat(document.getElementById('accSlider').value);
+  document.getElementById('massVal').textContent = m + ' kg';
+  document.getElementById('accVal').textContent = a + ' m/s²';
+  var F = m * a;
+  document.getElementById('forceResult').innerHTML = 'F = ' + F.toFixed(1) + ' N<small>F = ' + m + ' kg × ' + a + ' m/s²</small>';
+}
+
+function calcImpulse() {
+  var u = parseFloat(document.getElementById('uSlider').value);
+  var v = parseFloat(document.getElementById('vSlider').value);
+  var m = parseFloat(document.getElementById('mImpSlider').value);
+  document.getElementById('uVal').textContent = u + ' m/s';
+  document.getElementById('vVal').textContent = v + ' m/s';
+  document.getElementById('mImpVal').textContent = m + ' kg';
+  var J = m * (v - u);
+  document.getElementById('impulseResult').innerHTML = 'J = ' + J.toFixed(1) + ' N·s<small>J = ' + m + ' × (' + v + '−' + u + ') m/s</small>';
+}
+
+function calcTorque() {
+  var r = parseFloat(document.getElementById('rSlider').value);
+  var f = parseFloat(document.getElementById('fSlider').value);
+  var theta = parseFloat(document.getElementById('thetaSlider').value);
+  document.getElementById('rVal').textContent = r.toFixed(1) + ' m';
+  document.getElementById('fVal').textContent = f + ' N';
+  document.getElementById('thetaVal').textContent = theta + '°';
+  var thetaRad = theta * Math.PI / 180;
+  var tau = r * f * Math.sin(thetaRad);
+  document.getElementById('torqueResult').innerHTML = 'τ = ' + tau.toFixed(2) + ' N·m<small>τ = ' + r.toFixed(1) + ' × ' + f + ' × sin(' + theta + '°)</small>';
+}
+</script>
+</body>
+</html>

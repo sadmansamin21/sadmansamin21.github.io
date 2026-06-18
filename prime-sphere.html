@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeSphere • The Complete Archive</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&family=Comic+Neue:wght@400;700&display=swap');
+        
+        :root {
+            --bg: #f0f0f0;
+            --accent: #3498db;
+            --accent2: #e74c3c;
+            --dark: #2c3e50;
+            --yellow: #f1c40f;
+            --purple: #9b59b6;
+            --green: #2ecc71;
+            --orange: #e67e22;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e0e8ff, #f0f0f0);
+            color: #333;
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
+                url('https://picsum.photos/id/1015/1920/1080');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .top-bar {
+            background: var(--dark);
+            padding: 8px 0;
+            font-size: 0.9em;
+            border-bottom: 3px solid var(--accent2);
+            color: white;
+        }
+        
+        header {
+            background: linear-gradient(#2c3e50, #34495e);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo {
+            font-family: 'Comic Neue', cursive;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 3px 3px 0 var(--accent2);
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; transition: all 0.2s; }
+        .nav-links a:hover { color: var(--yellow); text-decoration: underline wavy; }
+        
+        .hero {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 8px solid var(--yellow);
+        }
+        
+        .hero h1 { font-size: 48px; margin-bottom: 15px; text-shadow: 4px 4px 0 #000; }
+        .hero p { font-size: 20px; max-width: 800px; margin: 0 auto; }
+
+        .main-content { display: flex; gap: 30px; }
+        .feed { flex: 2; border-left: 6px solid var(--dark); padding-left: 30px; margin-left: 20px; }
+        
+        .year-marker {
+            background: var(--yellow);
+            color: var(--dark);
+            border: 4px solid var(--dark);
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 32px;
+            display: inline-block;
+            margin: 40px 0 20px -65px;
+            box-shadow: 6px 6px 0 var(--dark);
+            position: relative;
+        }
+
+        .post {
+            background: white;
+            border: 4px solid var(--dark);
+            margin-bottom: 40px;
+            box-shadow: 8px 8px 0 #34495e;
+            transition: transform 0.2s;
+            position: relative;
+        }
+        
+        .post::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 6px;
+            background: var(--dark);
+            left: -34px;
+            top: 20px;
+        }
+
+        .post:hover { transform: translateX(5px); }
+        
+        .post-header {
+            background: var(--accent);
+            color: white;
+            padding: 12px 20px;
+            border-bottom: 4px solid #2980b9;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .post-header.youtube { background: #c4302b; border-bottom-color: #9a2622; }
+        .post-header.vine { background: #00b489; border-bottom-color: #008f6d; }
+        .post-header.reddit { background: #ff4500; border-bottom-color: #cc3700; }
+        .post-header.gaming { background: var(--purple); border-bottom-color: #8e44ad; }
+        .post-header.meme { background: var(--orange); border-bottom-color: #d35400; }
+        
+        .post-body { padding: 20px; }
+        .post h2 { margin-bottom: 12px; font-size: 24px; color: var(--dark); }
+        
+        .post-meta {
+            padding: 12px 20px;
+            background: #ecf0f1;
+            font-size: 0.9em;
+            display: flex;
+            justify-content: space-between;
+            border-top: 2px solid #bdc3c7;
+        }
+
+        .sidebar { flex: 1; margin-top: 40px; }
+        
+        .widget {
+            background: white;
+            padding: 20px;
+            border: 4px solid var(--dark);
+            box-shadow: 8px 8px 0 #34495e;
+            margin-bottom: 30px;
+        }
+        
+        .widget h3 {
+            background: var(--accent2);
+            color: white;
+            padding: 10px;
+            margin: -20px -20px 20px -20px;
+            text-align: center;
+            border-bottom: 4px solid #c0392b;
+        }
+
+        .graveyard-list { list-style: none; font-size: 14px; }
+        .graveyard-list li {
+            padding: 10px 0;
+            border-bottom: 2px dashed #bdc3c7;
+            display: flex;
+            justify-content: space-between;
+        }
+        .graveyard-list li:last-child { border-bottom: none; }
+
+        .btn {
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 12px 28px;
+            border: 4px solid var(--dark);
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 6px 6px 0 var(--dark);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--dark); }
+        
+        .online { color: #2ecc71; font-weight: bold; }
+        .offline { color: #e74c3c; font-weight: bold; }
+        .away { color: #f1c40f; font-weight: bold; }
+        .last-seen { color: #95a5a6; font-size: 11px; display: block; margin-top: 2px; }
+
+        .status-bar {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: var(--dark);
+            color: var(--yellow);
+            padding: 8px 20px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .main-content { flex-direction: column; }
+            .feed { border-left: none; padding-left: 0; margin-left: 0; }
+            .post::before { display: none; }
+            .year-marker { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container" style="display: flex; justify-content: space-between;">
+            <div>📍 Browsing: The Complete Era Archive • <span class="online">● Connection Stable</span></div>
+            <div><a href="#" style="color:var(--yellow)">Sign In</a> • <a href="#" style="color:var(--yellow)">Register</a></div>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PRIMESPHERE</div>
+                <ul class="nav-links">
+                    <li><a href="#">Frontpage</a></li>
+                    <li><a href="#">Forums</a></li>
+                    <li><a href="#">Meme Vault</a></li>
+                    <li><a href="#">Flash Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>THE INTERNET BEFORE THE FALL</h1>
+            <p>You can't go back. But you can remember. Welcome to the complete archive of the golden era, from the wild west of the late 2000s to the twilight of 2019.</p>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <div class="feed">
+            
+            <div class="year-marker" style="background: #9b59b6; color: white;">2007</div>
+            
+            <div class="post">
+                <div class="post-header gaming">🎮 XBOX LIVE GOLD</div>
+                <div class="post-body">
+                    <h2>Halo 3 Lobbies & The Golden Age of Trash Talk</h2>
+                    <p>Just finished the campaign on Legendary. The multiplayer lobbies are absolutely ruthless. Everyone has those terrible Xbox 360 headset mics that sound like a wind tunnel. "Charlie Bit My Finger" is going viral on this new video site called YouTube, and I just got Rickrolled for the 5th time today on a forum. Life is simple.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>MasterChief117</strong></span>
+                    <span>💬 302 Comments</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2009</div>
+
+            <div class="post">
+                <div class="post-header" style="background: #3b5998; border-color: #29487d;">👥 THE SOCIAL NETWORK</div>
+                <div class="post-body">
+                    <h2>Stop Sending Me FarmVille Invites!</h2>
+                    <p>Facebook is great for updating my status in the third person ("John is eating a sandwich"), but if one more person asks me to water their digital crops, I am going to lose it. On a side note, there's this weird block game called Minecraft in Alpha right now. You can just dig dirt. Kinda fun.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>FarmHater_99</strong></span>
+                    <span>👍 4,502 Likes</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2010</div>
+
+            <div class="post">
+                <div class="post-header meme">FFFFFFFUUUUUUUUUUUU</div>
+                <div class="post-body">
+                    <h2>The Rise of Rage Comics</h2>
+                    <p>Trollface. Me Gusta. Forever Alone. We have officially created a universal language. If you don't read these in the voice of Ray William Johnson or Smosh, what are you even doing? Also, 1v1 me on Rust right now, intervention only, no steady aim.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>TrollKing</strong></span>
+                    <span>⬆️ 12.8k Upvotes</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2011</div>
+
+            <div class="post">
+                <div class="post-header youtube">▶️ VIRAL MADNESS</div>
+                <div class="post-body">
+                    <h2>It's Friday, Friday, Gotta Get Down on Friday</h2>
+                    <p>Rebecca Black has united the entire internet in pure, unfiltered cringe. We're also putting Nyan Cat on a 10-hour loop while waiting in line at GameStop for the midnight release of The Elder Scrolls V: Skyrim. "I used to be an adventurer like you, then I took an arrow in the knee."</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>Dovahkiin</strong></span>
+                    <span>❤️ 8.9k Likes</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2012</div>
+            
+            <div class="post">
+                <div class="post-header youtube">▶️ THE BILLION CLUB</div>
+                <div class="post-body">
+                    <h2>Gangnam Style Breaks the View Counter</h2>
+                    <p>It finally happened. PSY's "Gangnam Style" hit 1 billion views and literally broke YouTube's 32-bit integer counter. Meanwhile, MLG 360-no-scope montage parodies featuring Doritos and Mountain Dew are reaching absolute peak dankness. "MOM GET THE CAMERA!"</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>xX_Sniper_Xx</strong></span>
+                    <span>❤️ 12.4k Likes</span>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-header gaming">📱 MOBILE REVOLUTION</div>
+                <div class="post-body">
+                    <h2>Clash of Clans Drops</h2>
+                    <p>Everyone at school is comparing base layouts under their desks. Global chat is absolute chaos, and spending 45 minutes making a GoWiPe army to secure 3 stars in a Clan War feels like a legitimate life achievement.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>TownHall9_God</strong></span>
+                    <span>💬 842 Comments</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2013</div>
+
+            <div class="post">
+                <div class="post-header meme">🐕 WOW. SUCH MEME.</div>
+                <div class="post-body">
+                    <h2>Much Doge. Very Internet.</h2>
+                    <p>Wow. Such Shiba Inu. Very text. Much comic sans. Someone just made a cryptocurrency out of this dog and it's literally worthless, what a stupid idea. Anyway, GTA V just launched and millions of people called in sick to work today.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>SuchAdmin</strong></span>
+                    <span>💰 10,000 Doge Tipped</span>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-header vine">🌿 DO IT FOR THE VINE</div>
+                <div class="post-body">
+                    <h2>Vine is Taking Over the World</h2>
+                    <p>6 seconds is all you get. From "Look at all those chickens" to "Watermelon inside a watermelon," the sheer creativity born from this limitation is insane. This app is never going to die, right?</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>KingBachFan</strong></span>
+                    <span>🔁 45k Revines</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2014</div>
+
+            <div class="post">
+                <div class="post-header reddit">👾 REDDIT LORE</div>
+                <div class="post-body">
+                    <h2>Twitch Plays Pokémon & The Ice Bucket Challenge</h2>
+                    <p>Praise the Helix Fossil! Thousands of people are simultaneously typing 'UP' and 'A' to play Pokémon Red and it's glorious chaos. Also, literally every celebrity on earth is pouring freezing water on their heads for ALS. The internet feels united.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>HelixAdmirer</strong></span>
+                    <span>⬆️ 28.9k Upvotes</span>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-header gaming">🎮 GAMING TRAGEDY</div>
+                <div class="post-body">
+                    <h2>Flappy Bird is Gone</h2>
+                    <p>Dong Nguyen deleted Flappy Bird from the App Store because it was "too addictive." People are now selling iPhones on eBay for $10,000 just because they have the app installed. We are living in a simulation. Also, Five Nights at Freddy's is giving Markiplier a heart attack on YouTube.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>PipeHater</strong></span>
+                    <span>💬 1.2k Comments</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2015</div>
+
+            <div class="post">
+                <div class="post-header">👗 THE GREAT DEBATE</div>
+                <div class="post-body">
+                    <h2>What Color is The Dress?</h2>
+                    <p>Families are being torn apart. Friendships are ending. Is it Black and Blue, or White and Gold? (It's obviously Black and Blue, you guys are blind). Also, Filthy Frank and iDubbbz are pushing YouTube to its absolute absolute limits.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>OpticalIllusionist</strong></span>
+                    <span>🔥 Trending Worldwide</span>
+                </div>
+            </div>
+
+            <div class="year-marker" style="background: #2ecc71; color: white;">2016: THE PEAK</div>
+
+            <div class="post" style="border-color: #2ecc71;">
+                <div class="post-header" style="background: #2ecc71;">🌍 WORLD PEACE ACHIEVED</div>
+                <div class="post-body">
+                    <h2>Pokémon GO Summer</h2>
+                    <p>For two months, the world was perfect. Everyone was outside. You could walk to a local park at 11 PM and find 200 people sprinting to catch a Vaporeon. No politics, no algorithmic feeds, just people sharing battery packs. We didn't know how good we had it.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>MysticLeader</strong></span>
+                    <span>❤️ 105k Likes</span>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-header meme">🦍 HARAMBE FOREVER</div>
+                <div class="post-body">
+                    <h2>The Timeline Shifted Here</h2>
+                    <p>A gorilla in Cincinnati changed the timeline forever. Meanwhile, middle school teachers are losing their minds because kids won't stop flipping partially filled water bottles to see if they land upright. Stranger Things Season 1 just dropped.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>TimeTraveler</strong></span>
+                    <span>💬 4.5k Comments</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2017</div>
+            
+            <div class="post">
+                <div class="post-header gaming">🪂 WHERE WE DROPPING?</div>
+                <div class="post-body">
+                    <h2>Fortnite Battle Royale Takes Over</h2>
+                    <p>It's free, it's cartoony, and nobody knows how to build yet. Dropping into Moisty Mire or Tilted Towers with the squad on a Friday night is the new peak gaming experience. Oh, and everyone is spinning those weird bearing toys on their fingers. Fidget spinners?</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>JohnWickSkin</strong></span>
+                    <span>🎮 3.2M Players Online</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2018</div>
+            
+            <div class="post">
+                <div class="post-header youtube">👊 THE GREAT SUB WAR</div>
+                <div class="post-body">
+                    <h2>Subscribe to PewDiePie</h2>
+                    <p>It's an independent creator vs a massive corporate entity (T-Series). Hackers are literally taking over printers worldwide to print out "Subscribe to PewDiePie" flyers. MrBeast is buying billboards. It feels like the last stand for the old YouTube.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>BroArmy</strong></span>
+                    <span>👊 90M Subs</span>
+                </div>
+            </div>
+
+            <div class="year-marker">2019</div>
+
+            <div class="post">
+                <div class="post-header reddit">👽 THE LAST GREAT EVENT</div>
+                <div class="post-body">
+                    <h2>Storm Area 51: They Can't Stop All of Us</h2>
+                    <p>Millions of people RSVP'd to a Facebook event to Naruto-run into a top-secret military base to "see them aliens." It culminated in a harmless, goofy festival in the desert. Minecraft is having a massive nostalgic resurgence. It feels like the grand finale of the "fun" internet.</p>
+                </div>
+                <div class="post-meta">
+                    <span>Posted by <strong>NarutoRunner99</strong></span>
+                    <span>👽 1.5M Attendees</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; border: 4px dashed #bdc3c7; margin-bottom: 40px;">
+                --- END OF THE GOLDEN ERA ARCHIVE. ---<br><br>
+                <span style="font-size: 12px; font-weight: normal;">What follows is 2020. The quarantine, the algorithmic takeover, the endless scroll, and the rise of the bots. Log off while you can.</span>
+            </div>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="widget">
+                <h3 style="background: #2c3e50;">INTERNET GRAVEYARD 🪦</h3>
+                <ul class="graveyard-list">
+                    <li><span>Adobe Flash</span> <span class="offline">1996-2020</span></li>
+                    <li><span>Vine</span> <span class="offline">2013-2017</span></li>
+                    <li><span>Yahoo! Answers</span> <span class="offline">2005-2021</span></li>
+                    <li><span>Club Penguin</span> <span class="offline">2005-2017</span></li>
+                    <li><span>AIM (AOL Instant Messenger)</span> <span class="offline">1997-2017</span></li>
+                    <li><span>Grooveshark</span> <span class="offline">2006-2015</span></li>
+                    <li><span>Limewire (And your PC's health)</span> <span class="offline">2000-2010</span></li>
+                    <li><span>Global Chat (CoC)</span> <span class="offline">2012-2019</span></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3 style="background: #27ae60;">FRIENDS LIST</h3>
+                <div style="font-size: 14px; line-height: 1.6; padding: 5px;">
+                    <div style="margin-bottom: 15px;">
+                        <span class="online">●</span> <strong>DogeCoinMiner</strong>
+                        <span class="last-seen">Playing: Minecraft Beta 1.7.3</span>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <span class="away">⏸</span> <strong>xX_ShadowNinja_Xx</strong>
+                        <span class="last-seen">Status: Brb getting pizza rolls</span>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <span class="offline">○</span> <strong>HaloGod_01</strong>
+                        <span class="last-seen">Last online: 4,192 days ago</span>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <span class="offline">○</span> <strong>SkaterBoy99</strong>
+                        <span class="last-seen">Last online: 3,840 days ago</span>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <span class="offline">○</span> <strong><em>SmoshFan99</em></strong>
+                        <span class="last-seen">Last online: 2,901 days ago</span>
+                    </div>
+                    <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px; font-size: 12px; color: #7f8c8d; text-align: center;">
+                        Don't delete them. They might come back online tomorrow.
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget" style="text-align: center; border-color: var(--yellow);">
+                <div style="font-size: 40px; margin-bottom: 10px;">⚠️</div>
+                <p style="font-weight: bold; margin-bottom: 15px;">Warning: Modern Web Detected Ahead</p>
+                <button class="btn" onclick="alert('Connection Refused. Stay here where it is safe.')">TURN BACK</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div>System: Nostalgia OS • Flash Player Enabled</div>
+        <div><span id="days-since"></span> days since Jan 1, 2016. Make it stop.</div>
+    </div>
+
+    <script>
+        // Calculate days since 2016
+        const date2016 = new Date('2016-01-01');
+        const today = new Date();
+        const diffTime = Math.abs(today - date2016);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        document.getElementById('days-since').textContent = diffDays.toLocaleString();
+
+        console.log("%cArchive Loaded. Welcome home.", "color: #2ecc71; font-weight: bold; font-size: 16px;");
+        
+        // Classic hover effect script
+        const posts = document.querySelectorAll('.post');
+        posts.forEach(post => {
+            post.addEventListener('mouseenter', () => {
+                post.style.borderColor = '#f1c40f';
+            });
+            post.addEventListener('mouseleave', () => {
+                post.style.borderColor = '#2c3e50';
+            });
+        });
+    </script>
+</body>
+</html>

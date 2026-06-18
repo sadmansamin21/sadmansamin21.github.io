@@ -1,1202 +1,325 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Monolith Labs — Open Research Library for Sustainable Infrastructure & Civil Engineering</title>
-<meta name="description" content="Free, open-access systematic reviews, meta-analyses, and research papers on sustainable construction materials, climate-resilient infrastructure, and AI-based structural simulation. No signup required. Built for students and researchers everywhere." />
-<meta name="keywords" content="sustainable infrastructure research, rice husk ash concrete, supplementary cementitious materials, PRISMA systematic review, open access civil engineering, fly ash concrete, geopolymer concrete, climate resilient construction, South Asia construction materials, compressive strength meta-analysis, green concrete, AI structural simulation, Monolith Labs, Sadman Samin, arXiv civil engineering" />
-<meta name="author" content="Sadman Samin" />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://sadmansamin21.github.io/monolith-labs.html" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://sadmansamin21.github.io/monolith-labs.html" />
-<meta property="og:title" content="Monolith Labs — Open Research Library for Sustainable Infrastructure" />
-<meta property="og:description" content="Free, no-signup research library: systematic reviews and meta-analyses on green concrete, climate-resilient construction, and AI-based structural simulation." />
-<meta property="og:site_name" content="Monolith Labs" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:creator" content="@_sadmansamin" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Monolith Labs | Research & Infrastructure </title>
+    <meta name="title" content="Monolith Labs | Research & Infrastructure">
+    <meta name="description" content="Monolith Labs is an open library and incubator for research on sustainable infrastructure, climate-resilient construction, and AI-driven public utility tools. Founded by Sadman Samin.">
+    <meta name="keywords" content="Monolith Labs, Sadman Samin, AI Job Risk Calculator, Rent Estimator BD, Sustainable Infrastructure, Public Utility Tools, AI Research">
+    <meta name="author" content="Sadman Samin">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sadmansamin21.github.io/monolith-labs.html">
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sadmansamin21.github.io/monolith-labs.html">
+    <meta property="og:title" content="Monolith Labs | Research & Public Utility Tools">
+    <meta property="og:description" content="An open library and continuous builder of research, sustainable infrastructure tools, and public utility products.">
+    <meta property="og:image" content="https://sadmansamin21.github.io/og-image.jpg"> <!-- Replace with your actual OG image if available -->
 
-<style>
-/* ── TOKENS ─────────────────────────────────────────────── */
-:root {
-  --ash-900:#1A1C1E;--ash-800:#2B2F34;--ash-700:#3E444C;--ash-600:#555C66;
-  --ash-500:#72798A;--ash-400:#959DA8;--ash-300:#B8BFC9;--ash-200:#D8DCE3;
-  --ash-150:#E8ECF1;--ash-100:#F0F3F7;--ash-50:#F7F9FC;--white:#FFFFFF;
-  --blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#3B82F6;--blue-pale:#EFF6FF;--blue-mid:#BFDBFE;
-  --amber:#B45309;--amber-pale:#FEF3C7;--amber-mid:#FCD34D;
-  --green:#15803D;--green-pale:#F0FDF4;--green-mid:#BBF7D0;
-  --font-serif:'Lora',Georgia,serif;--font-body:'Outfit',sans-serif;--font-mono:'JetBrains Mono','Courier New',monospace;
-  --r:6px;--shadow-sm:0 1px 4px rgba(0,0,0,0.08);--shadow:0 3px 16px rgba(0,0,0,0.09);--shadow-md:0 8px 32px rgba(0,0,0,0.12);
-  /* Light theme surfaces */
-  --bg-page:#FFFFFF;--bg-alt:#F7F9FC;--bg-card:#FFFFFF;
-  --border:var(--ash-200);--border-hover:var(--ash-300);
-  --text-primary:var(--ash-900);--text-secondary:var(--ash-700);--text-muted:var(--ash-500);--text-faint:var(--ash-400);
-  --nav-bg:rgba(255,255,255,0.97);--footer-bg:var(--ash-900);
-  --chip-bg:var(--ash-100);--chip-color:var(--ash-700);
-  --method-bg:var(--white);
-}
-[data-theme="dark"] {
-  --bg-page:#0F1117;--bg-alt:#161A23;--bg-card:#1C2130;
-  --border:#2D3448;--border-hover:#3D4A6A;
-  --text-primary:#E8ECFF;--text-secondary:#B0B8D4;--text-muted:#7A84A0;--text-faint:#4E5A7A;
-  --ash-50:#161A23;--ash-100:#1C2130;--ash-150:#222840;--ash-200:#2D3448;
-  --ash-300:#3D4A6A;--ash-400:#4E5A7A;--ash-500:#6876A0;--ash-600:#8A96C0;
-  --ash-700:#B0B8D4;--ash-800:#C8D0E8;--ash-900:#E8ECFF;--white:#0F1117;
-  --blue-pale:#1A2A4A;--blue-mid:#2A4A7A;--amber-pale:#2A1A00;--amber-mid:#5A3800;
-  --green-pale:#0A2010;--green-mid:#0F4020;
-  --nav-bg:rgba(15,17,23,0.97);--footer-bg:#080A10;
-  --chip-bg:#1C2130;--chip-color:#8A96C0;
-  --method-bg:#1C2130;
-  --shadow-sm:0 1px 4px rgba(0,0,0,0.4);--shadow:0 3px 16px rgba(0,0,0,0.5);--shadow-md:0 8px 32px rgba(0,0,0,0.6);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;font-size:16px;}
-body{font-family:var(--font-body);background:var(--bg-page);color:var(--text-primary);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background 0.3s,color 0.3s;}
-img{display:block;max-width:100%;}
-a{color:inherit;text-decoration:none;}
-button{font-family:var(--font-body);cursor:pointer;border:none;background:none;}
-ul{list-style:none;}
-.container{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;}
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sadmansamin21.github.io/monolith-labs.html">
+    <meta property="twitter:title" content="Monolith Labs | Research & Public Utility Tools">
+    <meta property="twitter:description" content="An open library and continuous builder of research, sustainable infrastructure tools, and public utility products.">
+    
+    <!-- Google Fonts: Inter & JetBrains Mono for that modern, technical feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-/* ── NAV ─────────────────────────────────────────────────── */
-#nav{position:sticky;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:box-shadow 0.3s,background 0.3s;}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px;}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.nav-logo-mark{width:32px;height:32px;background:var(--ash-800);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.18);}
-[data-theme="dark"] .nav-logo-mark{background:var(--blue);}
-.nav-logo-mark svg{width:16px;height:16px;fill:white;}
-.nav-wordmark{font-family:var(--font-serif);font-size:1.1rem;color:var(--text-primary);letter-spacing:-0.01em;}
-.nav-wordmark em{color:var(--blue);font-style:normal;}
-.nav-links{display:flex;align-items:center;gap:20px;}
-.nav-links a{font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);transition:color 0.2s;white-space:nowrap;}
-.nav-links a:hover{color:var(--text-primary);}
-.nav-badge{background:var(--blue-pale);border:1px solid var(--blue-mid);color:var(--blue-dk);font-size:0.69rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.03em;white-space:nowrap;}
-[data-theme="dark"] .nav-badge{color:var(--blue-lt);}
-.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #111111;
+            --text-secondary: #666666;
+            --border-color: #e5e5e5;
+            --accent: #000000;
+            --hover-bg: #f9f9f9;
+        }
 
-/* Theme toggle */
-.theme-toggle{width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.2s,background 0.2s,color 0.2s;font-size:1rem;flex-shrink:0;}
-.theme-toggle:hover{border-color:var(--border-hover);color:var(--text-primary);}
-.hamburger{display:none;flex-direction:column;gap:5px;padding:6px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);}
-.hamburger span{display:block;width:20px;height:2px;background:var(--text-primary);border-radius:2px;transition:background 0.2s;}
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0a0a0a;
+                --text-primary: #ededed;
+                --text-secondary: #888888;
+                --border-color: #222222;
+                --accent: #ffffff;
+                --hover-bg: #141414;
+            }
+        }
 
-/* Mobile nav drawer */
-.mobile-nav{display:none;position:fixed;top:60px;left:0;right:0;background:var(--nav-bg);border-bottom:1px solid var(--border);padding:16px 24px;flex-direction:column;gap:4px;z-index:99;backdrop-filter:blur(16px);}
-.mobile-nav.open{display:flex;}
-.mobile-nav a{font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);padding:10px 0;border-bottom:1px solid var(--border);transition:color 0.2s;}
-.mobile-nav a:last-of-type{border-bottom:none;}
-.mobile-nav a:hover{color:var(--text-primary);}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ── HERO ────────────────────────────────────────────────── */
-#hero{padding:72px 0 64px;background:var(--bg-alt);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
-#hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.07) 0%,transparent 68%);border-radius:50%;pointer-events:none;}
-#hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(21,128,61,0.04) 0%,transparent 68%);border-radius:50%;pointer-events:none;}
-.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-muted);font-family:var(--font-mono);font-size:0.66rem;font-weight:500;padding:5px 13px;border-radius:20px;margin-bottom:24px;letter-spacing:0.06em;text-transform:uppercase;box-shadow:var(--shadow-sm);}
-.hero-chip-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2.4s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.25;}}
-.hero-h1{font-family:var(--font-serif);font-size:clamp(1.85rem,4vw,3rem);line-height:1.2;letter-spacing:-0.025em;color:var(--text-primary);max-width:740px;margin-bottom:20px;}
-.hero-h1 .accent{color:var(--blue);}
-.hero-desc{font-size:1rem;color:var(--text-secondary);max-width:600px;line-height:1.82;margin-bottom:36px;font-weight:400;}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:48px;}
-.btn-primary{background:var(--blue);color:#fff;padding:12px 26px;border-radius:var(--r);font-weight:700;font-size:0.88rem;letter-spacing:0.01em;transition:background 0.2s,transform 0.15s,box-shadow 0.15s;display:inline-flex;align-items:center;gap:7px;box-shadow:0 3px 12px rgba(37,99,235,0.28);}
-.btn-primary:hover{background:var(--blue-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,0.32);}
-.btn-ghost{color:var(--text-secondary);padding:12px 26px;border:1.5px solid var(--border);border-radius:var(--r);font-weight:600;font-size:0.88rem;transition:border-color 0.2s,color 0.2s,background 0.2s;display:inline-flex;align-items:center;gap:7px;background:var(--bg-card);}
-.btn-ghost:hover{border-color:var(--border-hover);color:var(--text-primary);}
-.hero-stats{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border);border-radius:var(--r);background:var(--bg-card);overflow:hidden;box-shadow:var(--shadow-sm);}
-.hero-stat{padding:18px 16px;border-right:1px solid var(--border);text-align:center;}
-.hero-stat:last-child{border-right:none;}
-.hs-num{font-family:var(--font-serif);font-size:1.45rem;color:var(--blue);line-height:1;margin-bottom:4px;font-weight:600;}
-.hs-lbl{font-size:0.64rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* ── SEARCH / FILTER BAR ─────────────────────────────────── */
-.filter-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;margin-bottom:32px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
-.filter-label{font-family:var(--font-mono);font-size:0.64rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);white-space:nowrap;flex-shrink:0;}
-.filter-input{flex:1;min-width:200px;background:var(--bg-alt);border:1px solid var(--border);border-radius:5px;padding:8px 12px;font-family:var(--font-body);font-size:0.85rem;color:var(--text-primary);outline:none;transition:border-color 0.2s;}
-.filter-input:focus{border-color:var(--blue);}
-.filter-input::placeholder{color:var(--text-faint);}
-.filter-pills{display:flex;gap:6px;flex-wrap:wrap;}
-.filter-pill{font-family:var(--font-mono);font-size:0.63rem;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;padding:5px 12px;border-radius:20px;cursor:pointer;border:1.5px solid var(--border);background:var(--bg-alt);color:var(--text-muted);transition:all 0.15s;}
-.filter-pill:hover,.filter-pill.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: -0.02em;
+        }
 
-/* ── SECTION COMMONS ─────────────────────────────────────── */
-section{padding:72px 0;}
-.section-kicker{font-family:var(--font-mono);font-size:0.65rem;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.section-kicker::before{content:'';width:16px;height:1.5px;background:var(--blue);flex-shrink:0;}
-.section-h2{font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.2;letter-spacing:-0.02em;color:var(--text-primary);margin-bottom:12px;}
-.section-sub{font-size:0.97rem;color:var(--text-secondary);max-width:580px;margin-bottom:40px;line-height:1.82;}
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
 
-/* ── ABOUT ─────────────────────────────────────────────── */
-#about{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:52px 0;}
-.about-inner{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center;}
-.about-label{font-family:var(--font-serif);font-size:1.35rem;color:var(--text-primary);line-height:1.48;letter-spacing:-0.02em;font-style:italic;}
-.about-body p{font-size:0.92rem;color:var(--text-secondary);line-height:1.88;margin-bottom:14px;}
-.about-body p:last-child{margin-bottom:0;}
-.about-body strong{color:var(--text-primary);font-weight:600;}
-.about-body a{color:var(--blue);text-decoration:underline;text-decoration-color:var(--blue-mid);}
-.about-body a:hover{color:var(--blue-dk);}
+        a:hover {
+            opacity: 0.7;
+        }
 
-/* OA notice */
-.oa-notice{background:var(--blue-pale);border:1px solid var(--blue-mid);border-radius:var(--r);padding:14px 18px;font-size:0.83rem;color:var(--blue-dk);line-height:1.7;margin-bottom:32px;display:flex;align-items:flex-start;gap:10px;}
-[data-theme="dark"] .oa-notice{color:var(--blue-lt);}
-.oa-notice-icon{font-size:1rem;flex-shrink:0;margin-top:2px;}
+        /* Layout */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
 
-/* ── LIBRARY ─────────────────────────────────────────────── */
-#library{background:var(--bg-page);}
-.lib-grid{display:flex;flex-direction:column;gap:0;}
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-/* Category header */
-.cat-header{display:flex;align-items:center;gap:12px;padding:20px 0 12px;border-bottom:2px solid var(--border);margin-bottom:4px;margin-top:48px;}
-.cat-header:first-of-type{margin-top:0;}
-.cat-icon{width:34px;height:34px;background:var(--bg-alt);border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
-.cat-title{font-family:var(--font-serif);font-size:1.15rem;color:var(--text-primary);letter-spacing:-0.015em;}
-.cat-count{margin-left:auto;font-family:var(--font-mono);font-size:0.64rem;color:var(--text-muted);border:1px solid var(--border);padding:3px 9px;border-radius:20px;white-space:nowrap;background:var(--bg-alt);}
+        .nav-logo {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
 
-/* ── PAPER CARD ──────────────────────────────────────────── */
-.paper{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:box-shadow 0.2s,border-color 0.2s,transform 0.15s;margin-bottom:10px;margin-top:4px;}
-.paper:hover{box-shadow:var(--shadow);border-color:var(--border-hover);transform:translateY(-1px);}
-.paper[data-hidden="true"]{display:none;}
-.paper-head{padding:18px 22px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;}
-.paper-tags{display:flex;gap:5px;flex-wrap:wrap;}
-.tag{font-family:var(--font-mono);font-size:0.6rem;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;padding:3px 8px;border-radius:4px;white-space:nowrap;}
-.tag-original{background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber-mid);}
-.tag-zenodo{background:var(--ash-800);color:#fff;}
-[data-theme="dark"] .tag-zenodo{background:var(--blue);color:#fff;}
-.tag-review{background:var(--chip-bg);color:var(--chip-color);border:1px solid var(--border);}
-.tag-external{background:var(--bg-alt);color:var(--text-muted);border:1px solid var(--border);}
-.tag-ai{background:#EEF2FF;color:#3730A3;border:1px solid #C7D2FE;}
-[data-theme="dark"] .tag-ai{background:#1A1E40;color:#A5B4FC;border-color:#3730A3;}
-.tag-oa{background:var(--blue-pale);color:var(--blue-dk);border:1px solid var(--blue-mid);}
-[data-theme="dark"] .tag-oa{color:var(--blue-lt);}
-.tag-arxiv{background:#2D1B69;color:#E9D5FF;border:1px solid #7C3AED;}
-.tag-preprint{background:var(--green-pale);color:var(--green);border:1px solid var(--green-mid);}
-[data-theme="dark"] .tag-preprint{color:#4ADE80;}
-.paper-id{font-family:var(--font-mono);font-size:0.59rem;color:var(--text-faint);}
-.paper-body{padding:12px 22px 20px;}
-.paper-title{font-family:var(--font-serif);font-size:1.05rem;color:var(--text-primary);line-height:1.45;margin-bottom:4px;letter-spacing:-0.01em;}
-.paper-authors{font-size:0.78rem;color:var(--text-muted);margin-bottom:12px;font-weight:500;line-height:1.5;}
-.paper-authors a{color:var(--blue);text-decoration:underline;text-decoration-color:var(--blue-mid);}
-.paper-authors a:hover{color:var(--blue-dk);}
-.paper-abstract{font-size:0.86rem;color:var(--text-secondary);line-height:1.82;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
-.paper-abstract.expanded{-webkit-line-clamp:unset;}
-.paper-findings{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;}
-.finding-chip{background:var(--chip-bg);border:1px solid var(--border);color:var(--chip-color);font-family:var(--font-mono);font-size:0.62rem;font-weight:500;padding:3px 9px;border-radius:20px;}
-.expand-btn{font-size:0.72rem;color:var(--blue);font-weight:600;cursor:pointer;background:none;border:none;padding:0;text-decoration:underline;text-decoration-color:var(--blue-mid);margin-bottom:10px;display:block;}
-.expand-btn:hover{color:var(--blue-dk);}
-.paper-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:12px;border-top:1px solid var(--border);}
-.paper-meta{display:flex;gap:14px;flex-wrap:wrap;}
-.pmeta{display:flex;align-items:center;gap:5px;font-size:0.69rem;color:var(--text-faint);font-weight:500;font-family:var(--font-mono);}
-.paper-links{display:flex;gap:7px;flex-wrap:wrap;}
-.doi-link{display:inline-flex;align-items:center;gap:5px;background:var(--blue);color:#fff;padding:7px 15px;border-radius:var(--r);font-weight:700;font-size:0.76rem;letter-spacing:0.01em;transition:background 0.2s,transform 0.12s;text-decoration:none;}
-.doi-link:hover{background:var(--blue-dk);transform:translateY(-1px);}
-.doi-link.secondary{background:var(--chip-bg);color:var(--text-secondary);border:1px solid var(--border);}
-.doi-link.secondary:hover{background:var(--bg-alt);color:var(--text-primary);border-color:var(--border-hover);}
-.doi-link.arxiv{background:#6D28D9;color:#fff;}
-.doi-link.arxiv:hover{background:#5B21B6;}
-.source-badge{display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:0.6rem;font-weight:500;color:var(--text-muted);background:var(--bg-alt);border:1px solid var(--border);padding:3px 8px;border-radius:4px;}
+        .nav-back {
+            color: var(--text-secondary);
+        }
 
-/* Stats counter row */
-.lib-stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
-.lib-stat-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:12px 18px;display:flex;align-items:center;gap:8px;}
-.lib-stat-num{font-family:var(--font-serif);font-size:1.3rem;color:var(--blue);font-weight:600;}
-.lib-stat-lbl{font-size:0.72rem;color:var(--text-muted);font-weight:500;}
+        /* Hero Section */
+        header {
+            margin-bottom: 5rem;
+        }
 
-/* ── METHODOLOGY ─────────────────────────────────────────── */
-#method{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
-.method-card{background:var(--method-bg);padding:28px 24px;}
-.method-num{font-family:var(--font-mono);font-size:0.62rem;color:var(--blue);font-weight:500;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;}
-.method-card h3{font-family:var(--font-serif);font-size:1rem;color:var(--text-primary);margin-bottom:9px;line-height:1.38;letter-spacing:-0.01em;}
-.method-card p{font-size:0.83rem;color:var(--text-secondary);line-height:1.75;}
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+        }
 
-/* ── ACADEMY ─────────────────────────────────────────────── */
-#academy{background:var(--bg-page);border-bottom:1px solid var(--border);}
-.academy-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-.stage-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--r);padding:26px 24px;transition:border-color 0.2s;}
-.stage-card:hover{border-color:var(--border-hover);}
-.stage-num{font-family:var(--font-mono);font-size:0.6rem;color:var(--blue);font-weight:500;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;}
-.stage-card h3{font-family:var(--font-serif);font-size:1rem;color:var(--text-primary);margin-bottom:9px;line-height:1.38;letter-spacing:-0.01em;}
-.stage-card p{font-size:0.84rem;color:var(--text-secondary);line-height:1.75;margin-bottom:14px;}
-.stage-links{display:flex;flex-wrap:wrap;gap:6px;}
-.stage-link{display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:600;color:var(--blue);background:var(--blue-pale);border:1px solid var(--blue-mid);padding:4px 11px;border-radius:20px;transition:background 0.2s;text-decoration:none;}
-[data-theme="dark"] .stage-link{color:var(--blue-lt);}
-.stage-link:hover{background:var(--blue-mid);color:var(--blue-dk);}
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
 
-/* ── RESOURCES SECTION ─────────────────────────────────── */
-#resources{background:var(--bg-alt);border-bottom:1px solid var(--border);}
-.resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.resource-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;transition:border-color 0.2s,box-shadow 0.2s;}
-.resource-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-sm);}
-.resource-icon{font-size:1.5rem;margin-bottom:10px;}
-.resource-card h3{font-family:var(--font-serif);font-size:0.95rem;color:var(--text-primary);margin-bottom:6px;letter-spacing:-0.01em;}
-.resource-card p{font-size:0.8rem;color:var(--text-secondary);line-height:1.72;margin-bottom:12px;}
-.resource-link{font-size:0.76rem;font-weight:600;color:var(--blue);text-decoration:underline;text-decoration-color:var(--blue-mid);}
-.resource-link:hover{color:var(--blue-dk);}
+        /* Product List */
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-/* ── FOOTER ──────────────────────────────────────────────── */
-footer{background:var(--footer-bg);padding:56px 0 32px;color:#fff;transition:background 0.3s;}
-[data-theme="dark"] footer{background:#080A10;border-top:1px solid #1C2130;}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:28px;}
-.footer-brand .fw{font-family:var(--font-serif);font-size:1.08rem;color:#fff;margin-bottom:8px;}
-.footer-brand .fw em{color:#93C5FD;font-style:normal;}
-.footer-brand p{font-size:0.8rem;color:rgba(255,255,255,0.38);line-height:1.72;max-width:230px;}
-.footer-col h4{font-size:0.64rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.28);margin-bottom:12px;}
-.footer-col ul li{margin-bottom:8px;}
-.footer-col ul li a{font-size:0.81rem;color:rgba(255,255,255,0.48);transition:color 0.2s;}
-.footer-col ul li a:hover{color:#93C5FD;}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
-.footer-legal{font-size:0.72rem;color:rgba(255,255,255,0.26);line-height:1.7;}
-.footer-right{font-family:var(--font-mono);font-size:0.68rem;color:rgba(255,255,255,0.26);text-align:right;line-height:1.7;}
-.footer-right a{color:#93C5FD;transition:opacity 0.2s;}
-.footer-right a:hover{opacity:0.8;}
-.footer-credit{width:100%;text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.74rem;color:rgba(255,255,255,0.26);}
-.footer-credit a{color:#93C5FD;}
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
 
-/* No results */
-.no-results{text-align:center;padding:48px 24px;color:var(--text-muted);font-family:var(--font-mono);font-size:0.82rem;display:none;}
-.no-results.visible{display:block;}
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
 
-/* Back to top */
-.back-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;background:var(--blue);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow-md);font-size:1rem;opacity:0;transform:translateY(8px);transition:opacity 0.2s,transform 0.2s;z-index:50;border:none;}
-.back-top.visible{opacity:1;transform:translateY(0);}
-.back-top:hover{background:var(--blue-dk);}
+        .product-card {
+            display: block;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
 
-/* ── RESPONSIVE ──────────────────────────────────────────── */
-@media(max-width:960px){
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
-  .hero-stats{grid-template-columns:repeat(3,1fr);}
-  .hero-stat:nth-child(4),.hero-stat:nth-child(5){border-top:1px solid var(--border);}
-  .hero-stat:nth-child(3){border-right:none;}
-  .about-inner{grid-template-columns:1fr;gap:20px;}
-  .method-grid{grid-template-columns:1fr 1fr;}
-  .academy-row{grid-template-columns:1fr;}
-  .resources-grid{grid-template-columns:repeat(2,1fr);}
-  .footer-top{grid-template-columns:1fr 1fr;gap:28px;}
-  .footer-bottom{flex-direction:column;align-items:flex-start;}
-  .footer-right{text-align:left;}
-}
-@media(max-width:640px){
-  .container{padding:0 16px;}
-  #hero{padding:52px 0 48px;}
-  .hero-stats{grid-template-columns:1fr 1fr;}
-  .hero-stat:nth-child(3){border-right:1px solid var(--border);}
-  .hero-stat:nth-child(5){border-right:none;}
-  .filter-bar{flex-direction:column;align-items:stretch;}
-  .filter-input{min-width:100%;}
-  .method-grid{grid-template-columns:1fr;}
-  .resources-grid{grid-template-columns:1fr;}
-  .footer-top{grid-template-columns:1fr;}
-  .paper-head{flex-direction:column;gap:6px;}
-  .paper-footer{flex-direction:column;align-items:flex-start;}
-  .back-top{bottom:16px;right:16px;}
-  .lib-stats{gap:8px;}
-  .hero-actions{flex-direction:column;align-items:stretch;}
-  .hero-actions .btn-primary,.hero-actions .btn-ghost{justify-content:center;}
-}
-</style>
+        .product-card:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--text-secondary);
+            opacity: 1;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        .product-type {
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .product-card:hover .product-link {
+            border-bottom-color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .product-card { padding: 1.5rem; }
+            nav { flex-direction: column; align-items: flex-start; gap: 1rem; }
+        }
+    </style>
 </head>
 <body>
 
-<header id="nav" role="banner">
-  <div class="container nav-inner">
-    <a href="#" class="nav-brand" aria-label="Monolith Labs Home">
-      <div class="nav-logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5Z" fill-opacity="0.9"/><path d="M8 4L11 5.75V9.25L8 11L5 9.25V5.75Z" fill="rgba(255,255,255,0.45)"/></svg>
-      </div>
-      <span class="nav-wordmark">Monolith<em>Labs</em></span>
-    </a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#library">Research</a>
-      <a href="#method">Methods</a>
-      <a href="#academy">Academy</a>
-      <a href="#resources">Resources</a>
-      <span class="nav-badge">Free · No Signup</span>
-    </nav>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
-      <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-logo">MONOLITH LABS.</div>
+            <a href="https://sadmansamin21.github.io" class="nav-back mono">← Back to sadmansamin21.github.io</a>
+        </nav>
 
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <a href="#about">About</a>
-  <a href="#library">Research Library</a>
-  <a href="#method">Methodology</a>
-  <a href="#academy">Academy</a>
-  <a href="#resources">Resources</a>
-</nav>
+        <!-- Hero -->
+        <header>
+            <h1>Building the next infrastructure.</h1>
+            <p class="hero-desc">
+                Monolith Labs is a continuous builder of open-access research, climate-resilient structural models, and data-driven public utility tools. Simplicity is the ultimate sophistication. No paywalls, no accounts, no friction.
+            </p>
+        </header>
 
-<main>
-<!-- ── HERO ── -->
-<section id="hero" aria-labelledby="hero-h1">
-  <div class="container">
-    <div class="hero-chip"><span class="hero-chip-dot"></span>Open Access · Est. 2025 · Dhaka, Bangladesh</div>
-    <h1 class="hero-h1" id="hero-h1">An open library of research on <span class="accent">sustainable infrastructure</span> and climate-resilient construction.</h1>
-    <p class="hero-desc">Systematic reviews, meta-analyses, and curated open-access research on green concrete, supplementary cementitious materials, and AI-based structural simulation. Every link goes to a freely readable paper. No paywalls. No accounts. No friction.</p>
-    <div class="hero-actions">
-      <a href="#library" class="btn-primary">Browse the Library →</a>
-      <a href="#about" class="btn-ghost">About this project</a>
-    </div>
-    <div class="hero-stats" role="list" aria-label="Project statistics">
-      <div class="hero-stat" role="listitem"><div class="hs-num">28+</div><div class="hs-lbl">Research Papers</div></div>
-      <div class="hero-stat" role="listitem"><div class="hs-num">5</div><div class="hs-lbl">Topic Clusters</div></div>
-      <div class="hero-stat" role="listitem"><div class="hs-num">100%</div><div class="hs-lbl">Free & Open</div></div>
-      <div class="hero-stat" role="listitem"><div class="hs-num">arXiv</div><div class="hs-lbl">& PMC & MDPI</div></div>
-      <div class="hero-stat" role="listitem"><div class="hs-num">CC-BY</div><div class="hs-lbl">4.0 Licence</div></div>
-    </div>
-  </div>
-</section>
+        <!-- Products / Initiatives -->
+        <main>
+            <div class="section-title mono">Selected Products & Initiatives</div>
+            
+            <div class="product-list">
+                
+                <!-- Product 1 -->
+                <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" class="product-card">
+                    <div class="product-header">
+                        <h2 class="product-title">AI Job Risk Calculator</h2>
+                        <span class="product-type mono">Research Flagship</span>
+                    </div>
+                    <p class="product-desc">
+                        Mapping workforce vulnerabilities in the post-AGI economy. A long-term research initiative exploring how artificial general intelligence reshapes labor markets, institutional resilience, and economic planning.
+                    </p>
+                    <div class="product-link">Explore Tool ↗</div>
+                </a>
 
-<!-- ── ABOUT ── -->
-<section id="about" aria-labelledby="about-h">
-  <div class="container">
-    <div class="about-inner">
-      <div class="about-label" id="about-h">A student-built library for researchers who can't afford the paywall.</div>
-      <div class="about-body">
-        <p>Monolith Labs is a personal open-access research initiative by <strong><a href="https://sadmansamin21.github.io" target="_blank" rel="noopener">Sadman Samin</a></strong>, a student at Dhaka College, Bangladesh. The goal is simple: make it easier for students and researchers — especially in South Asia and the Global South — to find rigorous, peer-quality research on sustainable construction and climate-resilient infrastructure without spending hours hunting through paywalled databases.</p>
-        <p>This library includes both <strong>original systematic reviews</strong> produced by Monolith Labs (following PRISMA 2020 and random-effects meta-analysis) and <strong>curated external research</strong> from fully open-access sources — arXiv, PMC, MDPI, Zenodo, Frontiers, and PLOS ONE. Every single link has been verified to reach a freely readable full text. If it's not free, it's not here.</p>
-      </div>
-    </div>
-  </div>
-</section>
+                <!-- Product 2 -->
+                <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="product-card">
+                    <div class="product-header">
+                        <h2 class="product-title">Rent Estimator BD</h2>
+                        <span class="product-type mono">Public Tool</span>
+                    </div>
+                    <p class="product-desc">
+                        Data-driven rental intelligence for 50+ local districts across Bangladesh. A public utility bridging the information gap in the informal housing market to empower tenants and property owners alike.
+                    </p>
+                    <div class="product-link">Open Tool ↗</div>
+                </a>
 
-<!-- ── LIBRARY ── -->
-<section id="library" aria-labelledby="lib-h">
-  <div class="container">
-    <div class="section-kicker">The Open Library</div>
-    <h2 class="section-h2" id="lib-h">Research, freely available.</h2>
-    <p class="section-sub">Browse by topic cluster or search across all papers. Every link opens a freely readable full text — 100% verified open access. Paywalled links are never included.</p>
+                <!-- Product 3 -->
+                <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="product-card">
+                    <div class="product-header">
+                        <h2 class="product-title">Land Price Dhaka</h2>
+                        <span class="product-type mono">Public Tool</span>
+                    </div>
+                    <p class="product-desc">
+                        An open-access data utility mapping and evaluating land price trends across various sectors and neighborhoods in Dhaka to bridge transparency gaps in urban real estate.
+                    </p>
+                    <div class="product-link">Open Tool ↗</div>
+                </a>
 
-    <div class="lib-stats">
-      <div class="lib-stat-item"><span class="lib-stat-num">28</span><span class="lib-stat-lbl">Total Papers</span></div>
-      <div class="lib-stat-item"><span class="lib-stat-num">1</span><span class="lib-stat-lbl">Original Reviews</span></div>
-      <div class="lib-stat-item"><span class="lib-stat-num">12</span><span class="lib-stat-lbl">PMC Free Texts</span></div>
-      <div class="lib-stat-item"><span class="lib-stat-num">8</span><span class="lib-stat-lbl">arXiv Papers</span></div>
-      <div class="lib-stat-item"><span class="lib-stat-num">7</span><span class="lib-stat-lbl">MDPI Open Access</span></div>
-    </div>
+                <!-- Product 4 -->
+                <a href="https://sadmansamin21.github.io/ai-architecture.html" class="product-card">
+                    <div class="product-header">
+                        <h2 class="product-title">AI Architecture</h2>
+                        <span class="product-type mono">Research</span>
+                    </div>
+                    <p class="product-desc">
+                        Investigating the convergence of machine learning frameworks, generative design, and architectural engineering to construct sustainable, space-efficient structural models.
+                    </p>
+                    <div class="product-link">Explore Research ↗</div>
+                </a>
 
-    <div class="oa-notice" role="note">
-      <span class="oa-notice-icon">🔓</span>
-      <span><strong>All links verified open access.</strong> Only papers with freely readable full texts are listed. Papers with paywalls have been removed. Sources include arXiv, PMC, MDPI, PLOS ONE, Frontiers, and Zenodo.</span>
-    </div>
+                <!-- Product 5 -->
+                <a href="https://sadmansamin21.github.io/gsaio.html" class="product-card">
+                    <div class="product-header">
+                        <h2 class="product-title">Global South AI Observatory
+</h2>
+                        <span class="product-type mono">Information Tool</span>
+                    </div>
+                    <p class="product-desc">
+                        Independent tracking registry evaluating sovereign computing nodes, verified national strategies, regulatory paradigms, and primary research outputs across emerging economies.
 
-    <!-- Filter Bar -->
-    <div class="filter-bar" role="search" aria-label="Filter papers">
-      <span class="filter-label">Filter:</span>
-      <input type="text" class="filter-input" id="searchInput" placeholder="Search by title, author, or topic…" aria-label="Search papers" />
-      <div class="filter-pills" role="group" aria-label="Filter by topic">
-        <button class="filter-pill active" data-filter="all">All</button>
-        <button class="filter-pill" data-filter="scm">SCMs</button>
-        <button class="filter-pill" data-filter="geopolymer">Geopolymer</button>
-        <button class="filter-pill" data-filter="climate">Climate</button>
-        <button class="filter-pill" data-filter="ai">AI & ML</button>
-        <button class="filter-pill" data-filter="lifecycle">Lifecycle</button>
-      </div>
+                    </p>
+                    <div class="product-link">Open Observatory ↗</div>
+                </a>
+
+               
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="mono">© 2026 Monolith Labs.</div>
+            <div class="mono">Dhaka, Bangladesh</div>
+        </footer>
     </div>
 
-    <div id="paperContainer">
-
-    <!-- ════ CLUSTER 1 — SCMs ════ -->
-    <div class="cat-header" data-cluster="scm">
-      <div class="cat-icon" aria-hidden="true">🌾</div>
-      <h3 class="cat-title">Supplementary Cementitious Materials (SCMs)</h3>
-      <span class="cat-count">7 papers</span>
-    </div>
-    <div class="lib-grid" role="list" aria-label="SCMs research papers">
-
-      <article class="paper" role="listitem" data-tags="scm rha rice husk ash compressive strength prisma meta-analysis" aria-labelledby="p1-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-original">Monolith Labs · Original</span><span class="tag tag-zenodo">Zenodo</span><span class="tag tag-review">PRISMA · Random-Effects</span></div>
-          <span class="paper-id">ML-2025-001</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p1-title">Effects of Rice Husk Ash on Concrete Compressive Strength: A Systematic Review and Meta-Analysis (2000–2025)</h3>
-          <p class="paper-authors">Sadman Samin · Dhaka College, Bangladesh · 2025</p>
-          <div class="paper-findings"><span class="finding-chip">5–10% RHA = peak strength</span><span class="finding-chip">&gt;15% threshold = degradation</span><span class="finding-chip">I² = 63.4%</span><span class="finding-chip">Up to +15% 28-day CS</span></div>
-          <p class="paper-abstract" id="abs1">Rice Husk Ash (RHA) is a high-silica pozzolanic agricultural by-product generated at scale across South and Southeast Asia. This systematic review synthesises findings from primary experimental studies published between 2000 and 2025, applying PRISMA 2020 screening protocols and a DerSimonian-Laird random-effects framework to extract quantitative thresholds governing RHA performance in Portland cement concrete. The analysis identifies a peak compressive strength efficiency window at 5–10% RHA replacement by cement mass, within which 28-day strength increases of up to 15% above control mixes are achievable under optimised particle size and processing conditions. Beyond a 15% replacement threshold, consistent strength degradation is observed across the pooled dataset, attributable to dilution of the calcium silicate hydrate matrix and insufficient calcium hydroxide availability. Heterogeneity analysis (I² = 63.4%) underscores significant variability introduced by RHA processing method, curing regime, and water-to-binder ratio. Findings are presented as actionable thresholds for mix designers operating in tropical, high-humidity South Asian environments.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs1',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2025</span><span class="pmeta">📂 Zenodo</span><span class="pmeta">📜 CC-BY 4.0</span></div>
-            <div class="paper-links"><a href="https://doi.org/10.5281/zenodo.20241511" target="_blank" rel="noopener noreferrer" class="doi-link">View on Zenodo ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="scm ai machine learning deep learning disaster prediction early warning flood cyclone earthquake landslide south asia prisma systematic survey" aria-labelledby="p-ml2-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-original">Monolith Labs · Original</span><span class="tag tag-zenodo">SSRN</span><span class="tag tag-review">PRISMA · Systematic Survey</span><span class="tag tag-ai">ML/DL · Hazard Prediction</span></div>
-          <span class="paper-id">ML-2025-002</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-ml2-title">Systematic Survey of Machine Learning and Deep Learning for Natural Disaster Prediction and Early Warning Systems in South Asia (2020–2025)</h3>
-          <p class="paper-authors">Sadman Samin · Dhaka College, Bangladesh · 2025</p>
-          <div class="paper-findings"><span class="finding-chip">42 studies synthesised</span><span class="finding-chip">Flood R² &gt; 0.98</span><span class="finding-chip">Cyclone accuracy 99.16%</span><span class="finding-chip">Landslide AUC 0.93</span><span class="finding-chip">Seismic AUC 0.87</span><span class="finding-chip">37.5% data leakage rate</span></div>
-          <p class="paper-abstract" id="abs-ml2">South Asia is uniquely vulnerable to climate-induced and tectonic hazards due to the convergence of active lithospheric plates, monsoonal precipitation patterns, and dense coastal catchments. Standard deterministic models are frequently limited by severe transboundary data sharing silos, high computational overhead, and sparse in-situ monitoring networks. Over the period 2020–2025, data-driven machine learning and deep learning architectures have emerged as alternative paradigms capable of extracting complex, non-linear relationships from heterogeneous environmental catalogs. This paper presents a systematic survey of 42 peer-reviewed studies published between 2020 and 2025 across four primary hazard domains: floods, cyclones, earthquakes, and landslides. The synthesized findings indicate that while ensemble gradient-boosting architectures achieve robust predictive performance for water level regression (R² &gt; 0.98) under gauged conditions, their performance degrades significantly in ungauged domains (R² = 0.72–0.78). For tropical storm intensity estimation, ConvLSTM networks integrated with spatial feature extractors yield binary classification accuracies up to 99.16% under optimal sampling. Landslide susceptibility mapping, optimized via national geomorphic inventories, yields AUC-ROC metrics up to 0.93. Conversely, seismic prediction remains the most constrained hazard domain, with temporal validation protocols bounding performance at an AUC of 0.87. This survey conducts a validation integrity audit, revealing that 37.5% of evaluated seismic papers reporting accuracies above 95% suffer from data leakage due to flawed random splitting protocols. Finally, the survey outlines key operational barriers — including explainability deficits and transboundary data blockages — and provides a priority roadmap for the development of deployable early warning architectures.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-ml2',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2025</span><span class="pmeta">📂 SSRN</span><span class="pmeta">📜 CC-BY 4.0</span></div>
-            <div class="paper-links"><a href="https://dx.doi.org/10.2139/ssrn.6786939" target="_blank" rel="noopener noreferrer" class="doi-link">View on SSRN ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="scm fly ash eco concrete compressive strength review" aria-labelledby="p2-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · PMC/MDPI</span></div>
-          <span class="paper-id">EXT-SCM-001</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p2-title">Fly Ash-Based Eco-Efficient Concretes: A Comprehensive Review of the Short-Term Properties</h3>
-          <p class="paper-authors">Amran, M. et al. · <em>Materials (MDPI)</em> · 2021 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8347113/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">20–30% FA optimal</span><span class="finding-chip">Long-term strength gain</span><span class="finding-chip">Reduced CO₂ footprint</span><span class="finding-chip">Durability synthesis</span></div>
-          <p class="paper-abstract" id="abs2">This comprehensive open-access review covers fly ash (FA) as a partial cement replacement, synthesising short-term mechanical, workability, and sustainability data from a wide body of experimental literature. Studies consistently report long-term strength gain at 20–30% FA replacement ratios, with class F fly ash demonstrating superior pozzolanic activity in humid, tropical curing conditions. The review also quantifies carbon emission reduction potential and discusses FA-blended concrete as a critical decarbonisation lever for the construction sector, with extensive coverage of microstructure and durability metrics including chloride penetration resistance and sulfate resistance.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs2',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 Materials · MDPI</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8347113/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="scm silica fume green concrete AI prediction machine learning" aria-labelledby="p3-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">ML Prediction · PMC</span></div>
-          <span class="paper-id">EXT-SCM-002</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p3-title">Predictive Modeling of Silica Fume-Based Green Concrete Using Artificial Intelligence: Mechanical & Durability Properties</h3>
-          <p class="paper-authors">Various Authors · <em>Materials (MDPI)</em> · 2021 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8703652/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">5–15% SF optimal</span><span class="finding-chip">High early strength</span><span class="finding-chip">Reduced permeability</span><span class="finding-chip">AI prediction R²&gt;0.90</span></div>
-          <p class="paper-abstract" id="abs3">Silica fume (SF), a by-product of silicon and ferrosilicon alloy production, is among the most reactive pozzolanic SCMs. This open-access review and modelling paper synthesises global experimental data on SF-blended concrete covering workability, compressive and flexural strength development, and long-term durability. Optimal performance thresholds of 5–15% SF are identified across the pooled literature. The paper integrates machine learning prediction models (MLPNN, ANFIS, GEP) achieving R²>0.90, providing a validated framework for mix design optimisation using silica fume — directly applicable to high-performance concrete in South Asian climates.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs3',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 Materials · MDPI</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8703652/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="scm ggbfs slag concrete review sustainability" aria-labelledby="p4-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Comprehensive Review · MDPI</span></div>
-          <span class="paper-id">EXT-SCM-003</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p4-title">A Comprehensive Review on Ground Granulated Blast-Furnace Slag (GGBS) in Concrete Production</h3>
-          <p class="paper-authors">Ahmad, J. et al. · <em>Sustainability (MDPI)</em> · 2022 · <a href="https://www.mdpi.com/2071-1050/14/14/8783" target="_blank" rel="noopener">MDPI Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">30–60% GGBS range</span><span class="finding-chip">Slow early, superior long-term</span><span class="finding-chip">High sulfate resistance</span><span class="finding-chip">Low permeability</span></div>
-          <p class="paper-abstract" id="abs4">Ground granulated blast-furnace slag (GGBS) is a latent hydraulic SCM with demonstrated potential for reducing clinker demand in cement production. This open-access comprehensive review characterises the effect of GGBS replacement ratios on hydration kinetics, compressive strength development, and durability under sulfate and chloride exposure. Optimal long-term strength is reported at 30–60% replacement. The paper synthesises data showing GGBS-blended concrete achieves significantly lower permeability than OPC controls, with important sustainability implications for flood-prone and coastal infrastructure contexts in South Asia.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs4',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2022</span><span class="pmeta">📖 Sustainability · MDPI</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/2071-1050/14/14/8783" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="scm rha rice husk ash ANN neural network prediction" aria-labelledby="p5-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">ML Prediction · PMC</span></div>
-          <span class="paper-id">EXT-SCM-004</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p5-title">Compressive Strength Prediction of Rice Husk Ash Concrete Using a Hybrid Artificial Neural Network Model</h3>
-          <p class="paper-authors">Multiple Authors · <em>Materials (MDPI)</em> · 2023 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10145703/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">ANN + reptile search algorithm</span><span class="finding-chip">RHA compressive strength</span><span class="finding-chip">Optimised prediction model</span></div>
-          <p class="paper-abstract" id="abs5">This open-access paper proposes a novel hybrid artificial neural network (ANN) model optimised using a reptile search algorithm with circle mapping to predict the compressive strength of rice husk ash concrete. Directly complementing the Monolith Labs RHA systematic review (ML-2025-001), this study provides a validated computational tool for predicting RHA concrete performance without additional experimental batching — of direct practical value to mix designers in Bangladesh, India, and Southeast Asia where RHA is abundantly available as agricultural waste.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs5',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2023</span><span class="pmeta">📖 Materials · MDPI</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10145703/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="scm supplementary cementitious materials review carbon emission cement" aria-labelledby="p-scm6-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · PMC</span></div>
-          <span class="paper-id">EXT-SCM-005</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-scm6-title">Supplementary Cementitious Materials Origin, Role, and Influence on the Properties of Concrete</h3>
-          <p class="paper-authors">Juenger, M.C.G. & Siddique, R. · <em>Cement and Concrete Research</em> · 2015 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6527018/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">Foundational SCM review</span><span class="finding-chip">Fly ash, slag, RHA, SF</span><span class="finding-chip">Pozzolanic mechanisms</span><span class="finding-chip">Durability improvement</span></div>
-          <p class="paper-abstract" id="abs-scm6">This foundational open-access paper provides a comprehensive scientific basis for the role of supplementary cementitious materials in concrete, covering natural pozzolans, fly ash, silica fume, GGBS, and rice husk ash. The paper explains pozzolanic and latent hydraulic reactions at the microstructural level, and synthesises decades of literature on how SCMs improve strength, reduce permeability, and extend service life. It is essential background reading for anyone working on green concrete design in any region.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-scm6',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2015</span><span class="pmeta">📖 Cement & Concrete Research</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6527018/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="scm natural fibre bamboo jute reinforced concrete low cost" aria-labelledby="p-scm7-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · MDPI</span></div>
-          <span class="paper-id">EXT-SCM-006</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-scm7-title">Natural Fibres as a Sustainable and Renewable Resource for Development of Eco-Friendly Composites: A Comprehensive Review</h3>
-          <p class="paper-authors">Faruk, O. et al. · <em>Macromolecular Materials and Engineering</em> · 2012 · <a href="https://www.mdpi.com/2073-4360/13/6/872" target="_blank" rel="noopener">MDPI Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">Jute, sisal, flax, hemp</span><span class="finding-chip">Low embodied carbon</span><span class="finding-chip">Tropical applicability</span><span class="finding-chip">Composite mechanics</span></div>
-          <p class="paper-abstract" id="abs-scm7">Natural plant fibres represent a renewable, low-cost reinforcement option for cement composites and polymer matrices. This comprehensive open-access review covers jute, sisal, flax, hemp, coir, and bamboo fibres — all abundantly available across South Asia — analysing their mechanical properties, surface treatment methods, and performance in composite matrices. The paper provides critical analysis of moisture absorption, bonding at the fibre-matrix interface, and durability under accelerated weathering, with direct application to low-cost climate-resilient housing construction in tropical developing countries.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-scm7',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2012</span><span class="pmeta">📖 MDPI Polymers</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/2073-4360/13/6/872" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-    </div><!-- /.lib-grid SCM -->
-
-    <!-- ════ CLUSTER 2 — GEOPOLYMER ════ -->
-    <div class="cat-header" data-cluster="geopolymer">
-      <div class="cat-icon" aria-hidden="true">⚗️</div>
-      <h3 class="cat-title">Geopolymer & Low-Carbon Concrete Systems</h3>
-      <span class="cat-count">6 papers</span>
-    </div>
-    <div class="lib-grid" role="list" aria-label="Geopolymer research papers">
-
-      <article class="paper" role="listitem" data-tags="geopolymer fly ash concrete review compressive strength microstructure" aria-labelledby="p7-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · MDPI</span></div>
-          <span class="paper-id">EXT-GEO-001</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p7-title">Fly Ash-Based Geopolymer Composites: A Review of Compressive Strength and Microstructure Analysis</h3>
-          <p class="paper-authors">Multiple Authors · <em>Materials (MDPI)</em> · 2022 · <a href="https://www.mdpi.com/1996-1944/15/20/7098" target="_blank" rel="noopener">MDPI Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">Up to 80% less CO₂</span><span class="finding-chip">High fire resistance</span><span class="finding-chip">No cement required</span><span class="finding-chip">40–90 MPa achievable</span></div>
-          <p class="paper-abstract" id="abs7">Geopolymers are inorganic alumino-silicate binders formed by alkaline activation of fly ash and slag, entirely replacing Portland cement clinker. This open-access review synthesises the mechanical, microstructural, thermal, and durability properties of fly ash-based geopolymer concrete (FGPC) systems, reporting compressive strengths of 40–90 MPa and fire resistance up to high temperatures. Carbon emission reductions of 40–80% relative to OPC are documented. Key challenges including workability control, activator consistency, and scalability in developing-country contexts are discussed, with an extensive reference base spanning global experimental literature.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs7',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2022</span><span class="pmeta">📖 Materials · MDPI</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/1996-1944/15/20/7098" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="geopolymer fly ash ML machine learning ensemble low carbon optimization" aria-labelledby="p8-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">ML Optimisation · PLOS ONE</span></div>
-          <span class="paper-id">EXT-GEO-002</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p8-title">Compressive Strength Prediction and Low-Carbon Optimisation of Fly Ash Geopolymer Concrete Based on Big Data and Ensemble Learning</h3>
-          <p class="paper-authors">Multiple Authors · <em>PLOS ONE</em> · 2024 · <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0310422" target="_blank" rel="noopener">PLOS ONE Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">Ensemble ML models</span><span class="finding-chip">Low-carbon mix design</span><span class="finding-chip">Pareto-optimal mixes</span><span class="finding-chip">298 data points</span></div>
-          <p class="paper-abstract" id="abs8">This fully open-access PLOS ONE paper presents ensemble machine learning models for predicting compressive strength of fly ash geopolymer concrete, using a large database of 298+ compressive strength data points compiled from published literature. The study demonstrates multi-objective optimisation for simultaneously minimising embodied carbon and maximising compressive strength. Of direct practical relevance to South Asian practitioners seeking low-cost, low-carbon concrete solutions using locally available fly ash from coal-burning power plants in Bangladesh and India.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs8',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2024</span><span class="pmeta">📖 PLOS ONE</span><span class="source-badge">PLOS ONE · Free</span></div>
-            <div class="paper-links"><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0310422" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="geopolymer GEP random forest compressive strength prediction" aria-labelledby="p9-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">GEP & Random Forest · Wiley</span></div>
-          <span class="paper-id">EXT-GEO-003</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p9-title">Compressive Strength of Fly-Ash-Based Geopolymer Concrete by Gene Expression Programming and Random Forest</h3>
-          <p class="paper-authors">Khan et al. · <em>Advances in Civil Engineering (Wiley)</em> · 2021 · <a href="https://onlinelibrary.wiley.com/doi/10.1155/2021/6618407" target="_blank" rel="noopener">Wiley Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">GEP + Random Forest</span><span class="finding-chip">298 data points</span><span class="finding-chip">Prediction equations</span><span class="finding-chip">Mix design optimisation</span></div>
-          <p class="paper-abstract" id="abs9">Fly ash-based geopolymer concrete (FGPC) performance is difficult to predict from first principles due to the complexity of alkaline activation reactions. This open-access paper applies gene expression programming (GEP) and random forest regression to develop empirical prediction models for FGPC compressive strength using a comprehensive dataset of 298 experimental data points from published literature. The resulting models provide closed-form equations directly usable by engineers in the field without computational infrastructure — an important practical advantage for resource-constrained settings.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs9',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 Adv. Civil Eng. · Wiley</span><span class="source-badge">Wiley Open Access</span></div>
-            <div class="paper-links"><a href="https://onlinelibrary.wiley.com/doi/10.1155/2021/6618407" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="geopolymer ANN ANFIS GEP frontiers compressive strength" aria-labelledby="p18-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">ANN · Frontiers</span></div>
-          <span class="paper-id">EXT-GEO-004</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p18-title">Geopolymer Concrete Compressive Strength via Artificial Neural Network, ANFIS, and Gene Expression Programming with K-Fold Cross Validation</h3>
-          <p class="paper-authors">Khan MA et al. · <em>Frontiers in Materials</em> · 2021 · <a href="https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2021.621163/full" target="_blank" rel="noopener">Frontiers Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">ANN vs ANFIS vs GEP</span><span class="finding-chip">K-fold cross-validation</span><span class="finding-chip">Fly ash / GGBS precursors</span><span class="finding-chip">Validated ML tools</span></div>
-          <p class="paper-abstract" id="abs18">This fully open-access Frontiers paper presents a rigorous comparison of three machine learning architectures — ANN, ANFIS, and GEP — for predicting the compressive strength of fly ash-based geopolymer concrete. K-fold cross-validation ensures robust generalisation. The study covers a wide range of mix parameters including activator modulus, precursor type, and curing conditions, providing engineers with validated ML tools for geopolymer mix design without trial batching — lowering the barrier to green concrete adoption in developing countries.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs18',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 Frontiers in Materials</span><span class="source-badge">Frontiers Open Access</span></div>
-            <div class="paper-links"><a href="https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2021.621163/full" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="geopolymer alkali activated materials review durability" aria-labelledby="p-geo5-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · PMC</span></div>
-          <span class="paper-id">EXT-GEO-005</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-geo5-title">A Review of the Role of Alkaline Activators on the Properties of Geopolymer Concrete</h3>
-          <p class="paper-authors">Nodehi, M. & Taghvaee, V.M. · <em>Innovative Infrastructure Solutions</em> · 2022 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8590024/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">NaOH / Na₂SiO₃ ratios</span><span class="finding-chip">Curing temperature effects</span><span class="finding-chip">Workability impact</span><span class="finding-chip">Durability metrics</span></div>
-          <p class="paper-abstract" id="abs-geo5">The type and concentration of alkaline activators (NaOH, Na₂SiO₃, and their blends) critically govern the mechanical and durability performance of geopolymer concrete. This PMC free review systematically analyses how activator modulus, concentration, and the NaOH/Na₂SiO₃ ratio affect reaction kinetics, setting time, workability, and final strength. Optimal activator parameters are identified for fly ash, slag, and blended precursor systems. The paper provides a practical reference for geopolymer mix designers working in developing countries where activator sourcing consistency is a challenge.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-geo5',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2022</span><span class="pmeta">📖 Innovative Infrastructure Solutions</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8590024/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="geopolymer carbon footprint CO2 emission cement concrete life cycle" aria-labelledby="p-geo6-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">LCA · MDPI</span></div>
-          <span class="paper-id">EXT-GEO-006</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-geo6-title">Carbon Footprint of Geopolymer Concrete Mixes to Structural Design Compressive Strength</h3>
-          <p class="paper-authors">McLellan, B.C. et al. · <em>Journal of Cleaner Production</em> · 2011 · <a href="https://www.mdpi.com/2071-1050/13/9/4846" target="_blank" rel="noopener">MDPI Open Access (related)</a></p>
-          <div class="paper-findings"><span class="finding-chip">26–80% CO₂ reduction</span><span class="finding-chip">Regional fly ash availability</span><span class="finding-chip">Cost-carbon tradeoffs</span><span class="finding-chip">Structural grade mixes</span></div>
-          <p class="paper-abstract" id="abs-geo6">This landmark paper provides a comparative life cycle carbon analysis of geopolymer concrete relative to OPC concrete mixes designed to the same structural compressive strength targets. The analysis shows that, depending on fly ash availability and transport distance, geopolymer concrete can achieve 26–80% lower CO₂ emissions than equivalent OPC mixes. Cost analysis demonstrates that geopolymer mixes are cost-competitive in regions with abundant industrial by-products — highly relevant to Bangladesh and India where coal power generates large fly ash volumes at low cost.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-geo6',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2011</span><span class="pmeta">📖 J. Cleaner Production</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/2071-1050/13/9/4846" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-    </div><!-- /.lib-grid GEO -->
-
-    <!-- ════ CLUSTER 3 — CLIMATE RESILIENCE ════ -->
-    <div class="cat-header" data-cluster="climate">
-      <div class="cat-icon" aria-hidden="true">🌊</div>
-      <h3 class="cat-title">Climate Resilience & Adaptive Infrastructure</h3>
-      <span class="cat-count">6 papers</span>
-    </div>
-    <div class="lib-grid" role="list" aria-label="Climate resilience research papers">
-
-      <article class="paper" role="listitem" data-tags="climate change infrastructure adaptation flood resilience South Asia" aria-labelledby="p11-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-preprint">arXiv Preprint</span></div>
-          <span class="paper-id">EXT-CLI-001</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p11-title">Climate Change Impacts on Infrastructure: Pathways to Resilience in the Built Environment</h3>
-          <p class="paper-authors">Chester, M.V. et al. · <em>arXiv</em> · 2022 · <a href="https://arxiv.org/abs/2211.11072" target="_blank" rel="noopener">arXiv Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">Built environment resilience</span><span class="finding-chip">Adaptation pathways</span><span class="finding-chip">Infrastructure vulnerability</span><span class="finding-chip">Interdependency analysis</span></div>
-          <p class="paper-abstract" id="abs11">This arXiv preprint presents a systematic analysis of how climate change creates cascading risks across interconnected infrastructure systems — water, transport, energy, and buildings. The paper develops adaptation pathway frameworks that account for deep uncertainty in future climate projections, identifying robust design strategies for flood-prone and heat-stressed environments. The analysis is directly applicable to rapidly urbanising cities in South Asia, where infrastructure investment cycles are long and climate-proofing decisions made now lock in outcomes for decades.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs11',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2022</span><span class="pmeta">📖 arXiv</span><span class="source-badge">arXiv · Free</span></div>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2211.11072" target="_blank" rel="noopener noreferrer" class="doi-link arxiv">Read on arXiv ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="urban heat island cool pavement mitigation tropical cities" aria-labelledby="p12-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · MDPI</span></div>
-          <span class="paper-id">EXT-CLI-002</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p12-title">Urban Heat Islands and Cool Pavements: A Systematic Review of Thermal Performance and Mitigation Strategies</h3>
-          <p class="paper-authors">Santamouris, M. et al. · <em>Buildings (MDPI)</em> · 2022 · <a href="https://www.mdpi.com/2075-5309/12/1/34" target="_blank" rel="noopener">MDPI Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">2–10°C surface reduction</span><span class="finding-chip">Reflective coatings</span><span class="finding-chip">Pervious concrete</span><span class="finding-chip">Tropical city data</span></div>
-          <p class="paper-abstract" id="abs12">Urban heat islands in tropical megacities generate ambient temperature increases of 3–7°C relative to surrounding rural areas, imposing energy, health, and infrastructural costs. This MDPI open-access review synthesises data from field studies and modelling analyses, characterising the surface temperature reduction potential of cool pavements — reflective coatings, pervious concrete, and phase-change material additions — from 2–10°C under peak solar conditions. Albedo enhancement and evapotranspiration-based cooling are identified as the most scalable strategies for dense urban environments. Specific performance data for South and Southeast Asian cities are presented.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs12',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2022</span><span class="pmeta">📖 Buildings · MDPI</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/2075-5309/12/1/34" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="flood resilience embankment Bangladesh coastal infrastructure" aria-labelledby="p13-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Case Study Synthesis · PMC</span></div>
-          <span class="paper-id">EXT-CLI-003</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p13-title">Flood-Resilient Construction in Developing Countries: A Review of Material and Design Strategies</h3>
-          <p class="paper-authors">Various Authors · <em>Buildings (MDPI)</em> · 2023 · <a href="https://www.mdpi.com/2075-5309/13/3/601" target="_blank" rel="noopener">MDPI Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">High-SCM mixes 30–50%</span><span class="finding-chip">Embankment durability</span><span class="finding-chip">Tropical focus</span><span class="finding-chip">Policy recommendations</span></div>
-          <p class="paper-abstract" id="abs13">This open-access synthesis reviews material selection practices and performance data from flood-resilient construction projects in developing countries, focusing on coastal and riverine environments analogous to Bangladesh, West Bengal, and the Brahmaputra delta region. Focusing on embankments, flood shelters, and drainage infrastructure, the paper evaluates FA-blended, GGBS-blended, and RHA-blended concrete under repeated inundation cycles. High SCM replacement (30–50%) is consistently associated with reduced chloride ingress and sustained structural integrity over monitoring periods.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs13',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2023</span><span class="pmeta">📖 Buildings · MDPI</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/2075-5309/13/3/601" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="permeable pavement stormwater management urban flooding" aria-labelledby="p10-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Systematic Review · MDPI</span></div>
-          <span class="paper-id">EXT-CLI-004</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p10-title">Permeable Pavement as a Stormwater Management Practice: A Review of Design, Performance and Maintenance</h3>
-          <p class="paper-authors">Various Authors · <em>Water (MDPI)</em> · 2021 · <a href="https://www.mdpi.com/2073-4441/13/21/3086" target="_blank" rel="noopener">MDPI Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">70–90% runoff reduction</span><span class="finding-chip">Groundwater recharge</span><span class="finding-chip">Urban flood mitigation</span><span class="finding-chip">Maintenance intervals</span></div>
-          <p class="paper-abstract" id="abs10">Permeable pavement systems — including pervious concrete, porous asphalt, and interlocking permeable pavers — offer passive stormwater infiltration capacity critical for flood mitigation in dense urban environments. This open-access MDPI review covers field and laboratory studies reporting stormwater runoff reductions of 70–90% under typical subtropical rainfall intensities and groundwater recharge rates of 15–40% of rainfall volume. Performance degradation under clogging conditions and maintenance intervals are quantified, with implications for flood-prone agglomerations in Bangladesh and the Bay of Bengal coastal zone.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs10',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 Water · MDPI</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/2073-4441/13/21/3086" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="climate resilience coastal infrastructure sea level rise adaptation" aria-labelledby="p-cli5-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-preprint">arXiv Preprint</span></div>
-          <span class="paper-id">EXT-CLI-005</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-cli5-title">Sea-Level Rise and Coastal Infrastructure: Exposure, Vulnerability and Adaptation</h3>
-          <p class="paper-authors">Hinkel, J. et al. · <em>arXiv / PNAS preprint</em> · 2021 · <a href="https://arxiv.org/abs/2104.05921" target="_blank" rel="noopener">arXiv Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">SLR projections 2100</span><span class="finding-chip">Coastal exposure maps</span><span class="finding-chip">Adaptation cost models</span><span class="finding-chip">Bangladesh delta included</span></div>
-          <p class="paper-abstract" id="abs-cli5">This arXiv paper presents global-scale quantitative analysis of coastal infrastructure exposure to sea-level rise under multiple RCP scenarios through 2100. Using fine-resolution coastal digital elevation models, the study maps infrastructure assets at risk in low-lying deltaic regions — with Bangladesh's coastal zone featuring prominently. The paper provides adaptation cost modelling that compares retreat, accommodation, and protection strategies, offering a quantitative foundation for infrastructure investment decisions in climate-threatened coastal urban areas.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-cli5',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 arXiv</span><span class="source-badge">arXiv · Free</span></div>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2104.05921" target="_blank" rel="noopener noreferrer" class="doi-link arxiv">Read on arXiv ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="green building energy efficiency sustainability tropical climate" aria-labelledby="p-cli6-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · MDPI</span></div>
-          <span class="paper-id">EXT-CLI-006</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-cli6-title">Green Building Standards and Sustainability Assessment Frameworks: A Review</h3>
-          <p class="paper-authors">Various Authors · <em>Sustainability (MDPI)</em> · 2021 · <a href="https://www.mdpi.com/2071-1050/13/14/7785" target="_blank" rel="noopener">MDPI Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">LEED, BREEAM, GRIHA</span><span class="finding-chip">Tropical performance</span><span class="finding-chip">Material selection</span><span class="finding-chip">Energy reduction targets</span></div>
-          <p class="paper-abstract" id="abs-cli6">Green building rating systems (LEED, BREEAM, GRIHA, Green Mark) provide structured frameworks for sustainable infrastructure design. This open-access review critically evaluates the applicability of major green building standards to tropical, high-humidity climates — characteristic of South and Southeast Asia. The paper identifies where standard metrics map poorly onto tropical construction realities (particularly passive cooling and material availability), and recommends climate-specific modifications. GRIHA (India) and EDGE (IFC) are highlighted as better-calibrated for South Asian contexts.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-cli6',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 Sustainability · MDPI</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/2071-1050/13/14/7785" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-    </div><!-- /.lib-grid CLI -->
-
-    <!-- ════ CLUSTER 4 — AI & COMPUTATIONAL SIMULATION ════ -->
-    <div class="cat-header" data-cluster="ai">
-      <div class="cat-icon" aria-hidden="true">🤖</div>
-      <h3 class="cat-title">AI & Computational Simulation of Structural Systems</h3>
-      <span class="cat-count">6 papers</span>
-    </div>
-    <div class="lib-grid" role="list" aria-label="AI simulation research papers">
-
-      <article class="paper" role="listitem" data-tags="machine learning concrete compressive strength ANN SVM prediction" aria-labelledby="p15-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">Machine Learning · PMC</span></div>
-          <span class="paper-id">EXT-AI-001</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p15-title">Performance Comparison of Machine Learning Models for Concrete Compressive Strength Prediction: ANN, SVM, Regression Tree, and MLR</h3>
-          <p class="paper-authors">Multiple Authors · <em>Materials (MDPI)</em> · 2024 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11084521/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">ANN vs SVM vs RT vs MLR</span><span class="finding-chip">8 input features</span><span class="finding-chip">Cement, slag, fly ash, water</span><span class="finding-chip">R² &gt; 0.90</span></div>
-          <p class="paper-abstract" id="abs15">This fully free PMC paper presents a rigorous comparative evaluation of four machine learning architectures — ANN, SVM, regression tree, and multiple linear regression — for predicting concrete compressive strength from mix design parameters. Using eight input features (cement, blast furnace slag, fly ash, water, superplasticizer, coarse aggregate, fine aggregate, age), all ML models significantly outperform multiple linear regression. The study establishes a direct benchmark for ML-based mix design optimisation applicable to SCM-blended concretes, with direct relevance to RHA and FA dose-response prediction in South Asian practice.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs15',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2024</span><span class="pmeta">📖 Materials · MDPI</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11084521/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="deep learning structural health monitoring CNN LSTM damage detection" aria-labelledby="p16-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">Deep Learning · PMC</span></div>
-          <span class="paper-id">EXT-AI-002</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p16-title">Deep Learning for Structural Health Monitoring: Data, Algorithms, Applications, Challenges, and Trends</h3>
-          <p class="paper-authors">Multiple Authors · <em>Sensors (MDPI)</em> · 2023 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10650096/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">CNN crack detection</span><span class="finding-chip">LSTM time-series</span><span class="finding-chip">Real-time monitoring</span><span class="finding-chip">Non-destructive evaluation</span></div>
-          <p class="paper-abstract" id="abs16">This comprehensive open-access review covers the full landscape of deep learning applications to structural health monitoring (SHM), including CNNs for crack detection and image segmentation, LSTM networks for vibration and sensor time-series analysis, and transformer architectures. The paper covers bridge decks, embankments, harbour walls, and tunnel monitoring — all infrastructure types directly relevant to Bangladesh's coastal and flood-prone context. Over 200 primary studies are surveyed.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs16',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2023</span><span class="pmeta">📖 Sensors · MDPI</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10650096/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="explainable machine learning gradient boosting SHAP concrete strength" aria-labelledby="p19-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">Explainable ML · PMC</span></div>
-          <span class="paper-id">EXT-AI-003</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p19-title">Prediction of Compressive Strength of Concrete Using Explainable Machine Learning: Gradient Boosting, Random Forest, and SHAP Analysis</h3>
-          <p class="paper-authors">Multiple Authors · <em>Materials (MDPI)</em> · 2025 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12608167/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">CatBoost R²=0.9388</span><span class="finding-chip">SHAP feature importance</span><span class="finding-chip">Gradient Boosting + RF</span><span class="finding-chip">223 test specimens</span></div>
-          <p class="paper-abstract" id="abs19">This PMC open-access paper employs an interpretable machine learning framework using Gradient Boosting Trees, Random Forest, and Backpropagation Neural Networks to predict concrete compressive strength. Bayesian optimisation is used for hyperparameter tuning, and SHAP analysis quantifies feature contributions — identifying cement content and age as the most dominant variables. The CatBoost model achieves R²=0.9388 and RMSE=2.7131 MPa. The SHAP interpretability analysis makes findings actionable for practitioners without ML expertise.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs19',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2025</span><span class="pmeta">📖 Materials · MDPI</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12608167/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="graph neural network finite element structural simulation arXiv" aria-labelledby="p-ai4-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-arxiv">arXiv Preprint</span><span class="tag tag-ai">Graph Neural Networks</span></div>
-          <span class="paper-id">EXT-AI-004</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-ai4-title">Finite Element Surrogate Models via Graph Neural Networks for Structural Analysis</h3>
-          <p class="paper-authors">Maurizi, M. et al. · <em>arXiv</em> · 2022 · <a href="https://arxiv.org/abs/2212.10655" target="_blank" rel="noopener">arXiv Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">GNN surrogate model</span><span class="finding-chip">100x faster than FEM</span><span class="finding-chip">Stress field prediction</span><span class="finding-chip">Mesh generalisation</span></div>
-          <p class="paper-abstract" id="abs-ai4">This arXiv paper presents a graph neural network (GNN) surrogate model that replaces computationally expensive finite element method (FEM) simulations for structural analysis. The GNN learns to predict full stress and displacement fields from mesh geometry, achieving prediction speeds 100x faster than conventional FEM solvers with less than 5% error. This has major implications for rapid structural assessment of infrastructure in resource-limited settings, enabling structural design iteration without access to expensive FEM software licences.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-ai4',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2022</span><span class="pmeta">📖 arXiv:2212.10655</span><span class="source-badge">arXiv · Free</span></div>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2212.10655" target="_blank" rel="noopener noreferrer" class="doi-link arxiv">Read on arXiv ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="physics informed neural network structural mechanics arXiv AI simulation" aria-labelledby="p-ai5-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-arxiv">arXiv Preprint</span><span class="tag tag-ai">Physics-Informed ML</span></div>
-          <span class="paper-id">EXT-AI-005</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-ai5-title">Physics-Informed Neural Networks for Structural Mechanics: A Comprehensive Review</h3>
-          <p class="paper-authors">Karniadakis, G.E. et al. · <em>arXiv</em> · 2021 · <a href="https://arxiv.org/abs/2201.05624" target="_blank" rel="noopener">arXiv Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">PDE-constrained learning</span><span class="finding-chip">Beam & plate models</span><span class="finding-chip">No labelled data needed</span><span class="finding-chip">Physics-guided training</span></div>
-          <p class="paper-abstract" id="abs-ai5">Physics-Informed Neural Networks (PINNs) encode governing partial differential equations (PDEs) directly into the neural network training loss, enabling structural mechanics simulation without large labelled training datasets. This comprehensive arXiv review covers PINN formulations for elasticity, beam bending, plate theory, and dynamic structural problems. The approach is particularly valuable where experimental data is scarce — as is common in developing-country infrastructure contexts — allowing rapid structural assessment from minimal measurements or first-principles specifications.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-ai5',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 arXiv:2201.05624</span><span class="source-badge">arXiv · Free</span></div>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2201.05624" target="_blank" rel="noopener noreferrer" class="doi-link arxiv">Read on arXiv ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="crack detection concrete image computer vision deep learning CNN" aria-labelledby="p-ai6-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-ai">CNN · Crack Detection · PMC</span></div>
-          <span class="paper-id">EXT-AI-006</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-ai6-title">Data-Driven Structural Health Monitoring and Damage Detection Through Deep Learning: State-of-the-Art Review</h3>
-          <p class="paper-authors">Avci, O. et al. · <em>Sensors (MDPI)</em> · 2020 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7294417/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">CNN &gt;95% crack accuracy</span><span class="finding-chip">40,000+ training images</span><span class="finding-chip">Bridge & tunnel monitoring</span><span class="finding-chip">UAV inspection</span></div>
-          <p class="paper-abstract" id="abs-ai6">This state-of-the-art review covers data-driven structural health monitoring using deep learning, with particular focus on CNN-based crack detection in concrete surfaces achieving over 95% classification accuracy. The paper discusses sliding-window methods, semantic segmentation, UAV-based inspection, and practical deployment challenges. Applications to bridge decks, tunnel linings, embankments, and coastal harbour walls are discussed with reference to climate-stressed infrastructure in tropical and coastal environments — directly relevant to Bangladesh's rapidly expanding infrastructure stock.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-ai6',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2020</span><span class="pmeta">📖 Sensors · MDPI</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7294417/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-    </div><!-- /.lib-grid AI -->
-
-    <!-- ════ CLUSTER 5 — LIFECYCLE & SUSTAINABILITY ════ -->
-    <div class="cat-header" data-cluster="lifecycle">
-      <div class="cat-icon" aria-hidden="true">♻️</div>
-      <h3 class="cat-title">Life Cycle Assessment & Sustainable Construction Practice</h3>
-      <span class="cat-count">5 papers</span>
-    </div>
-    <div class="lib-grid" role="list" aria-label="Lifecycle and sustainability papers">
-
-      <article class="paper" role="listitem" data-tags="life cycle assessment LCA concrete environmental impact CO2" aria-labelledby="p-lca1-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">LCA Review · arXiv</span></div>
-          <span class="paper-id">EXT-LCA-001</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-lca1-title">Life Cycle Assessment of Concrete: A Review of the Methodological Choices and Their Implications</h3>
-          <p class="paper-authors">Various Authors · <em>arXiv / J. Cleaner Production</em> · 2023 · <a href="https://arxiv.org/abs/2310.07461" target="_blank" rel="noopener">arXiv Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">Cradle-to-grave LCA</span><span class="finding-chip">SCM substitution impact</span><span class="finding-chip">GWP comparison</span><span class="finding-chip">Methodological guide</span></div>
-          <p class="paper-abstract" id="abs-lca1">Life Cycle Assessment (LCA) is the primary tool for quantifying the environmental impact of concrete over its full service life from raw material extraction through demolition and recycling. This arXiv preprint reviews the methodological choices in concrete LCA studies — system boundaries, functional unit definitions, end-of-life allocation — and their implications for comparisons between OPC and SCM-blended concretes. The paper demonstrates that SCM-blended concretes consistently show 20–60% lower global warming potential (GWP) when full life cycle boundaries are applied, with sensitivity analysis on key assumptions.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-lca1',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2023</span><span class="pmeta">📖 arXiv</span><span class="source-badge">arXiv · Free</span></div>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2310.07461" target="_blank" rel="noopener noreferrer" class="doi-link arxiv">Read on arXiv ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="recycled aggregate concrete waste construction circular economy" aria-labelledby="p-lca2-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · PMC</span></div>
-          <span class="paper-id">EXT-LCA-002</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-lca2-title">Recycled Aggregate Concrete: Systematic Review of Mechanical Properties and Durability</h3>
-          <p class="paper-authors">Various Authors · <em>Materials (MDPI)</em> · 2021 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8746583/" target="_blank" rel="noopener">PMC Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">Up to 30% RAC viable</span><span class="finding-chip">10–25% strength reduction</span><span class="finding-chip">Demolition waste reuse</span><span class="finding-chip">Urban circular economy</span></div>
-          <p class="paper-abstract" id="abs-lca2">Recycled aggregate concrete (RAC) uses crushed construction and demolition waste as a replacement for virgin coarse aggregate, diverting waste from landfill and reducing quarrying impacts. This PMC free systematic review synthesises mechanical property data from over 120 primary studies, finding that up to 30% recycled aggregate replacement maintains structural viability with 10–25% strength reduction relative to virgin aggregate controls. Durability penalties under chloride and sulfate exposure are quantified, and mitigation strategies using SCM blending are discussed — with high relevance to Bangladesh's growing urban demolition waste stream.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-lca2',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2021</span><span class="pmeta">📖 Materials · MDPI</span><span class="source-badge">PMC Free</span></div>
-            <div class="paper-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8746583/" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="embodied carbon construction building materials decarbonization" aria-labelledby="p-lca3-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-preprint">arXiv Preprint</span></div>
-          <span class="paper-id">EXT-LCA-003</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-lca3-title">Embodied Carbon in the Built Environment: Targets, Pathways and Innovations</h3>
-          <p class="paper-authors">Röck, M. et al. · <em>arXiv / Nature Sustainability</em> · 2020 · <a href="https://arxiv.org/abs/2002.01785" target="_blank" rel="noopener">arXiv Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">50% embodied C reduction target</span><span class="finding-chip">Global building sector</span><span class="finding-chip">Material substitution</span><span class="finding-chip">Policy pathways</span></div>
-          <p class="paper-abstract" id="abs-lca3">This arXiv paper presents a comprehensive analysis of embodied carbon in the global building sector, establishing that meeting 1.5°C climate targets requires at least 50% reduction in embodied carbon from construction materials. The paper maps current and projected embodied carbon intensities across material types (concrete, steel, timber, masonry), identifies the highest-impact substitution opportunities, and proposes policy frameworks for embodied carbon regulation. SCMs — fly ash, GGBS, RHA — are identified as among the highest-impact, lowest-cost decarbonisation levers available to the construction sector globally.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-lca3',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2020</span><span class="pmeta">📖 arXiv:2002.01785</span><span class="source-badge">arXiv · Free</span></div>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2002.01785" target="_blank" rel="noopener noreferrer" class="doi-link arxiv">Read on arXiv ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="sustainable construction developing countries low cost housing rural" aria-labelledby="p-lca4-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-review">Review · MDPI</span></div>
-          <span class="paper-id">EXT-LCA-004</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-lca4-title">Sustainable Construction Materials and Technologies: From Research to Practice</h3>
-          <p class="paper-authors">Various Authors · <em>Sustainability (MDPI)</em> · 2020 · <a href="https://www.mdpi.com/2071-1050/12/18/7420" target="_blank" rel="noopener">MDPI Open Access</a></p>
-          <div class="paper-findings"><span class="finding-chip">Developing country focus</span><span class="finding-chip">Low-cost material systems</span><span class="finding-chip">Technology transfer</span><span class="finding-chip">Skills & supply chain</span></div>
-          <p class="paper-abstract" id="abs-lca4">This open-access MDPI paper addresses the gap between sustainable construction research and real-world adoption in developing countries, where supply chain limitations, skill deficits, and regulatory gaps hinder technology transfer. The review covers material-level interventions (SCMs, natural fibres, recycled aggregates) as well as system-level enablers (training, local supply chains, code updates). Specific case studies from South Asia, sub-Saharan Africa, and Latin America illustrate successful adoption pathways — providing a practical roadmap for practitioners in Bangladesh and similar contexts.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-lca4',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2020</span><span class="pmeta">📖 Sustainability · MDPI</span><span class="source-badge">MDPI Open Access</span></div>
-            <div class="paper-links"><a href="https://www.mdpi.com/2071-1050/12/18/7420" target="_blank" rel="noopener noreferrer" class="doi-link">Read Free Full Text ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="paper" role="listitem" data-tags="carbon capture concrete cement mineralization CO2 utilization" aria-labelledby="p-lca5-title">
-        <div class="paper-head">
-          <div class="paper-tags"><span class="tag tag-oa">Open Access</span><span class="tag tag-preprint">arXiv Preprint</span></div>
-          <span class="paper-id">EXT-LCA-005</span>
-        </div>
-        <div class="paper-body">
-          <h3 class="paper-title" id="p-lca5-title">Carbon Mineralisation in Concrete: Mechanisms, Rates and Implications for Global CO₂ Uptake</h3>
-          <p class="paper-authors">Xi, F. et al. · <em>arXiv / Nature Geoscience</em> · 2016/2023 · <a href="https://arxiv.org/abs/2301.10226" target="_blank" rel="noopener">arXiv Free Full Text</a></p>
-          <div class="paper-findings"><span class="finding-chip">Concrete as carbon sink</span><span class="finding-chip">43 Gt CO₂ absorbed 1930–2013</span><span class="finding-chip">Carbonation rate models</span><span class="finding-chip">Policy implications</span></div>
-          <p class="paper-abstract" id="abs-lca5">Concrete undergoes carbonation throughout its service life and beyond, absorbing atmospheric CO₂ through reaction with calcium hydroxide and calcium silicate hydrate. This arXiv paper presents a global quantitative analysis of CO₂ uptake by concrete, estimating 43 Gt of CO₂ absorbed by concrete between 1930 and 2013 — partially offsetting cement production emissions. The paper provides carbonation rate models accounting for concrete mix, exposure conditions, and climate, with direct implications for life cycle carbon accounting of SCM-blended concretes that alter carbonation kinetics.</p>
-          <button class="expand-btn" onclick="toggleAbstract('abs-lca5',this)">Read full abstract ↓</button>
-          <div class="paper-footer">
-            <div class="paper-meta"><span class="pmeta">📅 2023</span><span class="pmeta">📖 arXiv:2301.10226</span><span class="source-badge">arXiv · Free</span></div>
-            <div class="paper-links"><a href="https://arxiv.org/abs/2301.10226" target="_blank" rel="noopener noreferrer" class="doi-link arxiv">Read on arXiv ↗</a></div>
-          </div>
-        </div>
-      </article>
-
-    </div><!-- /.lib-grid LCA -->
-    <div class="no-results" id="noResults" aria-live="polite">No papers matched your search. Try a different term or clear the filter.</div>
-    </div><!-- /#paperContainer -->
-  </div>
-</section>
-
-<!-- ── METHODOLOGY ── -->
-<section id="method" aria-labelledby="method-h">
-  <div class="container">
-    <div class="section-kicker">Our Methodology</div>
-    <h2 class="section-h2" id="method-h">How original papers are produced.</h2>
-    <p class="section-sub">Every original paper follows a strict, transparent, reproducible methodology. Every step is documented and auditable.</p>
-    <div class="method-grid" role="list">
-      <div class="method-card" role="listitem"><div class="method-num">Step 01</div><h3>PRISMA 2020 Screening</h3><p>All literature reviews follow the Preferred Reporting Items for Systematic Reviews and Meta-Analyses 2020 framework. Screening runs across Web of Science, Scopus, and BASE using pre-registered Boolean search strings with documented inclusion and exclusion criteria.</p></div>
-      <div class="method-card" role="listitem"><div class="method-num">Step 02</div><h3>Random-Effects Meta-Analysis</h3><p>Pooled effect sizes are computed using DerSimonian-Laird random-effects models to account for inter-study heterogeneity. I² and τ² statistics are reported transparently alongside Q-test p-values to characterise variability across source populations.</p></div>
-      <div class="method-card" role="listitem"><div class="method-num">Step 03</div><h3>Dose-Response Threshold Mapping</h3><p>Beyond aggregate effects, we isolate critical dosage thresholds — the specific replacement ratios at which performance peaks, plateaus, or degrades. These are the numbers practitioners need for actual mix design decisions in the field.</p></div>
-      <div class="method-card" role="listitem"><div class="method-num">Step 04</div><h3>Zenodo Archival & DOI Assignment</h3><p>Every completed review and dataset is deposited on Zenodo under CC-BY 4.0, receiving a persistent DOI that ensures long-term citability independent of any institutional infrastructure or server uptime.</p></div>
-      <div class="method-card" role="listitem"><div class="method-num">Step 05</div><h3>Open Data Deposition</h3><p>Extraction matrices and statistical scripts are publicly deposited alongside each paper. Any researcher can fork, audit, extend, or fully replicate any component of any Monolith Labs analysis. Transparency is not optional — it is the architecture.</p></div>
-      <div class="method-card" role="listitem"><div class="method-num">Step 06</div><h3>External Paper Curation</h3><p>External papers are selected for methodological rigour, fully verified open-access availability (arXiv, PMC, MDPI, Frontiers, PLOS ONE, Zenodo), and relevance to sustainable infrastructure in South Asia. All links are tested and go directly to freely readable full texts. No paywalled sources are ever listed.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── ACADEMY ── -->
-<section id="academy" aria-labelledby="academy-h">
-  <div class="container">
-    <div class="section-kicker">Monolith Academy</div>
-    <h2 class="section-h2" id="academy-h">Conduct your own systematic review.</h2>
-    <p class="section-sub">A self-directed curriculum for high-school and undergraduate students who want to produce rigorous research independently — no university affiliation required.</p>
-    <div class="academy-row">
-      <div class="stage-card"><div class="stage-num">Stage 01</div><h3>Scientific Literature Mining</h3><p>Construct Boolean search strings, navigate Web of Science, Scopus, and BASE, and export citation metadata. Covers database architecture, grey literature sourcing, and citation graph traversal to identify landmark primary studies in civil engineering and materials science.</p><div class="stage-links"><a href="https://clarivate.com/products/scientific-and-academic-research/research-discovery-and-workflow-solutions/webofscience-platform/" target="_blank" rel="noopener" class="stage-link">Web of Science</a><a href="https://www.scopus.com" target="_blank" rel="noopener" class="stage-link">Scopus</a><a href="https://www.base-search.net/" target="_blank" rel="noopener" class="stage-link">BASE Search</a><a href="https://arxiv.org" target="_blank" rel="noopener" class="stage-link">arXiv</a></div></div>
-      <div class="stage-card"><div class="stage-num">Stage 02</div><h3>PRISMA 2020 Screening Protocols</h3><p>Apply the PRISMA 2020 framework from identification through inclusion. Covers title-abstract screening logic, full-text eligibility criteria, PRISMA flow diagram construction, and inter-rater reliability checks — all required for a defensible methodology section.</p><div class="stage-links"><a href="https://www.prisma-statement.org/prisma-2020" target="_blank" rel="noopener" class="stage-link">PRISMA 2020 Checklist</a><a href="https://www.rayyan.ai/" target="_blank" rel="noopener" class="stage-link">Rayyan (free tool)</a></div></div>
-      <div class="stage-card"><div class="stage-num">Stage 03</div><h3>Heterogeneity & Meta-Analysis</h3><p>Understand the mathematics of random-effects meta-analysis: effect size calculation, variance estimation, the DerSimonian-Laird estimator, and interpretation of I², τ², and Q statistics. Worked examples use real data from the Monolith Labs RHA dataset.</p><div class="stage-links"><a href="https://www.metafor-project.org/" target="_blank" rel="noopener" class="stage-link">metafor (R package)</a><a href="https://training.cochrane.org/handbook" target="_blank" rel="noopener" class="stage-link">Cochrane Handbook</a></div></div>
-      <div class="stage-card"><div class="stage-num">Stage 04</div><h3>Open-Science Archival via Zenodo</h3><p>Publish reproducibly. Zenodo account setup, record creation, file versioning, CC-BY 4.0 licence selection, DOI registration, and linking datasets to preprint servers including arXiv, ESSOAr, and EarthArXiv.</p><div class="stage-links"><a href="https://zenodo.org" target="_blank" rel="noopener" class="stage-link">Zenodo</a><a href="https://help.zenodo.org/" target="_blank" rel="noopener" class="stage-link">Zenodo Docs</a><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="stage-link">CC-BY 4.0</a></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── RESOURCES ── -->
-<section id="resources" aria-labelledby="resources-h">
-  <div class="container">
-    <div class="section-kicker">Open Tools & Resources</div>
-    <h2 class="section-h2" id="resources-h">Everything you need, free.</h2>
-    <p class="section-sub">Databases, tools, and repositories that every researcher working on sustainable infrastructure should bookmark. All free, all open.</p>
-    <div class="resources-grid">
-      <div class="resource-card"><div class="resource-icon">📚</div><h3>arXiv</h3><p>Open preprint server for physics, engineering, and computer science. Thousands of free civil engineering and materials papers, many before journal publication.</p><a href="https://arxiv.org" target="_blank" rel="noopener" class="resource-link">arxiv.org →</a></div>
-      <div class="resource-card"><div class="resource-icon">🏥</div><h3>PubMed Central (PMC)</h3><p>NIH's free full-text archive. Hosts thousands of MDPI engineering and materials papers for free. Essential for accessing Sensors, Materials, Buildings, and Sustainability journals.</p><a href="https://pmc.ncbi.nlm.nih.gov/" target="_blank" rel="noopener" class="resource-link">pmc.ncbi.nlm.nih.gov →</a></div>
-      <div class="resource-card"><div class="resource-icon">🔬</div><h3>Zenodo</h3><p>CERN-hosted open repository. Any researcher can deposit papers, datasets, and code with a persistent DOI for free. The open-publishing platform used by Monolith Labs.</p><a href="https://zenodo.org" target="_blank" rel="noopener" class="resource-link">zenodo.org →</a></div>
-      <div class="resource-card"><div class="resource-icon">📊</div><h3>MDPI Open Access</h3><p>Publisher of open-access journals including Materials, Sustainability, Buildings, Water, Sensors. All articles permanently free without login or paywall.</p><a href="https://www.mdpi.com" target="_blank" rel="noopener" class="resource-link">mdpi.com →</a></div>
-      <div class="resource-card"><div class="resource-icon">🌐</div><h3>PLOS ONE</h3><p>Fully open-access multidisciplinary journal. Hosts high-quality civil engineering, machine learning, and environmental research with zero paywalls.</p><a href="https://journals.plos.org/plosone/" target="_blank" rel="noopener" class="resource-link">journals.plos.org →</a></div>
-      <div class="resource-card"><div class="resource-icon">🔍</div><h3>BASE Search</h3><p>Bielefeld Academic Search Engine. Indexes millions of open-access academic papers not always found on Google Scholar. Excellent for grey literature and preprints.</p><a href="https://www.base-search.net/" target="_blank" rel="noopener" class="resource-link">base-search.net →</a></div>
-      <div class="resource-card"><div class="resource-icon">🧪</div><h3>Rayyan (Free Screening)</h3><p>Free, web-based systematic review screening tool. Supports PRISMA workflows with team collaboration, blinding, and PRISMA flow diagram export. Used by Monolith Labs.</p><a href="https://www.rayyan.ai/" target="_blank" rel="noopener" class="resource-link">rayyan.ai →</a></div>
-      <div class="resource-card"><div class="resource-icon">📐</div><h3>metafor (R Package)</h3><p>The standard open-source R package for meta-analysis. Implements DerSimonian-Laird random-effects models, forest plots, funnel plots, and heterogeneity statistics.</p><a href="https://www.metafor-project.org/" target="_blank" rel="noopener" class="resource-link">metafor-project.org →</a></div>
-      <div class="resource-card"><div class="resource-icon">📋</div><h3>PRISMA 2020</h3><p>The authoritative reporting guideline for systematic reviews and meta-analyses. Download the official checklist, flow diagram template, and explanation paper for free.</p><a href="https://www.prisma-statement.org/prisma-2020" target="_blank" rel="noopener" class="resource-link">prisma-statement.org →</a></div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ── FOOTER ── -->
-<footer role="contentinfo">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="fw">Monolith<em>Labs</em></div>
-        <p>Open-access research library for sustainable infrastructure and climate-resilient construction. Founded in Dhaka, Bangladesh. Built for researchers everywhere.</p>
-      </div>
-      <div class="footer-col"><h4>Research</h4><ul><li><a href="#library">Open Library</a></li><li><a href="https://doi.org/10.5281/zenodo.20241511" target="_blank" rel="noopener">RHA Systematic Review</a></li><li><a href="#method">Methodology</a></li></ul></div>
-      <div class="footer-col"><h4>Learn</h4><ul><li><a href="#academy">Academy</a></li><li><a href="https://www.prisma-statement.org/" target="_blank" rel="noopener">PRISMA 2020</a></li><li><a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a></li><li><a href="https://www.rayyan.ai/" target="_blank" rel="noopener">Rayyan</a></li></ul></div>
-      <div class="footer-col"><h4>Open Infrastructure</h4><ul><li><a href="https://arxiv.org" target="_blank" rel="noopener">arXiv</a></li><li><a href="https://pmc.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed Central</a></li><li><a href="https://www.mdpi.com" target="_blank" rel="noopener">MDPI Open Access</a></li><li><a href="https://journals.plos.org/plosone/" target="_blank" rel="noopener">PLOS ONE</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-legal">All Monolith Labs original outputs are published under Creative Commons Attribution 4.0 International (CC-BY 4.0).<br>External papers link only to verified open-access full texts. No paywalled links. &copy; 2025 Monolith Labs.</div>
-      <div class="footer-right">Founded at Dhaka College, Dhaka, Bangladesh<br>HSC-26 Batch · Independent Research Initiative<br><a href="https://sadmansamin21.github.io/monolith-labs.html">sadmansamin21.github.io/monolith-labs.html</a></div>
-    </div>
-    <div class="footer-credit">Built and maintained by <a href="https://sadmansamin21.github.io" target="_blank" rel="noopener">Sadman Samin</a> · Open source, freely available, no strings attached.</div>
-  </div>
-</footer>
-
-<button class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
-
-<script>
-(function(){
-'use strict';
-
-/* ── THEME TOGGLE ── */
-var root = document.documentElement;
-var themeBtn = document.getElementById('themeToggle');
-var savedTheme = localStorage.getItem('ml-theme') || 'light';
-root.setAttribute('data-theme', savedTheme);
-themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
-themeBtn.addEventListener('click', function(){
-  var current = root.getAttribute('data-theme');
-  var next = current === 'dark' ? 'light' : 'dark';
-  root.setAttribute('data-theme', next);
-  themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-  try { localStorage.setItem('ml-theme', next); } catch(e){}
-});
-
-/* ── HAMBURGER ── */
-var ham = document.getElementById('hamburger');
-var mobileNav = document.getElementById('mobileNav');
-ham.addEventListener('click', function(){
-  var open = mobileNav.classList.toggle('open');
-  ham.setAttribute('aria-expanded', String(open));
-});
-mobileNav.querySelectorAll('a').forEach(function(a){
-  a.addEventListener('click', function(){
-    mobileNav.classList.remove('open');
-    ham.setAttribute('aria-expanded','false');
-  });
-});
-
-/* ── NAV SHADOW ── */
-var nav = document.getElementById('nav');
-window.addEventListener('scroll', function(){
-  nav.style.boxShadow = window.scrollY > 8 ? '0 2px 20px rgba(0,0,0,0.1)' : 'none';
-},{passive:true});
-
-/* ── BACK TO TOP ── */
-var backTop = document.getElementById('backTop');
-window.addEventListener('scroll', function(){
-  backTop.classList.toggle('visible', window.scrollY > 400);
-},{passive:true});
-backTop.addEventListener('click', function(){
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-
-/* ── SEARCH & FILTER ── */
-var searchInput = document.getElementById('searchInput');
-var pills = document.querySelectorAll('.filter-pill');
-var papers = document.querySelectorAll('.paper');
-var noResults = document.getElementById('noResults');
-var activeFilter = 'all';
-
-function applyFilters(){
-  var query = searchInput.value.toLowerCase().trim();
-  var visibleCount = 0;
-  papers.forEach(function(p){
-    var tags = (p.getAttribute('data-tags')||'').toLowerCase();
-    var titleEl = p.querySelector('.paper-title');
-    var authEl = p.querySelector('.paper-authors');
-    var text = ((titleEl?titleEl.textContent:'') + ' ' + (authEl?authEl.textContent:'') + ' ' + tags).toLowerCase();
-    var matchesQuery = !query || text.includes(query);
-    var matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
-    var visible = matchesQuery && matchesFilter;
-    p.setAttribute('data-hidden', visible ? 'false' : 'true');
-    if(visible) visibleCount++;
-  });
-  // Show/hide category headers
-  document.querySelectorAll('.cat-header').forEach(function(header){
-    var cluster = header.getAttribute('data-cluster');
-    if(!cluster){return;}
-    var next = header.nextElementSibling;
-    while(next && !next.classList.contains('cat-header')){
-      if(next.classList.contains('lib-grid')){
-        var visInGroup = Array.from(next.querySelectorAll('.paper')).some(function(p){return p.getAttribute('data-hidden')==='false';});
-        header.style.display = visInGroup ? '' : 'none';
-        break;
-      }
-      next = next.nextElementSibling;
-    }
-  });
-  noResults.classList.toggle('visible', visibleCount === 0);
-}
-
-searchInput.addEventListener('input', applyFilters);
-pills.forEach(function(pill){
-  pill.addEventListener('click', function(){
-    pills.forEach(function(p){p.classList.remove('active');});
-    pill.classList.add('active');
-    activeFilter = pill.getAttribute('data-filter');
-    applyFilters();
-  });
-});
-
-})();
-
-/* ── ABSTRACT TOGGLE ── */
-function toggleAbstract(id, btn){
-  var el = document.getElementById(id);
-  var expanded = el.classList.toggle('expanded');
-  btn.textContent = expanded ? 'Collapse ↑' : 'Read full abstract ↓';
-}
-</script>
 </body>
 </html>

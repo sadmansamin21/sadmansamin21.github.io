@@ -2196,172 +2196,30 @@ footer {
 
 
 <script>
-// ===== SITE SEARCH DATA =====
-const SEARCH_INDEX = [
-  {
-    title: 'About Sadman Samin',
-    snippet: 'Businessman, entrepreneur, researcher in Dhaka. Business strategy, AI, resilient leadership.',
-    tag: 'About',
-    anchor: '#about',
-    keywords: ['about', 'sadman', 'samin', 'who', 'businessman', 'researcher', 'dhaka', 'entrepreneur', 'philosophy']
-  },
-  {
-    title: 'AI Job Risk Calculator',
-    snippet: 'Research flagship mapping workforce vulnerabilities in the post-AGI economy.',
-    tag: 'Project',
-    anchor: '#projects',
-    keywords: ['monolith', 'labs', 'agi', 'workforce', 'post-agi', 'economy', 'research flagship', 'displacement']
-  },
-  {
-    title: 'Rent Estimator BD',
-    snippet: 'Data-driven rental intelligence for 50+ districts across Bangladesh.',
-    tag: 'Project',
-    anchor: '#projects',
-    keywords: ['rent', 'estimator', 'bangladesh', 'bd', 'housing', 'districts', 'rental', 'tool']
-  },
-  {
-    title: 'What I\'m Doing Now',
-    snippet: 'Currently studying LLMs, transformer architectures, and post-AGI workforce research.',
-    tag: 'Now',
-    anchor: '#now',
-    keywords: ['now', 'currently', 'llm', 'transformer', 'studying', 'learning', 'reading', 'attention', 'present']
-  },
-  {
-    title: 'Fractional Management in the AI Era',
-    snippet: 'Essay on how AI reshapes management structures and why fractional leadership defines the next decade.',
-    tag: 'Essay',
-    url: 'https://sadmansamin21.github.io/blogs/fractional-management-ai-era.html',
-    keywords: ['fractional', 'management', 'ai era', 'leadership', 'essay', 'blog', 'strategy', 'writing']
-  },
-  {
-    title: 'Pricing Your First Client',
-    snippet: 'How to close your first client deal with no portfolio, case studies, or referrals.',
-    tag: 'Essay',
-    url: 'https://sadmansamin21.github.io/blogs/pricing-your-first-client.html',
-    keywords: ['pricing', 'client', 'first', 'deal', 'portfolio', 'freelance', 'essay', 'strategy']
-  },
-  {
-    title: 'Critical Research',
-    snippet: 'Formal research papers on workforce displacement, institutional resilience, and AI economics.',
-    tag: 'Research',
-    anchor: '#research',
-    keywords: ['research', 'paper', 'pdf', 'critical', 'workforce', 'institutional', 'formal', 'academic']
-  },
-  {
-    title: 'Education — Dhaka College & Comilla Zilla School',
-    snippet: 'HSC Science at Dhaka College. SSC with distinction from Comilla Zilla School.',
-    tag: 'Education',
-    anchor: '#education',
-    keywords: ['education', 'dhaka college', 'comilla', 'hsc', 'ssc', 'school', 'academic', 'background', 'jsc', 'pec']
-  },
-  {
-    title: 'Certifications',
-    snippet: 'UNITAR, Google Cloud, IBM, BDPhO National Finalist.',
-    tag: 'Certifications',
-    anchor: '#certifications',
-    keywords: ['certifications', 'unitar', 'google', 'ibm', 'bdpho', 'physics', 'olympiad', 'leadership', 'ai ethics']
-  },
-  {
-    title: 'Core Traits',
-    snippet: 'Strategic vision, deep relation building, fundamental need solving.',
-    tag: 'About',
-    anchor: '#about',
-    keywords: ['traits', 'values', 'strategic', 'vision', 'trust', 'relationship', 'core', 'skills', 'speaking']
-  },
-  {
-    title: 'People Also Ask',
-    snippet: 'Common questions about Sadman\'s research, work, and thinking.',
-    tag: 'FAQ',
-    anchor: '#ask',
-    keywords: ['faq', 'questions', 'ask', 'answers', 'people also ask', 'about me']
-  },
-  {
-    title: 'Contact Sadman Samin',
-    snippet: 'Open to collaborations, research discussions, and conversations about the future.',
-    tag: 'Contact',
-    anchor: '#contact',
-    keywords: ['contact', 'email', 'connect', 'collaborate', 'reach', 'linkedin', 'twitter', 'instagram', 'social']
-  },
-  {
-    title: 'Football & Hobbies',
-    snippet: 'Real Madrid, Pep Guardiola, Cristiano Ronaldo. Also: travel, New Zealand, Apple, technology.',
-    tag: 'Personal',
-    anchor: '#about',
-    keywords: ['football', 'hobbies', 'real madrid', 'ronaldo', 'guardiola', 'travel', 'new zealand', 'apple', 'personal', 'interests']
-  }
-];
-
-function openSearch() {
-  document.getElementById('searchOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  setTimeout(() => document.getElementById('searchInput').focus(), 100);
-}
-
-function closeSearch() {
-  document.getElementById('searchOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-  document.getElementById('searchInput').value = '';
-  document.getElementById('searchResults').innerHTML = '';
-  document.getElementById('searchHint').style.display = 'flex';
-}
-
-function setSearch(term) {
-  document.getElementById('searchInput').value = term;
-  doSearch(term);
-}
-
-function doSearch(query) {
-  const q = query.toLowerCase().trim();
-  const hint = document.getElementById('searchHint');
-  const resultsEl = document.getElementById('searchResults');
-
-  if (!q) {
-    resultsEl.innerHTML = '';
-    hint.style.display = 'flex';
-    return;
-  }
-
-  hint.style.display = 'none';
-
-  const results = SEARCH_INDEX.filter(item => {
-    return item.keywords.some(kw => kw.includes(q) || q.includes(kw)) ||
-           item.title.toLowerCase().includes(q) ||
-           item.snippet.toLowerCase().includes(q);
-  });
-
-  if (results.length === 0) {
-    resultsEl.innerHTML = '<div class="search-empty">No results for "' + query + '".<br>Try: projects, research, LLM, certifications.</div>';
-    return;
-  }
-
-  resultsEl.innerHTML = results.map(r => {
-    const dest = r.url || r.anchor;
-    const isExternal = !!r.url;
-    return `<div class="search-result-item" onclick="goToResult('${dest}', ${isExternal})">
-      <div>
-        <div class="search-result-title">${r.title}</div>
-        <div class="search-result-snippet">${r.snippet}</div>
-      </div>
-      <span class="search-result-tag">${r.tag}</span>
-    </div>`;
-  }).join('');
-}
-
-function goToResult(dest, isExternal) {
-  closeSearch();
-  if (isExternal) {
-    window.open(dest, '_blank', 'noopener noreferrer');
-  } else {
-    setTimeout(() => {
-      const el = document.querySelector(dest);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 200);
+// ===== RESEARCH TABS =====
+// pushHash controls whether switching tabs updates the URL — true when a
+// person clicks a tab (so the link becomes shareable), false when we're
+// just restoring state from an already-present hash on page load.
+function switchTab(panel, btn, pushHash = true) {
+  document.querySelectorAll('.research-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.research-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  const target = document.getElementById('panel-' + panel);
+  if (target) target.classList.add('active');
+  if (pushHash) {
+    const hash = panel === 'critical' ? '#critical-research' : '#research';
+    history.replaceState(null, '', hash);
   }
 }
 
-document.getElementById('searchInput').addEventListener('input', function() {
-  doSearch(this.value);
-});
+// If someone arrives via a #critical-research link, open that tab instead
+// of always defaulting to Essays & Writing.
+function initResearchTabFromHash() {
+  if (window.location.hash === '#critical-research') {
+    const tabs = document.querySelectorAll('.research-tab');
+    if (tabs[1]) switchTab('critical', tabs[1], false);
+  }
+}
 
 // ===== PEOPLE ALSO ASK DATA =====
 // Each question has 3 answer variants — shuffled & typed on open
@@ -2375,11 +2233,11 @@ const PAA_DATA = [
     ]
   },
   {
-    q: "What is AI Job Risk Calculator?",
+    q: "What is Monolith Labs?",
     answers: [
-      "AI Job Risk Calculator is Sadman's research flagship — an independent initiative dedicated to mapping how post-AGI economic conditions will strain and reshape labor markets. It operates at the intersection of AI capability modeling, labor economics, and institutional resilience theory.",
-      "An independent research venture built to answer one central question: what happens to the workforce when AI systems can perform most cognitive tasks? AI Job Risk Calculator produces structured analysis, economic models, and scenario frameworks for the post-AGI transition.",
-      "Think of it as a strategic research lab without walls. AI Job Risk Calculator synthesizes AI capability trends with labor market data to produce forward-looking analysis on workforce vulnerability — the kind of research that institutional planners and business strategists both need, but rarely get together."
+      "Monolith Labs is an open library Sadman founded for research on sustainable infrastructure and climate-resilient construction — systematic reviews, meta-analyses, and curated open-access papers on green concrete, supplementary cementitious materials, and AI-based structural simulation. Every link goes to a freely readable paper, with no paywalls or accounts required.",
+      "Think of it as a friction-free research archive. Monolith Labs collects and synthesizes work on resilient, low-carbon construction materials, with an emphasis on making that knowledge genuinely accessible rather than locked behind journal paywalls.",
+      "It's Sadman's answer to how hard it still is to find good, free research on sustainable construction. Monolith Labs curates systematic reviews and meta-analyses on topics like rice husk ash, supplementary cementitious materials, and AI-driven structural simulation — all freely readable, no account required."
     ]
   },
   {

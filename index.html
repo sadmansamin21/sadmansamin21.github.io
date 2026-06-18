@@ -748,138 +748,6 @@ section {
 .now-item-content strong { font-weight: 700; }
 .now-item-content em { font-style: italic; opacity: 0.7; font-size: 14px; }
 
-/* ===== PROJECTS — NATIVE BLEND ===== */
-.projects-section {
-  border-top: 1px solid var(--border);
-  padding: 100px 48px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-@media(max-width:768px) { .projects-section { padding: 70px 24px; } }
-
-.projects-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 56px;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.projects-title {
-  font-size: clamp(50px, 9vw, 110px);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  line-height: 0.9;
-}
-
-.projects-meta {
-  font-size: 14px;
-  color: var(--gray);
-  max-width: 280px;
-  line-height: 1.6;
-  text-align: right;
-}
-
-@media(max-width:768px) { .projects-meta { text-align: left; max-width: 100%; } }
-
-.project-row {
-  border-top: 1px solid var(--border);
-  padding: 40px 0;
-  display: grid;
-  grid-template-columns: 64px 1fr auto;
-  gap: 32px;
-  align-items: start;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.2s;
-}
-
-.project-row:last-child { border-bottom: 1px solid var(--border); }
-.project-row:hover .project-row-title { opacity: 0.6; }
-
-.project-row-num {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--gray);
-  padding-top: 6px;
-}
-
-.project-row-category {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 8px;
-}
-
-.project-row-title {
-  font-size: clamp(22px, 3vw, 36px);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--text-color);
-  margin-bottom: 10px;
-  transition: opacity 0.2s;
-  line-height: 1.1;
-}
-
-.project-row-desc {
-  font-size: 14px;
-  color: var(--text-color);
-  opacity: 0.55;
-  line-height: 1.7;
-  max-width: 500px;
-}
-
-.project-row-arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-color);
-  margin-top: 16px;
-  opacity: 0.4;
-  transition: opacity 0.2s;
-}
-
-.project-row:hover .project-row-arrow { opacity: 1; }
-
-.project-row-year {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--gray);
-  padding-top: 6px;
-  white-space: nowrap;
-}
-
-.project-row-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 32px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-color);
-  text-decoration: none;
-  border: 1px solid var(--border-hover);
-  padding: 12px 24px;
-  transition: background 0.2s, color 0.2s;
-}
-.project-row-cta:hover { background: var(--text-color); color: var(--bg-color); }
-
-@media(max-width:768px) {
-  .project-row { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
-  .project-row-num { padding-top: 0; }
-  .project-row-year { padding-top: 0; }
-}
 
 /* ===== FEATURE SECTION ===== */
 .feature-section {
@@ -1830,34 +1698,14 @@ footer {
 </head>
 <body>
 
-<!-- ===== SEARCH OVERLAY ===== -->
-<div class="search-overlay" id="searchOverlay">
-  <div class="search-inner">
-    <span class="search-label">Search this site</span>
-    <div class="search-input-wrap">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" id="searchInput" placeholder="Projects, essays, research…" autocomplete="off" spellcheck="false">
-      <button class="search-close-btn" onclick="closeSearch()">✕</button>
-    </div>
-    <div class="search-hint" id="searchHint">
-      <span class="search-hint-item" onclick="setSearch('LLM research')">LLM research</span>
-      <span class="search-hint-item" onclick="setSearch('AI Job Risk Calculator')">AI Job Risk Calculator</span>
-      <span class="search-hint-item" onclick="setSearch('fractional management')">fractional management</span>
-      <span class="search-hint-item" onclick="setSearch('AI economy')">AI economy</span>
-      <span class="search-hint-item" onclick="setSearch('rent estimator')">Rent Estimator</span>
-    </div>
-    <div class="search-results" id="searchResults"></div>
-  </div>
-</div>
+
 
 <!-- ===== MOBILE MENU ===== -->
 <div class="mobile-menu-drawer" id="mobileDrawer">
   <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
   <a href="#ventures" onclick="closeMobileMenu()">Ventures</a>
   <a href="#about" onclick="closeMobileMenu()">About</a>
-  <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+ 
   <a href="#now" onclick="closeMobileMenu()">Now</a>
   <a href="#research" onclick="closeMobileMenu()">Research</a>
   <a href="#education" onclick="closeMobileMenu()">Education</a>
@@ -1871,7 +1719,7 @@ footer {
   <ul class="nav-links">
     <li><a href="#ventures">Ventures</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
+    
     <li><a href="#now">Now</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#education">Education</a></li>
@@ -1999,72 +1847,7 @@ footer {
   </div>
 </section>
 
-<!-- ===== PROJECTS — blended natively ===== -->
-<div class="projects-section reveal" id="projects">
-  <div class="projects-header">
-    <h2 class="projects-title">SELECTED<br>INITIATIVES</h2>
-    <p class="projects-meta">Exploring the intersection of AI research, economic modeling, and public utility tools.</p>
-  </div>
 
-
-  <a class="project-row institution" data-cat="ai research institution" href="https://sadmansamin21.github.io/gsaio.html" target="_blank" rel="noopener noreferrer">
-    <div class="project-row-num">01</div>
-    <div>
-      <div class="project-row-category">Research Institution · Global</div>
-      <h2 class="project-row-title">Global South AI Observatory</h2>
-      <div class="project-row-tags">
-        <span class="project-row-tag gold-tag">Institution</span>
-        <span class="project-row-tag">AI Impact Research</span>
-        <span class="project-row-tag">Global South</span>
-        <span class="project-row-tag">Open Access</span>
-        <span class="project-row-tag">CC-BY 4.0</span>
-      </div>
-      <p class="project-row-desc">An independent, non-partisan research body tracking AI's economic displacement, policy landscape, and sectoral impact across 30+ developing nations. Comparative analysis of Global South, Western, and Chinese AI paradigms. Country timelines, incident registry, automation exposure data, and open datasets — all freely available.</p>
-      <div class="status-badge live"><span class="status-dot"></span> Live · Ongoing</div>
-      <div class="project-row-arrow">Visit Observatory ↗</div>
-    </div>
-    <div class="project-row-year">2025—</div>
-  </a>
-
-  <a class="project-row" href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" target="_blank" rel="noopener noreferrer">
-    <div class="project-row-num">02</div>
-    <div>
-      <div class="project-row-category">Research Flagship</div>
-      <div class="project-row-title">AI Job Risk Calculator</div>
-      <div class="project-row-desc">Mapping workforce vulnerabilities in the post-AGI economy. A long-term research initiative exploring how artificial general intelligence reshapes labor markets, institutional resilience, and economic planning.</div>
-      <div class="project-row-arrow">Explore ↗</div>
-    </div>
-    <div class="project-row-year">2024—</div>
-  </a>
-
-  <a class="project-row" href="https://sadmansamin21.github.io/house-rent-bd.html" target="_blank" rel="noopener noreferrer">
-    <div class="project-row-num">03</div>
-    <div>
-      <div class="project-row-category">Public Tool</div>
-      <div class="project-row-title">Rent Estimator BD</div>
-      <div class="project-row-desc">Data-driven rental intelligence for 50+ local districts across Bangladesh. A public utility bridging the information gap in the informal housing market.</div>
-      <div class="project-row-arrow">Open tool ↗</div>
-    </div>
-    <div class="project-row-year">2024</div>
-  </a>
-
-   <a class="project-row" data-cat="tool" href="https://sadmansamin21.github.io/land-price-dhaka.html" target="_blank" rel="noopener noreferrer">
-    <div class="project-row-num">04</div>
-    <div>
-      <div class="project-row-category">Public Tool · GIS</div>
-      <h2 class="project-row-title">Land Price Dhaka</h2>
-      <div class="project-row-tags">
-        <span class="project-row-tag">GIS Data</span>
-        <span class="project-row-tag">Public Utility</span>
-        <span class="project-row-tag">Market Analysis</span>
-      </div>
-      <p class="project-row-desc">Analyzing granular per-katha pricing metrics for Dhaka's sectors. Built on proprietary market scraping and local field data for maximum accuracy.</p>
-      <div class="status-badge live"><span class="status-dot"></span> Live</div>
-      <div class="project-row-arrow">Explore Map ↗</div>
-    </div>
-    <div class="project-row-year">2025</div>
-  </a>
-</div>
 
 <!-- ===== FEATURE / PRISMATIC VISION ===== -->
 <div class="feature-section reveal">
@@ -2400,7 +2183,7 @@ footer {
   <a href="#" class="footer-logo">SS</a>
   <div class="footer-links">
     <a href="#about">About</a>
-    <a href="#projects">Projects</a>
+   
     <a href="#now">Now</a>
     <a href="#research">Research</a>
     <a href="#contact">Contact</a>
@@ -2410,25 +2193,7 @@ footer {
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-<!-- Archive Drawer (kept from original) -->
-<div class="drawer-overlay" id="archiveOverlay" onclick="handleArchiveClick(event)">
-  <div class="archive-drawer" id="archivePanel">
-    <button class="drawer-close" onclick="closeArchiveDrawer()">✕</button>
-    <h2 class="archive-header">Project Archive</h2>
-    <div class="archive-item">
-      <div class="archive-item-title">Previous Initiative Alpha</div>
-      <div class="archive-item-desc">A foundational project focused on predictive analytics and localized market data interpretation. Built using early iteration neural networks.</div>
-    </div>
-    <div class="archive-item">
-      <div class="archive-item-title">Beta Economic Model</div>
-      <div class="archive-item-desc">Exploratory research mapping regional supply chain vulnerabilities during macroeconomic shifts.</div>
-    </div>
-    <div class="archive-item">
-      <div class="archive-item-title">Delta Web Dashboard</div>
-      <div class="archive-item-desc">A real-time data visualization tool deployed for local business intelligence tracking.</div>
-    </div>
-  </div>
-</div>
+
 
 <script>
 // ===== SITE SEARCH DATA =====

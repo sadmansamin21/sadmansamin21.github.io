@@ -18,19 +18,19 @@
     <style>
         :root {
             /* High-Contrast Light Mode Color System */
-            --bg-base: #f8fafc;        /* Stark off-white background */
-            --bg-card: #ffffff;        /* Pure white cards */
-            --border-muted: #e2e8f0;    /* Visible clean gray borders */
-            --border-active: #0f172a;   /* Slate black for active focus */
-            --text-main: #0f172a;      /* Stark charcoal black for headings */
-            --text-secondary: #334155; /* Highly legible slate gray */
-            --text-dark: #64748b;      /* Tactical medium gray for metadata */
+            --bg-base: #f8fafc;
+            --bg-card: #ffffff;
+            --border-muted: #e2e8f0;
+            --border-active: #0f172a;
+            --text-main: #0f172a;
+            --text-secondary: #334155;
+            --text-dark: #64748b;
             
             /* Saturated Symmetrical Theme Accents */
-            --theme-amber: #d97706;    /* Darker Saturated Amber */
-            --theme-cyan: #0284c7;     /* High-visibility Blue/Cyan */
-            --theme-emerald: #059669;  /* Saturated Emerald Green */
-            --theme-indigo: #4f46e5;   /* Saturated Indigo Violet */
+            --theme-amber: #d97706;
+            --theme-cyan: #0284c7;
+            --theme-emerald: #059669;
+            --theme-indigo: #4f46e5;
             --theme-active: var(--theme-cyan);
         }
 
@@ -49,7 +49,6 @@
             overflow: hidden;
             display: flex;
             
-            /* Matte Blueprint Grid Pattern */
             background-image: 
                 radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), var(--bg-base)),
                 linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
@@ -142,7 +141,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
         }
 
-        /* Prevents dark default overrides in system inputs */
         select option {
             background-color: #ffffff;
             color: #0f172a;
@@ -182,7 +180,7 @@
         /* DEV MONITOR TERMINAL */
         #console-panel {
             flex-grow: 1;
-            background: #0f172a; /* Keep terminal dark slate for high dynamic range */
+            background: #0f172a;
             border-radius: 4px;
             padding: 16px;
             display: flex;
@@ -231,7 +229,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1; /* Fixed z-index to place under grid */
+            z-index: 1;
         }
 
         /* Symmetrical Schematic Grid Column Wrapper */
@@ -242,7 +240,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 32px;
             align-items: center;
-            z-index: 2; /* Fixed z-index to place above canvas */
+            z-index: 2;
             position: relative;
         }
 
@@ -254,7 +252,6 @@
             position: relative;
         }
 
-        /* Highly Visible Column Stage Headers */
         .column-header {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.72rem;
@@ -276,7 +273,6 @@
             justify-content: center;
         }
 
-        /* Sleek Technical Matte White Nodes */
         .node-card {
             background: var(--bg-card);
             border: 1px solid var(--border-muted);
@@ -296,7 +292,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 0 15px var(--theme-active);
         }
 
-        /* Anchor connection points visual indicator */
         .node-anchor {
             position: absolute;
             width: 8px;
@@ -350,7 +345,6 @@
             justify-content: space-between;
         }
 
-        /* Gemini TPU core grid topology simulation */
         #tpu-matrix-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -378,9 +372,119 @@
         }
         #hud-top-right { top: 32px; right: 32px; text-align: right; }
         #hud-bottom-right { bottom: 32px; right: 32px; text-align: right; }
+
+        /* ----------------------------------------------------- */
+        /* MOBILE POPUP - Clean & Gentle Design                   */
+        /* ----------------------------------------------------- */
+        #mobile-warning-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 28px;
+            z-index: 999999;
+        }
+
+        #mobile-warning-modal {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 36px 28px 28px 28px;
+            text-align: center;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+            animation: popupFadeIn 0.4s ease;
+        }
+
+        @keyframes popupFadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        #mobile-warning-modal .mw-icon {
+            font-size: 3.2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        #mobile-warning-modal h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #0f172a;
+            font-size: 1.25rem;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        #mobile-warning-modal p {
+            font-family: 'JetBrains Mono', monospace;
+            color: #475569;
+            font-size: 0.78rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        #mobile-warning-modal .mw-highlight {
+            background: #f1f5f9;
+            padding: 8px 14px;
+            border-radius: 8px;
+            display: inline-block;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 4px 0;
+            font-size: 0.75rem;
+        }
+
+        #mobile-warning-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 12px;
+            background: #0284c7;
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        #mobile-warning-btn:hover {
+            background: #0369a1;
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+        }
+
+        #mobile-warning-btn:active {
+            transform: scale(0.97);
+        }
     </style>
 </head>
+
 <body>
+
+    <!-- ===================== MOBILE WARNING OVERLAY ===================== -->
+    <div id="mobile-warning-overlay">
+        <div id="mobile-warning-modal">
+            <span class="mw-icon">💻</span>
+            <h2>Works Best on a Larger Screen</h2>
+            <p>
+                This interactive AI architecture dashboard was designed for
+                <strong>laptops, tablets, and desktop computers</strong>.
+            </p>
+            <p>
+                If you're on a phone, don't worry —
+                <span class="mw-highlight">Enable "Desktop Site" or "Desktop Mode"</span>
+                in your browser settings for the full experience.
+            </p>
+            <button id="mobile-warning-btn">OK, I Understand</button>
+        </div>
+    </div>
+    <!-- ================================================================== -->
 
     <div id="app-layout">
         
@@ -413,15 +517,12 @@
 
             <button id="trigger-btn" class="btn-action">DEPLOY EXPERIMENT</button>
 
-            <!-- Dev Monitor terminal -->
             <div id="console-panel">
                 <div class="meta-stamp" style="border: none; padding: 0;">
                     <span>SYS_DEV_COMPILER</span>
                     <span style="color: #10b981;">ONLINE</span>
                 </div>
-                <div id="console-logs">
-                    <!-- Logs stream inside here -->
-                </div>
+                <div id="console-logs"></div>
             </div>
         </aside>
 
@@ -441,43 +542,86 @@
             <canvas id="particle-canvas"></canvas>
 
             <div id="pipeline-schematic-grid">
-                
-                <!-- COLUMN 1: INGESTION STAGES -->
                 <div class="grid-column">
                     <div class="column-header">01 // INGESTION</div>
                     <div class="column-nodes-container" id="col-inputs"></div>
                 </div>
-
-                <!-- COLUMN 2: REGULATION STAGES -->
                 <div class="grid-column">
                     <div class="column-header">02 // REGULATION</div>
                     <div class="column-nodes-container" id="col-processing"></div>
                 </div>
-
-                <!-- COLUMN 3: TENSOR GRAPH CORES -->
                 <div class="grid-column">
                     <div class="column-header">03 // COMPUTE CORE</div>
                     <div class="column-nodes-container" id="col-core"></div>
                 </div>
-
-                <!-- COLUMN 4: DECODING BOUNDARIES -->
                 <div class="grid-column">
                     <div class="column-header">04 // DECODE OUT</div>
                     <div class="column-nodes-container" id="col-outputs"></div>
                 </div>
-
             </div>
         </main>
 
     </div>
 
     <script>
+        // ============================================================
+        // MOBILE DETECTION — Shows popup on small screens / phones
+        // ============================================================
+        (function initMobileWarning() {
+            function isSmallMobile() {
+                return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent) || window.innerWidth < 900;
+            }
+
+            function showPopup() {
+                var overlay = document.getElementById("mobile-warning-overlay");
+                if (overlay) {
+                    overlay.style.display = "flex";
+                    document.body.style.overflow = "hidden";
+                }
+            }
+
+            function hidePopup() {
+                var overlay = document.getElementById("mobile-warning-overlay");
+                if (overlay) {
+                    overlay.style.display = "none";
+                    document.body.style.overflow = "";
+                }
+            }
+
+            window.addEventListener("load", function () {
+                if (isSmallMobile()) {
+                    var alreadySeen = localStorage.getItem("aiArchitecturePopupSeen_v2");
+                    if (!alreadySeen) {
+                        showPopup();
+                    }
+                }
+            });
+
+            document.addEventListener("click", function (e) {
+                if (e.target && e.target.id === "mobile-warning-btn") {
+                    localStorage.setItem("aiArchitecturePopupSeen_v2", "true");
+                    hidePopup();
+                }
+            });
+
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") {
+                    var overlay = document.getElementById("mobile-warning-overlay");
+                    if (overlay && overlay.style.display === "flex") {
+                        localStorage.setItem("aiArchitecturePopupSeen_v2", "true");
+                        hidePopup();
+                    }
+                }
+            });
+        })();
+        // ============================================================
+
         // Highly saturated light-mode hex codes for JS canvas draw operations
         const themeColors = {
-            claude: '#d97706',   // Saturated Gold
-            gpt4o: '#0284c7',    // Polar Cyan Blue
-            gemini: '#059669',   // Saturated Emerald Green
-            copilot: '#4f46e5'   // Indigo Blue
+            claude: '#d97706',
+            gpt4o: '#0284c7',
+            gemini: '#059669',
+            copilot: '#4f46e5'
         };
 
         // Static layouts featuring correct research taxonomy
@@ -762,7 +906,6 @@
                 this.endY = endY;
                 this.colorHex = colorHex;
                 
-                // Calculates smooth natural curves between nodes
                 this.cpX1 = startX + (endX - startX) * 0.45;
                 this.cpY1 = startY - 15;
                 this.cpX2 = startX + (endX - startX) * 0.55;
@@ -777,7 +920,6 @@
                 const t = this.progress;
                 const mt = 1 - t;
 
-                // Bezier formulation
                 const x = (mt * mt * mt * this.startX) + 
                           (3 * mt * mt * t * this.cpX1) + 
                           (3 * mt * t * t * this.cpX2) + 
@@ -788,7 +930,6 @@
                           (3 * mt * t * t * this.cpY2) + 
                           (t * t * t * this.endY);
 
-                // High Contrast Double-layer Halo in Light Mode
                 ctx.beginPath();
                 ctx.arc(x, y, this.size * 3.5, 0, Math.PI * 2);
                 ctx.fillStyle = hexToRgba(this.colorHex, 0.25);
@@ -796,7 +937,7 @@
 
                 ctx.beginPath();
                 ctx.arc(x, y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.colorHex; // Saturated solid core
+                ctx.fillStyle = this.colorHex;
                 ctx.fill();
             }
 
@@ -814,16 +955,16 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Dynamically renders connection cables to show precisely "from where to where"
+        // Dynamically renders connection cables
         function drawActiveCables() {
             const activeModel = selector.value;
             const paths = modelPaths[activeModel];
             if (!paths) return;
 
             ctx.beginPath();
-            ctx.strokeStyle = '#cbd5e1'; // Stark visible gray connecting guides
+            ctx.strokeStyle = '#cbd5e1';
             ctx.lineWidth = 1.5;
-            ctx.setLineDash([4, 4]); // Clean tactical dashed guide-lines
+            ctx.setLineDash([4, 4]);
 
             paths.forEach(p => {
                 const start = getAnchorCoords(p.from, 'out');
@@ -839,19 +980,16 @@
                 ctx.bezierCurveTo(cpX1, cpY1, cpX2, cpY2, end.x, end.y);
             });
             ctx.stroke();
-            ctx.setLineDash([]); // Reset
+            ctx.setLineDash([]);
         }
 
         // 60 FPS GSAP Ticker
         gsap.ticker.add(() => {
-            // High contrast light off-white background trail fading loop
             ctx.fillStyle = 'rgba(248, 250, 252, 0.22)'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Draw underlying cables first
             drawActiveCables();
 
-            // Render particles
             for (let i = particles.length - 1; i >= 0; i--) {
                 const p = particles[i];
                 p.update();
@@ -907,7 +1045,7 @@
             }, 25);
         }
 
-        // glow trigger on card hit
+        // Glow trigger on card hit
         function illuminateCard(id, color) {
             const el = document.getElementById(id);
             if (!el) return;
@@ -936,9 +1074,8 @@
         selector.addEventListener('change', updateLayoutConfig);
         window.addEventListener('load', updateLayoutConfig);
 
-
         // ==============================================
-        // CLAUDE 3.5 SIMULATION PIPELINE (SAE + SAE ATTN)
+        // CLAUDE 3.5 SIMULATION PIPELINE
         // ==============================================
         function runClaude() {
             const colorHex = themeColors.claude;
@@ -974,9 +1111,8 @@
             });
         }
 
-
         // ==============================================
-        // GPT-4o SIMULATION PIPELINE (OMNI CROSS-ATTN)
+        // GPT-4o SIMULATION PIPELINE
         // ==============================================
         function runGpt4o() {
             const colorHex = themeColors.gpt4o;
@@ -1011,9 +1147,8 @@
             deployTracerFlow('node-gpt-vision', 'node-gpt-fusion', themeColors.copilot, 20, 1.15, evaluateOmniMerge);
         }
 
-
         // ==============================================
-        // GEMINI 3.1 SIMULATION PIPELINE (TPU POD GEMM)
+        // GEMINI 3.1 SIMULATION PIPELINE
         // ==============================================
         function runGemini() {
             const colorHex = themeColors.gemini;
@@ -1033,7 +1168,6 @@
                         log("TPU_ICI: Commencing 2D Torus parallel GEMM calculations across TPU v5p Pod.", "warning");
                         illuminateCard('node-gemini-tpu', colorHex);
 
-                        // High-fidelity grid core cascade strobe
                         const cores = document.querySelectorAll('.tpu-core');
                         const coreSequence = gsap.timeline({ repeat: 4, yoyo: true });
                         coreSequence.to(cores, {
@@ -1061,9 +1195,8 @@
             deployTracerFlow('node-gemini-multimodal', 'node-gemini-fusion', themeColors.copilot, 20, 1.1, stepToMeshArray);
         }
 
-
         // ==============================================
-        // COPILOT SIMULATION PIPELINE (GRAPH RAG HARVEST)
+        // COPILOT SIMULATION PIPELINE
         // ==============================================
         function runCopilot() {
             const colorHex = themeColors.copilot;
@@ -1074,7 +1207,6 @@
                 log("ORCHESTRATOR: Initiating parallel grounding queries via Microsoft Graph API.", "warning");
                 illuminateCard('node-copilot-orchestrator', colorHex);
 
-                // Outward pings query directories
                 deployTracerFlow('node-copilot-orchestrator', 'node-copilot-drive', themeColors.gpt4o, 12, 1.2);
                 deployTracerFlow('node-copilot-orchestrator', 'node-copilot-graph', themeColors.gemini, 12, 1.2);
                 deployTracerFlow('node-copilot-orchestrator', 'node-copilot-outlook', themeColors.claude, 12, 1.2, () => {
@@ -1084,7 +1216,6 @@
                     illuminateCard('node-copilot-graph', themeColors.gemini);
                     illuminateCard('node-copilot-outlook', themeColors.claude);
 
-                    // Return channels feedback to orchestrator
                     deployTracerFlow('node-copilot-drive', 'node-copilot-orchestrator', themeColors.gpt4o, 12, 1.25);
                     deployTracerFlow('node-copilot-graph', 'node-copilot-orchestrator', themeColors.gemini, 12, 1.25);
                     deployTracerFlow('node-copilot-outlook', 'node-copilot-orchestrator', themeColors.claude, 12, 1.25, () => {
@@ -1101,7 +1232,6 @@
                 });
             });
         }
-
 
         // Master Control Router
         triggerBtn.addEventListener('click', () => {

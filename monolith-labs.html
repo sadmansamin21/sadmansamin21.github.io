@@ -4,30 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Primary Meta Tags -->
     <title>Monolith Labs | Research & Infrastructure </title>
     <meta name="title" content="Monolith Labs | Research & Infrastructure">
     <meta name="description" content="Monolith Labs is an open library and incubator for research on sustainable infrastructure, climate-resilient construction, and AI-driven public utility tools. Founded by Sadman Samin.">
     <meta name="keywords" content="Monolith Labs, Sadman Samin, AI Job Risk Calculator, Rent Estimator BD, Sustainable Infrastructure, Public Utility Tools, AI Research">
     <meta name="author" content="Sadman Samin">
     
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://sadmansamin21.github.io/monolith-labs.html">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sadmansamin21.github.io/monolith-labs.html">
     <meta property="og:title" content="Monolith Labs | Research & Public Utility Tools">
     <meta property="og:description" content="An open library and continuous builder of research, sustainable infrastructure tools, and public utility products.">
-    <meta property="og:image" content="https://sadmansamin21.github.io/og-image.jpg"> <!-- Replace with your actual OG image if available -->
+    <meta property="og:image" content="https://sadmansamin21.github.io/og-image.jpg">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://sadmansamin21.github.io/monolith-labs.html">
     <meta property="twitter:title" content="Monolith Labs | Research & Public Utility Tools">
     <meta property="twitter:description" content="An open library and continuous builder of research, sustainable infrastructure tools, and public utility products.">
     
-    <!-- Google Fonts: Inter & JetBrains Mono for that modern, technical feel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -42,15 +37,14 @@
             --hover-bg: #f9f9f9;
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #0a0a0a;
-                --text-primary: #ededed;
-                --text-secondary: #888888;
-                --border-color: #222222;
-                --accent: #ffffff;
-                --hover-bg: #141414;
-            }
+        /* Replaced media query with a data-theme attribute for manual toggling */
+        :root[data-theme="dark"] {
+            --bg-color: #0a0a0a;
+            --text-primary: #ededed;
+            --text-secondary: #888888;
+            --border-color: #222222;
+            --accent: #ffffff;
+            --hover-bg: #141414;
         }
 
         * {
@@ -65,6 +59,7 @@
             color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .mono {
@@ -105,8 +100,37 @@
             letter-spacing: -0.02em;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
         .nav-back {
             color: var(--text-secondary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            margin: -0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+            background-color: var(--hover-bg);
+        }
+
+        .theme-icon {
+            font-size: 1.1rem;
         }
 
         /* Hero Section */
@@ -221,19 +245,23 @@
             h1 { font-size: 2rem; }
             .product-card { padding: 1.5rem; }
             nav { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .nav-right { width: 100%; justify-content: space-between; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Navigation -->
         <nav>
             <div class="nav-logo">MONOLITH LABS.</div>
-            <a href="https://sadmansamin21.github.io" class="nav-back mono">← Back to sadmansamin21.github.io</a>
+            <div class="nav-right">
+                <button id="theme-toggle" class="theme-toggle mono" aria-label="Toggle Theme">
+                    <span class="theme-icon" id="theme-icon">◑</span> Theme
+                </button>
+                <a href="https://sadmansamin21.github.io" class="nav-back mono">← Back</a>
+            </div>
         </nav>
 
-        <!-- Hero -->
         <header>
             <h1>Building the next infrastructure.</h1>
             <p class="hero-desc">
@@ -241,14 +269,12 @@
             </p>
         </header>
 
-        <!-- Products / Initiatives -->
         <main>
             <div class="section-title mono">Selected Products & Initiatives</div>
             
             <div class="product-list">
                 
-                <!-- Product 1 -->
-                <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" class="product-card">
+                <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
                         <h2 class="product-title">AI Job Risk Calculator</h2>
                         <span class="product-type mono">Research Flagship</span>
@@ -259,8 +285,7 @@
                     <div class="product-link">Explore Tool ↗</div>
                 </a>
 
-                <!-- Product 2 -->
-                <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="product-card">
+                <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
                         <h2 class="product-title">Rent Estimator BD</h2>
                         <span class="product-type mono">Public Tool</span>
@@ -271,8 +296,7 @@
                     <div class="product-link">Open Tool ↗</div>
                 </a>
 
-                <!-- Product 3 -->
-                <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="product-card">
+                <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
                         <h2 class="product-title">Land Price Dhaka</h2>
                         <span class="product-type mono">Public Tool</span>
@@ -283,8 +307,7 @@
                     <div class="product-link">Open Tool ↗</div>
                 </a>
 
-                <!-- Product 4 -->
-                <a href="https://sadmansamin21.github.io/ai-architecture.html" class="product-card">
+                <a href="https://sadmansamin21.github.io/ai-architecture.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
                         <h2 class="product-title">AI Architecture</h2>
                         <span class="product-type mono">Research</span>
@@ -295,31 +318,56 @@
                     <div class="product-link">Explore Research ↗</div>
                 </a>
 
-                <!-- Product 5 -->
-                <a href="https://sadmansamin21.github.io/gsaio.html" class="product-card">
+                <a href="https://sadmansamin21.github.io/gsaio.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
-                        <h2 class="product-title">Global South AI Observatory
-</h2>
+                        <h2 class="product-title">Global South AI Observatory</h2>
                         <span class="product-type mono">Information Tool</span>
                     </div>
                     <p class="product-desc">
                         Independent tracking registry evaluating sovereign computing nodes, verified national strategies, regulatory paradigms, and primary research outputs across emerging economies.
-
                     </p>
                     <div class="product-link">Open Observatory ↗</div>
                 </a>
 
-               
-
             </div>
         </main>
 
-        <!-- Footer -->
         <footer>
             <div class="mono">© 2026 Monolith Labs.</div>
             <div class="mono">Dhaka, Bangladesh</div>
         </footer>
     </div>
 
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Determine current theme priority: LocalStorage -> OS Preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Apply initial theme
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '◐';
+        } else {
+            themeIcon.textContent = '◑';
+        }
+
+        // Handle click event
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '◑';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '◐';
+            }
+        });
+    </script>
 </body>
 </html>

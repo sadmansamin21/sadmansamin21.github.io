@@ -372,120 +372,10 @@
         }
         #hud-top-right { top: 32px; right: 32px; text-align: right; }
         #hud-bottom-right { bottom: 32px; right: 32px; text-align: right; }
-
-        /* ----------------------------------------------------- */
-        /* MOBILE POPUP - Clean & Gentle Design                   */
-        /* ----------------------------------------------------- */
-        #mobile-warning-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.82);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 28px;
-            z-index: 999999;
-        }
-
-        #mobile-warning-modal {
-            width: 100%;
-            max-width: 440px;
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 36px 28px 28px 28px;
-            text-align: center;
-            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
-            animation: popupFadeIn 0.4s ease;
-        }
-
-        @keyframes popupFadeIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.96); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        #mobile-warning-modal .mw-icon {
-            font-size: 3.2rem;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        #mobile-warning-modal h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            color: #0f172a;
-            font-size: 1.25rem;
-            margin-bottom: 14px;
-            letter-spacing: 0.5px;
-        }
-
-        #mobile-warning-modal p {
-            font-family: 'JetBrains Mono', monospace;
-            color: #475569;
-            font-size: 0.78rem;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        #mobile-warning-modal .mw-highlight {
-            background: #f1f5f9;
-            padding: 8px 14px;
-            border-radius: 8px;
-            display: inline-block;
-            font-weight: 600;
-            color: #0f172a;
-            margin: 4px 0;
-            font-size: 0.75rem;
-        }
-
-        #mobile-warning-btn {
-            width: 100%;
-            padding: 16px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 12px;
-            background: #0284c7;
-            color: #ffffff;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        #mobile-warning-btn:hover {
-            background: #0369a1;
-            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
-        }
-
-        #mobile-warning-btn:active {
-            transform: scale(0.97);
-        }
     </style>
 </head>
 
 <body>
-
-    <!-- ===================== MOBILE WARNING OVERLAY ===================== -->
-    <div id="mobile-warning-overlay">
-        <div id="mobile-warning-modal">
-            <span class="mw-icon">💻</span>
-            <h2>Works Best on a Larger Screen</h2>
-            <p>
-                This interactive AI architecture dashboard was designed for
-                <strong>laptops, tablets, and desktop computers</strong>.
-            </p>
-            <p>
-                If you're on a phone, don't worry —
-                <span class="mw-highlight">Enable "Desktop Site" or "Desktop Mode"</span>
-                in your browser settings for the full experience.
-            </p>
-            <button id="mobile-warning-btn">OK, I Understand</button>
-        </div>
-    </div>
-    <!-- ================================================================== -->
-
     <div id="app-layout">
         
         <!-- HUD Sidebar Control Deck -->
@@ -564,58 +454,6 @@
     </div>
 
     <script>
-        // ============================================================
-        // MOBILE DETECTION — Shows popup on small screens / phones
-        // ============================================================
-        (function initMobileWarning() {
-            function isSmallMobile() {
-                return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent) || window.innerWidth < 900;
-            }
-
-            function showPopup() {
-                var overlay = document.getElementById("mobile-warning-overlay");
-                if (overlay) {
-                    overlay.style.display = "flex";
-                    document.body.style.overflow = "hidden";
-                }
-            }
-
-            function hidePopup() {
-                var overlay = document.getElementById("mobile-warning-overlay");
-                if (overlay) {
-                    overlay.style.display = "none";
-                    document.body.style.overflow = "";
-                }
-            }
-
-            window.addEventListener("load", function () {
-                if (isSmallMobile()) {
-                    var alreadySeen = localStorage.getItem("aiArchitecturePopupSeen_v2");
-                    if (!alreadySeen) {
-                        showPopup();
-                    }
-                }
-            });
-
-            document.addEventListener("click", function (e) {
-                if (e.target && e.target.id === "mobile-warning-btn") {
-                    localStorage.setItem("aiArchitecturePopupSeen_v2", "true");
-                    hidePopup();
-                }
-            });
-
-            document.addEventListener("keydown", function (e) {
-                if (e.key === "Escape") {
-                    var overlay = document.getElementById("mobile-warning-overlay");
-                    if (overlay && overlay.style.display === "flex") {
-                        localStorage.setItem("aiArchitecturePopupSeen_v2", "true");
-                        hidePopup();
-                    }
-                }
-            });
-        })();
-        // ============================================================
-
         // Highly saturated light-mode hex codes for JS canvas draw operations
         const themeColors = {
             claude: '#d97706',

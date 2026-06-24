@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Migrating HubSpot to Odoo: The SMB Guide to a Zero-Downtime Switch</title>
+  <meta name="description" content="The pricing curve of HubSpot goes vertical as you scale. Here is the technical blueprint to migrate your CRM data to Odoo without dropping leads or losing pipeline history.">
+
+  <link rel="canonical" href="https://sadmansamin21.github.io/blogs/migrating-hubspot-to-odoo.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --text: #ffffff;
+      --text-muted: #a1a1a1;
+      --accent: #ffffff;
+      --border: rgba(255, 255, 255, 0.1);
+      --card-bg: #0a0a0a;
+      --hover-bg: rgba(255, 255, 255, 0.03);
+      --success: #00ff41;
+      --nav-bg: rgba(5, 5, 5, 0.8);
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f5f0;
+      --text: #0a0a0a;
+      --text-muted: #666;
+      --accent: #0a0a0a;
+      --border: rgba(0, 0, 0, 0.1);
+      --card-bg: #ebebeb;
+      --hover-bg: rgba(0, 0, 0, 0.03);
+      --success: #1a7a3a;
+      --nav-bg: rgba(245, 245, 240, 0.85);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .mono { font-family: 'Space Mono', monospace; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; }
+
+    /* Navigation */
+    nav {
+      padding: 30px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .logo { font-weight: 700; font-size: 1.2rem; text-decoration: none; color: var(--text); letter-spacing: -0.02em; }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+      padding: 4px;
+    }
+    .theme-toggle:hover { opacity: 1; }
+
+    /* Layout */
+    .content-wrapper {
+      max-width: 850px;
+      margin: 80px auto;
+      padding: 0 25px;
+    }
+
+    header { margin-bottom: 80px; }
+    h1 { font-size: clamp(2.3rem, 5.5vw, 3.8rem); line-height: 1.05; font-weight: 700; margin-bottom: 25px; letter-spacing: -0.04em; }
+    .post-meta { color: var(--text-muted); display: flex; gap: 20px; margin-bottom: 15px; }
+
+    .author-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .author-line a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .author-line a:hover { opacity: 0.6; }
+
+    .lead { font-size: 1.45rem; font-weight: 300; color: var(--text-muted); margin-bottom: 50px; line-height: 1.45; }
+
+    /* Content Body Styles */
+    .blog-content p { font-size: 1.15rem; margin-bottom: 35px; color: var(--text); opacity: 0.85; font-weight: 300; }
+    h2 { font-size: 2rem; margin: 80px 0 30px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 15px; letter-spacing: -0.02em; }
+    strong { color: var(--text); font-weight: 600; }
+
+    /* Table */
+    .table-container { margin: 50px 0; border: 1px solid var(--border); overflow-x: auto; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; background: var(--card-bg); font-size: 0.9rem; }
+    th, td { padding: 20px 25px; text-align: left; border-bottom: 1px solid var(--border); line-height: 1.5; }
+    th { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text-muted); background: var(--card-bg); }
+    .delta-positive { color: var(--success); font-family: 'Space Mono', monospace; font-weight: 700; }
+    .delta-warn { color: #c8963e; font-family: 'Space Mono', monospace; font-weight: 700; }
+
+    /* Cards Grid */
+    .tech-stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .stack-card {
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .stack-card:hover {
+      border-color: rgba(128, 128, 128, 0.35);
+      transform: translateY(-5px);
+    }
+    .stack-header {
+      padding: 20px 25px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stack-header h4 { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; }
+    .stack-body { padding: 25px; }
+    .tool-item { margin-bottom: 20px; }
+    .tool-item:last-child { margin-bottom: 0; }
+    .tool-name { display: block; font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text); margin-bottom: 4px; }
+    .tool-role { display: block; font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; font-weight: 300; }
+
+    /* Roadmap */
+    .roadmap { list-style: none; margin: 60px 0; border-top: 1px solid var(--border); }
+    .roadmap li {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 30px;
+      transition: background 0.3s ease;
+    }
+    .roadmap li:hover { background: var(--hover-bg); }
+    .roadmap-step { color: var(--text-muted); font-size: 0.8rem; }
+    .roadmap-content strong { display: block; font-size: 1.3rem; margin-bottom: 10px; }
+
+    footer {
+      padding: 80px 5%;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      margin-top: 120px;
+      color: var(--text-muted);
+      transition: border-color 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      .roadmap li { grid-template-columns: 1fr; gap: 10px; }
+      .tech-stack-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../" class="logo">SADMAN SAMIN</a>
+    <div class="nav-right">
+      <div class="mono">JOURNAL / SYSTEMS RESEARCH</div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <header>
+      <div class="post-meta mono">
+        <span>Published 24.06.26</span>
+        <span>•</span>
+        <span>Tech Stack Operations</span>
+      </div>
+      <h1>The SMB Guide to Leaving HubSpot: Migrating Your CRM to Odoo Without Dropping Leads</h1>
+      <div class="author-line">
+        By <a href="../">Sadman Samin</a> &nbsp;·&nbsp; Operations Researcher, Dhaka
+      </div>
+      <p class="lead">The "HubSpot Tax" is real. Once your contact list crosses scaling thresholds, subscription pricing goes vertical. Migrating your primary system of record is high-stakes surgery. Here is a technical blueprint to transition to Odoo CRM with zero lost pipeline data.</p>
+    </header>
+
+    <div class="blog-content">
+
+      <p>For a growing business, HubSpot is a highly effective gateway drug. It is intuitive, features clean design, and operates with minimal initial Friction. But as your contacts grow, you inevitably run face-first into contact-tier limits, list caps, and seat pricing that can inflate your monthly SaaS bill by orders of magnitude.</p>
+
+      <p>Odoo offers a highly competitive alternative: modular, customisable, and structurally more cost-efficient. However, migrating a CRM is not simply about exporting and importing files. It represents an operational transition where data mismatches can break active pipelines, orphan key accounts, and cause sales reps to disengage from the software. To pull this off, you need a highly precise process.</p>
+
+      <h2 id="the-traps">01. The Two Migration Traps to Avoid</h2>
+
+      <p>Most failed CRM migrations do not break due to software limitations; they fail because of structural and sequencing mistakes during implementation.</p>
+
+      <div class="tech-stack-grid">
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">TRAP_01</span>
+            <h4>THE BLIND CSV DUMP</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">What it looks like</span>
+              <span class="tool-role">Exporting separate "Contacts" and "Deals" sheets from HubSpot and importing them sequentially into Odoo without preserving object relations.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Why it happens</span>
+              <span class="tool-role">Teams underestimate how databases link objects. They import data but fail to recreate the relational keys that bind specific contacts to specific deals.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">The real damage</span>
+              <span class="tool-role">Orphaned deals with no contact info, lost historical chatter (notes, emails), and duplicates. Your sales team loses the context required to close active deals.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">TRAP_02</span>
+            <h4>THE "BIG BANG" CUTOVER</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">What it looks like</span>
+              <span class="tool-role">Turning off HubSpot on a Friday evening and expecting your sales team to fully operate on Odoo by Monday morning.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Why it happens</span>
+              <span class="tool-role">A desire to minimize overlapping billing cycles leads to rushing the implementation phase.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">The real damage</span>
+              <span class="tool-role">Unpredicted bugs in API connectors, broken lead-capture webhooks, and confused sales reps who default back to personal spreadsheets. Active leads drop through the cracks.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>Avoiding these issues requires understanding how data maps across systems and setting up a clear operational plan.</p>
+
+      <h2 id="the-mapping">02. The Entity Schema Mapping</h2>
+
+      <p>HubSpot and Odoo organize information differently. To import your data accurately, you must map the source terminology from HubSpot directly to Odoo's architectural models.</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>HUBSPOT ENTITY</th>
+              <th>ODOO TARGET MODEL</th>
+              <th>RELATIONAL LOGIC</th>
+              <th>CRITICAL GOTCHA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Company</strong></td>
+              <td><code>res.partner</code> (is_company = True)</td>
+              <td>The master organization record.</td>
+              <td>Map the <code>domain</code> field to Odoo’s website field to prevent duplicates.</td>
+            </tr>
+            <tr>
+              <td><strong>Contact</strong></td>
+              <td><code>res.partner</code> (is_company = False)</td>
+              <td>Linked to Company via <code>parent_id</code>.</td>
+              <td>Odoo allows duplicate emails by default. Build a unique constraint script before importing.</td>
+            </tr>
+            <tr>
+              <td><strong>Deal</strong></td>
+              <td><code>crm.lead</code> (type = 'opportunity')</td>
+              <td>Linked to Partner using <code>partner_id</code> field.</td>
+              <td>Map active HubSpot Deal Stages to Odoo CRM Stages manually before importing.</td>
+            </tr>
+            <tr>
+              <td><strong>Owner</strong></td>
+              <td><code>res.users</code></td>
+              <td>Linked via <code>user_id</code> on Partner and Lead records.</td>
+              <td>Odoo users must be created and mapped via email before importing CRM records, or owners revert to system Admin.</td>
+            </tr>
+            <tr>
+              <td><strong>Engagements</strong> (Notes, Emails)</td>
+              <td><code>mail.message</code> &amp; <code>mail.activity</code></td>
+              <td>Appears in Chatter. Relies on polymorphic relations.</td>
+              <td class="delta-warn">▲ High complexity. Avoid importing historic logs older than 1 year.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>If you fail to align these database structures prior to data ingestion, you risk creating a fragmented system where contacts lose their underlying associations.</p>
+
+      <h2 id="the-migration-roadmap">03. The Zero-Downtime Migration Roadmap</h2>
+
+      <p>Migrating without dropping leads requires a highly structured, phase-based execution sequence.</p>
+
+      <ul class="roadmap">
+        <li>
+          <div class="roadmap-step mono">PHASE_01</div>
+          <div class="roadmap-content">
+            <strong>Run a Legacy Database Audit</strong>
+            <p>Do not migrate outdated or dirty data. Before exporting from HubSpot, filter out bounce-prone email lists, delete historic duplicates, and archive old, inactive deals. A clean dataset limits database overhead and reduces migration complexity.</p>
+          </div>
+        </li>
+        <li>
+          <div class="roadmap-step mono">PHASE_02</div>
+          <div class="roadmap-content">
+            <strong>Build Custom Schema in Odoo</strong>
+            <p>If you use custom fields in HubSpot (e.g., "SaaS renewal date," "Lead Source ID"), set up these fields in Odoo CRM first. You can create them using Odoo Studio or write custom inherited models. This prepares Odoo to receive the exported data.</p>
+          </div>
+        </li>
+        <li>
+          <div class="roadmap-step mono">PHASE_03</div>
+          <div class="roadmap-content">
+            <strong>Run a 10% Staging Dry-Run</strong>
+            <p>Export a representative sample containing exactly 10% of your database (e.g., 50 companies, 100 contacts, and their active deals). Import them into an Odoo testing/staging database. Verify that pipelines display correctly and contacts remain properly linked.</p>
+          </div>
+        </li>
+        <li>
+          <div class="roadmap-step mono">PHASE_04</div>
+          <div class="roadmap-content">
+            <strong>Set Up a Dual-Write Buffer</strong>
+            <p>During the final switchover window, active leads are still arriving from websites or ads. Keep HubSpot active, but route incoming leads to Odoo simultaneously using webhook bridges (such as Make.com or n8n). This maintains a safety margin so no live opportunity is missed during the transition.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2 id="human-factors">04. Mitigating Team Friction</h2>
+
+      <p>CRM success depends on user adoption. If sales reps find the new interface confusing, they may stop inputting accurate data, rendering the database ineffective.</p>
+
+      <p><strong>Strip back Odoo's default view.</strong> Odoo's strength is its modular breadth, but out-of-the-box it can present a highly complex UI. Customize the main CRM form to display only fields your team actually uses. Turn off modules they aren't trained on yet.</p>
+
+      <p><strong>Emphasize the Chatter tool.</strong> Show reps that Odoo's timeline (the right-hand Chatter pane) logs emails, calls, and internal messages similarly to HubSpot. Demonstrating workflow parity early helps reduce resistance.</p>
+
+      <h2 id="cost-comparison">05. Financial Analysis: HubSpot vs. Odoo</h2>
+
+      <p>To contextualize the operational trade-offs, review a typical cost scenario for a growing mid-market business scaling past early tiers.</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>COST COMPONENT (15 USERS, 25K CONTACTS)</th>
+              <th>HUBSPOT PROFESSIONAL TIER</th>
+              <th>ODOO ENTERPRISE (CUSTOM CLOUD)</th>
+              <th>SAVINGS &amp; RISK LEVEL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Annual Software Licensing</td>
+              <td>~$18,000 / year</td>
+              <td>~$7,200 / year</td>
+              <td class="delta-positive">▲ ~$10.8K Annual Saving</td>
+            </tr>
+            <tr>
+              <td>Contact Scaling Charges</td>
+              <td>Increases aggressively by tier</td>
+              <td>$0 (Unlimited Contacts)</td>
+              <td class="delta-positive">▲ Highly Scalable</td>
+            </tr>
+            <tr>
+              <td>Infrastructure &amp; Hosting</td>
+              <td>Included (SaaS)</td>
+              <td>~$600 - $1,200 / year (Odoo.sh / AWS)</td>
+              <td class="delta-warn">▲ Minor Infrastructure Cost</td>
+            </tr>
+            <tr>
+              <td>Integration &amp; Customization</td>
+              <td>Low setup friction</td>
+              <td>Development / Partner cost (~$3k - $8k)</td>
+              <td class="delta-warn">▲ Initial Capital Expense</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>While Odoo offers lower long-term licensing costs, it does require allocating budget for initial setup and system integration to ensure an effective transition.</p>
+
+      <h2 id="the-golden-rule">06. The Core Philosophy of Data Migration</h2>
+
+      <p>A CRM system reflects your internal processes, not just your software provider.</p>
+
+      <p>If your sales process is disorganized in HubSpot, migrating to Odoo will not resolve those issues; it will simply replicate them in a different system. Do not replicate inefficient custom workflows just because "that is how we did it in HubSpot." Use this transition as an opportunity to simplify your sales operations, clean up your pipeline stages, and establish high data standards for your team.</p>
+
+      <p>A successful migration is achieved through clear planning, database hygiene, and solid team alignment. Focus on those operational basics, and your business can exit the high-cost SaaS cycle without risking your active pipeline.</p>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="mono">© 2026 SADMAN SAMIN — DHAKA, BD</div>
+    <p style="font-size: 0.7rem; margin-top: 10px; letter-spacing: 0.05em;">RESEARCH AT THE INTERSECTION OF BUSINESS & TECH</p>
+  </footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateIcon(next);
+  }
+
+  function updateIcon(theme) {
+    const icon = document.getElementById('themeIcon');
+    if (theme === 'light') {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    } else {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+    }
+  }
+
+  (function() {
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    updateIcon(saved);
+  })();
+</script>
+</body>
+</html>

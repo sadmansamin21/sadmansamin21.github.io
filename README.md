@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 [![Made with](https://img.shields.io/badge/made%20with-HTML%2FCSS%2FJS-orange?style=for-the-badge)]()
 
-A minimalist, liquid-glass themed personal portfolio website for **Sadman Samin** — businessman, entrepreneur, and researcher based in Dhaka, Bangladesh.
+A minimalist themed personal portfolio website for **Sadman Samin** — businessman, entrepreneur, and researcher based in Dhaka, Bangladesh.
 
 ---
 
@@ -20,7 +20,9 @@ A minimalist, liquid-glass themed personal portfolio website for **Sadman Samin*
 ## 🔗 Social Links
 - **LinkedIn**: [linkedin.com/in/sadmansamin](https://linkedin.com/in/sadmansamin)
 - **GitHub**: [github.com/sadmansamin21](https://github.com/sadmansamin21)
-- **X (Twitter)**: [x.com/@_sadmansamin](https://x.com/@_sadmansamin)
+- **ORCiD**: [orcid.org/0009-0007-8788-5444](https://orcid.org/0009-0007-8788-5444)
+- **ACADEMIA**: [independent.academia.edu/SadmanSamin12](https://independent.academia.edu/SadmanSamin12)
+- **YouTube**: [youtube.com/@SadmanSamin](https://www.youtube.com/@SadmanSamin)
 
 ## 📧 Contact
 - **Email**: [sadmansamin78@gmail.com](mailto:sadmansamin78@gmail.com)

@@ -1,3 +1,5 @@
+<!-- START OF FILE Paste June 24, 2026 - 6:35PM -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -987,7 +989,7 @@ section {
   padding: 4px 10px;
 }
 
-/* ===== RESEARCH SECTION — two subsections ===== */
+/* ===== RESEARCH & WRITING SECTIONS ===== */
 .research-outer {
   border-top: 1px solid var(--border);
   padding: 100px 48px;
@@ -996,35 +998,6 @@ section {
 }
 
 @media(max-width:768px) { .research-outer { padding: 70px 24px; } }
-
-.research-tabs {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--border);
-  width: fit-content;
-  margin-top: 32px;
-  margin-bottom: 52px;
-}
-
-.research-tab {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  padding: 12px 24px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  border-right: 1px solid var(--border);
-  transition: background 0.2s, color 0.2s;
-}
-.research-tab:last-child { border-right: none; }
-.research-tab.active { background: var(--text-color); color: var(--bg-color); }
-.research-tab:not(.active):hover { color: var(--text-color); }
-
-.research-panel { display: none; }
-.research-panel.active { display: block; }
 
 /* Blog grid */
 .blog-grid {
@@ -1698,8 +1671,7 @@ footer {
   top: 24px;
   right: 24px;
   background: none;
-  border: 1px solid var(--border);
-  color: var(--text-color);
+  border: 1px solid var(--text-color);
   width: 44px;
   height: 44px;
   font-size: 20px;
@@ -1747,8 +1719,8 @@ footer {
   <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
   <a href="#ventures" onclick="closeMobileMenu()">Ventures</a>
   <a href="#about" onclick="closeMobileMenu()">About</a>
- 
   <a href="#now" onclick="closeMobileMenu()">Now</a>
+  <a href="#blogs" onclick="closeMobileMenu()">Blogs</a>
   <a href="#research" onclick="closeMobileMenu()">Research</a>
   <a href="#education" onclick="closeMobileMenu()">Education</a>
   <a href="#certifications" onclick="closeMobileMenu()">Certifications</a>
@@ -1761,8 +1733,8 @@ footer {
   <ul class="nav-links">
     <li><a href="#ventures">Ventures</a></li>
     <li><a href="#about">About</a></li>
-    
     <li><a href="#now">Now</a></li>
+    <li><a href="#blogs">Blogs</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -1785,7 +1757,6 @@ footer {
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div style="max-width:1400px; width:100%; margin:0 auto; padding: 0; position: relative; z-index: 2;">
@@ -1901,7 +1872,7 @@ footer {
 <div class="feature-section reveal">
   <div class="feature-left">
     <div class="feature-category">
-      <span>Vision · Strategy</span>
+      <span>Visual Strategy</span>
       <span>/Traits</span>
     </div>
     <h2 class="feature-title">PRISMATIC<br>VISION</h2>
@@ -2059,79 +2030,70 @@ footer {
   </div>
 </div>
 
-<!-- ===== RESEARCH — TWO SUBSECTIONS ===== -->
-<div class="research-outer reveal" id="research">
-  <span class="section-label">Writing & Research</span>
-  <h2 class="values-title">Ideas & Evidence</h2>
+<!-- ===== BLOGS & ESSAYS ===== -->
+<div class="research-outer reveal" id="blogs">
+  <span class="section-label">Essays & Writing</span>
+  <h2 class="values-title">Ideas & Insights</h2>
 
-  <div class="research-tabs" role="tablist">
-    <button class="research-tab active" role="tab" aria-selected="true" onclick="switchTab('blogs', this)">Essays & Writing</button>
-    <button class="research-tab" role="tab" aria-selected="false" onclick="switchTab('critical', this)">Critical Research</button>
-  </div>
-
-  <!-- Panel: Blogs -->
-  <div class="research-panel active" id="panel-blogs">
-    <div class="blog-grid">
-      <a class="blog-card" href="https://sadmansamin21.github.io/blogs/fractional-management-ai-era.html" target="_blank" rel="noopener noreferrer">
-        <span class="blog-number">01</span>
-        <div class="blog-tag">Management · AI · Strategy</div>
-        <div class="blog-title">Fractional Management in the AI Era</div>
-        <div class="blog-desc">How the rise of AI is reshaping management structures — and why fractional, high-leverage leadership may be the defining model of the next decade.</div>
-        <div class="blog-arrow">Read essay ↗</div>
-      </a>
-      <a class="blog-card" href="https://sadmansamin21.github.io/blogs/pricing-your-first-client.html" target="_blank" rel="noopener noreferrer">
-        <span class="blog-number">02</span>
-        <div class="blog-tag">Client Management · Strategy</div>
-        <div class="blog-title">Pricing Your First Client</div>
-        <div class="blog-desc">Step-by-step guidelines on achieving a successful deal with your first client without any portfolio, case studies, or referrals. Just you and a skill.</div>
-        <div class="blog-arrow">Read essay ↗</div>
-      </a>
-   <a href="https://sadmansamin21.github.io/blogs/" class="nav-cta" style="display: inline-block; margin-top: 2.5rem; text-decoration: none;">
-      Explore All My Writings ↗
+  <div class="blog-grid">
+    <a class="blog-card" href="https://sadmansamin21.github.io/blogs/fractional-management-ai-era.html" target="_blank" rel="noopener noreferrer">
+      <span class="blog-number">01</span>
+      <div class="blog-tag">Management · AI · Strategy</div>
+      <div class="blog-title">Fractional Management in the AI Era</div>
+      <div class="blog-desc">How the rise of AI is reshaping management structures — and why fractional, high-leverage leadership may be the defining model of the next decade.</div>
+      <div class="blog-arrow">Read essay ↗</div>
+    </a>
+    <a class="blog-card" href="https://sadmansamin21.github.io/blogs/pricing-your-first-client.html" target="_blank" rel="noopener noreferrer">
+      <span class="blog-number">02</span>
+      <div class="blog-tag">Client Management · Strategy</div>
+      <div class="blog-title">Pricing Your First Client</div>
+      <div class="blog-desc">Step-by-step guidelines on achieving a successful deal with your first client without any portfolio, case studies, or referrals. Just you and a skill.</div>
+      <div class="blog-arrow">Read essay ↗</div>
     </a>
   </div>
-      <!-- TO ADD A NEW BLOG: copy one blog-card block and update href, blog-tag, blog-title, blog-desc, blog-number -->
-    </div>
+
+  <div style="margin-top: 32px;">
+    <a href="https://sadmansamin21.github.io/blogs/" target="_blank" rel="noopener noreferrer" class="primary-action-btn">
+      <span>Explore All My Writings</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="7" y1="17" x2="17" y2="7"></line>
+        <polyline points="7 7 17 7 17 17"></polyline>
+      </svg>
+    </a>
   </div>
+</div>
 
-  <!-- Panel: Critical Research -->
-  <div class="research-panel" id="panel-critical">
-    <div class="critical-research-grid">
+<!-- ===== CRITICAL RESEARCH ===== -->
+<div class="research-outer reveal" id="research" style="border-top: 1px solid var(--border);">
+  <span class="section-label">Critical Research</span>
+  <h2 class="values-title">Evidence & Analysis</h2>
 
-      <!-- TEMPLATE RESEARCH ITEM 1 — replace href with your PDF link -->
-<!-- R01: Rice Husk Ash Systematic Review (Zenodo) -->
-<a class="cr-item" href="https://doi.org/10.5281/zenodo.20241511" target="_blank" rel="noopener noreferrer">
-    <span class="cr-number">R01</span>
-    <div class="cr-tag">Civil Engineering · Sustainability · SCM</div>
-    <div class="cr-title">Effects of Rice Husk Ash on Concrete Compressive Strength: A Systematic Review</div>
-    <div class="cr-desc">A systematic review and quantitative synthesis evaluating partial cement replacement with rice husk ash (RHA). Using a random-effects framework, the study evaluates how curing duration, particle fineness, and replacement percentages (5-10% vs. &gt;15%) influence concrete performance.</div>
-    <div class="cr-meta">
-        <span class="cr-pages">Sadman Samin · 2026</span>
-        <span class="cr-pdf-badge">PDF</span>
-    </div>
-    <div class="cr-arrow">Read Research ↗</div>
-</a>
+  <div class="critical-research-grid">
+    <!-- R01: Rice Husk Ash Systematic Review (Zenodo) -->
+    <a class="cr-item" href="https://doi.org/10.5281/zenodo.20241511" target="_blank" rel="noopener noreferrer">
+        <span class="cr-number">R01</span>
+        <div class="cr-tag">Civil Engineering · Sustainability · SCM</div>
+        <div class="cr-title">Effects of Rice Husk Ash on Concrete Compressive Strength: A Systematic Review</div>
+        <div class="cr-desc">A systematic review and quantitative synthesis evaluating partial cement replacement with rice husk ash (RHA). Using a random-effects framework, the study evaluates how curing duration, particle fineness, and replacement percentages (5-10% vs. &gt;15%) influence concrete performance.</div>
+        <div class="cr-meta">
+            <span class="cr-pages">Sadman Samin · 2026</span>
+            <span class="cr-pdf-badge">PDF</span>
+        </div>
+        <div class="cr-arrow">Read Research ↗</div>
+    </a>
 
-<!-- R02: Natural Disaster Prediction Systematic Survey (SSRN) -->
-<a class="cr-item" href="https://dx.doi.org/10.2139/ssrn.6786939" target="_blank" rel="noopener noreferrer">
-    <span class="cr-number">R02</span>
-    <div class="cr-tag">Machine Learning · Deep Learning · Disaster Management</div>
-    <div class="cr-title">Systematic Survey of Machine Learning and Deep Learning for Natural Disaster Prediction and Early Warning Systems in South Asia (2020-2025)</div>
-    <div class="cr-desc">A multi-hazard systematic review of 42 peer-reviewed studies across flood, cyclone, earthquake, and landslide domains. Features a validation integrity audit revealing that 37.5% of evaluated seismic papers suffer from temporal data leakage due to flawed random splitting protocols.</div>
-    <div class="cr-meta">
-        <span class="cr-pages">Sadman Samin · 2026</span>
-        <span class="cr-pdf-badge">PDF</span>
-    </div>
-    <div class="cr-arrow">Read Research ↗</div>
-</a>
-
-     
-
-      <!-- ADD MORE: copy a cr-item block, update href to your PDF, update fields -->
-    </div>
-    <p style="font-size:13px; color:var(--gray); margin-top:24px; opacity:0.5; font-family:var(--font-mono); letter-spacing:0.04em;">
-     
-    </p>
+    <!-- R02: Natural Disaster Prediction Systematic Survey (SSRN) -->
+    <a class="cr-item" href="https://dx.doi.org/10.2139/ssrn.6786939" target="_blank" rel="noopener noreferrer">
+        <span class="cr-number">R02</span>
+        <div class="cr-tag">Machine Learning · Deep Learning · Disaster Management</div>
+        <div class="cr-title">Systematic Survey of Machine Learning and Deep Learning for Natural Disaster Prediction and Early Warning Systems in South Asia (2020-2025)</div>
+        <div class="cr-desc">A multi-hazard systematic review of 42 peer-reviewed studies across flood, cyclone, earthquake, and landslide domains. Features a validation integrity audit revealing that 37.5% of evaluated seismic papers suffer from temporal data leakage due to flawed random splitting protocols.</div>
+        <div class="cr-meta">
+            <span class="cr-pages">Sadman Samin · 2026</span>
+            <span class="cr-pdf-badge">PDF</span>
+        </div>
+        <div class="cr-arrow">Read Research ↗</div>
+    </a>
   </div>
 </div>
 
@@ -2235,8 +2197,8 @@ footer {
   <a href="#" class="footer-logo">SS</a>
   <div class="footer-links">
     <a href="#about">About</a>
-   
     <a href="#now">Now</a>
+    <a href="#blogs">Blogs</a>
     <a href="#research">Research</a>
     <a href="#contact">Contact</a>
   </div>
@@ -2248,31 +2210,6 @@ footer {
 
 
 <script>
-// ===== RESEARCH TABS =====
-// pushHash controls whether switching tabs updates the URL — true when a
-// person clicks a tab (so the link becomes shareable), false when we're
-// just restoring state from an already-present hash on page load.
-function switchTab(panel, btn, pushHash = true) {
-  document.querySelectorAll('.research-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.research-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  const target = document.getElementById('panel-' + panel);
-  if (target) target.classList.add('active');
-  if (pushHash) {
-    const hash = panel === 'critical' ? '#critical-research' : '#research';
-    history.replaceState(null, '', hash);
-  }
-}
-
-// If someone arrives via a #critical-research link, open that tab instead
-// of always defaulting to Essays & Writing.
-function initResearchTabFromHash() {
-  if (window.location.hash === '#critical-research') {
-    const tabs = document.querySelectorAll('.research-tab');
-    if (tabs[1]) switchTab('critical', tabs[1], false);
-  }
-}
-
 // ===== PEOPLE ALSO ASK DATA =====
 // Each question has 3 answer variants — shuffled & typed on open
 const PAA_DATA = [
@@ -2318,7 +2255,6 @@ const PAA_DATA = [
   }
 ];
 
-// Track which answer variant is shown per question
 // Track which answer variant is shown per question
 const paaVariantIndex = {};
 

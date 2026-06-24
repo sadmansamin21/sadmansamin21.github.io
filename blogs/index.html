@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sadman Samin | Blogs & Essays</title>
+    <meta name="title" content="Sadman Samin | Blogs & Essays">
+    <meta name="description" content="Personal blog and essays by Sadman Samin covering pricing frameworks, fractional management, and technology.">
+    <meta name="keywords" content="Sadman Samin, Pricing Frameworks, Fractional Management, AI Era, Technology Essays, Blog">
+    <meta name="author" content="Sadman Samin">
+    
+    <link rel="canonical" href="https://sadmansamin21.github.io/blogs/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sadmansamin21.github.io/blogs/">
+    <meta property="og:title" content="Sadman Samin | Blogs & Essays">
+    <meta property="og:description" content="Personal blog and essays by Sadman Samin.">
+    <meta property="og:image" content="https://sadmansamin21.github.io/og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sadmansamin21.github.io/blogs/">
+    <meta property="twitter:title" content="Sadman Samin | Blogs & Essays">
+    <meta property="twitter:description" content="Personal blog and essays by Sadman Samin.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #111111;
+            --text-secondary: #666666;
+            --border-color: #e5e5e5;
+            --accent: #000000;
+            --hover-bg: #f9f9f9;
+        }
+
+        :root[data-theme="dark"] {
+            --bg-color: #0a0a0a;
+            --text-primary: #ededed;
+            --text-secondary: #888888;
+            --border-color: #222222;
+            --accent: #ffffff;
+            --hover-bg: #141414;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-back {
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            margin: -0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+            background-color: var(--hover-bg);
+        }
+
+        .theme-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        header {
+            margin-bottom: 5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* Product List */
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .product-card {
+            display: block;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+
+        .product-card:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--text-secondary);
+            opacity: 1;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        .product-type {
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .product-card:hover .product-link {
+            border-bottom-color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .product-card { padding: 1.5rem; }
+            nav { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .nav-right { width: 100%; justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="nav-logo">SADMAN SAMIN.</div>
+            <div class="nav-right">
+                <button id="theme-toggle" class="theme-toggle mono" aria-label="Toggle Theme">
+                    <span class="theme-icon" id="theme-icon">◑</span> Theme
+                </button>
+                <a href="https://sadmansamin21.github.io" class="nav-back mono">← Home</a>
+            </div>
+        </nav>
+
+        <header>
+            <h1>Writing & Essays.</h1>
+            <p class="hero-desc">
+               A personal collection of essays, framework deep-dives, and technical notes exploring client strategy, management dynamics, and organizational systems.
+            </p>
+        </header>
+
+        <main>
+            <div class="section-title mono">All Publications</div>
+            
+            <div class="product-list">
+                
+                <a href="https://sadmansamin21.github.io/blogs/pricing-your-first-client.html" class="product-card">
+                    <div class="product-header">
+                        <h2 class="product-title">Pricing Your First Client</h2>
+                        <span class="product-type mono">Strategy</span>
+                    </div>
+                    <p class="product-desc">
+                        A pragmatic framework for identifying market value, mitigating initial transactional risks, and establishing confidence during your first client engagements.
+                    </p>
+                    <div class="product-link">Read Post ↗</div>
+                </a>
+
+                <a href="https://sadmansamin21.github.io/blogs/fractional-management-ai-era.html" class="product-card">
+                    <div class="product-header">
+                        <h2 class="product-title">Fractional Management in the AI Era</h2>
+                        <span class="product-type mono">Management</span>
+                    </div>
+                    <p class="product-desc">
+                        Analyzing how modern, high-leverage automated tools are shifting executive workflows and paving the way for decentralized leadership models.
+                    </p>
+                    <div class="product-link">Read Post ↗</div>
+                </a>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="mono">© 2026 Sadman Samin.</div>
+            <div class="mono">Dhaka, Bangladesh</div>
+        </footer>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '◐';
+        } else {
+            themeIcon.textContent = '◑';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '◑';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '◐';
+            }
+        });
+    </script>
+</body>
+</html>

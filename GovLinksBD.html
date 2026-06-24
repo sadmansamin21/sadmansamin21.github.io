@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <title>GovLinksBD — Unofficial Bangladesh Government Directory 🇧🇩</title>
+    
+    <meta name="description" content="Access all official government websites of Bangladesh in one clean, ultra-compact directory. Quick, simplified links to Passport, NID, Tax, Ministries, and local portals.">
+    <meta name="keywords" content="Bangladesh government websites, Bangladesh government directory, Bangladesh official websites, government services Bangladesh, Bangladesh public services, Bangladesh ministries, Bangladesh government portal">
+    <meta name="author" content="Sadman Samin">
+    <meta name="publisher" content="GovLinksBD">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sadmansamin21.github.io/GovLinksBD.html">
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sadmansamin21.github.io/GovLinksBD.html">
+    <meta property="og:title" content="GovLinksBD — Unofficial Bangladesh Government Directory 🇧🇩">
+    <meta property="og:description" content="Access all official government websites of Bangladesh in one clean, ultra-compact directory. Quick links to Passport, NID, Tax, and more.">
+    <meta property="og:image" content="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230b1329%22/><text y=%22.9em%22 font-size=%2280%22 x=%2210%22>🇧🇩</text></svg>">
+    <meta property="og:site_name" content="GovLinksBD">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="bn_BD">
+
+    <!-- Twitter Metadata -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://sadmansamin21.github.io/GovLinksBD.html">
+    <meta name="twitter:title" content="GovLinksBD — Unofficial Bangladesh Government Directory 🇧🇩">
+    <meta name="twitter:description" content="Access all official government websites of Bangladesh in one clean, ultra-compact directory. Quick links to Passport, NID, Tax, and more.">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GovLinksBD",
+      "url": "https://sadmansamin21.github.io/GovLinksBD.html",
+      "description": "An unofficial curated directory of Bangladesh Government websites for fast, simplified navigation.",
+      "inLanguage": ["en", "bn"],
+      "publisher": {
+        "@type": "Person",
+        "name": "Sadman Samin",
+        "url": "https://sadmansamin21.github.io"
+      }
+    }
+    </script>
+
+    <!-- Dynamic Emoji Favicon of site -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🇧🇩</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS with Dark Mode Class strategy -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        bengali: ['"Noto Sans Bengali"', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            850: '#115e3b',
+                            900: '#14532d',
+                        },
+                        slate: {
+                            950: '#060b13',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Inline script to block Flash of Light Theme during initial page parsing -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(156, 163, 175, 0.2);
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(156, 163, 175, 0.4);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(6, 11, 19, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-[#fafbfc] dark:bg-slate-950 text-slate-850 dark:text-slate-100 selection:bg-emerald-100 dark:selection:bg-emerald-950/50 selection:text-emerald-900 dark:selection:text-emerald-300 min-h-screen flex flex-col antialiased transition-colors duration-200">
+
+    <!-- Top Progress Indicator -->
+    <div id="progressBar" class="fixed top-0 left-0 h-[2px] bg-emerald-600 transition-all duration-150 z-50" style="width: 0%"></div>
+
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-40 border-b border-slate-100 dark:border-slate-900 glass transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand / Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="h-9 w-9 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-sm flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="text-base font-bold text-slate-900 dark:text-white tracking-tight">GovLinksBD 🇧🇩</span>
+                            <span class="px-1.5 py-0.5 text-[8.5px] font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-100 dark:border-amber-900/30 rounded-md uppercase tracking-wider">Unofficial Directory</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 dark:text-slate-500 font-medium" data-translate="subtitle">Unofficial Directory of Bangladesh Government Portals</p>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle & Language Switcher -->
+                <div class="flex items-center gap-2.5">
+                    <!-- Theme Toggle Button -->
+                    <button onclick="toggleDarkMode()" id="dark-mode-toggle" class="p-2 rounded-full bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-all shadow-sm flex items-center justify-center focus:outline-none" aria-label="Toggle Theme">
+                        <!-- Icon loaded via JS -->
+                    </button>
+
+                    <!-- Language Selector -->
+                    <div class="inline-flex items-center p-0.5 bg-slate-100 dark:bg-slate-900 rounded-full border border-slate-200/60 dark:border-slate-800 shadow-inner">
+                        <button onclick="setLanguage('en')" id="btn-en" class="px-3.5 py-1 text-xs font-semibold rounded-full transition-all duration-150">English</button>
+                        <button onclick="setLanguage('bn')" id="btn-bn" class="px-3.5 py-1 text-xs font-semibold rounded-full transition-all duration-150 font-bengali">বাংলা</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        
+        <!-- Hero Section -->
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight mb-4" data-translate="title">
+                Bangladesh Government Websites 🇧🇩
+            </h1>
+            <p class="text-slate-500 dark:text-slate-400 text-base sm:text-lg font-normal mb-6 leading-relaxed" data-translate="description">
+                A clean, compact directory of official government portals. Avoid messy official navigation and jump directly to the services you need.
+            </p>
+
+            <!-- Counter Badges -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 mr-1.5"></span>
+                    <span class="font-bold mr-1" id="count-sites">162</span> <span data-translate="badge-websites">Websites</span>
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-50 dark:bg-slate-900 border border-slate-150 dark:border-slate-800 text-slate-600 dark:text-slate-400">
+                    <span class="font-bold mr-1">21</span> <span data-translate="badge-categories">Categories</span>
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-50 dark:bg-slate-900 border border-slate-150 dark:border-slate-800 text-slate-600 dark:text-slate-400">
+                    <span class="font-bold mr-1">8</span> <span data-translate="badge-divisions">Divisions</span>
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-50 dark:bg-slate-900 border border-slate-150 dark:border-slate-800 text-slate-600 dark:text-slate-400">
+                    <span class="font-bold mr-1">11</span> <span data-translate="badge-corporations">City Corporations</span>
+                </span>
+            </div>
+
+            <!-- Search Panel -->
+            <div class="relative max-w-2xl mx-auto">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <input 
+                    type="search" 
+                    id="search-input" 
+                    oninput="handleSearch()"
+                    placeholder="Search for passport, NID, tax, ministries, or categories..." 
+                    class="block w-full pl-11 pr-12 py-3 border border-slate-200 dark:border-slate-850 rounded-xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-600/10 dark:focus:ring-emerald-400/10 focus:border-emerald-600 dark:focus:border-emerald-500 transition duration-150 shadow-sm text-sm sm:text-base"
+                >
+                <div class="absolute inset-y-0 right-0 pr-4 flex items-center">
+                    <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-850 rounded uppercase tracking-wider">ESC</kbd>
+                </div>
+            </div>
+        </div>
+
+        <!-- Directory Workspace -->
+        <div class="lg:grid lg:grid-cols-4 lg:gap-8 items-start">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="hidden lg:block lg:col-span-1 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-4 custom-scrollbar">
+                <nav class="space-y-0.5" id="category-nav">
+                    <!-- Nav items generate dynamically -->
+                </nav>
+            </aside>
+
+            <!-- Main Content Grid (Rendered Dynamically in a highly compact form) -->
+            <div class="lg:col-span-3 space-y-8" id="directory-container">
+                <!-- Rendered Dynamically -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-950 border-t border-slate-150 dark:border-slate-900 mt-20 py-10 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <div class="space-y-1.5">
+                    <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                        <span class="text-sm font-bold text-slate-800 dark:text-slate-100">GovLinksBD 🇧🇩</span>
+                        <span class="px-1.5 py-0.5 text-[8px] font-bold bg-amber-50 dark:bg-amber-950/30 text-amber-500 dark:text-amber-400 border border-amber-100 dark:border-amber-900/30 rounded uppercase tracking-wider">Unofficial Directory</span>
+                    </div>
+                    <p class="text-xs text-slate-450 dark:text-slate-500" data-translate="footer-disclaimer">
+                        This is an independent open directory of government websites. It is not officially affiliated with the Government of Bangladesh.
+                    </p>
+                </div>
+                <div class="mt-4 sm:mt-0 flex justify-center gap-4 text-xs font-semibold">
+                    <button onclick="openDisclaimer()" id="footer-disclaimer-btn" class="text-slate-500 dark:text-slate-450 hover:text-emerald-600 dark:hover:text-emerald-400 transition underline decoration-dotted underline-offset-4 decoration-slate-300 dark:decoration-slate-800">
+                        Disclaimer
+                    </button>
+                </div>
+            </div>
+            <div class="border-t border-slate-100 dark:border-slate-900 mt-6 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 dark:text-slate-500 gap-4">
+                <div>
+                    © 2026 GovLinksBD. Built by <a href="https://sadmansamin21.github.io" target="_blank" class="text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-semibold transition">Sadman Samin</a>.
+                </div>
+                <div class="flex gap-4">
+                    <span data-translate="last-updated">Last updated: 2nd Jan 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Disclaimer Modal Overlay -->
+    <div id="disclaimerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300 opacity-0" onclick="closeDisclaimer()">
+        <div class="relative bg-white dark:bg-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-xl border border-slate-100 dark:border-slate-800 transform scale-95 transition-all duration-300 opacity-0" id="disclaimerModalContainer" onclick="event.stopPropagation()">
+            <!-- Generated dynamically based on language -->
+        </div>
+    </div>
+
+    <!-- JS Application & Content Database -->
+    <script>
+        const localization = {
+            en: {
+                subtitle: "Unofficial Directory of Bangladesh Government Portals",
+                title: "Bangladesh Government Websites",
+                description: "A clean, compact directory of official government portals. Avoid messy official navigation and jump directly to the services you need.",
+                "badge-websites": "Websites",
+                "badge-categories": "Categories",
+                "badge-divisions": "Divisions",
+                "badge-corporations": "City Corporations",
+                "search-placeholder": "Search for passport, NID, tax, ministries, or categories...",
+                "footer-disclaimer": "This is an independent open directory of government websites. It is not officially affiliated with the Government of Bangladesh.",
+                "last-updated": "Last updated: 2nd Jan 2026",
+                noResults: "No portals matched your search.",
+                visitSite: "Visit Official Portal"
+            },
+            bn: {
+                subtitle: "বাংলাদেশ সরকারের ওয়েবসাইটসমূহের অনানুষ্ঠানিক ডিরেক্টরি",
+                title: "বাংলাদেশ সরকারের ওয়েবসাইট ডিরেক্টরি",
+                description: "সকল সরকারি পোর্টালের একটি সুবিন্যস্ত এবং পরিষ্কার তালিকা। বিভ্রান্তিকর নেভিগেশন এড়িয়ে সরাসরি আপনার প্রয়োজনীয় নাগরিক সেবায় প্রবেশ করুন।",
+                "badge-websites": "টি ওয়েবসাইট",
+                "badge-categories": "টি ক্যাটাগরি",
+                "badge-divisions": "টি বিভাগ",
+                "badge-corporations": "টি সিটি কর্পোরেশন",
+                "search-placeholder": "পাসপোর্ট, এনআইডি, ট্যাক্স, মন্ত্রণালয় বা ক্যাটাগরি খুঁজুন...",
+                "footer-disclaimer": "এটি বাংলাদেশ সরকারের একটি স্বতন্ত্র ও অনানুষ্ঠানিক ডিরেক্টরি। এটি সরকারি কোনো প্রতিষ্ঠানের সাথে সরাসরি যুক্ত নয়।",
+                "last-updated": "সর্বশেষ আপডেট: ২ জানুয়ারি ২০২৬",
+                noResults: "আপনার অনুসন্ধানকৃত কোনো পোর্টাল পাওয়া যায়নি।",
+                visitSite: "অফিসিয়াল পোর্টাল দেখুন"
+            }
+        };
+
+        const disclaimerText = {
+            en: {
+                title: "Disclaimer & Limitation of Liability",
+                body1: "BdGovLinks is an unofficial directory and is not affiliated with, endorsed by, or connected to the Government of Bangladesh or any Bangladesh government department, ministry, or agency. All government websites listed are owned and operated by their respective government bodies.",
+                body2: "GovLinksBD shall not be liable for any loss or damage, including without limitation, indirect or consequential loss or damage, arising out of or in connection with the use of this website or any linked government websites.",
+                close: "Close",
+                button: "Disclaimer"
+            },
+            bn: {
+                title: "দাবিত্যাগ ও দায় সীমাবদ্ধতা (Disclaimer)",
+                body1: "BdGovLinks একটি অনানুষ্ঠানিক ডিরেক্টরি এবং এটি বাংলাদেশ সরকার বা বাংলাদেশ সরকারের কোনো বিভাগ, মন্ত্রণালয় বা সংস্থার সাথে সম্পর্কিত, অনুমোদিত বা সংযুক্ত নয়। তালিকাভুক্ত সকল সরকারি ওয়েবসাইট তাদের নিজ নিজ সরকারি প্রতিষ্ঠানের মালিকানাধীন এবং তাদের দ্বারাই পরিচালিত হয়।",
+                body2: "এই ওয়েবসাইট বা এর সাথে যুক্ত অন্য কোনো লিংক ব্যবহারের ফলে প্রত্যক্ষ বা পরোক্ষভাবে কোনো ক্ষতি বা লোকসান হলে GovLinksBD কোনোভাবেই দায়ী থাকবে না।",
+                close: "বন্ধ করুন",
+                button: "ডিসক্লেইমার"
+            }
+        };
+
+        const database = [
+            {
+                id: "core",
+                name: { en: "Core Government", bn: "প্রধান শাসন ও জাতীয় বিভাগ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+                sites: [
+                    { name: { en: "Prime Minister's Office", bn: "প্রধানমন্ত্রীর কার্যালয়" }, url: "https://pmo.gov.bd" },
+                    { name: { en: "President's Office", bn: "রাষ্ট্রপতির কার্যালয়" }, url: "https://president.gov.bd" },
+                    { name: { en: "Jatiya Sangsad (National Parliament)", bn: "জাতীয় সংসদ" }, url: "https://www.parliament.gov.bd" },
+                    { name: { en: "Cabinet Division", bn: "মন্ত্রিপরিষদ বিভাগ" }, url: "https://cabinet.gov.bd" },
+                    { name: { en: "Chief Adviser's Office", bn: "প্রধান উপদেষ্টার কার্যালয়" }, url: "https://cao.gov.bd" },
+                    { name: { en: "Prime Minister's Office (Old)", bn: "প্রধানমন্ত্রীর কার্যালয় (পুরাতন)" }, url: "https://old.pmo.gov.bd" }
+                ]
+            },
+            {
+                id: "key_ministries",
+                name: { en: "Key Ministries", bn: "গুরুত্বপূর্ণ মন্ত্রণালয়সমূহ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+                sites: [
+                    { name: { en: "Ministry of Finance", bn: "অর্থ মন্ত্রণালয়" }, url: "https://mof.gov.bd" },
+                    { name: { en: "Ministry of Foreign Affairs", bn: "পররাষ্ট্র মন্ত্রণালয়" }, url: "https://mofa.gov.bd" },
+                    { name: { en: "Ministry of Home Affairs", bn: "স্বরাষ্ট্র মন্ত্রণালয়" }, url: "https://mha.gov.bd" },
+                    { name: { en: "Ministry of Education", bn: "শিক্ষা মন্ত্রণালয়" }, url: "https://moedu.gov.bd" },
+                    { name: { en: "Ministry of Health and Family Welfare", bn: "স্বাস্থ্য ও পরিবার কল্যাণ মন্ত্রণালয়" }, url: "https://mohfw.gov.bd" },
+                    { name: { en: "Ministry of Agriculture", bn: "কৃষি মন্ত্রণালয়" }, url: "https://moa.gov.bd" },
+                    { name: { en: "Ministry of Planning", bn: "পরিকল্পনা মন্ত্রণালয়" }, url: "https://mop.gov.bd" },
+                    { name: { en: "Ministry of Commerce", bn: "বাণিজ্য মন্ত্রণালয়" }, url: "https://mincom.gov.bd" },
+                    { name: { en: "Ministry of Industries", bn: "শিল্প মন্ত্রণালয়" }, url: "https://moind.gov.bd" }
+                ]
+            },
+            {
+                id: "public_services",
+                name: { en: "Public Services", bn: "নাগরিক সেবা পোর্টাল" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>`,
+                sites: [
+                    { name: { en: "Passport Office", bn: "পাসপোর্ট অফিস" }, url: "https://passport.gov.bd" },
+                    { name: { en: "e-Passport Application", bn: "ই-পাসপোর্ট আবেদন পোর্টাল" }, url: "https://www.epassport.gov.bd" },
+                    { name: { en: "National Identity Registration", bn: "জাতীয় পরিচয়পত্র নিবন্ধন (NID)" }, url: "https://nidw.gov.bd" },
+                    { name: { en: "NBR e-Tax System", bn: "অনলাইন আয়কর রিটার্ন জমা (NBR)" }, url: "https://etaxnbr.gov.bd" },
+                    { name: { en: "BRTA Service Portal", bn: "বিআরটিএ ড্রাইভিং লাইসেন্স ও সেবা পোর্টাল" }, url: "https://bsp.brta.gov.bd/?lan=en" },
+                    { name: { en: "Bangladesh Post Office", bn: "বাংলাদেশ ডাক বিভাগ" }, url: "https://bdpost.gov.bd" },
+                    { name: { en: "Land Administration Portal", bn: "ভূমি প্রশাসন সেবা পোর্টাল" }, url: "https://landadministration.gov.bd" },
+                    { name: { en: "Teletalk Bangladesh", bn: "টেলিটক বাংলাদেশ" }, url: "https://teletalk.com.bd" },
+                    { name: { en: "Department of Immigration & Passports", bn: "ইমিগ্রেশন ও পাসপোর্ট অধিদপ্তর" }, url: "https://dip.gov.bd" },
+                    { name: { en: "Online Visa Portal", bn: "অনলাইন ভিসা পোর্টাল" }, url: "https://visa.gov.bd" },
+                    { name: { en: "Bangladesh Customs", bn: "বাংলাদেশ কাস্টমস" }, url: "https://customs.gov.bd" }
+                ]
+            },
+            {
+                id: "e_gov",
+                name: { en: "E-Governance", bn: "ডিজিটাল ও ই-গভর্নেন্স" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`,
+                sites: [
+                    { name: { en: "Bangladesh National Portal", bn: "জাতীয় তথ্য বাতায়ন" }, url: "https://bangladesh.gov.bd" },
+                    { name: { en: "Digital Bangladesh Initiative", bn: "ডিজিটাল বাংলাদেশ পোর্টাল" }, url: "https://digitalbangladesh.gov.bd" },
+                    { name: { en: "e-GP Procurement Portal", bn: "সরকারি ক্রয়ের ই-জিপি (e-GP) পোর্টাল" }, url: "https://www.eprocure.gov.bd" },
+                    { name: { en: "Access to Information (a2i)", bn: "এটুআই (a2i)" }, url: "https://a2i.gov.bd" },
+                    { name: { en: "Bangladesh Computer Council", bn: "বাংলাদেশ কম্পিউটার কাউন্সিল" }, url: "https://bcc.gov.bd" },
+                    { name: { en: "MyGov Citizen Portal", bn: "আমার সরকার (মাইগভ) নাগরিক সেবা" }, url: "https://mygov.bd" },
+                    { name: { en: "National Dashboard", bn: "জাতীয় ড্যাশবোর্ড" }, url: "https://dashboard.gov.bd" },
+                    { name: { en: "Government Gazette (DPP)", bn: "সরকারি গেজেট (ডিউপিপি)" }, url: "https://dpp.gov.bd" }
+                ]
+            },
+            {
+                id: "law",
+                name: { en: "Law & Judiciary", bn: "আইন ও বিচার বিভাগ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path></svg>`,
+                sites: [
+                    { name: { en: "Supreme Court of Bangladesh", bn: "বাংলাদেশ সুপ্রিম কোর্ট" }, url: "https://supremecourt.gov.bd" },
+                    { name: { en: "Attorney General's Office", bn: "অ্যাটর্নি জেনারেলের কার্যালয়" }, url: "https://ago.gov.bd" },
+                    { name: { en: "Bangladesh Bar Council", bn: "বাংলাদেশ বার কাউন্সিল" }, url: "https://barcouncil.gov.bd" },
+                    { name: { en: "Law Commission", bn: "আইন কমিশন" }, url: "https://lawcommission.gov.bd" },
+                    { name: { en: "Judiciary of Bangladesh", bn: "বাংলাদেশের বিচার বিভাগীয় পোর্টাল" }, url: "https://judiciary.gov.bd" },
+                    { name: { en: "Bangladesh Laws (BDLaws)", bn: "বাংলাদেশ আইন বিধিমালা (বিডি লজ)" }, url: "http://bdlaws.minlaw.gov.bd" }
+                ]
+            },
+            {
+                id: "economic",
+                name: { en: "Economic Institutions", bn: "অর্থনৈতিক ও বাণিজ্য সংস্থা" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+                sites: [
+                    { name: { en: "Bangladesh Bank", bn: "বাংলাদেশ ব্যাংক" }, url: "https://www.bb.org.bd" },
+                    { name: { en: "National Board of Revenue (NBR)", bn: "জাতীয় রাজস্ব বোর্ড (এনবিআর)" }, url: "https://nbr.gov.bd" },
+                    { name: { en: "Securities & Exchange Commission", bn: "সিকিউরিটিজ অ্যান্ড এক্সচেঞ্জ কমিশন (SEC)" }, url: "https://sec.gov.bd" },
+                    { name: { en: "BIDA (Investment Authority)", bn: "বাংলাদেশ বিনিয়োগ উন্নয়ন কর্তৃপক্ষ (বিডা)" }, url: "https://bida.gov.bd" },
+                    { name: { en: "Export Promotion Bureau", bn: "রপ্তানি উন্নয়ন ব্যুরো" }, url: "https://epb.gov.bd" },
+                    { name: { en: "BEZA (Economic Zones)", bn: "বাংলাদেশ অর্থনৈতিক অঞ্চল কর্তৃপক্ষ (বেজা)" }, url: "https://beza.gov.bd" },
+                    { name: { en: "BEPZA (Export Zones)", bn: "বাংলাদেশ রপ্তানি প্রক্রিয়াকরণ এলাকা কর্তৃপক্ষ (বেপজা)" }, url: "https://www.bepza.gov.bd" },
+                    { name: { en: "BSEC Corporation", bn: "বাংলাদেশ স্টিল অ্যান্ড ইঞ্জিনিয়ারিং কর্পোরেশন (বিএসইসি)" }, url: "https://bsec.gov.bd" },
+                    { name: { en: "Bangladesh Trade Portal", bn: "বাংলাদেশ ট্রেড পোর্টাল" }, url: "https://bangladeshtradeportal.gov.bd" },
+                    { name: { en: "Bangladesh Trade & Tariff Commission", bn: "বাংলাদেশ ট্রেড অ্যান্ড ট্যারিফ কমিশন" }, url: "https://btc.gov.bd" }
+                ]
+            },
+            {
+                id: "education",
+                name: { en: "Education & Research", bn: "শিক্ষা ও বোর্ডসমূহ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>`,
+                sites: [
+                    { name: { en: "University Grants Commission", bn: "বিশ্ববিদ্যালয় মঞ্জুরী কমিশন (ইউজিসি)" }, url: "https://ugc.ac.bd" },
+                    { name: { en: "National University", bn: "জাতীয় বিশ্ববিদ্যালয়" }, url: "https://nu.ac.bd" },
+                    { name: { en: "Dhaka University", bn: "ঢাকা বিশ্ববিদ্যালয়" }, url: "https://du.ac.bd" },
+                    { name: { en: "Bangladesh Open University", bn: "বাংলাদেশ উন্মুক্ত বিশ্ববিদ্যালয়" }, url: "https://bou.edu.bd" },
+                    { name: { en: "Technical Education Board", bn: "বাংলাদেশ কারিগরি শিক্ষা বোর্ড" }, url: "https://techedu.gov.bd" },
+                    { name: { en: "Secondary & Higher Education (DSHE)", bn: "মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর" }, url: "https://dshe.gov.bd" },
+                    { name: { en: "Higher Education Division (SHED)", bn: "মাধ্যমিক ও উচ্চ শিক্ষা বিভাগ" }, url: "https://shed.gov.bd" },
+                    { name: { en: "Directorate of Primary Education", bn: "প্রাথমিক শিক্ষা অধিদপ্তর (ডিপিই)" }, url: "https://dpe.gov.bd" },
+                    { name: { en: "Education Board Results Portal", bn: "সকল শিক্ষা বোর্ডের পরীক্ষার ফলাফল পোর্টাল" }, url: "http://www.educationboardresults.gov.bd" }
+                ]
+            },
+            {
+                id: "health",
+                name: { en: "Health Services", bn: "স্বাস্থ্যসেবা ও নিয়ন্ত্রণ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>`,
+                sites: [
+                    { name: { en: "Directorate of Health Services", bn: "স্বাস্থ্য অধিদপ্তর (DGHS)" }, url: "https://dghs.gov.bd" },
+                    { name: { en: "Directorate of Family Planning", bn: "পরিবার পরিকল্পনা অধিদপ্তর" }, url: "https://dgfp.gov.bd" },
+                    { name: { en: "Directorate of Drug Administration", bn: "ঔষধ প্রশাসন অধিদপ্তর (DGDA)" }, url: "https://dgda.gov.bd" },
+                    { name: { en: "Medical & Dental Council", bn: "বাংলাদেশ মেডিকেল অ্যান্ড ডেন্টাল কাউন্সিল (BMDC)" }, url: "https://bmdc.gov.bd" },
+                    { name: { en: "IEDCR Research Portal", bn: "আইইডিসিআর (IEDCR)" }, url: "https://iedcr.gov.bd" }
+                ]
+            },
+            {
+                id: "agriculture",
+                name: { en: "Agriculture & Environment", bn: "কৃষি, সমবায় ও পরিবেশ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+                sites: [
+                    { name: { en: "Agricultural Extension (DAE)", bn: "কৃষি সম্প্রসারণ অধিদপ্তর" }, url: "https://dae.gov.bd" },
+                    { name: { en: "Rice Research Institute (BRRI)", bn: "বাংলাদেশ ধান গবেষণা ইনস্টিটিউট" }, url: "https://brri.gov.bd" },
+                    { name: { en: "Department of Environment", bn: "পরিবেশ অধিদপ্তর (DOE)" }, url: "https://doe.gov.bd" },
+                    { name: { en: "Forest Department", bn: "বন অধিদপ্তর" }, url: "https://forest.gov.bd" },
+                    { name: { en: "Agricultural Research Council", bn: "বাংলাদেশ কৃষি গবেষণা কাউন্সিল (BARC)" }, url: "https://barc.gov.bd" },
+                    { name: { en: "Agricultural Research Institute", bn: "বাংলাদেশ কৃষি গবেষণা ইনস্টিটিউট (BARI)" }, url: "https://bari.gov.bd" },
+                    { name: { en: "Department of Fisheries", bn: "মৎস্য অধিদপ্তর" }, url: "https://fisheries.gov.bd" },
+                    { name: { en: "Department of Cooperatives", bn: "সমবায় অধিদপ্তর" }, url: "https://coop.gov.bd" },
+                    { name: { en: "Water Development Board", bn: "বাংলাদেশ পানি উন্নয়ন বোর্ড" }, url: "https://bwdb.gov.bd" }
+                ]
+            },
+            {
+                id: "energy",
+                name: { en: "Energy & Utilities", bn: "বিদ্যুৎ ও জ্বালানি খাত" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+                sites: [
+                    { name: { en: "Ministry of Power & Energy", bn: "বিদ্যুৎ, জ্বালানি ও খনিজ সম্পদ মন্ত্রণালয়" }, url: "https://mopemr.gov.bd" },
+                    { name: { en: "Power Development Board", bn: "বাংলাদেশ বিদ্যুৎ উন্নয়ন বোর্ড" }, url: "https://bpdb.gov.bd" },
+                    { name: { en: "Rural Electrification Board", bn: "পল্লী বিদ্যুতায়ন বোর্ড (REB)" }, url: "https://reb.gov.bd" },
+                    { name: { en: "Sylhet Gas Fields Limited", bn: "সিলেট গ্যাস ফিল্ডস লিমিটেড" }, url: "https://sgfl.gov.bd" },
+                    { name: { en: "Petrobangla", bn: "পেট্রোবাংলা" }, url: "https://petrobangla.org.bd" },
+                    { name: { en: "PGCB Power Grid", bn: "পাওয়ার গ্রিড কোম্পানি অব বাংলাদেশ" }, url: "https://pgcb.org.bd" },
+                    { name: { en: "DESCO Utilities", bn: "ডেসকো (DESCO)" }, url: "https://www.desco.org.bd" },
+                    { name: { en: "DPDC Power Utilities", bn: "ডিপিডিসি (DPDC)" }, url: "https://www.dpdc.org.bd" }
+                ]
+            },
+            {
+                id: "transport",
+                name: { en: "Transport & Infrastructure", bn: "যোগাযোগ ও সড়ক অবকাঠামো" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>`,
+                sites: [
+                    { name: { en: "Road Transport Authority (BRTA)", bn: "বাংলাদেশ সড়ক পরিবহন কর্তৃপক্ষ (BRTA)" }, url: "https://brta.gov.bd" },
+                    { name: { en: "Bangladesh Railway", bn: "বাংলাদেশ রেলওয়ে" }, url: "https://railway.gov.bd" },
+                    { name: { en: "Civil Aviation Authority", bn: "বেসামরিক বিমান চলাচল কর্তৃপক্ষ" }, url: "https://caab.gov.bd" },
+                    { name: { en: "Bridge Authority", bn: "বাংলাদেশ সেতু কর্তৃপক্ষ" }, url: "https://bridgeauthority.gov.bd" },
+                    { name: { en: "Inland Water Authority (BIWTA)", bn: "অভ্যন্তরীণ নৌ-পরিবহন কর্তৃপক্ষ" }, url: "https://biwta.gov.bd" },
+                    { name: { en: "Roads and Highways", bn: "সড়ক ও জনপথ অধিদপ্তর" }, url: "https://rhd.gov.bd" },
+                    { name: { en: "Chittagong Port Authority", bn: "চট্টগ্রাম বন্দর কর্তৃপক্ষ" }, url: "https://cpa.gov.bd" },
+                    { name: { en: "Department of Shipping", bn: "নৌ-পরিবহন অধিদপ্তর" }, url: "https://dos.gov.bd" }
+                ]
+            },
+            {
+                id: "comm_it",
+                name: { en: "Communication & IT", bn: "তথ্যপ্রযুক্তি ও যোগাযোগ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>`,
+                sites: [
+                    { name: { en: "Telecom Commission (BTRC)", bn: "বাংলাদেশ টেলিযোগাযোগ নিয়ন্ত্রণ কমিশন" }, url: "https://btrc.gov.bd" },
+                    { name: { en: "Posts & Telecom Division", bn: "ডাক ও টেলিযোগাযোগ বিভাগ" }, url: "https://ptd.gov.bd" },
+                    { name: { en: "ICT Division Portal", bn: "তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ" }, url: "https://ictd.gov.bd" },
+                    { name: { en: "Software Technology Park", bn: "সফটওয়্যার টেকনোলজি পার্ক" }, url: "https://stp.gov.bd" }
+                ]
+            },
+            {
+                id: "local_gov",
+                name: { en: "Local Government", bn: "সিটি কর্পোরেশন ও নগর" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+                sites: [
+                    { name: { en: "Dhaka City Corporation", bn: "ঢাকা সিটি কর্পোরেশন" }, url: "https://dcc.gov.bd" },
+                    { name: { en: "Chittagong City Corporation", bn: "চট্টগ্রাম সিটি কর্পোরেশন" }, url: "https://ccc.gov.bd" },
+                    { name: { en: "Khulna City Corporation", bn: "খুলনা সিটি কর্পোরেশন" }, url: "https://kcc.gov.bd" },
+                    { name: { en: "Rajshahi City Corporation", bn: "রাজশাহী সিটি কর্পোরেশন" }, url: "https://rcc.gov.bd" },
+                    { name: { en: "Barishal City Corporation", bn: "বরিশাল সিটি কর্পোরেশন" }, url: "https://barcc.gov.bd" },
+                    { name: { en: "Sylhet City Corporation", bn: "সিলেট সিটি কর্পোরেশন" }, url: "https://scc.gov.bd" },
+                    { name: { en: "Gazipur City Corporation", bn: "গাজীপুর সিটি কর্পোরেশন" }, url: "https://gcc.gov.bd" },
+                    { name: { en: "Rangpur City Corporation", bn: "রংপুর সিটি কর্পোরেশন" }, url: "https://rpcc.gov.bd" },
+                    { name: { en: "Narayanganj City Corporation", bn: "নারায়ণগঞ্জ সিটি কর্পোরেশন" }, url: "https://ncc.gov.bd" },
+                    { name: { en: "Comilla City Corporation", bn: "কুমিল্লা সিটি কর্পোরেশন" }, url: "https://comillacc.gov.bd" },
+                    { name: { en: "Mymensingh City Corporation", bn: "ময়মনসিংহ সিটি কর্পোরেশন" }, url: "https://mymensinghcc.gov.bd" }
+                ]
+            },
+            {
+                id: "additional_min",
+                name: { en: "Additional Ministries", bn: "অন্যান্য সকল মন্ত্রণালয়" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"/></svg>`,
+                sites: [
+                    { name: { en: "Public Administration (MOPA)", bn: "জনপ্রশাসন মন্ত্রণালয়" }, url: "https://mopa.gov.bd" },
+                    { name: { en: "Law, Justice & Parliamentary Affairs", bn: "আইন, বিচার ও সংসদ বিষয়ক মন্ত্রণালয়" }, url: "https://minlaw.gov.bd" },
+                    { name: { en: "Environment, Forest & Climate Change", bn: "পরিবেশ, বন ও জলবায়ু পরিবর্তন মন্ত্রণালয়" }, url: "https://moef.gov.bd" },
+                    { name: { en: "Ministry of Water Resources", bn: "পানিসম্পদ মন্ত্রণালয়" }, url: "https://mowr.gov.bd" },
+                    { name: { en: "Information & Broadcasting", bn: "তথ্য ও সম্প্রচার মন্ত্রণালয়" }, url: "https://moi.gov.bd" },
+                    { name: { en: "Ministry of Cultural Affairs", bn: "সংস্কৃতি বিষয়ক মন্ত্রণালয়" }, url: "https://moca.gov.bd" },
+                    { name: { en: "Ministry of Defence", bn: "প্রতিরক্ষা মন্ত্রণালয়" }, url: "https://mod.gov.bd" },
+                    { name: { en: "Ministry of Shipping", bn: "নৌপরিবহন মন্ত্রণালয়" }, url: "https://mos.gov.bd" },
+                    { name: { en: "Ministry of Food", bn: "খাদ্য মন্ত্রণালয়" }, url: "https://mofood.gov.bd" },
+                    { name: { en: "Ministry of Textiles & Jute", bn: "বস্ত্র ও পাট মন্ত্রণালয়" }, url: "https://motj.gov.bd" },
+                    { name: { en: "Disaster Management & Relief", bn: "দুর্যোগ ব্যবস্থাপনা ও ত্রাণ মন্ত্রণালয়" }, url: "https://modmr.gov.bd" },
+                    { name: { en: "Expatriates' Welfare & Overseas Employment", bn: "প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়" }, url: "https://probashi.gov.bd" },
+                    { name: { en: "Science & Technology", bn: "বিজ্ঞান ও প্রযুক্তি মন্ত্রণালয়" }, url: "https://most.gov.bd" },
+                    { name: { en: "Ministry of Youth & Sports", bn: "যুব ও ক্রীড়া মন্ত্রণালয়" }, url: "https://moysports.gov.bd" }
+                ]
+            },
+            {
+                id: "social_services",
+                name: { en: "Social Services", bn: "সামাজিক সেবা ও কল্যাণ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`,
+                sites: [
+                    { name: { en: "Women & Children Affairs", bn: "মহিলা ও শিশু বিষয়ক মন্ত্রণালয়" }, url: "https://mowca.gov.bd" },
+                    { name: { en: "Ministry of Religious Affairs", bn: "ধর্ম বিষয়ক মন্ত্রণালয়" }, url: "https://mora.gov.bd" },
+                    { name: { en: "Labour & Employment", bn: "শ্রম ও কর্মসংস্থান মন্ত্রণালয়" }, url: "https://mole.gov.bd" },
+                    { name: { en: "Rural Development Board (BRDB)", bn: "বাংলাদেশ পল্লী উন্নয়ন বোর্ড (বিআরডিবি)" }, url: "https://brdb.gov.bd" },
+                    { name: { en: "Department of Social Services", bn: "সমাজসেবা অধিদপ্তর" }, url: "https://dss.gov.bd" }
+                ]
+            },
+            {
+                id: "planning",
+                name: { en: "Planning & Development", bn: "পরিকল্পনা ও উন্নয়ন প্রকল্প" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>`,
+                sites: [
+                    { name: { en: "Planning Commission", bn: "পরিকল্পনা কমিশন" }, url: "https://planningcommission.gov.bd" },
+                    { name: { en: "General Economics Division", bn: "সাধারণ অর্থনীতি বিভাগ" }, url: "https://ged.gov.bd" },
+                    { name: { en: "Bureau of Statistics (BBS)", bn: "বাংলাদেশ পরিসংখ্যান ব্যুরো" }, url: "https://bbs.gov.bd" },
+                    { name: { en: "Public Procurement Authority (BPPA)", bn: "বাংলাদেশ সরকারি ক্রয় কর্তৃপক্ষ (বিপিপিএ)" }, url: "https://bppa.gov.bd" },
+                    { name: { en: "Economic Relations Division", bn: "অর্থনৈতিক সম্পর্ক বিভাগ" }, url: "https://erd.gov.bd" }
+                ]
+            },
+            {
+                id: "security",
+                name: { en: "Security & Defense", bn: "প্রতিরক্ষা ও আইন শৃঙ্খলা" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+                sites: [
+                    { name: { en: "Bangladesh Police", bn: "বাংলাদেশ পুলিশ" }, url: "https://www.police.gov.bd" },
+                    { name: { en: "Bangladesh Army", bn: "বাংলাদেশ সেনাবাহিনী" }, url: "https://www.army.mil.bd" },
+                    { name: { en: "Bangladesh Navy", bn: "বাংলাদেশ নৌবাহিনী" }, url: "https://www.navy.mil.bd" },
+                    { name: { en: "Bangladesh Air Force", bn: "বাংলাদেশ বিমান বাহিনী" }, url: "https://www.baf.mil.bd" },
+                    { name: { en: "Border Guard Bangladesh (BGB)", bn: "বর্ডার গার্ড বাংলাদেশ" }, url: "https://www.bgb.gov.bd" },
+                    { name: { en: "Rapid Action Battalion (RAB)", bn: "র‍্যাপিড অ্যাকশন ব্যাটালিয়ন (র‍্যাব)" }, url: "https://www.rab.gov.bd" },
+                    { name: { en: "ISPR Media Portal", bn: "আন্তঃবাহিনী জনসংযোগ পরিদপ্তর (ISPR)" }, url: "https://ispr.gov.bd" },
+                    { name: { en: "Special Branch (SB)", bn: "স্পেশাল ব্রাঞ্চ" }, url: "https://specialbranch.gov.bd" },
+                    { name: { en: "National Defence College", bn: "ন্যাশনাল ডিফেন্স কলেজ (NDC)" }, url: "https://ndc.gov.bd" }
+                ]
+            },
+            {
+                id: "regulatory",
+                name: { en: "Regulatory Commissions", bn: "নিয়ন্ত্রণকারী কমিশনসমূহ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>`,
+                sites: [
+                    { name: { en: "Election Commission", bn: "বাংলাদেশ নির্বাচন কমিশন" }, url: "https://ecs.gov.bd" },
+                    { name: { en: "Anti-Corruption Commission (ACC)", bn: "দুর্থীতি দমন কমিশন (দুদক)" }, url: "https://acc.gov.bd" },
+                    { name: { en: "Public Service Commission (BPSC)", bn: "বাংলাদেশ সরকারি কর্ম কমিশন" }, url: "https://bpsc.gov.bd" },
+                    { name: { en: "Atomic Energy Commission", bn: "বাংলাদেশ পরমাণু শক্তি কমিশন" }, url: "https://baec.gov.bd" },
+                    { name: { en: "Food Safety Authority (BFSA)", bn: "বাংলাদেশ নিরাপদ খাদ্য কর্তৃপক্ষ" }, url: "https://bfsa.gov.bd" },
+                    { name: { en: "Information Commission", bn: "তথ্য কমিশন" }, url: "https://infocom.gov.bd" },
+                    { name: { en: "Human Rights Commission", bn: "জাতীয় মানবাধিকার কমিশন" }, url: "https://nhrc.org.bd" },
+                    { name: { en: "Energy Regulatory Commission (BERC)", bn: "বাংলাদেশ এনার্জি রেগুলেটরি কমিশন" }, url: "https://berc.gov.bd" }
+                ]
+            },
+            {
+                id: "disaster",
+                name: { en: "Disaster & Emergency", bn: "দুর্যোগ ও আবহাওয়া পূর্বাভাস" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`,
+                sites: [
+                    { name: { en: "Fire Service & Civil Defence", bn: "ফায়ার সার্ভিস ও সিভিল ডিফেন্স" }, url: "https://fireservice.gov.bd" },
+                    { name: { en: "Department of Disaster Management", bn: "দুর্যোগ ব্যবস্থাপনা অধিদপ্তর" }, url: "https://ddm.gov.bd" },
+                    { name: { en: "Meteorological Department (BMD)", bn: "বাংলাদেশ আবহাওয়া অধিদপ্তর" }, url: "https://bmd.gov.bd" },
+                    { name: { en: "Flood Forecasting & Warning Centre", bn: "বন্যা পূর্বাভাস ও সতর্কীকরণ কেন্দ্র" }, url: "https://ffwc.gov.bd" },
+                    { name: { en: "Cyclone Preparedness Programme", bn: "ঘূর্ণিঝড় প্রস্তুতি কর্মসূচি (সিপিপি)" }, url: "https://cpp.gov.bd" },
+                    { name: { en: "SPARRSO Remote Sensing", bn: "স্পারসো (SPARRSO)" }, url: "https://sparrso.gov.bd" }
+                ]
+            },
+            {
+                id: "maritime",
+                name: { en: "Maritime & Ports", bn: "নৌ-বাণিজ্য ও বন্দর কর্তৃপক্ষ" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>`,
+                sites: [
+                    { name: { en: "Mongla Port Authority", bn: "মোংলা বন্দর কর্তৃপক্ষ" }, url: "https://mpa.gov.bd" },
+                    { name: { en: "Payra Port Authority", bn: "পায়রা বন্দর কর্তৃপক্ষ" }, url: "https://ppa.gov.bd" },
+                    { name: { en: "Shipping Corporation (BSC)", bn: "বাংলাদেশ শিপিং কর্পোরেশন" }, url: "https://bsc.gov.bd" },
+                    { name: { en: "Department of Mercantile Marine", bn: "নৌ-বাণিজ্য দপ্তর" }, url: "https://dmm.gov.bd" },
+                    { name: { en: "Bangabandhu Maritime University", bn: "বঙ্গবন্ধু শেখ মুজিবুর রহমান মেরিটাইম ইউনিভার্সিটি" }, url: "https://bsmrmu.edu.bd" }
+                ]
+            },
+            {
+                id: "admin_dir",
+                name: { en: "Administrative Directory", bn: "প্রশাসনিক লিনিয়েজ ডিরেক্টরি" },
+                icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>`,
+                sites: [
+                    { name: { en: "Ministries & Divisions List", bn: "মন্ত্রণালয় ও বিভাগসমূহ" }, url: "https://bangladesh.gov.bd/site/view/ministry_n_directorate_list" },
+                    { name: { en: "Directorates & Other Offices List", bn: "অধিদপ্তর ও অন্যান্য অফিস তালিকা" }, url: "https://bangladesh.gov.bd/site/page/3c1910f1-686d-4a57-9400-0b2743241438/Directorates-and-Other-Offices" },
+                    { name: { en: "Divisions (8)", bn: "বিভাগ তালিকা (৮টি)" }, url: "https://bangladesh.gov.bd/site/view/division-list/List-of-Divisions" },
+                    { name: { en: "Districts (64)", bn: "জেলা তালিকা (৬৪টি)" }, url: "https://bangladesh.gov.bd/site/view/district-list/District-List" },
+                    { name: { en: "Upazilas (495)", bn: "উপজেলা তালিকা (৪৯৫টি)" }, url: "https://bangladesh.gov.bd/site/view/upazila-list/Upazilla-List" },
+                    { name: { en: "Unions (4554)", bn: "ইউনিয়ন তালিকা (৪৫৫৪টি)" }, url: "https://bangladesh.gov.bd/site/view/union-list/Union-List" }
+                ]
+            }
+        ];
+
+        let activeLang = 'en';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            const pref = navigator.language || navigator.userLanguage;
+            if (pref && pref.startsWith('bn')) {
+                setLanguage('bn');
+            } else {
+                setLanguage('en');
+            }
+            window.addEventListener('scroll', scrollSpy);
+        });
+
+        // Theme initialization logic
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                updateDarkModeIcon(true);
+            } else {
+                document.documentElement.classList.remove('dark');
+                updateDarkModeIcon(false);
+            }
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateDarkModeIcon(false);
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateDarkModeIcon(true);
+            }
+        }
+
+        function updateDarkModeIcon(isDark) {
+            const btn = document.getElementById('dark-mode-toggle');
+            if (!btn) return;
+            if (isDark) {
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                `;
+            } else {
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                `;
+            }
+        }
+
+        function setLanguage(lang) {
+            activeLang = lang;
+            
+            if (lang === 'en') {
+                document.getElementById('btn-en').className = "px-3.5 py-1 text-xs font-semibold rounded-full bg-emerald-600 text-white shadow-sm";
+                document.getElementById('btn-bn').className = "px-3.5 py-1 text-xs font-semibold rounded-full text-slate-500 hover:text-slate-800 dark:text-slate-450 dark:hover:text-slate-200 font-bengali";
+                document.documentElement.lang = "en";
+            } else {
+                document.getElementById('btn-en').className = "px-3.5 py-1 text-xs font-semibold rounded-full text-slate-500 hover:text-slate-800 dark:text-slate-450 dark:hover:text-slate-200";
+                document.getElementById('btn-bn').className = "px-3.5 py-1 text-xs font-semibold rounded-full bg-emerald-600 text-white shadow-sm font-bengali";
+                document.documentElement.lang = "bn";
+            }
+
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (localization[lang][key]) {
+                    el.textContent = localization[lang][key];
+                    if (lang === 'bn') el.classList.add('font-bengali');
+                    else el.classList.remove('font-bengali');
+                }
+            });
+
+            document.getElementById('search-input').placeholder = localization[lang]['search-placeholder'];
+
+            const footerDisclaimerBtn = document.getElementById('footer-disclaimer-btn');
+            if (footerDisclaimerBtn) {
+                footerDisclaimerBtn.textContent = disclaimerText[lang].button;
+                if (lang === 'bn') footerDisclaimerBtn.classList.add('font-bengali');
+                else footerDisclaimerBtn.classList.remove('font-bengali');
+            }
+
+            renderUI(document.getElementById('search-input').value);
+            scrollSpy();
+        }
+
+        // Helper function to extract base domain for favicons
+        function getDomain(url) {
+            try {
+                let domain = url.replace(/^(https?:\/\/)?(www\.)?/, '');
+                return domain.split('/')[0];
+            } catch (e) {
+                return url;
+            }
+        }
+
+        function renderUI(filterQuery = "") {
+            const navContainer = document.getElementById('category-nav');
+            const directoryContainer = document.getElementById('directory-container');
+            
+            navContainer.innerHTML = "";
+            directoryContainer.innerHTML = "";
+
+            let totalMatches = 0;
+            const normalizedQuery = filterQuery.toLowerCase().trim();
+
+            database.forEach(cat => {
+                const matchedSites = cat.sites.filter(site => {
+                    const nameEN = site.name.en.toLowerCase();
+                    const nameBN = site.name.bn.toLowerCase();
+                    const domain = site.url.toLowerCase();
+                    return nameEN.includes(normalizedQuery) || nameBN.includes(normalizedQuery) || domain.includes(normalizedQuery);
+                });
+
+                if (matchedSites.length > 0) {
+                    totalMatches += matchedSites.length;
+
+                    const catName = cat.name[activeLang];
+                    const navEl = document.createElement('a');
+                    navEl.href = `#${cat.id}`;
+                    navEl.className = "flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900/50 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-150 relative group scroll-spy-item";
+                    navEl.setAttribute('data-target-id', cat.id);
+                    navEl.innerHTML = `
+                        <span class="text-slate-400 dark:text-slate-550 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">${cat.icon}</span>
+                        <span class="truncate ${activeLang === 'bn' ? 'font-bengali' : ''}">${catName}</span>
+                    `;
+                    navContainer.appendChild(navEl);
+
+                    const groupSection = document.createElement('section');
+                    groupSection.id = cat.id;
+                    groupSection.className = "scroll-mt-24 space-y-3";
+                    
+                    const headerHTML = `
+                        <div class="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-900">
+                            <div class="h-6 w-6 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-slate-500 dark:text-slate-400 border border-slate-100 dark:border-slate-800">${cat.icon}</div>
+                            <h2 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider ${activeLang === 'bn' ? 'font-bengali text-sm' : ''}">${catName}</h2>
+                            <span class="ml-auto text-[10px] font-semibold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900 px-2 py-0.5 rounded-full border border-slate-100 dark:border-slate-800">${matchedSites.length}</span>
+                        </div>
+                    `;
+
+                    // Highly compact layout configuration
+                    let cardsHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">`;
+                    
+                    matchedSites.forEach(site => {
+                        const domainPretty = getDomain(site.url);
+                        const siteName = site.name[activeLang];
+                        
+                        // Dynamically requested Google Favicon Snatcher with a beautifully customized embedded SVG fallback
+                        const fallbackSvg = `data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2310b981%22 stroke-width=%222%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22/><path d=%22M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z%22/></svg>`;
+
+                        cardsHTML += `
+                            <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 p-2 px-3 rounded-xl bg-white dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/80 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-sm dark:hover:shadow-emerald-950/20 hover:bg-slate-50/50 dark:hover:bg-slate-900 transition-all duration-150 min-w-0">
+                                <img src="https://www.google.com/s2/favicons?sz=32&domain=${domainPretty}" alt="${siteName} favicon" class="w-4 h-4 rounded flex-shrink-0 bg-transparent" loading="lazy" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+                                <div class="flex-grow min-w-0">
+                                    <h3 class="text-[12px] sm:text-[13px] font-bold text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition truncate leading-tight ${activeLang === 'bn' ? 'font-bengali' : ''}">
+                                        ${highlightText(siteName, filterQuery)}
+                                    </h3>
+                                    <p class="text-[9.5px] text-slate-400 dark:text-slate-500 truncate font-mono mt-0.5">${highlightText(domainPretty, filterQuery)}</p>
+                                </div>
+                                <div class="flex-shrink-0 text-slate-300 dark:text-slate-700 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors self-center">
+                                    <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                </div>
+                            </a>
+                        `;
+                    });
+
+                    cardsHTML += `</div>`;
+                    groupSection.innerHTML = headerHTML + cardsHTML;
+                    directoryContainer.appendChild(groupSection);
+                }
+            });
+
+            document.getElementById('count-sites').textContent = totalMatches;
+
+            if (totalMatches === 0) {
+                directoryContainer.innerHTML = `
+                    <div class="text-center py-16 bg-white dark:bg-slate-900 border border-dashed border-slate-200 dark:border-slate-850 rounded-2xl">
+                        <svg class="mx-auto h-12 w-12 text-slate-300 dark:text-slate-700 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium ${activeLang === 'bn' ? 'font-bengali text-lg' : ''}">${localization[activeLang].noResults}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Dynamic Disclaimer Control Actions
+        function openDisclaimer() {
+            const modal = document.getElementById('disclaimerModal');
+            const container = document.getElementById('disclaimerModalContainer');
+            
+            const data = disclaimerText[activeLang];
+            container.innerHTML = `
+                <div class="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-slate-800 pb-3">
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-2 ${activeLang === 'bn' ? 'font-bengali text-lg' : ''}">
+                        <span>⚠️ ${data.title}</span>
+                    </h3>
+                    <button onclick="closeDisclaimer()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 focus:outline-none">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <div class="text-xs sm:text-sm text-slate-650 dark:text-slate-300 space-y-3 leading-relaxed ${activeLang === 'bn' ? 'font-bengali text-[15px]' : ''}">
+                    <p class="font-normal">${data.body1}</p>
+                    <p class="font-normal">${data.body2}</p>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button onclick="closeDisclaimer()" class="px-5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-700 rounded-xl transition duration-150 ${activeLang === 'bn' ? 'font-bengali text-sm' : ''}">
+                        ${data.close}
+                    </button>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                container.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeDisclaimer() {
+            const modal = document.getElementById('disclaimerModal');
+            const container = document.getElementById('disclaimerModalContainer');
+            modal.classList.remove('opacity-100');
+            container.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function highlightText(text, search) {
+            if (!search) return text;
+            const index = text.toLowerCase().indexOf(search.toLowerCase());
+            if (index >= 0) {
+                return text.substring(0, index) + "<mark class='bg-emerald-100 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-300 rounded-sm px-0.5 font-semibold'>" + text.substring(index, index + search.length) + "</mark>" + text.substring(index + search.length);
+            }
+            return text;
+        }
+
+        function handleSearch() {
+            const val = document.getElementById('search-input').value;
+            renderUI(val);
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const searchInput = document.getElementById('search-input');
+                if (searchInput && document.activeElement === searchInput) {
+                    searchInput.value = '';
+                    renderUI('');
+                    searchInput.blur();
+                }
+                closeDisclaimer();
+            }
+        });
+
+        function scrollSpy() {
+            const sections = document.querySelectorAll('section');
+            const scrollPos = window.scrollY || document.documentElement.scrollTop;
+            
+            // Progress Bar calculation
+            const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollPos / winHeight) * 100;
+            const progressBar = document.getElementById('progressBar');
+            if (progressBar) progressBar.style.width = scrolled + '%';
+
+            sections.forEach(sec => {
+                if (scrollPos >= sec.offsetTop - 120 && scrollPos < sec.offsetTop + sec.offsetHeight - 120) {
+                    const id = sec.getAttribute('id');
+                    const activeNav = document.querySelector(`[data-target-id="${id}"]`);
+                    if (activeNav) {
+                        document.querySelectorAll('.scroll-spy-item').forEach(item => {
+                            item.classList.remove(
+                                'text-emerald-600', 'dark:text-emerald-400', 
+                                'bg-emerald-50/50', 'dark:bg-emerald-950/20', 
+                                'border-l-2', 'border-emerald-600', 'dark:border-emerald-500', 
+                                'pl-4'
+                            );
+                            item.classList.add('text-slate-500', 'dark:text-slate-400', 'pl-3');
+                        });
+                        activeNav.classList.remove('text-slate-500', 'dark:text-slate-400', 'pl-3');
+                        activeNav.classList.add(
+                            'text-emerald-600', 'dark:text-emerald-400', 
+                            'bg-emerald-50/50', 'dark:bg-emerald-950/20', 
+                            'border-l-2', 'border-emerald-600', 'dark:border-emerald-500', 
+                            'pl-4'
+                        );
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -84,7 +84,14 @@
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
-  
+
+    <url>
+  <loc>https://sadmansamin21.github.io/blogs/migrating-hubspot-to-odoo.html</loc>
+  <lastmod>2026-06-24</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
 
   
 </urlset>

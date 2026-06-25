@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>The Multipolar Way | Flat Product-Level Index</title>
+  <link rel="canonical" href="https://sadmansamin21.github.io/multipolar-product-index.html" />
+  <meta name="description" content="Search 400+ specific U.S. tech products to discover their exact, explicitly non-U.S. global alternatives in The Multipolar Product Index.">
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #06090d;
+      --text: #f0f4f8;
+      --glass-border: rgba(255, 255, 255, 0.07);
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --blue: #3b82f6;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --font-display: 'Sora', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-display); -webkit-tap-highlight-color: transparent; }
+
+    body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; overflow-y: auto; }
+
+    .liquid-container { position: fixed; inset: 0; z-index: -1; background: #06090d; overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(130px); opacity: 0.25; will-change: transform; animation: blobFloat 30s infinite ease-in-out alternate; }
+    .blob-1 { top: 10%; left: 10%; width: 50vw; height: 50vw; background: #0c4a6e; }
+    .blob-2 { bottom: 10%; right: 5%; width: 40vw; height: 40vw; background: #1e1b4b; animation-delay: -8s; }
+    .blob-3 { top: 50%; left: 40%; width: 30vw; height: 30vw; background: #111827; animation-delay: -15s; }
+    
+    /* Performance Fix: Reduce blur intensity on mobile to save battery and prevent scroll lag */
+    @media (max-width: 768px) {
+      .blob { filter: blur(60px); opacity: 0.35; }
+    }
+
+    @keyframes blobFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -50px) scale(1.05); }
+      100% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    .noise { position: fixed; inset: 0; opacity: 0.02; pointer-events: none; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .container { position: relative; z-index: 10; max-width: 860px; margin: 0 auto; padding: 40px 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+    header { text-align: center; margin-bottom: 40px; }
+
+    .logo-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 30px; padding: 6px 16px; font-size: 0.72rem; font-family: var(--font-mono); color: var(--blue); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; }
+    
+    h1 { font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    
+    /* Accessibility Fix: Increased opacity for better color contrast against dark backgrounds */
+    .subtitle { font-size: clamp(0.85rem, 2.2vw, 1rem); color: rgba(255,255,255,0.7); max-width: 620px; margin: 0 auto; line-height: 1.6; }
+
+    .search-wrapper { width: 100%; position: relative; margin-bottom: 8px; }
+
+    .back-btn { position: absolute; top: 50%; left: 16px; transform: translateY(-50%); background: transparent; border: none; color: rgba(255,255,255,0.45); font-size: 1.4rem; cursor: pointer; padding: 4px; display: none; z-index: 20; transition: color 0.2s; }
+    
+    /* UX Fix: Clear Search Button */
+    .clear-btn { position: absolute; top: 50%; right: 16px; transform: translateY(-50%); background: transparent; border: none; color: rgba(255,255,255,0.45); font-size: 1.4rem; cursor: pointer; padding: 4px; display: none; z-index: 20; transition: color 0.2s; }
+    
+    .back-btn:hover, .clear-btn:hover { color: #fff; }
+    
+    /* Accessibility Fix: Distinct Focus States */
+    .back-btn:focus-visible, .clear-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
+
+    /* UX Fix: Adjust input padding to make room for the new clear button */
+    input { width: 100%; padding: 20px 54px 20px 24px; font-size: 1.05rem; font-family: var(--font-display); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; color: #fff; outline: none; backdrop-filter: blur(14px); transition: all 0.3s; }
+    .has-back-btn input { padding-left: 54px; }
+    input:focus { background: rgba(255,255,255,0.07); border-color: rgba(59, 130, 246, 0.3); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.05); }
+
+    /* Accessibility Fix: Increased color contrast */
+    .search-hint { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.78rem; margin-top: 12px; margin-bottom: 24px; font-family: var(--font-mono); }
+
+    .suggestions { position: absolute; top: 110%; left: 0; width: 100%; background: rgba(8, 12, 18, 0.98); backdrop-filter: blur(24px); border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; z-index: 50; }
+    .suggestions.active { max-height: 60vh; overflow-y: auto; }
+    .suggestion-item { padding: 14px 22px; border-bottom: 1px solid rgba(255,255,255,0.04); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+    .suggestion-item:hover, .suggestion-item.selected { background: rgba(255,255,255,0.08); }
+    .suggestion-item.no-results { cursor: default; justify-content: center; opacity: 0.8; }
+    
+    /* Accessibility Fix: Increased color contrast */
+    .suggestion-company { font-size: 0.7rem; color: rgba(255,255,255,0.65); text-transform: uppercase; font-family: var(--font-mono); }
+
+    .result-panel { display: none; width: 100%; flex-direction: column; gap: 16px; margin-top: 20px; animation: slideUp 0.4s ease; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 24px; padding: 32px; backdrop-filter: blur(14px); text-align: center; }
+    
+    .us-target-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); font-family: var(--font-mono); margin-bottom: 8px; }
+    .us-product-title { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.03em; color: #ffffff; line-height: 1.1; margin-top: 4px; }
+    
+    /* Accessibility Fix: Increased color contrast */
+    .us-company-subtitle { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-top: 8px; font-family: var(--font-mono); }
+
+    .alt-card { margin-top: 10px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid var(--blue); padding: 28px 32px; border-radius: 20px; text-align: left; }
+    .alt-card.has-alt { border-left-color: var(--green); background: linear-gradient(135deg, rgba(16, 185, 129, 0.04) 0%, transparent 100%); }
+    .alt-card.no-alt { border-left-color: var(--amber); background: linear-gradient(135deg, rgba(245, 158, 11, 0.04) 0%, transparent 100%); }
+    
+    .alt-label { font-size: 0.75rem; color: var(--green); text-transform: uppercase; letter-spacing: 1.5px; font-family: var(--font-mono); margin-bottom: 8px; }
+    .alt-card.no-alt .alt-label { color: var(--amber); }
+    
+    .alt-name { font-size: 1.4rem; font-weight: 500; color: rgba(255,255,255,0.95); line-height: 1.5; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="liquid-container" id="liquidBg">
+    <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
+  </div>
+  <div class="noise"></div>
+
+  <div class="container" id="app">
+    <header id="header">
+      <div class="logo-badge">Individually Indexed · Product Level</div>
+      <h1>The Multipolar<br>Product Index</h1>
+      <p class="subtitle">Search 400+ specific U.S. products directly (e.g., Google Maps, Chrome, Claude, H100, Copilot) to find their exact, explicitly non-U.S. global alternatives.</p>
+    </header>
+
+    <div style="width:100%">
+      <div class="search-wrapper" id="searchWrapper">
+        <button class="back-btn" id="backBtn" aria-label="Back to index" title="Back to index">←</button>
+        
+        <!-- Accessibility Fix: Added ARIA attributes for combobox pattern -->
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search a specific U.S. product (e.g. Google Maps, Claude, Outlook, H100)..." 
+          autocomplete="off"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="suggestionsBox"
+          aria-autocomplete="list"
+        >
+        
+        <button class="clear-btn" id="clearBtn" aria-label="Clear search" title="Clear search">×</button>
+        <div class="suggestions" id="suggestionsBox" role="listbox"></div>
+      </div>
+      <div class="search-hint">Indexing 400+ specific products completely independent of parent companies.</div>
+
+      <div id="results" class="result-panel">
+        <div class="card">
+          <div class="us-target-label">U.S. Target Entity</div>
+          <div class="us-product-title" id="usProductTitle">—</div>
+          <div class="us-company-subtitle" id="usCompanySubtitle">—</div>
+        </div>
+        
+        <div class="alt-card" id="altCard">
+          <div class="alt-label" id="altLabel">Global Alternative</div>
+          <div class="alt-name" id="altName">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const db = [
+      // --- NEWLY REQUESTED ENTITIES ---
+      { p: "Anthropic", c: "Corporate Entity", a: "Mistral AI (France) / DeepSeek (China) / 01.AI (China)", e: true },
+      { p: "Claude", c: "Anthropic", a: "Mistral Large (France) / DeepSeek-V3 (China) / Baidu Ernie (China)", e: true },
+      { p: "Claude 3.5 Sonnet", c: "Anthropic", a: "DeepSeek Coder V2 (China) / Mistral NeMo (France)", e: true },
+      { p: "Claude 3 Opus", c: "Anthropic", a: "Mistral Large (France) / Qwen-Max (China)", e: true },
+      
+      { p: "Google Maps", c: "Alphabet", a: "OsmAnd (Global Open Source) / Sygic (Slovakia) / Baidu Maps (China)", e: true },
+      { p: "Google Chrome", c: "Alphabet", a: "Vivaldi (Norway) / Opera (Norway/China) / Yandex Browser (Russia)", e: true },
+      { p: "Gmail", c: "Alphabet", a: "ProtonMail (Switzerland) / Tuta (Germany) / Mailfence (Belgium)", e: true },
+      { p: "Google Drive", c: "Alphabet", a: "Tresorit (Switzerland) / Nextcloud (Germany) / pCloud (Switzerland)", e: true },
+      
+      { p: "Copilot", c: "Microsoft", a: "Mistral le Chat (France) / DeepSeek Coder (China)", e: true },
+      { p: "Outlook", c: "Microsoft", a: "ProtonMail (Switzerland) / Tuta (Germany) / Infomaniak Mail (Switzerland)", e: true },
+      { p: "OneDrive", c: "Microsoft", a: "Nextcloud (Germany) / Proton Drive (Switzerland) / IceDrive (UK)", e: true },
+      
+      { p: "Perplexity AI", c: "Perplexity", a: "Felo Search (Japan) / Genspark (Singapore) / Qwant AI (France)", e: true },
+
+      // --- APPLE ---
+      { p: "iPhone", c: "Apple", a: "Samsung Galaxy (South Korea) / Huawei Pura (China)", e: true },
+      { p: "Mac", c: "Apple", a: "Lenovo ThinkPad (China) / ASUS Zenbook (Taiwan)", e: true },
+      { p: "iPad", c: "Apple", a: "Samsung Galaxy Tab (South Korea) / Xiaomi Pad (China)", e: true },
+      { p: "Apple Watch", c: "Apple", a: "Huawei Watch (China) / Suunto (Finland) / Samsung Galaxy Watch (South Korea)", e: true },
+
+      // --- MICROSOFT (Remaining) ---
+      { p: "Windows", c: "Microsoft", a: "Ubuntu (Global Open Source) / Linux Mint (EU) / Deepin (China)", e: true },
+      { p: "Office 365", c: "Microsoft", a: "WPS Office (China) / LibreOffice (Global Open Source) / OnlyOffice (Latvia)", e: true },
+      { p: "Azure", c: "Microsoft", a: "Alibaba Cloud (China) / OVHcloud (France) / Scaleway (France)", e: true },
+      { p: "Xbox", c: "Microsoft", a: "Sony PlayStation (Japan) / Nintendo Switch (Japan)", e: true },
+
+      // --- ALPHABET (Remaining) ---
+      { p: "Google Search", c: "Alphabet", a: "Baidu (China) / Yandex (Russia) / Qwant (France)", e: true },
+      { p: "YouTube", c: "Alphabet", a: "Bilibili (China) / Dailymotion (France) / NicoNico (Japan)", e: true },
+      { p: "Android", c: "Alphabet", a: "HarmonyOS (China) / /e/OS (France) / Sailfish OS (Finland)", e: true },
+      { p: "Gemini", c: "Alphabet", a: "DeepSeek (China) / Mistral AI (France) / Baidu Ernie (China)", e: true },
+
+      // --- AMAZON ---
+      { p: "Amazon Marketplace", c: "Amazon", a: "MercadoLibre (Argentina) / JD.com (China) / Rakuten (Japan)", e: true },
+      { p: "AWS", c: "Amazon", a: "Alibaba Cloud (China) / Tencent Cloud (China) / OVHcloud (France)", e: true },
+      { p: "Prime Video", c: "Amazon", a: "iQIYI (China) / Canal+ (France) / Viu (Hong Kong)", e: true },
+      { p: "Alexa", c: "Amazon", a: "No singular global equivalent outside China. Regional equivalents include Baidu DuerOS or Xiaomi XiaoAI.", e: false },
+
+      // --- NVIDIA ---
+      { p: "GeForce GPUs", c: "NVIDIA", a: "No true high-end global 1:1 non-U.S. equivalent. Chinese chips like Moore Threads are early-stage.", e: false },
+      { p: "H100 AI Chips", c: "NVIDIA", a: "Huawei Ascend 910B (China) / Biren BR100 (China)", e: true },
+      { p: "CUDA", c: "NVIDIA", a: "No direct 1:1 software equivalent. OpenCL (Global) / Huawei CANN (China) serve as partial alternatives.", e: false },
+      { p: "Omniverse", c: "NVIDIA", a: "No direct unified platform equivalent. Piecemeal approaches via Dassault Systèmes (France) and Blender (Open Source).", e: false },
+
+      // --- META PLATFORMS ---
+      { p: "Facebook", c: "Meta Platforms", a: "VKontakte (Russia) / WeChat Moments (China)", e: true },
+      { p: "Instagram", c: "Meta Platforms", a: "Xiaohongshu [RED] (China) / TikTok (China)", e: true },
+      { p: "WhatsApp", c: "Meta Platforms", a: "Telegram (UAE) / LINE (Japan) / Rakuten Viber (Japan)", e: true },
+      { p: "Quest VR", c: "Meta Platforms", a: "Pico Interactive (China) / HTC Vive (Taiwan)", e: true },
+
+      // --- TESLA ---
+      { p: "Model 3 / Model Y", c: "Tesla", a: "BYD Seal / Atto 3 (China) / NIO ET5 (China)", e: true },
+      { p: "Full Self-Driving", c: "Tesla", a: "Baidu Apollo (China) / XPeng XNGP (China)", e: true },
+      { p: "Megapack", c: "Tesla", a: "CATL EnerC (China) / BYD MC Cube (China)", e: true },
+      { p: "Solar Roof", c: "Tesla", a: "No exact mass-market BIPV equivalent. Traditional solar hardware dominated by Jinko Solar (China) / Trina Solar (China).", e: false },
+
+      // --- SPACEX ---
+      { p: "Falcon 9", c: "SpaceX", a: "Ariane 6 (Europe) / Long March 8 (China)", e: true },
+      { p: "Starlink", c: "SpaceX", a: "OneWeb (UK) / Eutelsat (France) / GuoWang [In Dev] (China)", e: true },
+      { p: "Starship", c: "SpaceX", a: "No operational non-U.S. equivalent. Super-heavy lift vehicles like Long March 9 (China) and Ariane Next (Europe) are in early development.", e: false },
+      { p: "Dragon Capsule", c: "SpaceX", a: "Shenzhou (China) / Soyuz (Russia)", e: true },
+
+      // --- BROADCOM ---
+      { p: "Symantec Enterprise Cloud", c: "Broadcom", a: "Kaspersky (Russia) / Trend Micro (Japan)", e: true },
+      { p: "Tomahawk Network Switches", c: "Broadcom", a: "Huawei CloudEngine (China)", e: true },
+      { p: "Jericho Routers", c: "Broadcom", a: "Nokia Networks (Finland)", e: true },
+      { p: "VMware Cloud Foundation", c: "Broadcom", a: "Proxmox VE (Austria) / Sangfor HCI (China) / XCP-ng (France)", e: true },
+
+      // --- ADVANCED MICRO DEVICES (AMD) ---
+      { p: "Ryzen Processors", c: "AMD", a: "No true non-U.S. high-performance x86 equivalent. Alternatives are ARM-based (MediaTek - Taiwan) or lower-tier x86 (Zhaoxin - China).", e: false },
+      { p: "Radeon GPUs", c: "AMD", a: "No high-end non-U.S. equivalent. Moore Threads (China) is in early stages.", e: false },
+      { p: "EPYC Server Chips", c: "AMD", a: "HiSilicon Kunpeng (China) / Alibaba Yitian (China) - Both ARM architecture.", e: true },
+      { p: "Instinct AI Accelerators", c: "AMD", a: "Huawei Ascend (China) / Baidu Kunlun (China)", e: true },
+
+      // --- INTEL ---
+      { p: "Core Processors", c: "Intel", a: "No equivalent non-U.S. x86 architecture. Global shift defaults to ARM processors like MediaTek (Taiwan).", e: false },
+      { p: "Xeon Server Chips", c: "Intel", a: "Fujitsu A64FX (Japan) / HiSilicon Kunpeng (China)", e: true },
+      { p: "Arc GPUs", c: "Intel", a: "Moore Threads (China)", e: true },
+      { p: "Gaudi AI Accelerators", c: "Intel", a: "Huawei Ascend (China) / Preferred Networks (Japan)", e: true },
+
+      // --- CISCO SYSTEMS ---
+      { p: "Catalyst Switches", c: "Cisco Systems", a: "Huawei CloudEngine (China) / Allied Telesis (Japan)", e: true },
+      { p: "Webex", c: "Cisco Systems", a: "Tencent Meeting (China) / Zoho Meeting (India)", e: true },
+      { p: "Meraki", c: "Cisco Systems", a: "Huawei AirEngine (China) / Ruijie Networks (China)", e: true },
+      { p: "Cisco IOS", c: "Cisco Systems", a: "Huawei VRP (China) / Nokia SR OS (Finland)", e: true },
+
+      // --- ORACLE ---
+      { p: "Oracle Database", c: "Oracle", a: "OceanBase (China) / PostgreSQL (Global Open Source) / SAP HANA (Germany)", e: true },
+      { p: "Java", c: "Oracle", a: "OpenJDK (Global Open Source)", e: true },
+      { p: "OCI Cloud Services", c: "Oracle", a: "Alibaba Cloud (China) / OVHcloud (France)", e: true },
+      { p: "NetSuite", c: "Oracle", a: "SAP Business One (Germany) / Odoo (Belgium) / Kingdee (China)", e: true },
+
+      // --- NETFLIX ---
+      { p: "Netflix Streaming Service", c: "Netflix", a: "iQIYI (China) / Canal+ (France) / Viu (Hong Kong)", e: true },
+      { p: "Netflix Games", c: "Netflix", a: "Sony PlayStation Plus (Japan) / Tencent Games (China)", e: true },
+      { p: "Netflix Production Studio", c: "Netflix", a: "StudioCanal (France) / Toho (Japan) / CJ ENM (South Korea)", e: true },
+
+      // --- SALESFORCE ---
+      { p: "Customer 360", c: "Salesforce", a: "SAP CRM (Germany) / Zoho CRM (India) / Freshworks (India)", e: true },
+      { p: "Slack", c: "Salesforce", a: "Element/Matrix (UK) / Rocket.Chat (Brazil) / Lark (Singapore)", e: true },
+      { p: "Tableau", c: "Salesforce", a: "FineBI (China) / Metabase (Global Open Source)", e: true },
+      { p: "MuleSoft", c: "Salesforce", a: "WSO2 (Sri Lanka) / SAP Integration Suite (Germany)", e: true },
+
+      // --- ADOBE ---
+      { p: "Photoshop", c: "Adobe", a: "Affinity Photo (UK) / Krita (Global Open Source)", e: true },
+      { p: "Illustrator", c: "Adobe", a: "Affinity Designer (UK) / Inkscape (Global Open Source)", e: true },
+      { p: "Premiere Pro", c: "Adobe", a: "Lightworks (UK) / CapCut (China)", e: true },
+      { p: "Adobe Acrobat", c: "Adobe", a: "Foxit PDF (China) / PDF-XChange (UK)", e: true },
+
+      // --- IBM ---
+      { p: "IBM Cloud", c: "IBM", a: "OVHcloud (France) / Alibaba Cloud (China)", e: true },
+      { p: "Watsonx", c: "IBM", a: "Mistral AI (France) / Baidu Ernie (China)", e: true },
+      { p: "Mainframe Systems", c: "IBM", a: "Fujitsu (Japan) / NEC (Japan) - Note: Global mainframe demand is fading into distributed systems.", e: true },
+      { p: "Red Hat Enterprise Linux", c: "IBM", a: "SUSE Linux Enterprise (Germany) / Ubuntu (UK) / openEuler (China)", e: true },
+
+      // --- QUALCOMM ---
+      { p: "Snapdragon Processors", c: "Qualcomm", a: "MediaTek Dimensity (Taiwan) / Samsung Exynos (South Korea)", e: true },
+      { p: "Gobi Modems", c: "Qualcomm", a: "MediaTek (Taiwan) / HiSilicon Balong (China)", e: true },
+      { p: "FastConnect Chips", c: "Qualcomm", a: "Realtek (Taiwan) / MediaTek (Taiwan)", e: true },
+      { p: "Qualcomm AI Hub", c: "Qualcomm", a: "MediaTek NeuroPilot (Taiwan)", e: true },
+
+      // --- PALO ALTO NETWORKS ---
+      { p: "Strata Firewalls", c: "Palo Alto Networks", a: "Stormshield (France) / Sangfor (China) / Clavister (Sweden)", e: true },
+      { p: "Prisma Cloud", c: "Palo Alto Networks", a: "Outpost24 (Sweden) / NeuVector (SUSE/Germany)", e: true },
+      { p: "Cortex XDR", c: "Palo Alto Networks", a: "Trend Micro Vision One (Japan) / Kaspersky (Russia)", e: true },
+      { p: "Precision AI", c: "Palo Alto Networks", a: "Darktrace (UK)", e: true },
+
+      // --- PAYPAL ---
+      { p: "PayPal Digital Wallet", c: "PayPal", a: "Alipay (China) / WeChat Pay (China) / Mercado Pago (Argentina)", e: true },
+      { p: "Venmo", c: "PayPal", a: "Swish (Sweden) / Pix (Brazil) / UPI Ecosystem Apps (India)", e: true },
+      { p: "Braintree", c: "PayPal", a: "Adyen (Netherlands) / Checkout.com (UK)", e: true },
+      { p: "Honey", c: "PayPal", a: "Rakuten (Japan) / LetyShops (Hungary)", e: true },
+
+      // --- INTUIT ---
+      { p: "TurboTax", c: "Intuit", a: "Highly U.S.-specific. Regional equivalents exist per tax code: Elster (Germany), myTax (Australia).", e: false },
+      { p: "QuickBooks", c: "Intuit", a: "Xero (New Zealand) / Sage (UK)", e: true },
+      { p: "Mint", c: "Intuit", a: "Toshl (Slovenia) / Spendee (Czech Republic)", e: true },
+      { p: "Mailchimp", c: "Intuit", a: "Brevo (France) / MailerLite (Lithuania)", e: true },
+
+      // --- SERVICENOW ---
+      { p: "Now Platform", c: "ServiceNow", a: "Zoho Creator (India) / Mendix (Netherlands)", e: true },
+      { p: "Strategic Portfolio Management", c: "ServiceNow", a: "No single dominant global non-U.S. equivalent.", e: false },
+      { p: "IT Service Management", c: "ServiceNow", a: "Freshservice (India) / OTRS (Germany) / Matrix42 (Germany)", e: true },
+      { p: "Customer Service Management", c: "ServiceNow", a: "Freshdesk (India) / Zoho Desk (India)", e: true },
+
+      // --- UBER TECHNOLOGIES ---
+      { p: "Uber Rideshare", c: "Uber", a: "DiDi (China) / Bolt (Estonia) / Grab (Singapore)", e: true },
+      { p: "Uber Eats", c: "Uber", a: "Deliveroo (UK) / Meituan (China) / Swiggy (India)", e: true },
+      { p: "Uber Freight", c: "Uber", a: "Sennder (Germany) / Full Truck Alliance (China)", e: true },
+      { p: "Uber Business", c: "Uber", a: "Bolt Business (Estonia) / Grab for Business (Singapore)", e: true },
+
+      // --- DELL TECHNOLOGIES ---
+      { p: "Alienware Laptops", c: "Dell Technologies", a: "ASUS ROG (Taiwan) / Lenovo Legion (China)", e: true },
+      { p: "PowerEdge Servers", c: "Dell Technologies", a: "Inspur (China) / Fujitsu (Japan) / Lenovo ThinkSystem (China)", e: true },
+      { p: "OptiPlex Desktops", c: "Dell Technologies", a: "Lenovo ThinkCentre (China)", e: true },
+      { p: "Latitude Notebooks", c: "Dell Technologies", a: "Lenovo ThinkPad (China) / Dynabook (Japan)", e: true },
+
+      // --- PALANTIR TECHNOLOGIES ---
+      { p: "Foundry", c: "Palantir Technologies", a: "Quantexa (UK) / SAP Data Intelligence (Germany)", e: true },
+      { p: "Gotham", c: "Palantir Technologies", a: "Airbus Defence Intelligence (Europe) / BAE Systems NetReveal (UK)", e: true },
+      { p: "Apollo", c: "Palantir Technologies", a: "No direct proprietary 1:1 equivalent. Open-source Kubernetes edge deployments.", e: false },
+      { p: "AIP AI Platform", c: "Palantir Technologies", a: "Mistral Enterprise (France) / Aleph Alpha (Germany)", e: true },
+
+      // --- CROWDSTRIKE ---
+      { p: "Falcon Horizon", c: "CrowdStrike", a: "Outpost24 (Sweden) / NeuVector (Germany)", e: true },
+      { p: "Falcon Prevent", c: "CrowdStrike", a: "WithSecure (Finland) / Kaspersky (Russia)", e: true },
+      { p: "Falcon Insight XDR", c: "CrowdStrike", a: "Trend Micro Vision One (Japan)", e: true },
+      { p: "Falcon OverWatch", c: "CrowdStrike", a: "Sophos MTR (UK) / Orange Cyberdefense (France)", e: true },
+
+      // --- ARISTA NETWORKS ---
+      { p: "EOS Operating System", c: "Arista Networks", a: "Huawei VRP (China) / Nokia SR Linux (Finland)", e: true },
+      { p: "CloudVision", c: "Arista Networks", a: "Huawei iMaster NCE (China)", e: true },
+      { p: "7000 Series Switches", c: "Arista Networks", a: "Huawei CloudEngine 16800 (China)", e: true },
+      { p: "Cognitive Wi-Fi", c: "Arista Networks", a: "Ruijie Networks (China) / Huawei AirEngine (China)", e: true },
+
+      // --- SNOWFLAKE ---
+      { p: "Data Cloud", c: "Snowflake", a: "ClickHouse (Global Open Source) / Exasol (Germany)", e: true },
+      { p: "Snowpark", c: "Snowflake", a: "Apache Spark (Global Open Source)", e: true },
+      { p: "Cortex AI", c: "Snowflake", a: "No exact integrated equivalent. Standalone ML/AI open-source pipelines.", e: false },
+      { p: "Iceberg Tables", c: "Snowflake", a: "Apache Iceberg / Apache Hudi (Global Open Source)", e: true },
+
+      // --- MICRON TECHNOLOGY ---
+      { p: "Crucial SSDs", c: "Micron Technology", a: "Samsung SSD (South Korea) / Kioxia (Japan)", e: true },
+      { p: "DDR5 RAM", c: "Micron Technology", a: "SK Hynix (South Korea) / Samsung (South Korea)", e: true },
+      { p: "HBM3E Memory", c: "Micron Technology", a: "SK Hynix (South Korea) / Samsung (South Korea)", e: true },
+      { p: "NAND Flash", c: "Micron Technology", a: "Kioxia (Japan) / YMTC (China) / Samsung (South Korea)", e: true },
+
+      // --- APPLIED MATERIALS ---
+      { p: "Centura Deposition Systems", c: "Applied Materials", a: "Tokyo Electron (Japan) / ASM International (Netherlands)", e: true },
+      { p: "Endura Sputtering Systems", c: "Applied Materials", a: "Tokyo Electron (Japan)", e: true },
+      { p: "Producer CVD Systems", c: "Applied Materials", a: "ASM International (Netherlands) / Jusung Engineering (South Korea)", e: true },
+      { p: "VeritySEM Inspection", c: "Applied Materials", a: "Hitachi High-Tech (Japan)", e: true },
+
+      // --- LAM RESEARCH ---
+      { p: "Kiyo Etch Systems", c: "Lam Research", a: "Tokyo Electron (Japan)", e: true },
+      { p: "Sabre Electroplating Systems", c: "Lam Research", a: "Ebara Corporation (Japan)", e: true },
+      { p: "Vector CVD Systems", c: "Lam Research", a: "ASM International (Netherlands)", e: true },
+      { p: "Altus Tungsten Deposition", c: "Lam Research", a: "Tokyo Electron (Japan)", e: true },
+
+      // --- KLA CORPORATION ---
+      { p: "Archer Metrology Systems", c: "KLA Corporation", a: "ASML YieldStar (Netherlands)", e: true },
+      { p: "Surfscan Inspection Systems", c: "KLA Corporation", a: "Hitachi High-Tech (Japan) / Lasertec (Japan)", e: true },
+      { p: "Teron Reticle Inspection", c: "KLA Corporation", a: "Lasertec (Japan)", e: true },
+      { p: "SpectraFilm Metrology", c: "KLA Corporation", a: "ASML (Netherlands)", e: true },
+
+      // --- TEXAS INSTRUMENTS ---
+      { p: "MSP430 Microcontrollers", c: "Texas Instruments", a: "STMicroelectronics STM32 (Switzerland) / NXP Semiconductors (Netherlands)", e: true },
+      { p: "Sitara Processors", c: "Texas Instruments", a: "NXP i.MX (Netherlands) / Renesas RZ (Japan)", e: true },
+      { p: "Power Management ICs", c: "Texas Instruments", a: "Infineon (Germany) / STMicroelectronics (Switzerland)", e: true },
+      { p: "TI-84 Plus Calculators", c: "Texas Instruments", a: "Casio (Japan) / NumWorks (France)", e: true },
+
+      // --- ANALOG DEVICES ---
+      { p: "RadioVerse Transceivers", c: "Analog Devices", a: "Infineon (Germany) / NXP Semiconductors (Netherlands)", e: true },
+      { p: "ADuM Isolators", c: "Analog Devices", a: "Infineon (Germany)", e: true },
+      { p: "Power by Linear Regulators", c: "Analog Devices", a: "STMicroelectronics (Switzerland) / Renesas (Japan)", e: true },
+      { p: "MEMS Accelerometers", c: "Analog Devices", a: "Bosch Sensortec (Germany) / STMicroelectronics (Switzerland)", e: true },
+
+      // --- MARVELL TECHNOLOGY ---
+      { p: "OCTEON Processors", c: "Marvell Technology", a: "NXP Layerscape (Netherlands)", e: true },
+      { p: "Alaska Ethernet Transceivers", c: "Marvell Technology", a: "Realtek (Taiwan) / MediaTek (Taiwan)", e: true },
+      { p: "Brightlane Automotive Switches", c: "Marvell Technology", a: "NXP Semiconductors (Netherlands) / Realtek (Taiwan)", e: true },
+      { p: "Bravera SSD Controllers", c: "Marvell Technology", a: "Phison (Taiwan) / Silicon Motion (Taiwan)", e: true },
+
+      // --- FORTINET ---
+      { p: "FortiGate Firewalls", c: "Fortinet", a: "Stormshield (France) / Clavister (Sweden)", e: true },
+      { p: "FortiWeb", c: "Fortinet", a: "Rohde & Schwarz (Germany) / HAProxy (France)", e: true },
+      { p: "FortiSIEM", c: "Fortinet", a: "Logpoint (Denmark)", e: true },
+      { p: "Fortinet Security Fabric", c: "Fortinet", a: "No direct unified ecosystem equivalent.", e: false },
+
+      // --- SYNOPSYS ---
+      { p: "Design Compiler", c: "Synopsys", a: "Siemens EDA (Germany/Europe)", e: true },
+      { p: "IC Compiler II", c: "Synopsys", a: "Siemens EDA (Germany) / Empyrean Technology (China)", e: true },
+      { p: "PrimeTime", c: "Synopsys", a: "Siemens EDA (Germany)", e: true },
+      { p: "Coverity", c: "Synopsys", a: "SonarQube (Switzerland)", e: true },
+
+      // --- CADENCE DESIGN SYSTEMS ---
+      { p: "Virtuoso", c: "Cadence Design Systems", a: "Siemens EDA (Germany) / Empyrean Technology (China)", e: true },
+      { p: "Allegro", c: "Cadence Design Systems", a: "Zuken (Japan) / Altium (Australia)", e: true },
+      { p: "Palladium", c: "Cadence Design Systems", a: "Siemens Veloce (Germany)", e: true },
+      { p: "Innovus", c: "Cadence Design Systems", a: "Siemens EDA (Germany) / Empyrean Technology (China)", e: true },
+
+      // --- AUTODESK ---
+      { p: "AutoCAD", c: "Autodesk", a: "BricsCAD (Belgium) / DraftSight (France)", e: true },
+      { p: "Revit", c: "Autodesk", a: "Archicad (Hungary) / Allplan (Germany)", e: true },
+      { p: "Maya", c: "Autodesk", a: "Blender (Global Open Source/Netherlands) / Cinema 4D (Germany)", e: true },
+      { p: "Fusion 360", c: "Autodesk", a: "FreeCAD (Global Open Source) / Solid Edge (Germany)", e: true },
+
+      // --- WORKDAY ---
+      { p: "Workday Human Capital Management", c: "Workday", a: "SAP SuccessFactors (Germany) / Personio (Germany)", e: true },
+      { p: "Workday Financial Management", c: "Workday", a: "SAP S/4HANA (Germany)", e: true },
+      { p: "Workday Adaptive Planning", c: "Workday", a: "Board International (Switzerland) / Jedox (Germany)", e: true },
+      { p: "Workday Peakon Employee Voice", c: "Workday", a: "Leapsome (Germany) / Culture Amp (Australia)", e: true },
+
+      // --- AIRBNB ---
+      { p: "Lodging Marketplace", c: "Airbnb", a: "Booking.com (Netherlands) / Agoda (Singapore)", e: true },
+      { p: "Experiences Platform", c: "Airbnb", a: "GetYourGuide (Germany) / Klook (Hong Kong)", e: true },
+      { p: "Airbnb Setup", c: "Airbnb", a: "Hostaway (Finland) / Zeevou (UK)", e: true },
+      { p: "Guest Favorites", c: "Airbnb", a: "Booking.com Genius (Netherlands)", e: true },
+
+      // --- BOOKING HOLDINGS ---
+      { p: "Priceline", c: "Booking Holdings", a: "Trip.com (China)", e: true },
+      { p: "Agoda", c: "Booking Holdings", a: "Trip.com (China)", e: true },
+      { p: "Kayak", c: "Booking Holdings", a: "Skyscanner (UK)", e: true },
+      { p: "OpenTable", c: "Booking Holdings", a: "TheFork (France)", e: true },
+
+      // --- BLOCK ---
+      { p: "Square POS", c: "Block", a: "SumUp (UK) / Zettle (Sweden) / Tyro (Australia)", e: true },
+      { p: "Cash App", c: "Block", a: "Swish (Sweden) / WeChat Pay (China) / Revolut (UK)", e: true },
+      { p: "Spiral", c: "Block", a: "Decentralized Open Source Bitcoin Grants / No direct corporate 1:1.", e: false },
+      { p: "TIDAL", c: "Block", a: "Spotify (Sweden) / Deezer (France)", e: true },
+
+      // --- STRIPE ---
+      { p: "Stripe Payments", c: "Stripe", a: "Adyen (Netherlands) / Checkout.com (UK)", e: true },
+      { p: "Stripe Billing", c: "Stripe", a: "Chargebee (India) / Paddle (UK)", e: true },
+      { p: "Stripe Radar", c: "Stripe", a: "Adyen RevenueProtect (Netherlands) / Ravelin (UK)", e: true },
+      { p: "Stripe Atlas", c: "Stripe", a: "Estonia e-Residency (Estonia) / Xolo (Estonia)", e: true },
+
+      // --- EBAY ---
+      { p: "eBay Marketplace", c: "eBay", a: "MercadoLibre (Argentina) / Rakuten (Japan) / Allegro (Poland)", e: true },
+      { p: "StubHub", c: "eBay", a: "Viagogo (Switzerland) / TicketSwap (Netherlands)", e: true },
+      { p: "PayPal Integration", c: "eBay", a: "Adyen (Netherlands) / Alipay (China)", e: true },
+      { p: "eBay Motors", c: "eBay", a: "AutoScout24 (Germany) / Carsales (Australia)", e: true },
+
+      // --- ZOOM VIDEO COMMUNICATIONS ---
+      { p: "Zoom Workplace", c: "Zoom", a: "Tencent Meeting (China) / Zoho Workplace (India)", e: true },
+      { p: "Zoom Phone", c: "Zoom", a: "Aircall (France) / 3CX (Cyprus)", e: true },
+      { p: "Zoom Contact Center", c: "Zoom", a: "Talkdesk (Portugal) / VCC Live (Hungary)", e: true },
+      { p: "Zoom Rooms", c: "Zoom", a: "Yealink (China) / Barco ClickShare (Belgium)", e: true },
+
+      // --- DATADOG ---
+      { p: "Cloud Monitoring", c: "Datadog", a: "Prometheus (Global Open Source) / Zabbix (Latvia) / Site24x7 (India)", e: true },
+      { p: "APM", c: "Datadog", a: "SAP LeanIX (Germany) / Instana (Germany/IBM)", e: true },
+      { p: "Log Management", c: "Datadog", a: "Graylog (Germany) / Fluentd (Japan)", e: true },
+      { p: "Security Analysis", c: "Datadog", a: "Wazuh (Spain)", e: true },
+
+      // --- CLOUDFLARE ---
+      { p: "Cloudflare CDN", c: "Cloudflare", a: "Bunny.net (Slovenia) / OVHcloud CDN (France)", e: true },
+      { p: "Magic Transit", c: "Cloudflare", a: "Link11 (Germany)", e: true },
+      { p: "Cloudflare Workers", c: "Cloudflare", a: "Deno Deploy (Global) / OVHcloud Functions (France)", e: true },
+      { p: "1.1.1.1 DNS", c: "Cloudflare", a: "Quad9 (Switzerland) / AdGuard DNS (Cyprus)", e: true },
+
+      // --- NETAPP ---
+      { p: "ONTAP Storage Software", c: "NetApp", a: "Synology DSM (Taiwan) / QNAP QTS (Taiwan)", e: true },
+      { p: "Keystone STaaS", c: "NetApp", a: "Lenovo TruScale (China)", e: true },
+      { p: "BlueXP", c: "NetApp", a: "No direct singular non-U.S. multi-cloud storage manager equivalent.", e: false },
+      { p: "FAS Storage Systems", c: "NetApp", a: "Inspur Storage (China) / Huawei OceanStor (China)", e: true },
+
+      // --- COGNIZANT ---
+      { p: "Digital Business Transformation", c: "Cognizant", a: "TCS (India) / Capgemini (France)", e: true },
+      { p: "TriZetto Healthcare Products", c: "Cognizant", a: "No direct 1:1 platform outside the U.S. Regional health IT systems like Dedalus (Italy).", e: false },
+      { p: "Cognizant Neuro AI", c: "Cognizant", a: "TCS ignio (India) / Wipro HOLMES (India)", e: true },
+      { p: "Infrastructure Services", c: "Cognizant", a: "HCLTech (India) / Infosys (India)", e: true },
+
+      // --- INFOSYS ---
+      { p: "Panaya", c: "Infosys", a: "Tricentis (Austria)", e: true },
+      { p: "EdgeVerve", c: "Infosys", a: "UiPath (Romania/US) - Better Alt: Blue Prism (UK)", e: true },
+      { p: "Finacle", c: "Infosys", a: "Temenos (Switzerland) / Mambu (Germany)", e: true },
+      { p: "Skava", c: "Infosys", a: "SAP Commerce Cloud (Germany)", e: true },
+
+      // --- HEWLETT PACKARD ENTERPRISE (HPE) ---
+      { p: "ProLiant Servers", c: "HPE", a: "Lenovo ThinkSystem (China) / Inspur (China)", e: true },
+      { p: "Aruba Networking", c: "HPE", a: "Huawei Enterprise (China) / Alcatel-Lucent Enterprise (France)", e: true },
+      { p: "GreenLake Cloud", c: "HPE", a: "Lenovo TruScale (China)", e: true },
+      { p: "Cray Supercomputers", c: "HPE", a: "Fujitsu Fugaku (Japan) / Atos BullSequana (France)", e: true },
+
+      // --- HP INC. ---
+      { p: "LaserJet Printers", c: "HP Inc.", a: "Brother (Japan) / Kyocera (Japan) / Canon (Japan)", e: true },
+      { p: "Pavilion Laptops", c: "HP Inc.", a: "Lenovo IdeaPad (China) / ASUS VivoBook (Taiwan)", e: true },
+      { p: "OMEN Gaming PCs", c: "HP Inc.", a: "ASUS ROG (Taiwan) / MSI (Taiwan)", e: true },
+      { p: "Instant Ink", c: "HP Inc.", a: "Epson ReadyPrint (Japan)", e: true },
+
+      // --- WESTERN DIGITAL ---
+      { p: "WD Blue SSDs", c: "Western Digital", a: "Samsung EVO (South Korea) / Kioxia (Japan)", e: true },
+      { p: "SanDisk Flash Drives", c: "Western Digital", a: "Kioxia (Japan) / Samsung (South Korea)", e: true },
+      { p: "WD Black Gaming Drives", c: "Western Digital", a: "Samsung PRO (South Korea) / ADATA XPG (Taiwan)", e: true },
+      { p: "Ultrastar Hard Drives", c: "Western Digital", a: "Toshiba Enterprise HDDs (Japan)", e: true },
+
+      // --- SEAGATE TECHNOLOGY ---
+      { p: "BarraCuda HDDs", c: "Seagate Technology", a: "Toshiba (Japan)", e: true },
+      { p: "IronWolf NAS Drives", c: "Seagate Technology", a: "Toshiba N300 (Japan) / Synology HAT (Taiwan)", e: true },
+      { p: "FireCuda SSDs", c: "Seagate Technology", a: "Samsung 990 PRO (South Korea) / ADATA (Taiwan)", e: true },
+      { p: "Exos Enterprise Storage", c: "Seagate Technology", a: "Toshiba MG Series (Japan)", e: true },
+
+      // --- GARMIN ---
+      { p: "fēnix Smartwatches", c: "Garmin", a: "Suunto (Finland) / Polar (Finland)", e: true },
+      { p: "nüvi GPS Navigation", c: "Garmin", a: "TomTom (Netherlands)", e: true },
+      { p: "G1000 Avionics", c: "Garmin", a: "No direct non-U.S. General Aviation equivalent. Commercial suites handled by Safran (France).", e: false },
+      { p: "Edge Bike Computers", c: "Garmin", a: "Bryton (Taiwan) / Sigma Sport (Germany)", e: true },
+
+      // --- TRIMBLE ---
+      { p: "Tekla Structures", c: "Trimble", a: "Allplan (Germany) / Archicad (Hungary)", e: true },
+      { p: "Trimble X7 3D Scanner", c: "Trimble", a: "Leica Geosystems (Switzerland)", e: true },
+      { p: "Catalyst GNSS", c: "Trimble", a: "Leica Zeno (Switzerland)", e: true },
+      { p: "SketchUp", c: "Trimble", a: "Blender (Netherlands) / BricsCAD Shape (Belgium)", e: true },
+
+      // --- AKAMAI TECHNOLOGIES ---
+      { p: "Akamai Connected Cloud", c: "Akamai", a: "OVHcloud (France) / Hetzner (Germany)", e: true },
+      { p: "Guardicore Segmentation", c: "Akamai", a: "Sangfor (China) / Outpost24 (Sweden)", e: true },
+      { p: "App & API Protector", c: "Akamai", a: "Wallarm (Global) / Rohde & Schwarz (Germany)", e: true },
+      { p: "Edge DNS", c: "Akamai", a: "ClouDNS (Bulgaria)", e: true },
+
+      // --- SPLUNK ---
+      { p: "Splunk Enterprise", c: "Splunk", a: "Graylog (Germany) / Fluentd (Japan)", e: true },
+      { p: "Splunk Cloud", c: "Splunk", a: "Graylog Cloud (Germany)", e: true },
+      { p: "Splunk IT Service Intelligence", c: "Splunk", a: "Zabbix (Latvia)", e: true },
+      { p: "Splunk Enterprise Security", c: "Splunk", a: "Logpoint (Denmark) / Wazuh (Spain)", e: true },
+
+      // --- HUBSPOT ---
+      { p: "HubSpot CRM", c: "Hubspot", a: "Zoho CRM (India) / Pipedrive (Estonia)", e: true },
+      { p: "Marketing Hub", c: "Hubspot", a: "Brevo (France) / Mautic (Global Open Source)", e: true },
+      { p: "Sales Hub", c: "Hubspot", a: "Freshsales (India) / Pipedrive (Estonia)", e: true },
+      { p: "Content Hub", c: "Hubspot", a: "Ghost (Singapore) / Strapi (France)", e: true },
+
+      // --- TWILIO ---
+      { p: "Twilio Flex", c: "Twilio", a: "Talkdesk (Portugal) / 3CX (Cyprus)", e: true },
+      { p: "Segment", c: "Twilio", a: "Piwik PRO (Poland) / Snowplow (UK)", e: true },
+      { p: "Twilio Verify", c: "Twilio", a: "Infobip (Croatia) / MessageBird (Netherlands)", e: true },
+      { p: "Programmable Voice Engine", c: "Twilio", a: "Sinch (Sweden) / Infobip (Croatia)", e: true },
+
+      // --- PINTEREST ---
+      { p: "Pinterest Image Discovery", c: "Pinterest", a: "Xiaohongshu [RED] (China) / Lemon8 (Singapore)", e: true },
+      { p: "Pinterest Lens", c: "Pinterest", a: "Baidu Image Search (China)", e: true },
+      { p: "Guided Search", c: "Pinterest", a: "No direct standalone visual board equivalent.", e: false },
+      { p: "Pinterest Ads", c: "Pinterest", a: "Xiaohongshu Ads (China)", e: true },
+
+      // --- SNAP ---
+      { p: "Snapchat", c: "Snap", a: "Snow (South Korea) / LINE (Japan)", e: true },
+      { p: "Spectacles", c: "Snap", a: "Xreal (China)", e: true },
+      { p: "Bitmoji", c: "Snap", a: "Zepeto (South Korea)", e: true },
+      { p: "Snap Map", c: "Snap", a: "WeChat Location Sharing (China)", e: true },
+
+      // --- MATCH GROUP ---
+      { p: "Tinder", c: "Match Group", a: "Badoo (UK) / Tantan (China)", e: true },
+      { p: "Hinge", c: "Match Group", a: "Inner Circle (Netherlands)", e: true },
+      { p: "Match.com", c: "Match Group", a: "Meetic (France)", e: true },
+      { p: "OkCupid", c: "Match Group", a: "Happn (France)", e: true },
+
+      // --- ETSY ---
+      { p: "Etsy Marketplace", c: "Etsy", a: "Not On The High Street (UK) / Pinkoi (Taiwan)", e: true },
+      { p: "Pattern by Etsy", c: "Etsy", a: "Shopware (Germany)", e: true },
+      { p: "Etsy Studio", c: "Etsy", a: "Depop (UK) - Note: Acquired by Etsy later.", e: true },
+      { p: "Seller Way", c: "Etsy", a: "Independent localized crafter networks.", e: false },
+
+      // --- DOORDASH ---
+      { p: "DoorDash Delivery", c: "DoorDash", a: "Deliveroo (UK) / Foodpanda (Singapore) / Glovo (Spain)", e: true },
+      { p: "DashPass", c: "DoorDash", a: "Deliveroo Plus (UK)", e: true },
+      { p: "Wolt", c: "DoorDash", a: "Delivery Hero (Germany)", e: true },
+      { p: "Storefront", c: "DoorDash", a: "Flipdish (Ireland)", e: true },
+
+      // --- COINBASE ---
+      { p: "Coinbase Exchange", c: "Coinbase", a: "Binance (Global) / OKX (Seychelles) / Bitstamp (Luxembourg)", e: true },
+      { p: "Coinbase Wallet", c: "Coinbase", a: "Trust Wallet (Global) / Trezor (Czech Republic)", e: true },
+      { p: "Base Layer-2 Network", c: "Coinbase", a: "Polygon (India/Global) / BNB Chain (Global)", e: true },
+      { p: "Coinbase Commerce", c: "Coinbase", a: "CoinGate (Lithuania) / NOWPayments (Netherlands)", e: true },
+
+      // --- ROBINHOOD ---
+      { p: "Robinhood Trading App", c: "Robinhood", a: "Trade Republic (Germany) / Trading212 (UK)", e: true },
+      { p: "Robinhood Gold", c: "Robinhood", a: "Trade Republic Prime (Germany)", e: true },
+      { p: "Robinhood Crypto Wallet", c: "Robinhood", a: "Ledger (France) / Trezor (Czech Republic)", e: true },
+      { p: "Robinhood Retirement", c: "Robinhood", a: "Scalable Capital (Germany)", e: true },
+
+      // --- UNITY SOFTWARE ---
+      { p: "Unity Engine", c: "Unity Software", a: "Godot Engine (Global Open Source) / Cocos2d-x (China)", e: true },
+      { p: "Unity Cloud", c: "Unity Software", a: "Photon (Germany) / Nakama (Global)", e: true },
+      { p: "Unity Grow", c: "Unity Software", a: "Mintegral (China)", e: true },
+      { p: "Wētā Tools", c: "Unity Software", a: "Foundry (UK)", e: true },
+
+      // --- ROBLOX CORPORATION ---
+      { p: "Roblox Client", c: "Roblox Corporation", a: "Zepeto (South Korea) / Mini World (China)", e: true },
+      { p: "Roblox Studio", c: "Roblox Corporation", a: "No direct UGC IDE equivalent. Game development relies on Godot (Global).", e: false },
+      { p: "Roblox Cloud", c: "Roblox Corporation", a: "Tencent Cloud for Games (China)", e: true },
+      { p: "Roblox Virtual Economy", c: "Roblox Corporation", a: "Zepeto Economy (South Korea)", e: true },
+
+      // --- DYNATRACE ---
+      { p: "Davis AI Engine", c: "Dynatrace", a: "Instana AI (Germany - Acq by IBM)", e: true },
+      { p: "Application Performance Monitoring", c: "Dynatrace", a: "Site24x7 (India) / Raygun (New Zealand)", e: true },
+      { p: "Cloud Automation", c: "Dynatrace", a: "Keptn (Austria - Open Source)", e: true },
+      { p: "Infrastructure Monitoring", c: "Dynatrace", a: "Zabbix (Latvia) / PRTG (Germany)", e: true },
+
+      // --- OKTA ---
+      { p: "Okta Workforce Identity", c: "Okta", a: "Thales SafeNet (France) / Keycloak (Global Open Source)", e: true },
+      { p: "Auth0 Customer Identity", c: "Okta", a: "Ory (Germany) / Keycloak (Global Open Source)", e: true },
+      { p: "Okta Access Gateway", c: "Okta", a: "Pomerium (Global)", e: true },
+      { p: "Identity Threat Protection", c: "Okta", a: "Thales (France)", e: true },
+
+      // --- ZSCALER ---
+      { p: "Zscaler Internet Access", c: "Zscaler", a: "NordLayer (Panama) / GoodAccess (Czech Republic)", e: true },
+      { p: "Zscaler Private Access", c: "Zscaler", a: "WireGuard (Global Open Source) / Sangfor (China)", e: true },
+      { p: "Zscaler Deception", c: "Zscaler", a: "Kaspersky (Russia)", e: true },
+      { p: "Zscaler Digital Experience", c: "Zscaler", a: "PRTG Network Monitor (Germany)", e: true },
+
+      // --- CYBERARK ---
+      { p: "Privileged Access Manager", c: "CyberArk", a: "Wallix (France) / Senhasegura (Brazil)", e: true },
+      { p: "Identity Security Platform", c: "CyberArk", a: "Thales (France)", e: true },
+      { p: "Endpoint Privilege Manager", c: "CyberArk", a: "Heimdal (Denmark)", e: true },
+      { p: "Secrets Manager", c: "CyberArk", a: "Infisical (UK)", e: true },
+
+      // --- MONGODB ---
+      { p: "MongoDB Atlas", c: "MongoDB", a: "FerretDB (Global Open Source) / ArangoDB (Germany)", e: true },
+      { p: "MongoDB Enterprise Advanced", c: "MongoDB", a: "PostgreSQL (Global Open Source) / OrientDB (UK)", e: true },
+      { p: "Compass", c: "MongoDB", a: "DBeaver (Global Open Source)", e: true },
+      { p: "Realm Mobile Database", c: "MongoDB", a: "ObjectBox (Germany) / SQLite (Global Open Source)", e: true },
+
+      // --- CONFLUENT ---
+      { p: "Confluent Cloud", c: "Confluent", a: "Aiven (Finland)", e: true },
+      { p: "Apache Kafka Distribution", c: "Confluent", a: "Apache Kafka (Global Open Source)", e: true },
+      { p: "Confluent Platform", c: "Confluent", a: "Instaclustr (Australia)", e: true },
+      { p: "Stream Governance", c: "Confluent", a: "No direct 1:1 governance platform globally.", e: false },
+
+      // --- GEN DIGITAL ---
+      { p: "Norton 360", c: "Gen Digital", a: "Bitdefender (Romania) / Kaspersky (Russia)", e: true },
+      { p: "Avast Antivirus", c: "Gen Digital", a: "ESET (Slovakia) / Avira (Germany)", e: true },
+      { p: "LifeLock Identity Theft Protection", c: "Gen Digital", a: "No direct global equivalent due to localized U.S. SSN infrastructures.", e: false },
+      { p: "CCleaner", c: "Gen Digital", a: "BleachBit (Global Open Source)", e: true },
+
+      // --- VERISIGN ---
+      { p: "Managed DNS", c: "Verisign", a: "ClouDNS (Bulgaria) / EuroDNS (Luxembourg)", e: true },
+      { p: ".com Registry", c: "Verisign", a: "No alternative for .com. Local registries like Gandi (France) or Nominet (UK) serve ccTLDs.", e: false },
+      { p: ".net Registry", c: "Verisign", a: "No alternative for .net. Local registries like Denic (Germany) serve ccTLDs.", e: false },
+      { p: "Distributed Denial of Service Mitigation", c: "Verisign", a: "Link11 (Germany)", e: true },
+
+      // --- GODADDY ---
+      { p: "Domain Registration", c: "GoDaddy", a: "Hostinger (Lithuania) / Gandi (France) / Infomaniak (Switzerland)", e: true },
+      { p: "GoDaddy Website Builder", c: "GoDaddy", a: "Zyro (Lithuania) / Odoo (Belgium)", e: true },
+      { p: "Managed WordPress Hosting", c: "GoDaddy", a: "SiteGround (Bulgaria)", e: true },
+      { p: "GoDaddy Studio", c: "GoDaddy", a: "Canva (Australia)", e: true },
+
+      // --- DOCUSIGN ---
+      { p: "DocuSign eSignature", c: "DocuSign", a: "Yousign (France) / Signicat (Norway) / Scrive (Sweden)", e: true },
+      { p: "Contract Lifecycle Management", c: "DocuSign", a: "Contractbook (Denmark) / Precisely (Sweden)", e: true },
+      { p: "DocuSign IAM", c: "DocuSign", a: "Signicat (Norway)", e: true },
+      { p: "Identity Verification", c: "DocuSign", a: "Onfido (UK)", e: true },
+
+      // --- DROPBOX ---
+      { p: "Dropbox Cloud Storage", c: "Dropbox", a: "Tresorit (Switzerland) / Nextcloud (Germany) / Proton Drive (Switzerland)", e: true },
+      { p: "Dropbox Sign", c: "Dropbox", a: "Yousign (France)", e: true },
+      { p: "Dropbox Paper", c: "Dropbox", a: "CryptPad (France)", e: true },
+      { p: "DocSend", c: "Dropbox", a: "Digify (Singapore)", e: true },
+
+      // --- BOX ---
+      { p: "Box Content Cloud", c: "Box", a: "Tresorit (Switzerland) / OwnCloud (Germany)", e: true },
+      { p: "Box Sign", c: "Box", a: "Scrive (Sweden)", e: true },
+      { p: "Box Canvas", c: "Box", a: "Conceptboard (Germany)", e: true },
+      { p: "Box Relay", c: "Box", a: "Nextcloud Flow (Germany)", e: true },
+
+      // --- MICROCHIP TECHNOLOGY ---
+      { p: "PIC Microcontrollers", c: "Microchip Technology", a: "STMicroelectronics STM8/STM32 (Switzerland)", e: true },
+      { p: "AVR Processors", c: "Microchip Technology", a: "NXP Semiconductors (Netherlands) / Renesas (Japan)", e: true },
+      { p: "PolarFire FPGAs", c: "Microchip Technology", a: "Gowin Semiconductor (China)", e: true },
+      { p: "EEPROM Memory", c: "Microchip Technology", a: "STMicroelectronics (Switzerland)", e: true },
+
+      // --- SKYWORKS SOLUTIONS ---
+      { p: "SkyOne RF Modules", c: "Skyworks Solutions", a: "Murata (Japan) / TDK (Japan)", e: true },
+      { p: "Sky5 Ultra-Front-End", c: "Skyworks Solutions", a: "Murata (Japan)", e: true },
+      { p: "Wi-Fi 7 Front-End Modules", c: "Skyworks Solutions", a: "MediaTek (Taiwan) / NXP (Netherlands)", e: true },
+      { p: "Optocouplers", c: "Skyworks Solutions", a: "Renesas (Japan) / Toshiba (Japan)", e: true },
+
+      // --- QORVO ---
+      { p: "RF Flex Fusion", c: "Qorvo", a: "Murata (Japan) / NXP Semiconductors (Netherlands)", e: true },
+      { p: "Spatium Amplifiers", c: "Qorvo", a: "Thales (France) / Ericsson (Sweden)", e: true },
+      { p: "Qorvo ConnX", c: "Qorvo", a: "STMicroelectronics (Switzerland)", e: true },
+      { p: "Decawave UWB Chips", c: "Qorvo", a: "NXP Semiconductors (Netherlands) / STMicroelectronics (Switzerland)", e: true },
+
+      // --- TERADYNE ---
+      { p: "UltraFLEX Semiconductor Test System", c: "Teradyne", a: "Advantest (Japan)", e: true },
+      { p: "J750 Test Platform", c: "Teradyne", a: "Advantest (Japan)", e: true },
+      { p: "Universal Robots Cobots", c: "Teradyne", a: "KUKA (Germany) / FANUC (Japan)", e: true },
+      { p: "MiR Autonomous Mobile Robots", c: "Teradyne", a: "Mobile Industrial Robots is Teradyne owned. Alternatives: Geek+ (China) / KUKA (Germany)", e: true },
+
+      // --- JUNIPER NETWORKS ---
+      { p: "Junos OS", c: "Juniper Networks", a: "Huawei VRP (China) / Nokia SR OS (Finland)", e: true },
+      { p: "Mist AI", c: "Juniper Networks", a: "Huawei iMaster NCE (China)", e: true },
+      { p: "MX Series Routers", c: "Juniper Networks", a: "Nokia Service Router (Finland) / Huawei NetEngine (China)", e: true },
+      { p: "QFX Series Switches", c: "Juniper Networks", a: "Allied Telesis (Japan)", e: true },
+
+      // --- F5 ---
+      { p: "BIG-IP Traffic Management", c: "F5", a: "HAProxy (France) / Kemp LoadMaster (Ireland/US)", e: true },
+      { p: "NGINX Plus", c: "F5", a: "Traefik (France) / HAProxy (France)", e: true },
+      { p: "F5 Distributed Cloud Services", c: "F5", a: "OVHcloud (France)", e: true },
+      { p: "Shape Security", c: "F5", a: "Kaspersky (Russia)", e: true },
+
+      // --- NUTANIX ---
+      { p: "Nutanix Cloud Platform", c: "Nutanix", a: "Sangfor HCI (China) / Proxmox (Austria)", e: true },
+      { p: "AHV Hypervisor", c: "Nutanix", a: "KVM (Global Open Source) / XCP-ng (France)", e: true },
+      { p: "Prism Management", c: "Nutanix", a: "Proxmox (Austria) / OpenNebula (Spain)", e: true },
+      { p: "Nutanix Files", c: "Nutanix", a: "OpenMediaVault (Germany)", e: true },
+
+      // --- PURE STORAGE ---
+      { p: "FlashArray", c: "Pure Storage", a: "Huawei OceanStor (China) / Fujitsu ETERNUS (Japan)", e: true },
+      { p: "FlashBlade", c: "Pure Storage", a: "Huawei OceanStor Pacific (China)", e: true },
+      { p: "Pure1 Management", c: "Pure Storage", a: "Huawei DeviceManager (China)", e: true },
+      { p: "Evergreen Storage Architecture", c: "Pure Storage", a: "Lenovo TruScale (China)", e: true },
+
+      // --- SUPER MICRO COMPUTER ---
+      { p: "SuperServer systems", c: "Super Micro Computer", a: "Inspur (China) / Lenovo (China) / Fujitsu (Japan)", e: true },
+      { p: "Twin SuperServers", c: "Super Micro Computer", a: "Inspur (China)", e: true },
+      { p: "SuperBlade architectures", c: "Super Micro Computer", a: "Lenovo ThinkSystem (China)", e: true },
+      { p: "Liquid Cooling Solutions", c: "Super Micro Computer", a: "Lenovo Neptune (China)", e: true },
+
+      // --- UIPATH ---
+      { p: "UiPath Business Automation Platform", c: "UiPath", a: "Blue Prism (UK)", e: true },
+      { p: "Studio AI Developer", c: "UiPath", a: "Robocorp (Finland) / SAP Build (Germany)", e: true },
+      { p: "Robots", c: "UiPath", a: "Blue Prism (UK)", e: true },
+      { p: "Orchestrator", c: "UiPath", a: "SAP Build Process Automation (Germany)", e: true },
+
+      // --- APPLOVIN ---
+      { p: "AppDiscovery", c: "AppLovin", a: "Mintegral (China) / Criteo (France)", e: true },
+      { p: "MAX Mediation", c: "AppLovin", a: "Yandex Ads (Russia)", e: true },
+      { p: "SparkLabs", c: "AppLovin", a: "Mindworks (China)", e: true },
+      { p: "Array", c: "AppLovin", a: "No direct 1:1 standalone platform outside U.S. carriers.", e: false },
+
+      // --- TOAST ---
+      { p: "Toast POS", c: "Toast", a: "Lightspeed (Canada) / SumUp (UK) / Zettle (Sweden)", e: true },
+      { p: "Toast Go 2", c: "Toast", a: "SumUp Solo (UK)", e: true },
+      { p: "Toast Online Ordering", c: "Toast", a: "Flipdish (Ireland) / Deliveroo (UK)", e: true },
+      { p: "Toast Payroll", c: "Toast", a: "Planday (Denmark)", e: true },
+
+      // --- PROCORE TECHNOLOGIES ---
+      { p: "Procore Construction Platform", c: "Procore", a: "Aconex (Australia) / Dalux (Denmark) / PlanRadar (Austria)", e: true },
+      { p: "Financial Management", c: "Procore", a: "RIB Software (Germany)", e: true },
+      { p: "Project Management", c: "Procore", a: "Dalux (Denmark)", e: true },
+      { p: "Workforce Management", c: "Procore", a: "Sablono (Germany)", e: true },
+
+      // --- GITLAB ---
+      { p: "GitLab DevSecOps Platform", c: "Gitlab", a: "Gitea (Global Open Source) / Space (Czech Republic)", e: true },
+      { p: "GitLab Duo AI", c: "Gitlab", a: "DeepSeek Coder (China)", e: true },
+      { p: "GitLab CI/CD", c: "Gitlab", a: "Jenkins (Global Open Source) / TeamCity (Czech Republic)", e: true },
+      { p: "GitLab Dedicated", c: "Gitlab", a: "Bitbucket Data Center (Australia/US)", e: true },
+
+      // --- TERADATA ---
+      { p: "Teradata Vantage", c: "Teradata", a: "Exasol (Germany) / ClickHouse (Global)", e: true },
+      { p: "VantageCloud", c: "Teradata", a: "SAP Data Warehouse Cloud (Germany)", e: true },
+      { p: "ClearScape Analytics", c: "Teradata", a: "Dataiku (France)", e: true },
+      { p: "Teradata QueryGrid", c: "Teradata", a: "Presto/Trino (Global Open Source)", e: true },
+
+      // --- WESTERN UNION ---
+      { p: "Digital Money Transfer", c: "Western Union", a: "Wise (UK) / Revolut (UK)", e: true },
+      { p: "Western Union Business Solutions", c: "Western Union", a: "Adyen (Netherlands) / Airwallex (Australia/Hong Kong)", e: true },
+      { p: "Money Order", c: "Western Union", a: "National Post Offices / Giro Systems", e: true },
+      { p: "Western Union Plus app", c: "Western Union", a: "Wise App (UK)", e: true },
+
+      // --- PAYCHEX ---
+      { p: "Paychex Flex", c: "Paychex", a: "Personio (Germany) / Lucca (France)", e: true },
+      { p: "HR Services", c: "Paychex", a: "Factorial (Spain) / Lucca (France)", e: true },
+      { p: "Payroll Processing", c: "Paychex", a: "PayFit (France) / Xero (New Zealand)", e: true },
+      { p: "Employee Benefits Management", c: "Paychex", a: "Ben (UK)", e: true },
+
+      // --- BROADRIDGE FINANCIAL SOLUTIONS ---
+      { p: "Proxy Edge", c: "Broadridge", a: "Computershare (Australia)", e: true },
+      { p: "Investor Communication Solutions", c: "Broadridge", a: "Link Group (Australia)", e: true },
+      { p: "Global Technology and Operations Platform", c: "Broadridge", a: "Temenos (Switzerland) / Avaloq (Switzerland)", e: true },
+      { p: "Broadridge Data Control", c: "Broadridge", a: "SimCorp (Denmark)", e: true }
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    const search = $('searchInput');
+    const box = $('suggestionsBox');
+    const results = $('results');
+    const searchWrapper = $('searchWrapper');
+    const backBtn = $('backBtn');
+    const clearBtn = $('clearBtn');
+    let currentResult = null;
+    let currentFocus = -1;
+
+    // Performance Fix: Debounce function to limit rapid execution
+    function debounce(func, wait) {
+      let timeout;
+      return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+
+    backBtn.addEventListener('click', () => resetToHome());
+    clearBtn.addEventListener('click', () => {
+      search.value = '';
+      clearBtn.style.display = 'none';
+      if(currentResult) resetToHome();
+      else clearSuggestions();
+      search.focus();
+    });
+
+    function resetToHome() {
+      results.style.display = 'none';
+      $('header').style.display = 'block';
+      $('app').style.paddingTop = '40px';
+      search.value = '';
+      clearBtn.style.display = 'none';
+      clearSuggestions();
+      searchWrapper.classList.remove('has-back-btn');
+      backBtn.style.display = 'none';
+      currentResult = null;
+    }
+
+    function clearSuggestions() {
+      box.innerHTML = '';
+      box.classList.remove('active');
+      search.setAttribute('aria-expanded', 'false');
+      currentFocus = -1;
+    }
+
+    const handleSearchInput = debounce((e) => {
+      const val = e.target.value.toLowerCase().trim();
+      clearBtn.style.display = e.target.value ? 'block' : 'none';
+      
+      clearSuggestions();
+      
+      if (!val) return;
+      
+      // Match either the product name or the company name
+      const matches = db.filter(item => {
+        return item.p.toLowerCase().includes(val) || item.c.toLowerCase().includes(val);
+      }).slice(0, 15);
+
+      box.classList.add('active');
+      search.setAttribute('aria-expanded', 'true');
+
+      if (matches.length) {
+        matches.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'suggestion-item';
+          
+          // Accessibility Fix: Added ARIA role
+          div.setAttribute('role', 'option');
+          div.setAttribute('aria-selected', 'false');
+          
+          div.innerHTML = `
+            <span style="font-size:0.95rem; color:#fff; font-weight:500;">${item.p}</span>
+            <span class="suggestion-company">${item.c}</span>
+          `;
+          div.onclick = () => loadResult(item);
+          box.appendChild(div);
+        });
+      } else {
+        // UX Fix: "No Results" state
+        const div = document.createElement('div');
+        div.className = 'suggestion-item no-results';
+        div.setAttribute('role', 'option');
+        div.setAttribute('aria-selected', 'false');
+        div.innerHTML = `<span style="font-size:0.95rem; color:#fff; font-weight:500;">No results found for "${e.target.value}"</span>`;
+        box.appendChild(div);
+      }
+    }, 150); // 150ms delay
+
+    search.addEventListener('input', handleSearchInput);
+
+    // UX Fix: Keyboard Navigation implementation
+    search.addEventListener('keydown', (e) => {
+      const items = box.querySelectorAll('.suggestion-item:not(.no-results)');
+      if (!box.classList.contains('active') || items.length === 0) {
+        if(e.key === 'Enter' && !search.value) resetToHome();
+        return;
+      }
+      
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        currentFocus++;
+        addActive(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        currentFocus--;
+        addActive(items);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (currentFocus > -1) {
+          if (items[currentFocus]) items[currentFocus].click();
+        } else {
+           // Default to first match if user hits enter without arrowing down
+           if (items[0]) items[0].click();
+        }
+      }
+    });
+
+    function addActive(items) {
+      removeActive(items);
+      if (currentFocus >= items.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = items.length - 1;
+      
+      items[currentFocus].classList.add('selected');
+      items[currentFocus].setAttribute('aria-selected', 'true');
+      
+      // Keep focused item visible in scroll view
+      items[currentFocus].scrollIntoView({ block: 'nearest' });
+    }
+
+    function removeActive(items) {
+      for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove('selected');
+        items[i].setAttribute('aria-selected', 'false');
+      }
+    }
+
+    function loadResult(data) {
+      currentResult = data;
+      $('header').style.display = 'none';
+      $('app').style.paddingTop = '40px';
+      search.value = data.p; // Set input to exact product name
+      clearBtn.style.display = 'block';
+      clearSuggestions();
+      
+      results.style.display = 'flex';
+      searchWrapper.classList.add('has-back-btn');
+      backBtn.style.display = 'block';
+
+      // Set Target Info
+      $('usProductTitle').innerText = data.p;
+      $('usCompanySubtitle').innerText = `Developed by: ${data.c}`;
+
+      // Set Alternative Info
+      const altCard = $('altCard');
+      if (data.e) {
+        altCard.className = 'alt-card has-alt';
+        $('altLabel').innerText = '✨ Recommended Global Alternatives';
+      } else {
+        altCard.className = 'alt-card no-alt';
+        $('altLabel').innerText = '⚠️ No Direct Global Alternative';
+      }
+      $('altName').innerText = data.a;
+    }
+
+    document.addEventListener('keydown', (e) => { 
+      if(e.key === 'Escape') {
+        if(box.classList.contains('active')) clearSuggestions();
+        else if (currentResult) resetToHome(); 
+      }
+    });
+  </script>
+</body>
+</html>

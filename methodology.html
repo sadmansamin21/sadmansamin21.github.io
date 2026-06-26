@@ -38,6 +38,10 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text);
@@ -100,9 +104,14 @@
     .toc-list a { font-size: 0.95rem; color: var(--text); text-decoration: none; opacity: 0.8; transition: opacity 0.2s; }
     .toc-list a:hover { opacity: 1; }
 
+    /* Target Section Spacing and Sticky Nav Offset */
+    .method-content > div[id] {
+      scroll-margin-top: 130px;
+    }
+
     /* Body text */
     .method-content p { font-size: 1.1rem; margin-bottom: 30px; color: var(--text); opacity: 0.85; font-weight: 300; }
-    h2 { font-size: 1.8rem; margin: 80px 0 12px; font-weight: 600; letter-spacing: -0.02em; }
+    h2 { font-size: 1.8rem; margin: 0 0 12px; font-weight: 600; letter-spacing: -0.02em; }
     h3 { font-size: 1.1rem; font-weight: 600; margin: 40px 0 15px; letter-spacing: -0.01em; color: var(--text); }
     strong { color: var(--text); font-weight: 600; }
 
@@ -184,7 +193,11 @@
     .disclaimer p:last-child { margin-bottom: 0; }
 
     /* Divider */
-    .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 100px 0;
+    }
 
     footer {
       padding: 80px 5%;
@@ -402,7 +415,7 @@
           <p><strong>Proper Usage:</strong> Data provided on this platform should be utilized as a starting reference point. It is intended to complement—not replace—professional financial advice, certified valuations, primary source verification, and independent domain expertise.</p>
         </div>
 
-        <p>For specific inquiries regarding data processing, update schedules, or methodology nuances, please contact <a href="https://sadmansamin21.github.io" style="color: var(--text); font-weight: 600;">Sadman Samin</a>.</p>
+        <p>To see these frameworks in action, check out our projects at <a href="https://sadmansamin21.github.io/monolith-labs.html" style="color: var(--text); font-weight: 600;">Monolith Labs</a>.</p>
       </div>
 
     </div>

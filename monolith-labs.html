@@ -151,6 +151,42 @@
             max-width: 600px;
         }
 
+        /* Methodology Explanatory Note */
+        .methodology-note {
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            max-width: 600px;
+        }
+
+        .mono-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .note-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .inline-link {
+            color: var(--text-primary);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1px;
+            transition: border-color 0.2s ease, opacity 0.2s ease;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: var(--text-primary);
+            opacity: 1;
+        }
+
         /* Product List */
         .section-title {
             font-size: 0.85rem;
@@ -266,9 +302,14 @@
             <h1>Building the next infrastructure.</h1>
             <p class="hero-desc">
                Monolith Labs is an independent research institute dedicated to open-access public data utilities and socio-economic intelligence frameworks. Founded on the principle of absolute accessibility, the lab builds and deploys a growing portfolio of digital tools, open data engines, and public directory platforms specifically engineered to advance open knowledge, cultivate public trust, and streamline community access to high-value information.
-
-
             </p>
+            
+            <div class="methodology-note">
+                <p class="mono-label mono">Methodology &amp; Framework</p>
+                <p class="note-desc">
+                    To understand the data pipelines, AI synthesis processes, and verification rubrics used to build these initiatives, read our complete <a href="https://sadmansamin21.github.io/methodology.html" class="inline-link" target="_blank" rel="noopener noreferrer">Research Methodology &amp; Data Framework ↗</a>.
+                </p>
+            </div>
         </header>
 
         <main>
@@ -287,29 +328,24 @@
                     <div class="product-link">Explore Tool ↗</div>
                 </a>
 
-                                <a href="https://sadmansamin21.github.io/GovLinksBD.html" class="product-card" target="_blank" rel="noopener noreferrer">
+                <a href="https://sadmansamin21.github.io/GovLinksBD.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
-                        <h2 class="product-title">GovLinksBD
-</h2>
+                        <h2 class="product-title">GovLinksBD</h2>
                         <span class="product-type mono">Public Tool</span>
                     </div>
                     <p class="product-desc">
                         A clean, compact directory of official government portals. Avoid messy official navigation and jump directly to the services you need.
-
                     </p>
                     <div class="product-link">Open ↗</div>
                 </a>
 
-                  <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
+                <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
-                        <h2 class="product-title">AGI University
-Major Index</h2>
+                        <h2 class="product-title">AGI University Major Index</h2>
                         <span class="product-type mono">RESEARCH FLAGSHIP</span>
                     </div>
                     <p class="product-desc">
                       Will Artificial General Intelligence render your degree obsolete? Check your subject's structural durability score instantly.
-
-
                     </p>
                     <div class="product-link">Visit ↗</div>
                 </a>
@@ -325,21 +361,17 @@ Major Index</h2>
                     <div class="product-link">Open Tool ↗</div>
                 </a>
 
-                 <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
+                <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
-                        <h2 class="product-title">Bangladesh University
-AI Adaptation Index</h2>
+                        <h2 class="product-title">Bangladesh University AI Adaptation Index</h2>
                         <span class="product-type mono">Research Tool</span>
                     </div>
                     <p class="product-desc">
                         An objective review of institutional readiness, system blockages, and curriculum durability across 30 major universities in Bangladesh.
-
-
                     </p>
                     <div class="product-link">Visit ↗</div>
                 </a>
                 
-
                 <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="product-header">
                         <h2 class="product-title">Land Price Dhaka</h2>
@@ -383,7 +415,6 @@ AI Adaptation Index</h2>
                     </p>
                     <div class="product-link">Open Index ↗</div>
                 </a>
-            
 
             </div>
         </main>

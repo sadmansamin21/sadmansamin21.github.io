@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Research Methodology & Data Framework — Sadman Samin</title>
+  <meta name="description" content="Central research methodology, data aggregation framework, and AI synthesis logic powering all analytical projects by Sadman Samin.">
+  <meta name="author" content="Sadman Samin">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://sadmansamin21.github.io/methodology.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Strictly Monochromatic / Minimalist Theme */
+    :root {
+      --bg: #050505;
+      --text: #ffffff;
+      --text-muted: #888888;
+      --border: rgba(255, 255, 255, 0.15);
+      --card-bg: #0a0a0a;
+      --hover-bg: rgba(255, 255, 255, 0.05);
+      --nav-bg: rgba(5, 5, 5, 0.9);
+    }
+
+    [data-theme="light"] {
+      --bg: #f7f7f7;
+      --text: #111111;
+      --text-muted: #666666;
+      --border: rgba(0, 0, 0, 0.15);
+      --card-bg: #ffffff;
+      --hover-bg: rgba(0, 0, 0, 0.04);
+      --nav-bg: rgba(247, 247, 247, 0.9);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .mono { font-family: 'Space Mono', monospace; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; }
+
+    /* Navigation */
+    nav {
+      padding: 30px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .logo { font-weight: 700; font-size: 1.2rem; text-decoration: none; color: var(--text); letter-spacing: -0.02em; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .theme-toggle {
+      background: none; border: none; color: var(--text); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0.65; transition: opacity 0.2s; padding: 4px;
+    }
+    .theme-toggle:hover { opacity: 1; }
+
+    /* Layout */
+    .content-wrapper { max-width: 850px; margin: 80px auto; padding: 0 25px; }
+
+    header { margin-bottom: 60px; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.05; font-weight: 700; margin-bottom: 25px; letter-spacing: -0.04em; }
+    .post-meta { color: var(--text-muted); display: flex; gap: 20px; margin-bottom: 15px; flex-wrap: wrap; }
+    .author-line {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 28px; font-size: 0.9rem; color: var(--text-muted);
+    }
+    .author-line a { color: var(--text); text-decoration: none; font-weight: 600; transition: opacity 0.2s; }
+    .author-line a:hover { opacity: 0.6; }
+    .lead { font-size: 1.35rem; font-weight: 300; color: var(--text-muted); margin-bottom: 50px; line-height: 1.5; }
+
+    /* TOC */
+    .toc {
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      padding: 30px 35px;
+      margin-bottom: 80px;
+    }
+    .toc-title { font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 20px; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .toc-list li { display: flex; align-items: baseline; gap: 12px; }
+    .toc-num { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text-muted); min-width: 28px; }
+    .toc-list a { font-size: 0.95rem; color: var(--text); text-decoration: none; opacity: 0.8; transition: opacity 0.2s; }
+    .toc-list a:hover { opacity: 1; }
+
+    /* Body text */
+    .method-content p { font-size: 1.1rem; margin-bottom: 30px; color: var(--text); opacity: 0.85; font-weight: 300; }
+    h2 { font-size: 1.8rem; margin: 80px 0 12px; font-weight: 600; letter-spacing: -0.02em; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 40px 0 15px; letter-spacing: -0.01em; color: var(--text); }
+    strong { color: var(--text); font-weight: 600; }
+
+    /* Section Stripe */
+    .tool-stripe {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tool-stripe h2 { margin: 0; }
+    .tool-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Metric weight grid */
+    .metric-grid { display: flex; flex-direction: column; gap: 0; margin: 35px 0; border: 1px solid var(--border); }
+    .metric-row {
+      display: grid;
+      grid-template-columns: 200px 160px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-row:hover { background: var(--hover-bg); }
+    .metric-name { padding: 18px 20px; font-size: 0.9rem; font-weight: 500; border-right: 1px solid var(--border); }
+    .metric-weight {
+      padding: 18px 20px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 700;
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+    .metric-desc { padding: 18px 20px; font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.5; display: flex; align-items: center; }
+
+    /* Source block */
+    .source-block {
+      border-left: 2px solid var(--text);
+      padding: 20px 25px;
+      margin: 30px 0;
+      background: var(--card-bg);
+    }
+    .source-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 10px; }
+    .source-block p { font-size: 0.95rem; opacity: 0.8; margin-bottom: 0; }
+
+    /* Dimension list */
+    .dim-list { list-style: none; margin: 25px 0; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); }
+    .dim-item { padding: 18px 22px; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start; }
+    .dim-item:last-child { border-bottom: none; }
+    .dim-num { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text-muted); padding-top: 3px; min-width: 30px; }
+    .dim-body strong { display: block; font-size: 0.92rem; margin-bottom: 4px; }
+    .dim-body span { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
+
+    /* Disclaimer block */
+    .disclaimer {
+      border: 1px solid var(--border);
+      background: var(--hover-bg);
+      padding: 30px 35px;
+      margin: 50px 0;
+    }
+    .disclaimer-title { font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text); margin-bottom: 15px; font-weight: 700; }
+    .disclaimer p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 12px; font-weight: 300; }
+    .disclaimer p:last-child { margin-bottom: 0; }
+
+    /* Divider */
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    footer {
+      padding: 80px 5%;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      margin-top: 120px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .metric-row { grid-template-columns: 1fr; }
+      .metric-weight { border-right: none; border-bottom: 1px solid var(--border); padding: 10px 20px; }
+      .metric-name { border-right: none; border-bottom: 1px solid var(--border); }
+      .tool-stripe { flex-direction: column; align-items: flex-start; }
+      .toc { padding: 22px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">SADMAN SAMIN</a>
+    <div class="nav-right">
+      <div class="mono">Research / Methodology</div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+
+    <header>
+      <div class="post-meta mono">
+        <span>Updated 26.06.26</span>
+        <span>·</span>
+        <span>Core Framework</span>
+      </div>
+      <h1>Research Methodology &amp; Data Framework</h1>
+      <div class="author-line">
+        By <a href="/">Sadman Samin</a> &nbsp;·&nbsp; Businessman &amp; Researcher, Dhaka
+      </div>
+      <p class="lead">This document outlines the unified methodology behind all data models, indices, and analytical tools published on this site. It details our approach to data aggregation, AI-assisted synthesis, scoring logic, and validation.</p>
+    </header>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><span class="toc-num">01</span><a href="#philosophy">Research Philosophy &amp; Approach</a></li>
+        <li><span class="toc-num">02</span><a href="#aggregation">Data Aggregation &amp; Sourcing</a></li>
+        <li><span class="toc-num">03</span><a href="#synthesis">AI-Assisted Processing &amp; Synthesis</a></li>
+        <li><span class="toc-num">04</span><a href="#scoring">Scoring logic &amp; Categorization</a></li>
+        <li><span class="toc-num">05</span><a href="#validation">Quality Control &amp; Validation</a></li>
+        <li><span class="toc-num">06</span><a href="#limitations">Limitations &amp; Responsible Use</a></li>
+      </ul>
+    </div>
+
+    <div class="method-content">
+
+      <!-- 01: Philosophy -->
+      <div id="philosophy">
+        <div class="tool-stripe">
+          <h2>01. Research Philosophy &amp; Approach</h2>
+          <div class="tool-badges">
+            <span class="badge">Hybrid Model</span>
+            <span class="badge">Scale + Precision</span>
+          </div>
+        </div>
+
+        <p>All projects on this platform are built upon a hybrid research methodology. We combine the vast processing scale of modern artificial intelligence with strict human editorial oversight. This allows us to map large-scale markets, labor trends, and institutional landscapes at a breadth that manual research alone could not achieve.</p>
+
+        <p>Our foundational belief is that publicly available information—when properly indexed, synthesized, and stripped of noise—contains highly accurate directional signals. Our tools are designed to extract these signals and present them as accessible, structured data frameworks.</p>
+
+        <div class="source-block">
+          <div class="source-label">The Core Objective</div>
+          <p>We do not aim to replace certified institutional appraisals or deeply specialized academic studies. Instead, our goal is to democratize high-level pattern recognition, giving users reliable heuristics and baseline estimates to inform their independent decision-making processes.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 02: Aggregation -->
+      <div id="aggregation">
+        <div class="tool-stripe">
+          <h2>02. Data Aggregation &amp; Sourcing</h2>
+          <div class="tool-badges">
+            <span class="badge">Public Data</span>
+            <span class="badge">Cross-Referencing</span>
+          </div>
+        </div>
+
+        <p>The integrity of any analytical model depends directly on the quality and diversity of its inputs. For every project, we establish a rigid sourcing matrix that prioritizes active, observable market and institutional data over theoretical projections.</p>
+
+        <h3>Primary Data Channels</h3>
+        <ul class="dim-list">
+          <li class="dim-item">
+            <span class="dim-num">C1</span>
+            <div class="dim-body">
+              <strong>Market &amp; Classified Platforms</strong>
+              <span>For economic and real estate models, data is aggregated from major digital classifieds, property listing boards, and active transactional databases. We focus on listing density and median ranges, actively filtering out aspirational outliers.</span>
+            </div>
+          </li>
+          <li class="dim-item">
+            <span class="dim-num">C2</span>
+            <div class="dim-body">
+              <strong>Institutional Publications</strong>
+              <span>For academic, labor, or adaptation indices, we source inputs directly from official institutional documentation, including published curricula, facility reports, syllabus outlines, and faculty distribution records.</span>
+            </div>
+          </li>
+          <li class="dim-item">
+            <span class="dim-num">C3</span>
+            <div class="dim-body">
+              <strong>Academic &amp; Economic Literature</strong>
+              <span>We utilize live web access to cross-reference our baseline findings against published labor economics research, automation impact studies, and macro-economic reports covering the relevant sectors.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 03: Synthesis -->
+      <div id="synthesis">
+        <div class="tool-stripe">
+          <h2>03. AI-Assisted Processing &amp; Synthesis</h2>
+          <div class="tool-badges">
+            <span class="badge">LLM Deployment</span>
+            <span class="badge">Noise Reduction</span>
+          </div>
+        </div>
+
+        <p>Raw aggregated data is inherently messy, unstructured, and filled with contradictory inputs. We deploy Large Language Models (LLMs) specifically for the task of normalization and entity resolution. The AI is not generating information; it is structurally organizing the data we feed it.</p>
+
+        <h3>Processing Workflow</h3>
+        <p>During the synthesis phase, automated systems are tasked with standardizing terminology across fragmented sources, calculating medians from wide ranges, and identifying anomalies. For example, if multiple platforms list varying metrics for a single geographic area or profession, the AI applies weighted averages favoring platforms with historically higher data fidelity.</p>
+
+        <p>Furthermore, LLMs are used to execute complex qualitative evaluations—such as decomposing a university curriculum into core competencies or breaking down a profession into automated vs. manual tasks—based on strict, predefined rubrics designed by our editorial team.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 04: Scoring -->
+      <div id="scoring">
+        <div class="tool-stripe">
+          <h2>04. Scoring Logic &amp; Categorization</h2>
+          <div class="tool-badges">
+            <span class="badge">Standardized Metrics</span>
+          </div>
+        </div>
+
+        <p>To ensure consistency across different tools, we utilize a standardized approach to how we present data. Outputs are generally divided into absolute metrics, categorical classifications, and secondary directional signals.</p>
+
+        <div class="metric-grid">
+          <div class="metric-row">
+            <div class="metric-name">Primary Baseline Metric</div>
+            <div class="metric-weight">Quantitative</div>
+            <div class="metric-desc">The core numerical output of a model (e.g., median price, absolute vulnerability score, risk percentage). Derived from the weighted synthesis of aggregated raw data.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-name">Tier Classification</div>
+            <div class="metric-weight">Categorical</div>
+            <div class="metric-desc">Groups entities into standardized tiers (e.g., Premium, Emerging, High-Risk, Resilient) to allow users to quickly gauge relative standing within a broader distribution.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-name">Friction/Risk Coefficients</div>
+            <div class="metric-weight">Modifier</div>
+            <div class="metric-desc">Variables that account for real-world resistance to a trend. This measures things like regulatory hurdles, physical limitations, or bureaucratic inertia that slow down changes predicted by raw data.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-name">Directional Signals</div>
+            <div class="metric-weight">Trend Signal</div>
+            <div class="metric-desc">Forward-looking indicators (e.g., YoY growth, demand intensity, adoption velocity) based on historical trajectory and current market momentum rather than absolute current values.</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 05: Validation -->
+      <div id="validation">
+        <div class="tool-stripe">
+          <h2>05. Quality Control &amp; Validation</h2>
+          <div class="tool-badges">
+            <span class="badge">Human-in-the-loop</span>
+          </div>
+        </div>
+
+        <p>No model is published purely based on automated output. We employ a strict "human-in-the-loop" validation process. Before any dataset is finalized, random sampling is conducted to manually verify AI-synthesized estimates against primary sources.</p>
+
+        <p>We actively look for algorithmic bias, hallucinated data points, or localized nuances that an AI might misinterpret (such as local colloquialisms in real estate, or region-specific academic structures). If a discrepancy is found, the parsing logic is adjusted, and the dataset is regenerated.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 06: Limitations -->
+      <div id="limitations">
+        <div class="tool-stripe">
+          <h2>06. Limitations &amp; Responsible Use</h2>
+          <div class="tool-badges">
+            <span class="badge">Disclaimer</span>
+          </div>
+        </div>
+
+        <p>Transparency regarding what these tools cannot do is as important as what they can do. All tools published under this methodology share fundamental constraints inherent to large-scale data modeling.</p>
+
+        <div class="disclaimer">
+          <div class="disclaimer-title">Universal Model Limitations</div>
+          <p><strong>Point-in-Time Accuracy:</strong> Markets, technologies, and institutions are fluid. Our models represent a snapshot based on the data available during the specific research window. Datasets will naturally drift from real-time reality until their next scheduled update.</p>
+          <p><strong>Heuristics, Not Directives:</strong> Scores, price estimates, and risk percentages are heuristics designed for macro-level pattern recognition. They do not account for hyper-specific micro-variables (e.g., the specific negotiation of a lease, the unique talent of an individual professional, or hidden internal university politics).</p>
+          <p><strong>Predictive Constraints:</strong> Models forecasting future trends (like automation risk or market trajectory) rely on assumptions about the continued pace of technological or economic development. Black swan events, sudden regulatory bans, or unexpected economic shifts are not captured by structural modeling.</p>
+          <p><strong>Proper Usage:</strong> Data provided on this platform should be utilized as a starting reference point. It is intended to complement—not replace—professional financial advice, certified valuations, primary source verification, and independent domain expertise.</p>
+        </div>
+
+        <p>For specific inquiries regarding data processing, update schedules, or methodology nuances, please contact <a href="https://sadmansamin21.github.io" style="color: var(--text); font-weight: 600;">Sadman Samin</a>.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="mono">© 2026 SADMAN SAMIN — DHAKA, BD</div>
+    <p style="font-size: 0.7rem; margin-top: 10px; letter-spacing: 0.05em;">RESEARCH AT THE INTERSECTION OF BUSINESS &amp; TECH</p>
+  </footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateIcon(next);
+  }
+
+  function updateIcon(theme) {
+    const icon = document.getElementById('themeIcon');
+    if (theme === 'light') {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    } else {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+    }
+  }
+
+  (function() {
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    updateIcon(saved);
+  })();
+</script>
+</body>
+</html>

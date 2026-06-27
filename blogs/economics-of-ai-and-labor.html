@@ -1,36 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Economics of Artificial Intelligence and Labor: A Comprehensive Reference Handbook</title>
-   <link rel="canonical" href="https://sadmansamin21.github.io/blogs/economics-of-ai-and-labor.html" />
+  <link rel="canonical" href="https://sadmansamin21.github.io/blogs/economics-of-ai-and-labor.html" />
+  
+  <!-- Inter & IBM Plex Mono Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    /* Warm Minimalist Light Theme - Inspired by Anthropic "Glasswing" & Claude UI */
+    /* CSS Variables supporting Monochrome Dark (Default) & Light Modes */
     :root {
-      --color-bg: #faf9f5;            
-      --color-surface: #f3f0ea;       /* Deeper warm paper tone for cards & components */
-      --color-surface-soft: #fbf9f5;  /* Soft alternate row background */
-      --color-border: #e6e0d3;        /* Thin warm gray border line */
-      --color-border-active: #b5ac9a; /* Highlighted border color */
-      --color-text-main: #141413;     /* Rich slate-ink black for high reading contrast */
-      --color-text-muted: #5c5750;    /* Muted secondary warm gray text */
-      --color-text-light: #878076;    /* Muted label and decorative color */
-      --color-accent: #b2583f;        /* Refined terracotta / clay accent tone */
-      --color-accent-soft: #f7ebe6;   /* Soft warm clay tint background */
+      /* Dark Theme */
+      --color-bg: #0a0a0a;
+      --color-surface: #121212;
+      --color-surface-soft: #181818;
+      --color-border: #222222;
+      --color-border-active: #404040;
+      --color-text-main: #f5f5f5;
+      --color-text-muted: #a3a3a3;
+      --color-text-light: #666666;
+      --color-accent: #ffffff;
+      --color-accent-soft: #1a1a1a;
       
-      --font-serif: "Newsreader", "Charter", "Georgia", "Times New Roman", serif;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    html[data-theme="light"] {
+      /* Light Theme */
+      --color-bg: #ffffff;
+      --color-surface: #fafafa;
+      --color-surface-soft: #f4f4f4;
+      --color-border: #e5e5e5;
+      --color-border-active: #888888;
+      --color-text-main: #111111;
+      --color-text-muted: #555555;
+      --color-text-light: #999999;
+      --color-accent: #000000;
+      --color-accent-soft: #f5f5f5;
     }
 
     html {
       scroll-behavior: smooth;
       background-color: var(--color-bg);
+      transition: background-color 0.25s ease;
     }
 
     body {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       color: var(--color-text-main);
       line-height: 1.8;
       background-color: var(--color-bg);
@@ -38,166 +59,151 @@
       padding: 0;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.011em;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    /* Container Layout with Book-like spacing */
+    /* Reading Container with Strict 740px Limit */
     .handbook-container {
-      max-width: 820px;
+      max-width: 740px;
       margin: 0 auto;
       padding: 6rem 1.5rem;
     }
 
-    /* Header styling left-aligned to mirror Anthropic Research Monograph headers */
+    /* Header Design: Pure Typographic Alignment */
     header.main-header {
-      border-top: 4px solid var(--color-accent);
-      border-bottom: 1px solid var(--color-text-main);
-      padding: 3rem 0 2.5rem 0;
-      margin-bottom: 5rem;
+      border-bottom: 1px solid var(--color-border);
+      padding: 2rem 0 3rem 0;
+      margin-bottom: 6rem;
       text-align: left;
     }
 
     header.main-header h1 {
-      font-family: var(--font-serif);
-      font-size: 3rem;
-      font-weight: 400;
+      font-size: 2.75rem;
+      font-weight: 800;
       color: var(--color-text-main);
       line-height: 1.15;
-      margin: 0 0 1.25rem 0;
-      letter-spacing: -0.02em;
+      margin: 0 0 1rem 0;
+      letter-spacing: -0.03em;
     }
 
     header.main-header p {
-      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      margin: 0 0 2rem 0;
+      letter-spacing: -0.01em;
+    }
+
+    .author-line {
       font-size: 0.95rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-accent);
-      margin: 0 0 1.5rem 0;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
     }
 
     header.main-header .metadata {
-      font-family: var(--font-sans);
-      color: var(--color-text-muted);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-top: 1px solid var(--color-border);
-      padding-top: 1.5rem;
+      font-family: var(--font-mono);
+      color: var(--color-text-light);
+      font-size: 0.75rem;
       display: flex;
       justify-content: flex-start;
-      gap: 1.5rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
-    /* Beautiful, structured Monograph Index (TOC) */
+    /* Table of Contents - Clean Text Tree Layout */
     nav.toc {
-      background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      padding: 2.5rem;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 3rem 0;
       margin-bottom: 6rem;
-      font-family: var(--font-sans);
     }
 
     nav.toc h2 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      font-weight: 400;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       color: var(--color-text-main);
       margin-top: 0;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--color-border-active);
-      padding-bottom: 0.75rem;
+      margin-bottom: 2rem;
     }
 
     nav.toc ul {
       list-style-type: none;
       padding-left: 0;
       margin: 0;
-      column-count: 1;
-      column-gap: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
     }
 
     @media (min-width: 640px) {
       nav.toc ul {
-        column-count: 2;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem 2rem;
       }
     }
 
     nav.toc li {
-      margin-bottom: 0.75rem;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       line-height: 1.4;
-      break-inside: avoid; /* Prevents items from splitting across columns */
     }
 
     nav.toc a {
-      color: var(--color-text-main);
+      color: var(--color-text-muted);
       text-decoration: none;
-      transition: color 0.15s ease, border-color 0.15s ease;
-      border-bottom: 1px solid transparent;
-      display: inline-block;
+      transition: color 0.1s ease;
     }
 
     nav.toc a:hover {
-      color: var(--color-accent);
-      border-color: var(--color-accent);
+      color: var(--color-text-main);
     }
 
-    /* Content Typography & Structure */
+    /* Content Structure: Clean Vertical Rhythm & Minimal Breaks */
     article.handbook-chapter {
-      margin-bottom: 6rem;
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 5rem;
-    }
-
-    article.handbook-chapter:last-of-type {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
+      margin-bottom: 8rem;
+      padding-bottom: 6rem;
     }
 
     h2.chapter-title {
-      font-family: var(--font-serif);
-      font-size: 2.25rem;
-      font-weight: 400;
+      font-size: 1.85rem;
+      font-weight: 800;
       color: var(--color-text-main);
       margin-top: 0;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3.5rem;
       line-height: 1.2;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.03em;
     }
 
     h3 {
-      font-family: var(--font-serif);
-      font-size: 1.65rem;
-      font-weight: 400;
+      font-size: 1.35rem;
+      font-weight: 700;
       color: var(--color-text-main);
-      margin-top: 3.5rem;
-      margin-bottom: 1.25rem;
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
       line-height: 1.3;
+      letter-spacing: -0.022em;
     }
 
     h4 {
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--color-text-main);
-      margin-top: 2.5rem;
+      margin-top: 3rem;
       margin-bottom: 1rem;
     }
 
     p {
-      margin: 0 0 1.5rem 0;
+      margin: 0 0 1.75rem 0;
       color: var(--color-text-main);
     }
 
     ul, ol {
-      margin: 0 0 1.75rem 0;
-      padding-left: 1.5rem;
+      margin: 0 0 2rem 0;
+      padding-left: 1.25rem;
     }
 
     li {
@@ -205,271 +211,192 @@
       color: var(--color-text-main);
     }
 
-    /* General Links style */
+    /* Typographic Underline Links */
     a {
-      color: var(--color-accent);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s ease;
+      color: var(--color-text-main);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 0.1s ease, text-decoration-color 0.1s ease;
     }
 
     a:hover {
-      border-color: var(--color-accent);
+      color: var(--color-text-muted);
+      text-decoration-color: var(--color-text-light);
     }
 
-    /* Definition Lists (Glossary, FAQ) */
+    /* Minimal Definition lists */
     dl.definitions-list, dl.faq-list {
       margin-top: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
     dl.definitions-list dt, dl.faq-list dt {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 500;
+      font-size: 1.1rem;
+      font-weight: 600;
       color: var(--color-text-main);
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       margin-bottom: 0.5rem;
+      letter-spacing: -0.015em;
     }
 
     dl.definitions-list dd, dl.faq-list dd {
       margin-left: 0;
-      margin-bottom: 1.75rem;
-      padding-left: 1.25rem;
-      border-left: 2px solid var(--color-border);
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--color-border);
       color: var(--color-text-muted);
-      font-size: 1.05rem;
+      font-size: 0.95rem;
     }
 
-    /* High-End Soft Editorial Boxes (Callouts, Misconceptions, etc) */
+    /* Flattened Boxes (Replaces sag, pink, yellow borders with simple structural borders and whitespace) */
     .chapter-takeaways, .misconceptions-box, .limitations-box, .research-questions-box, .case-study-box, .chapter-overview {
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      padding: 1.75rem 2rem;
-      margin: 2.5rem 0;
+      border: none;
+      border-left: 2px solid var(--color-border-active);
+      border-radius: 0;
+      padding: 0 0 0 1.5rem;
+      margin: 4rem 0;
+      background-color: transparent;
     }
 
-    .chapter-takeaways {
-      background-color: #f2f4ef; /* Soft, muted sage green (Cactus) */
-      border-color: #d3dbcb;
-      border-left: 4px solid #60734c;
-    }
-
-    .misconceptions-box {
-      background-color: #f9f2f0; /* Soft muted rose / clay */
-      border-color: #ecd8d5;
-      border-left: 4px solid #cc5a37;
-    }
-
-    .limitations-box {
-      background-color: #faf5ed; /* Soft sand / ochre */
-      border-color: #eedec6;
-      border-left: 4px solid #c18a3e;
-    }
-
-    .research-questions-box {
-      background-color: #edf2f5; /* Soft slate blue-gray */
-      border-color: #dae5ec;
-      border-left: 4px solid #4f7996;
-    }
-
-    .case-study-box {
-      background-color: #f4f0f6; /* Soft lavender / plum */
-      border-color: #e6daeb;
-      border-left: 4px solid #725492;
-    }
-
-    .chapter-overview {
-      background-color: var(--color-surface);
-      border-color: var(--color-border);
-      border-left: 4px solid var(--color-text-muted);
-    }
-
-    /* Box Titles styled cleanly */
     .takeaways-title {
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: #4a5c38;
-      margin: 0 0 1rem 0;
+      color: var(--color-text-main);
+      margin: 0 0 1.25rem 0;
     }
 
-    .misconceptions-box h4 {
-      color: #a04432;
+    .misconceptions-box h4, .limitations-box h4, .research-questions-box h4 {
+      color: var(--color-text-main);
       margin-top: 0;
-      font-size: 0.9rem;
-    }
-
-    .limitations-box h4 {
-      color: #9d7031;
-      margin-top: 0;
-      font-size: 0.9rem;
-    }
-
-    .research-questions-box h4 {
-      color: #3b5c77;
-      margin-top: 0;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .case-study-box h4 {
-      color: #5d427a;
+      color: var(--color-text-main);
       margin-top: 0;
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       text-transform: none;
-      letter-spacing: 0;
-      font-weight: 500;
+      letter-spacing: -0.015em;
+      font-weight: 700;
     }
 
-    /* Lists inside callout boxes */
-    .takeaways-list {
-      margin-bottom: 0;
-      padding-left: 1.25rem;
-    }
-
-    .takeaways-list li {
-      color: #313d25;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .misconceptions-list {
-      list-style-type: none;
-      padding-left: 0;
+    .takeaways-list, .misconceptions-list {
       margin-bottom: 0;
     }
 
-    .misconceptions-list li {
-      margin-bottom: 1.25rem;
-      font-size: 1rem;
-    }
-
-    .misconceptions-list li:last-child {
-      margin-bottom: 0;
+    .takeaways-list li, .misconceptions-list li {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
     }
 
     .correction {
       display: block;
-      margin-top: 0.35rem;
-      font-size: 0.925rem;
-      color: var(--color-text-muted);
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--color-text-light);
       font-style: italic;
     }
 
-    /* Mathematical Equations styled cleanly */
+    /* Equations and Code: Raw, Clean Boxes */
     .equation-box {
       font-family: var(--font-mono);
-      font-size: 0.925rem;
+      font-size: 0.85rem;
       background-color: var(--color-surface);
       border: 1px solid var(--color-border);
-      padding: 1.25rem 1.5rem;
-      border-radius: 4px;
-      margin: 2rem 0;
+      padding: 1.5rem;
+      border-radius: 0;
+      margin: 2.5rem 0;
       overflow-x: auto;
       color: var(--color-text-main);
-      font-weight: normal;
     }
 
-    /* Diagrams */
+    /* Schematic Diagrams */
     .diagram-container {
       background-color: var(--color-surface);
       border: 1px solid var(--color-border);
-      border-radius: 4px;
-      padding: 1.75rem;
-      margin: 2.5rem 0;
+      border-radius: 0;
+      padding: 1.5rem;
+      margin: 3.5rem 0;
       font-family: var(--font-mono);
-      font-size: 0.85rem;
-      line-height: 1.5;
+      font-size: 0.8rem;
+      line-height: 1.4;
       color: var(--color-text-main);
       white-space: pre;
       overflow-x: auto;
     }
 
     .diagram-title {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       color: var(--color-text-main);
     }
 
     .diagram-caption {
-      font-family: var(--font-sans);
-      font-size: 0.8rem;
-      color: var(--color-text-muted);
-      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: var(--color-text-light);
+      margin-top: 1.5rem;
       border-top: 1px solid var(--color-border);
-      padding-top: 0.75rem;
+      padding-top: 1rem;
       white-space: normal;
     }
 
-    /* Academic-grade Clean Tables */
+    /* Elegant Academic Tables without heavy lines or shading */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 3.5rem 0;
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
+      margin: 4.5rem 0;
     }
 
     table.comparison-table {
       width: 100%;
       border-collapse: collapse;
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-align: left;
-      background-color: var(--color-bg);
     }
 
     table.comparison-table caption {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-style: italic;
+      font-size: 0.95rem;
+      font-weight: 600;
       text-align: left;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       color: var(--color-text-main);
-      padding: 0 0.5rem;
     }
 
     table.comparison-table th {
-      background-color: var(--color-surface);
       color: var(--color-text-main);
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      border-bottom: 2px solid var(--color-border-active);
-      padding: 1.25rem 1.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      border-bottom: 2px solid var(--color-text-main);
+      padding: 1rem 0.5rem;
     }
 
     table.comparison-table td {
       border-bottom: 1px solid var(--color-border);
-      padding: 1.25rem 1.5rem;
+      padding: 1.25rem 0.5rem;
       vertical-align: top;
       line-height: 1.6;
       color: var(--color-text-main);
     }
 
-    table.comparison-table tr:last-child td {
-      border-bottom: none;
-    }
-
     table.comparison-table tr:nth-child(even) td {
-      background-color: var(--color-surface-soft);
+      background-color: transparent; /* Flat appearance */
     }
 
-    /* Minimal Elegant Blockquotes */
+    /* Blockquotes */
     blockquote.notable-quote {
       border-left: 2px solid var(--color-accent);
-      padding-left: 1.75rem;
-      margin: 3.5rem 0;
+      padding-left: 1.5rem;
+      margin: 4rem 0;
       font-style: italic;
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       line-height: 1.7;
       color: var(--color-text-main);
     }
@@ -477,16 +404,16 @@
     blockquote.notable-quote cite {
       display: block;
       font-style: normal;
-      font-family: var(--font-sans);
-      font-size: 0.825rem;
-      font-weight: 600;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-top: 1rem;
-      color: var(--color-text-muted);
+      margin-top: 1.25rem;
+      color: var(--color-text-light);
     }
 
-    /* References and Resources */
+    /* Resources & Footnotes */
     ul.references-list, ul.resource-list {
       list-style-type: none;
       padding-left: 0;
@@ -494,57 +421,73 @@
     }
 
     ul.references-list li, ul.resource-list li {
-      margin-bottom: 1.5rem;
-      padding-left: 0;
-      text-indent: 0;
-      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      font-size: 0.875rem;
       line-height: 1.7;
-      color: var(--color-text-main);
+      color: var(--color-text-muted);
     }
 
     /* Target Highlighting */
     :target {
-      scroll-margin-top: 3rem;
-      background-color: #f5edd7;
-      border-radius: 2px;
-      transition: background-color 0.6s ease;
+      scroll-margin-top: 4rem;
+      background-color: var(--color-surface-soft);
     }
 
-    /* Speculative Badge style */
+    /* Speculative Tag style */
     .speculative-marker::after {
       content: " [SPECULATIVE]";
-      color: var(--color-accent);
-      font-size: 0.725rem;
+      color: var(--color-text-light);
+      font-size: 0.65rem;
       font-weight: 600;
-      font-family: var(--font-sans);
+      font-family: var(--font-mono);
       vertical-align: super;
       letter-spacing: 0.05em;
     }
 
-    /* Minimalist Elegant Floating Back to Top button */
+    /* Theme Switcher Button - Subtle Fixed Style */
+    #theme-toggle {
+      position: fixed;
+      top: 2.5rem;
+      right: 2.5rem;
+      background-color: transparent;
+      color: var(--color-text-main);
+      border: 1px solid var(--color-border);
+      padding: 0.5rem 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      z-index: 1001;
+      transition: all 0.15s ease;
+    }
+
+    #theme-toggle:hover {
+      border-color: var(--color-text-main);
+    }
+
+    /* Back to Top - Understated Design */
     #back-to-top {
       position: fixed;
       bottom: 2.5rem;
       right: 2.5rem;
       background-color: var(--color-bg);
       color: var(--color-text-main);
-      border: 1px solid var(--color-text-main);
-      padding: 0.75rem 1rem;
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
+      border: 1px solid var(--color-border);
+      padding: 0.5rem 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      font-weight: 500;
       cursor: pointer;
       z-index: 1000;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease-in-out, background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+      transition: opacity 0.2s ease, border-color 0.15s ease;
     }
 
     #back-to-top:hover {
-      background-color: var(--color-text-main);
-      color: var(--color-bg);
+      border-color: var(--color-text-main);
     }
 
     @media (max-width: 768px) {
@@ -552,18 +495,23 @@
         font-size: 2.25rem;
       }
       .handbook-container {
-        padding: 3rem 1.25rem;
+        padding: 4rem 1.25rem;
+      }
+      #theme-toggle {
+        top: 1.5rem;
+        right: 1.25rem;
       }
       #back-to-top {
         bottom: 1.5rem;
-        right: 1.5rem;
-        padding: 0.5rem 0.75rem;
-        font-size: 0.7rem;
+        right: 1.25rem;
       }
     }
   </style>
 </head>
 <body>
+
+<!-- Theme Switcher -->
+<button id="theme-toggle" aria-label="Toggle Theme">Light Mode</button>
 
 <div class="handbook-container">
   <!-- Master Header -->
@@ -652,8 +600,8 @@
       <h2 class="chapter-title">Chapter 1: Introduction</h2>
       <p>Understanding AI as an Economic Force, the Task-Based Paradigm of Labor, and the Boundaries of Modern Automation Research</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-1">
-        <h3 id="takeaways-title-1" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>General Purpose Technology:</strong> Generative AI exhibits the classical features of a General Purpose Technology (GPT)—rapid cost deflation, pervasive applicability across diverse sectors, and strong spillovers that catalyze downstream innovation.</li>
           <li><strong>Cognitive Automation Shift:</strong> Unlike previous waves of automation that substituted physical or routine manual labor, current AI technologies expose highly educated, high-wage cognitive occupations to direct task substitution and augmentation.</li>
@@ -809,8 +757,8 @@
       <h2 class="chapter-title">Chapter 2: History of Automation and Technological Transitions</h2>
       <p>Mapping the Path of Capital-Labor Substitution from the Mechanical Loom to pre-Modern Neural Networks</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-2">
-        <h3 id="takeaways-title-2" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Mechanical Substitution:</strong> The First Industrial Revolution established the economic template for automation, demonstrating that machinery can substitute for skilled manual craft labor while expanding the relative demand for capital owners and factory organizers.</li>
           <li><strong>The Temporal Wage Lag:</strong> Historical technological transitions, such as "Engel's Pause," prove that aggregate productivity and real wages can diverge for decades before institutional adjustments and labor mobilization re-align them.</li>
@@ -843,7 +791,7 @@
         This mechanical flexibility altered the occupational mix. While assembly lines routinized physical assembly, factory electrification required technicians and engineers capable of diagnostic system monitoring, machine maintenance, and workflow optimization. Concurrently, the rise of massive corporate enterprises created an unprecedented demand for administrative, managerial, and white-collar personnel.
       </p>
       <p>
-        In their classic historical analysis, Goldin and Katz (2008) characterize this era as a "race between education and technology." The rapid deployment of electricity and corporate administration drove up the "skill premium" (the wage gap between educated and uneducated workers). The United States mitigated this rising inequality by dramatically expanding publicly funded secondary education (the "high school movement"), which rapidly increased the supply of high-school-educated workers to meet corporate administrative demand.
+        In their classic historical analysis, Goldin and Katz (2008) categorize this era as a "race between education and technology." The rapid deployment of electricity and corporate administration drove up the "skill premium" (the wage gap between educated and uneducated workers). The United States mitigated this rising inequality by dramatically expanding publicly funded secondary education (the "high school movement"), which rapidly increased the supply of high-school-educated workers to meet corporate administrative demand.
       </p>
 
       <h3>2.4. The Computing Age and the Routine-Biased Era (1970–2010s)</h3>
@@ -914,8 +862,8 @@
       <h2 class="chapter-title">Chapter 3: Economic Theory of AI and Labor</h2>
       <p>Formal Economic Models, Mathematical Intuitions, and the Structural Frameworks of Capital-Labor Substitution</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-3">
-        <h3 id="takeaways-title-3" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>The Task vs. Job Distinction:</strong> Rather than modeling labor as a single homogeneous input, modern theory treats production as a series of distinct tasks. Capital can substitute for human labor in specific tasks (the displacement effect) while augmenting labor in others (the complementarity effect), or creating entirely new tasks (the reinstatement effect).</li>
           <li><strong>Skill Bias Inversion:</strong> Classic Skill-Biased Technological Change (SBTC) posits that technology complements highly educated, high-wage workers. In contrast, Generative AI exhibits features of "skill compression," where the relative productivity gains are highest for low-skill or novice workers, potentially narrowing intra-occupational inequality.</li>
@@ -1092,8 +1040,8 @@
       <h2 class="chapter-title">Chapter 4: Current Empirical Evidence and Literature Synthesis</h2>
       <p>Evaluating Micro-Level Productivity Gains, Job Churn, and the Restructuring of Early-Career Labor Demand</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-4">
-        <h3 id="takeaways-title-4" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Consistent Skill Compression:</strong> Across multiple independent RCTs (e.g., Noy &amp; Zhang, 2023; Brynjolfsson et al., 2025), generative AI consistently acts as an equalizer within occupations, providing large performance boosts to low-performing or junior workers while showing modest effects on high-performing experts.</li>
           <li><strong>No Mass Aggregate Unemployment (Yet):</strong> Administrative records (e.g., in Denmark) and broad household surveys (e.g., U.S. Current Population Survey) do not show a rise in aggregate unemployment driven by AI. The displacement effect is balanced by productivity-driven demand expansion and internal organizational adjustments.</li>
@@ -1225,8 +1173,8 @@
       <h2 class="chapter-title">Chapter 5: Sectoral and Industry Analysis</h2>
       <p>An In-Depth Mapping of AI Integration, Task Exposure, and Structural Adjustments across 15 Global Industries</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-5">
-        <h3 id="takeaways-title-5" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Deep Sectoral Divergence:</strong> Industry response to AI is highly uneven, determined by the ratio of cognitive to physical tasks and local regulatory boundaries.</li>
           <li><strong>Baumol’s Cost Disease Real-World Progression:</strong> As modeled under Baumol's Cost Disease in Chapter 3.5, healthcare and education are experiencing rapid administrative cost deflation from AI, yet real-world delivery costs continue to rise due to regulatory and human-relationship bottlenecks.</li>
@@ -1321,7 +1269,7 @@
         <li><strong>Tasks Automating:</strong> Basic industry landscaping, data cleaning and visualization formatting, and presentation slide copy creation.</li>
         <li><strong>Tasks Augmenting:</strong> Complex competitive scenario planning, strategic synthesis of proprietary qualitative client interview notes, and organizational design modeling.</li>
         <li><strong>Productivity &amp; Employment Effects:</strong> Studies show consultants with AI access complete 12.2% more tasks, 25.1% faster, with a 40% improvement in graded output quality (Dell'Acqua et al., 2023). However, this has compressed the demand for junior consultants who traditionally performed raw data aggregation, slowing early-career recruitment.</li>
-        <li><strong>Risks:</strong> Homogenization of strategic advice (multiple firms generating similar recommendations from the same underlying LLMs), client confidentiality breaches, and over-reliance leading to a decline in critical strategic judgment.</li>
+        <li><strong>Risks:</strong> Homogenization of strategic advice (multiple firms generating similar recommendations from the same underlying LLs), client confidentiality breaches, and over-reliance leading to a decline in critical strategic judgment.</li>
         <li><strong>Real-World Example:</strong> Boston Consulting Group (BCG) and McKinsey &amp; Company partnering with Anthropic and OpenAI to deploy customized, enterprise-grade AI assistants that index decades of internal intellectual property.</li>
       </ul>
 
@@ -1365,7 +1313,7 @@
         <li><strong>Real-World Example:</strong> Buildots utilizing hardhat-mounted 3D cameras and computer vision models to automatically track physical construction progress against architectural blueprints, flagging structural errors before they are covered by drywall.</li>
       </ul>
 
-      <h3>5.14. Retail and E-commerce</h3>
+      <h3>5.15. Retail and E-commerce</h3>
       <p><strong>Current AI Adoption:</strong> High (deeply embedded in inventory planning, recommendation engines, and customer support channels).</p>
       <ul>
         <li><strong>Tasks Automating:</strong> Routine customer support inquiries (handling over 80% of routine refunds, order status, and FAQs), inventory restocking models, and daily catalog image generation.</li>
@@ -1514,13 +1462,13 @@
       <h2 class="chapter-title">Chapter 6: Occupation Analysis and Task Decomposition</h2>
       <p>Beyond the "Job" Paradigm: Measuring Technological Exposure, Task Reallocation, and the Emergence of the System Orchestrator</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-6">
-        <h3 id="takeaways-title-6" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>The Task is the Unit of Analysis:</strong> Evaluating automation at the occupational level leads to overestimating job losses. The task-based paradigm reveals that high-exposure occupations are primarily restructured, not eliminated.</li>
           <li><strong>High-Exposure/High-Wage Alignment:</strong> Modern AI exposure indices (AIOE and LLM exposure rubrics) confirm that higher-wage, college-educated white-collar occupations face the highest direct task exposure. This represents a complete inversion of historical automation waves.</li>
           <li><strong>The Augmentation Boundary:</strong> Occupations that require high social intelligence, physical embodiment, non-routine manual dexterity, or high-stakes ethical accountability are insulated from direct substitution.</li>
-          <li><strong>Evolution of the System Orchestrator:</strong> As AI reduces the cost of raw content and analytical drafting, human comparative advantage shifts toward curation, validation, strategic integration, and ethical gatekeeping.</li>
+          <li><strong>Eventual Evolution of the System Orchestrator:</strong> As AI reduces the cost of raw content and analytical drafting, human comparative advantage shifts toward curation, validation, strategic integration, and ethical gatekeeping.</li>
         </ul>
       </div>
 
@@ -1720,8 +1668,8 @@
       <h2 class="chapter-title">Chapter 7: Productivity Dynamics</h2>
       <p>Analyzing Total Factor Productivity, the J-Curve, Measurement Anomalies, and the Micro-to-Macro Aggregation Gap</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-7">
-        <h3 id="takeaways-title-7" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>The Solow Paradox 2.0:</strong> The lag between widespread AI adoption and aggregate TFP growth is not evidence of technological failure. It reflects the typical diffusion timeline of a General Purpose Technology, matching historical lags observed during electrification and early computerization.</li>
           <li><strong>The Productivity J-Curve:</strong> Measured productivity is initially underestimated because firms divert labor and capital to build unmeasured *intangible capital* (e.g., custom databases, fine-tuned models, redesigned workflows). True productivity gains only materialize once these intangible assets begin to generate measurable market output.</li>
@@ -1853,8 +1801,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 8: Wages, Labor Share, and Economic Inequality</h2>
       <p>Evaluating the Capital-Labor Income Divide, Skill Compression, and the Structural Polarization of the Cognitive Workforce</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-8">
-        <h3 id="takeaways-title-8" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Double-Sided Inequality Shift:</strong> AI acts as an *equalizer* within specific occupations by compressing skill-based performance gaps, but acts as a *polarizer* across the broader economy by widening the wage gap between high-expertise and routine cognitive occupations.</li>
           <li><strong>The Return-to-Capital Premium:</strong> High-income individuals are structurally insulated from AI shocks. Because they hold a disproportionately large share of their wealth in corporate equities, they stand to benefit the most from AI-driven increases in capital returns, even if their labor tasks are highly exposed (IMF, 2025).</li>
@@ -1909,7 +1857,7 @@ Growth Rate
       <ul>
         <li><strong>The Age Gradient:</strong> Because entry-level administrative and coding positions are highly substitutable, young workers (ages 20–25) are experiencing slower wage growth and higher frictional unemployment relative to older, established professionals who possess valuable tacit social and institutional knowledge. This is characterized by the nearly 20% decline in employment for software developers ages 22 to 25 from 2024 to 2026 (Stanford HAI, 2026) [1].</li>
         <li><strong>The Geographic Concentrated Premium:</strong> Wage growth in the AI era is highly concentrated in metropolitan tech hubs (such as San Francisco, Seattle, London, and Munich) that house the specialized human capital, compute infrastructure, and venture networks driving AI development. Rural and deindustrialized regions, which lack these digital clusters, are largely excluded from the wage dividends.</li>
-        <li><strong>Gender Dynamics:</strong> OECD tracking (Lane, 2024; OECD, 2025) indicates that women are disproportionately employed in non-routine cognitive administrative roles (such as human resources, customer relations, and legal assistants) that face high direct task exposure. While this exposure can lead to augmentation, it also increases the risk of career disruption.</li>
+        <li><strong>Gender Dynamics:</strong> OECD tracking (Lane, 2024; OECD, 2025) indicates that women are disproportionately employed in non-routine cognitive administrative roles (such as human resources, legal assistants, and administrative support) that face high direct task exposure. While this exposure can lead to augmentation, it also increases the risk of career disruption.</li>
       </ul>
 
       <h3>8.5. Synthesis Matrix of Distributional Channels</h3>
@@ -1965,8 +1913,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 9: AI and Developing Economies</h2>
       <p>Evaluating Premature De-professionalization, the Erosion of Labor Arbitrage, and the Strategic Realities of the Global Compute Divide</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-9">
-        <h3 id="takeaways-title-9" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>The White-Collar Bypass:</strong> Just as robotization caused "premature deindustrialization" in manufacturing, generative AI is driving "premature de-professionalization" in services. This process caps the share of high-quality white-collar jobs in developing nations before they can transition to high-income status.</li>
           <li><strong>Erosion of Offshore BPO:</strong> The classic "heads in seats" labor arbitrage model is giving way to "intelligence arbitrage." While voice-centric call centers in the Philippines and IT operations in India are adjusting by upskilling workers to manage "AI exceptions," analysts project that up to 1 million offshore BPO and IT outsourcing jobs could be impacted by 2030 (CNA Insider, 2026).</li>
@@ -2115,8 +2063,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 10: Bangladesh Case Study</h2>
       <p>Evaluating National AI Readiness, RMG Automation, the Digital Freelancing Squeeze, and the Policy Landscape of a Transitioning Frontier Economy</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-10">
-        <h3 id="takeaways-title-10" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Double Exposure Profile:</strong> Bangladesh’s economy serves as an empirical test of the **Premature De-professionalization and labor arbitrage erosion** framework (Chapter 9.1). It faces a dual threat: direct automation within its domestic export manufacturing (RMG), and offshore task substitution of its digital service exports (freelancing and BPO).</li>
           <li><strong>The RMG Productivity Bottleneck:</strong> While China’s hourly garment manufacturing productivity is estimated at $11.10, Bangladesh remains at $3.40. Adopting automated pattern-cutting, 3D sampling, and computer-vision quality sorting is necessary to maintain global competitiveness, but risks displacing millions of low-skilled female garment workers.</li>
@@ -2276,8 +2224,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 11: Management and Organizational Science Implications</h2>
       <p>Reconfiguring Corporate Architecture, Algorithmic Management, and the Preservation of Human Capital in the Autonomous Firm</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-11">
-        <h3 id="takeaways-title-11" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Corporate Structural Reshaping:</strong> The traditional organizational pyramid is transitioning. Consulting and management literature (KPMG, Deloitte, 2026) debate whether firms will settle into an *hourglass* shape (hollowed middle coordination tiers) or a *diamond* shape (expanded middle tiers of specialists managing autonomous AI agents).</li>
           <li><strong>Mainstream Algorithmic Management:</strong> Algorithmic management—where software agents assign tasks, monitor pacing, and score outputs—has transitioned from low-wage gig platforms to mainstream knowledge-work settings. Exposure is projected to rise from 42.3% to 55.5% in the medium term, raising fresh concerns about employee wellbeing and creative erosion (EPRS, 2025).</li>
@@ -2364,8 +2312,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 12: Future Macroeconomic Scenarios</h2>
       <p>Modeling Strategic Trajectories, Labor Dynamics, and Structural Shifts under Varying Tech Diffusion Velocities</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-12">
-        <h3 id="takeaways-title-12" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Highly Divergent Pathways:</strong> Small changes in corporate adoption speeds and the rate of human task reinstatement can lead to vastly different macroeconomic outcomes, ranging from widely shared prosperity to severe labor polarization.</li>
           <li><strong>The Critical Role of Policy:</strong> In all scenarios, the path of inequality and worker welfare is determined by institutional responses (such as portable benefits, fiscal tax shifting, and educational curriculum modernization) rather than the technological shock itself.</li>
@@ -2483,8 +2431,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 13: Policy Recommendations and Governance Frameworks</h2>
       <p>Designing Active Labor Market Policies, Fiscal Realignments, Educational Overhauls, and Global Compute Governance for the AI Era</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-13">
-        <h3 id="takeaways-title-13" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Protect the Worker, Not the Job:</strong> Policies should focus on supporting workers during transitions through robust Active Labor Market Policies (ALMPs) and portable safety nets, rather than implementing protectionist barriers that block automation and stifle total factor productivity.</li>
           <li><strong>Address Asymmetric Factor Taxation:</strong> Modern tax systems distort corporate investment decisions by taxing labor far more heavily than capital. Rebalancing these tax rates—rather than implementing crude "robot taxes"—is necessary to encourage pro-worker, collaborative technology adoption.</li>
@@ -2607,8 +2555,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 14: Frequently Asked Questions</h2>
       <p>An Evidence-Based Reference of 50 Critical Questions on AI, Labor Markets, and Macroeconomic Transformations</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-14">
-        <h3 id="takeaways-title-14" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Rigorous Synthesis:</strong> Answers are formulated using established economic frameworks (such as the task-based model and J-curve dynamics), ensuring consistency with peer-reviewed research.</li>
           <li><strong>Observational Priority:</strong> Throughout this FAQ, observable micro-level findings (e.g., randomized controlled trials demonstrating skill compression) are clearly distinguished from long-term, speculative macro projections.</li>
@@ -2757,7 +2705,7 @@ Growth Rate
         <dd>An alternative fiscal policy that corrects asymmetric tax codes that artificially favor capital over labor. This is achieved by lowering payroll levies on workers and broadening the tax base toward corporate profits and capital gains.</dd>
 
         <dt>Q43: How can Active Labor Market Policies (ALMPs) mitigate transition friction?</dt>
-        <dd>By funding personalized career counseling, rapid retraining initiatives, and relocation grants the moment layoffs are announced, rather than waiting for workers to enter passive unemployment.</dd>
+        <dd>By funding personalized career counseling, rapid retraining initiatives, and wage-subsidized transitions the moment layoffs are announced, rather than waiting for workers to enter passive unemployment.</dd>
 
         <dt>Q44: What is wage insurance, and how does it work?</dt>
         <dd>Wage insurance is a temporary state subsidy that pays a displaced worker a portion of the salary difference if they accept a lower-paying role in a new sector, encouraging rapid workforce re-entry.</dd>
@@ -2834,8 +2782,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 15: Glossary of Terms</h2>
       <p>An Authoritative Lexicon of Economic, Computational, and Policy Indicators in the Era of Cognitive Automation</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-15">
-        <h3 id="takeaways-title-15" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Terminological Rigor:</strong> Definitions are explicitly linked to foundational economic models (e.g., Acemoglu-Restrepo, Autor-Levy-Murnane) and computer science benchmarks to prevent conceptual dilution.</li>
           <li><strong>Measurement-Linked Definitions:</strong> Key indicators (such as exposure scores and factor shares) are defined alongside their empirical measurement methodologies, distinguishing observable indicators from theoretical abstractions.</li>
@@ -2986,8 +2934,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 16: Timeline of Automation and Artificial Intelligence</h2>
       <p>A Chronological Reconstruction of Technological Milestones, Economic Transitions, and Labor Market Shocks from 1764 to 2026</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-16">
-        <h3 id="takeaways-title-16" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Automated Tasks Evolution:</strong> The timeline reveals a clear trajectory in the targets of automation: shifting from physical strength and dexterity (18th–19th centuries) to routine codifiable logic (late 20th century), and finally to non-routine cognitive and semantic synthesis (2020s).</li>
           <li><strong>The Persistence of Lags:</strong> Across all major waves, the time required to build complementary organizational capital, clean input pipelines, and update national labor skills has historically created productivity and wage-adjustment lags spanning decades.</li>
@@ -3167,8 +3115,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 17: Categorized Reading and Resource List</h2>
       <p>An Annotated Curated Directory of Foundational Literature, Empirical Datasets, Institutional Policy Papers, and Analytical Trackers</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-17">
-        <h3 id="takeaways-title-17" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Interdisciplinary Curation:</strong> The directory bridges labor economics, history, management science, and technological forecasting to offer a comprehensive, multi-dimensional view of automation dynamics.</li>
           <li><strong>Data-First Priority:</strong> Special emphasis is placed on highlighting and describing open-access empirical datasets (e.g., O*NET, AIOE) that researchers can utilize directly to conduct original quantitative task-exposure modeling.</li>
@@ -3255,8 +3203,8 @@ Growth Rate
       <h2 class="chapter-title">Chapter 18: Comprehensive References</h2>
       <p>An Authoritative, Unified Reference Database and Bibliometric Assessment of AI and Labor Economics Literature</p>
       
-      <div class="chapter-takeaways" aria-labelledby="takeaways-title-18">
-        <h3 id="takeaways-title-18" class="takeaways-title">Key Takeaways</h3>
+      <div class="chapter-takeaways">
+        <h3 class="takeaways-title">Key Takeaways</h3>
         <ul class="takeaways-list">
           <li><strong>Bibliometric Hierarchy:</strong> The reference database implements a strict hierarchy of evidence, prioritizing peer-reviewed econometric literature and randomized controlled trials (RCTs) over unvetted preprints and corporate market surveys.</li>
           <li><strong>Preprint vs. Peer-Review Latency:</strong> A key tension in AI economics is the publishing lag. Peer-reviewed journals require 12 to 36 months to publish, whereas the technological frontier moves in months. Working paper series (e.g., NBER, SSRN) act as the primary bridge.</li>
@@ -3365,6 +3313,7 @@ Growth Rate
         <li>World Bank. (2025). <em>Digital Progress and Trends Report 2025: Strengthening AI Foundations in Emerging Markets</em>. World Bank Group. <a href="https://www.worldbank.org" target="_blank">https://www.worldbank.org</a></li>
 
         <li>The Budget Lab at Yale. (2026). Tracking the Impact of AI on the Labor Market. <em>Yale University Budget Lab Policy Brief</em>. <a href="https://budgetlab.yale.edu" target="_blank">budgetlab.yale.edu</a> [2]</li>
+      </tbody>
       </ul>
     </section>
     
@@ -3372,9 +3321,25 @@ Growth Rate
 </div>
 
 <!-- Back to top floating button element -->
-<button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">↑ Back to Top</button>
+<button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">↑ Top</button>
 
 <script>
+  // Theme Toggle Script
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    if (currentTheme === 'light') {
+      htmlElement.setAttribute('data-theme', 'dark');
+      themeToggleBtn.textContent = 'Light Mode';
+    } else {
+      htmlElement.setAttribute('data-theme', 'light');
+      themeToggleBtn.textContent = 'Dark Mode';
+    }
+  });
+
+  // Back to Top Script
   const backToTopBtn = document.getElementById('back-to-top');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 400) {

@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sadman Samin | 3D Garden Pavilion Archive</title>
+    <meta name="title" content="Sadman Samin | 3D Garden Pavilion Archive">
+    <meta name="description" content="An interactive, open-air 3D virtual exhibition hall housing the strategic and technical essays of Sadman Samin.">
+    <meta name="keywords" content="Sadman Samin, Pricing Frameworks, Fractional Management, Corporate Strategy, Technology Essays, AI Workflow, 3D WebGL">
+    <meta name="author" content="Sadman Samin">
+    
+    <link rel="canonical" href="https://sadmansamin21.github.io/blogs/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #faf8f5;
+            --text-primary: #1c1a17;
+            --text-secondary: #706a61;
+            --border-color: #e8e4dc;
+            --accent: #8c7853;
+            --glass-bg: rgba(250, 248, 245, 0.85);
+        }
+
+        :root[data-theme="dark"] {
+            --bg-color: #0d0c0b;
+            --text-primary: #f2ede4;
+            --text-secondary: #9c9485;
+            --border-color: #24221f;
+            --accent: #bfa37a;
+            --glass-bg: rgba(13, 12, 11, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        #canvas-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Overlay Navigation */
+        nav.nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 3rem;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .nav-logo, .nav-right {
+            pointer-events: auto;
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+        }
+
+        /* Crosshair */
+        #reticle {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--text-primary);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 5;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        #reticle.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0.8;
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Overlay Exhibit Plaque HUD */
+        #exhibit-plaque-hud {
+            position: fixed;
+            right: -450px;
+            top: 15%;
+            width: 380px;
+            max-height: 70%;
+            background: var(--glass-bg);
+            border-left: 4px solid var(--accent);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            z-index: 8;
+            transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #exhibit-plaque-hud.visible {
+            right: 3rem;
+        }
+
+        .hud-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hud-title {
+            font-size: 1.35rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hud-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .hud-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.85rem;
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            font-weight: 500;
+            border-radius: 4px;
+            transition: opacity 0.2s ease;
+        }
+
+        .hud-action-btn:hover {
+            opacity: 0.9;
+        }
+
+        .hud-hint {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
+        /* Onboarding Screen */
+        #onboarding {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #onboarding.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .ticket-wrapper {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            background-color: var(--bg-color);
+            text-align: center;
+            position: relative;
+        }
+
+        .ticket-badge {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .ticket-title {
+            font-size: 2.25rem;
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .ticket-statement {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .controls-legend {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .key-cap {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            border-bottom: 2px solid var(--text-secondary);
+        }
+
+        .control-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .enter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--text-primary);
+            color: var(--bg-color);
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .enter-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Mobile adaptation */
+        @media (max-width: 768px) {
+            .ticket-wrapper { padding: 1.5rem; }
+            .ticket-title { font-size: 1.75rem; }
+            #exhibit-plaque-hud {
+                width: calc(100% - 2rem);
+                right: -100%;
+                left: 1rem;
+                bottom: 1rem;
+                top: auto;
+                max-height: 45%;
+            }
+            #exhibit-plaque-hud.visible {
+                right: 1rem;
+            }
+            .controls-legend {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Onboarding Entrance Portal -->
+    <div id="onboarding">
+        <div class="ticket-wrapper">
+            <span class="ticket-badge mono">Interactive Atrium</span>
+            <h1 class="ticket-title">Sadman Samin<br>Garden Pavilion</h1>
+            <p class="ticket-statement">
+                Step inside an open-air pavilion surrounded by natural scenery and architectural installations. Walk freely to examine strategic frameworks, technical blueprints, and active systems.
+            </p>
+            
+            <div class="controls-legend">
+                <div class="control-item">
+                    <span class="key-cap mono">W A S D</span>
+                    <span class="control-label">Walk / Move</span>
+                </div>
+                <div class="control-item">
+                    <span class="key-cap mono">MOUSE</span>
+                    <span class="control-label">Look Around</span>
+                </div>
+                <div class="control-item">
+                    <span class="key-cap mono">ENTER</span>
+                    <span class="control-label">Open Publication</span>
+                </div>
+                <div class="control-item">
+                    <span class="key-cap mono">ESC</span>
+                    <span class="control-label">Unlock Mouse</span>
+                </div>
+            </div>
+
+            <button id="enter-btn" class="enter-btn mono">Enter Pavilion →</button>
+        </div>
+    </div>
+
+    <!-- HUD Overlay -->
+    <nav class="nav-overlay">
+        <div class="nav-logo mono"><a href="https://sadmansamin21.github.io">SADMAN SAMIN.</a></div>
+        <div class="nav-right">
+            <button id="theme-toggle" class="theme-toggle mono" aria-label="Toggle Atmosphere">
+                <span id="theme-icon">◑</span> Night Mode
+            </button>
+            <a href="https://sadmansamin21.github.io/blogs/" class="mono">← Return to 2D</a>
+        </div>
+    </nav>
+
+    <!-- Aiming pointer -->
+    <div id="reticle"></div>
+
+    <!-- Interactive Plaque Overlay -->
+    <div id="exhibit-plaque-hud">
+        <div>
+            <div class="hud-meta">
+                <span id="hud-num" class="mono">EXHIBIT 101</span>
+                <span id="hud-category" class="mono">ESSAY</span>
+            </div>
+            <h2 id="hud-title" class="hud-title">The Economics of Artificial Intelligence and Labor</h2>
+            <p id="hud-desc" class="hud-desc">
+                A comprehensive, multi-disciplinary reference handbook on how AI reshapes labor markets...
+            </p>
+        </div>
+        <div>
+            <a id="hud-link" href="#" target="_blank" class="hud-action-btn mono">
+                Read Publication ↗
+            </a>
+            <p class="hud-hint mono">[ Click screen or press ENTER to read ]</p>
+        </div>
+    </div>
+
+    <!-- Three.js Container -->
+    <div id="canvas-container"></div>
+
+    <script>
+        // Curated Blog Exhibits with coordinates inside our 3D space
+        const exhibitsData = [
+            {
+                id: 1,
+                title: "The Economics of Artificial Intelligence and Labor",
+                category: "Essay",
+                url: "https://sadmansamin21.github.io/blogs/economics-of-ai-and-labor.html",
+                desc: "A comprehensive, multi-disciplinary reference handbook on how AI reshapes labor markets by automating routine cognitive work and shifting value toward higher-level human judgment and oversight.",
+                pos: { x: 0, y: 3.5, z: -34.8 },
+                rot: { x: 0, y: 0, z: 0 }, // Back Wall centerpiece
+                exhibitNum: "101"
+            },
+            {
+                id: 2,
+                title: "You Have $20 a Month. Which Business Subscription Do You Actually Buy?",
+                category: "Entrepreneurship",
+                url: "https://sadmansamin21.github.io/blogs/twenty-dollar-founder-subscription.html",
+                desc: "A framework for pre-revenue founders on exactly which single subscription earns its keep — and why most founders either spend too little or spread too thin before they have revenue to show for it.",
+                pos: { x: -14.8, y: 3.5, z: -18 },
+                rot: { x: 0, y: Math.PI / 2, z: 0 }, // Left Wall Window side
+                exhibitNum: "102"
+            },
+            {
+                id: 3,
+                title: "You Have 15 AI Subscriptions. Here's How to Build One Workflow That Works.",
+                category: "Technology",
+                url: "https://sadmansamin21.github.io/blogs/ai-workflow-overload-fix.html",
+                desc: "A framework for cutting through AI tool overload — auditing what you actually use, mapping tools to the right layer of your workflow, and building the habits that make it stick.",
+                pos: { x: -14.8, y: 3.5, z: -2 },
+                rot: { x: 0, y: Math.PI / 2, z: 0 },
+                exhibitNum: "103"
+            },
+            {
+                id: 4,
+                title: "Pricing Your First Client",
+                category: "Strategy",
+                url: "https://sadmansamin21.github.io/blogs/pricing-your-first-client.html",
+                desc: "A pragmatic framework for identifying market value, mitigating initial transactional risks, and establishing confidence during your first client engagements.",
+                pos: { x: -14.8, y: 3.5, z: 14 },
+                rot: { x: 0, y: Math.PI / 2, z: 0 },
+                exhibitNum: "104"
+            },
+            {
+                id: 5,
+                title: "The $13 Billion Blueprint: Inside the FIFA World Cup 2026 Business Model",
+                category: "Corporate Strategy",
+                url: "https://sadmansamin21.github.io/blogs/fifa-world-cup-2026-business-model.html",
+                desc: "An analytical deep dive into the corporate strategy, tax structures, host agreements, and commercial architecture driving the record-breaking 2026 FIFA World Cup cycle.",
+                pos: { x: 14.8, y: 3.5, z: -18 },
+                rot: { x: 0, y: -Math.PI / 2, z: 0 }, // Right Wall
+                exhibitNum: "105"
+            },
+            {
+                id: 6,
+                title: "Fractional Management in the AI Era",
+                category: "Management",
+                url: "https://sadmansamin21.github.io/blogs/fractional-management-ai-era.html",
+                desc: "Analyzing how modern, high-leverage automated tools are shifting executive workflows and paving the way for decentralized leadership models.",
+                pos: { x: 14.8, y: 3.5, z: -2 },
+                rot: { x: 0, y: -Math.PI / 2, z: 0 },
+                exhibitNum: "106"
+            },
+            {
+                id: 7,
+                title: "The SMB Guide to Leaving HubSpot: Migrating to Odoo",
+                category: "Cost Management",
+                url: "https://sadmansamin21.github.io/blogs/migrating-hubspot-to-odoo.html",
+                desc: "A technical blueprint and operational roadmap for migrating your CRM database from HubSpot to Odoo. This guide covers how to escape scaling tier costs, map complex entity schemas, and execute transition pathways.",
+                pos: { x: 14.8, y: 3.5, z: 14 },
+                rot: { x: 0, y: -Math.PI / 2, z: 0 },
+                exhibitNum: "107"
+            }
+        ];
+
+        // ThreeJS Engine Handles
+        let scene, camera, renderer;
+        let ambientLight, spotlights = [];
+        let wallMaterial, floorMaterial, ceilingBeamMaterial, baseboardMaterial, benchMaterial, frameMaterial;
+        let forestWindowBackdrop; // Plane outside showing the natural world
+        let artFrames = [];
+
+        // Interaction Variables
+        const keys = { w: false, a: false, s: false, d: false, ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
+        let yaw = 0, pitch = 0;
+        let isPointerLocked = false;
+        let focusedExhibit = null;
+
+        const onboarding = document.getElementById('onboarding');
+        const enterBtn = document.getElementById('enter-btn');
+        const container = document.getElementById('canvas-container');
+
+        enterBtn.addEventListener('click', () => {
+            onboarding.classList.add('hidden');
+            container.requestPointerLock();
+        });
+
+        document.addEventListener('pointerlockchange', () => {
+            isPointerLocked = (document.pointerLockElement === container);
+        });
+
+        init();
+        animate();
+
+        function init() {
+            // Scene Setup & Light Atmospheric Fog
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0xfaf8f5, 0.012);
+
+            // Camera Setup
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 150);
+            camera.position.set(0, 1.8, 26); // Starting position inside hall
+
+            // Renderer Optimization configuration
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = false; // Fast & lightweight shadow bypass
+            container.appendChild(renderer.domElement);
+
+            // Textures Loaders (Set crossOrigin to anonymous to guarantee Unsplash loads)
+            const textureLoader = new THREE.TextureLoader();
+            textureLoader.crossOrigin = 'anonymous';
+
+            // Custom Material Profiles
+            wallMaterial = new THREE.MeshStandardMaterial({ color: 0xf2ede4, roughness: 0.9, metalness: 0.02 });
+            ceilingBeamMaterial = new THREE.MeshStandardMaterial({ color: 0x3d3935, roughness: 0.6, metalness: 0.2 });
+            baseboardMaterial = new THREE.MeshStandardMaterial({ color: 0x1c1a17, roughness: 0.8 });
+            benchMaterial = new THREE.MeshStandardMaterial({ color: 0x1f1d1b, roughness: 0.7 });
+            frameMaterial = new THREE.MeshStandardMaterial({ color: 0x2e2a24, roughness: 0.4, metalness: 0.15 });
+
+            // Programmatically tiled floor grid
+            floorMaterial = new THREE.MeshStandardMaterial({
+                map: generateGridTexture(),
+                roughness: 0.6
+            });
+
+            // 1. SCENERY & FORESTRY PARALLAX WINDOW (Breaking the enclosure feeling)
+            const backdropGeo = new THREE.PlaneGeometry(120, 50);
+            const backdropMat = new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                side: THREE.DoubleSide
+            });
+            
+            // Load beautiful Unsplash misty green pine forest background
+            textureLoader.load('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80', (texture) => {
+                backdropMat.map = texture;
+                backdropMat.needsUpdate = true;
+            });
+
+            forestWindowBackdrop = new THREE.Mesh(backdropGeo, backdropMat);
+            forestWindowBackdrop.position.set(-25, 15, -10); // Placed parallel to Left Wall (at X = -15)
+            forestWindowBackdrop.rotation.y = Math.PI / 2;
+            scene.add(forestWindowBackdrop);
+
+            // Room Architecture Generation
+            const roomGroup = new THREE.Group();
+
+            // Atrium floor
+            const floorGeo = new THREE.PlaneGeometry(30, 70);
+            const floor = new THREE.Mesh(floorGeo, floorMaterial);
+            floor.rotation.x = -Math.PI / 2;
+            floor.position.set(0, 0, -5);
+            roomGroup.add(floor);
+
+            // Structured Left Wall (Now transformed into 3 huge floor-to-ceiling panoramic glass arches/panes)
+            const wallSegmentY = 10;
+            const segmentGeo = new THREE.PlaneGeometry(12, wallSegmentY);
+            const solidSegmentLeft = new THREE.Mesh(segmentGeo, wallMaterial);
+            solidSegmentLeft.rotation.y = Math.PI / 2;
+            solidSegmentLeft.position.set(-15, 5, -34); // solid back part
+            roomGroup.add(solidSegmentLeft);
+
+            const solidSegmentLeftFront = new THREE.Mesh(segmentGeo, wallMaterial);
+            solidSegmentLeftFront.rotation.y = Math.PI / 2;
+            solidSegmentLeftFront.position.set(-15, 5, 24); // solid front entrance part
+            roomGroup.add(solidSegmentLeftFront);
+
+            // Left Window Mullion Grid framework (Simulating huge structural panes)
+            const windowFrameGroup = new THREE.Group();
+            const beamMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.5 });
+            
+            // Render large steel grids overlooking the misty backdrop
+            for (let zVal = -22; zVal <= 14; zVal += 12) {
+                // Vertical window mullions
+                const vertMullion = new THREE.Mesh(new THREE.BoxGeometry(0.2, 10, 0.2), beamMat);
+                vertMullion.position.set(-14.9, 5, zVal);
+                windowFrameGroup.add(vertMullion);
+            }
+            // Horizontal framing tracks
+            const horizTop = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.2, 44), beamMat);
+            horizTop.position.set(-14.9, 9.8, -4);
+            windowFrameGroup.add(horizTop);
+
+            const horizMid = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.15, 44), beamMat);
+            horizMid.position.set(-14.9, 5.0, -4);
+            windowFrameGroup.add(horizMid);
+
+            roomGroup.add(windowFrameGroup);
+
+            // Solid Right Wall (Balanced layout for essay plaques)
+            const rightWallGeo = new THREE.PlaneGeometry(70, 10);
+            const rightWall = new THREE.Mesh(rightWallGeo, wallMaterial);
+            rightWall.rotation.y = -Math.PI / 2;
+            rightWall.position.set(15, 5, -5);
+            roomGroup.add(rightWall);
+
+            // Back Wall
+            const backWallGeo = new THREE.PlaneGeometry(30, 10);
+            const backWall = new THREE.Mesh(backWallGeo, wallMaterial);
+            backWall.position.set(0, 5, -40);
+            roomGroup.add(backWall);
+
+            // Entrance Wall
+            const entranceWall = new THREE.Mesh(backWallGeo, wallMaterial);
+            entranceWall.rotation.y = Math.PI;
+            entranceWall.position.set(0, 5, 30);
+            roomGroup.add(entranceWall);
+
+            // Elegant baseboard borders
+            const baseboardHeight = 0.3;
+            const sideBaseGeo = new THREE.BoxGeometry(0.1, baseboardHeight, 70);
+            const backBaseGeo = new THREE.BoxGeometry(30, baseboardHeight, 0.1);
+
+            const leftBase = new THREE.Mesh(sideBaseGeo, baseboardMaterial);
+            leftBase.position.set(-14.95, baseboardHeight / 2, -5);
+            roomGroup.add(leftBase);
+
+            const rightBase = new THREE.Mesh(sideBaseGeo, baseboardMaterial);
+            rightBase.position.set(14.95, baseboardHeight / 2, -5);
+            roomGroup.add(rightBase);
+
+            const backBase = new THREE.Mesh(backBaseGeo, baseboardMaterial);
+            backBase.position.set(0, baseboardHeight / 2, -39.95);
+            roomGroup.add(backBase);
+
+            scene.add(roomGroup);
+
+            // Atrium Skylight Ceiling Framework (Open feel)
+            const ceilingGroup = new THREE.Group();
+            const beamGeoH = new THREE.BoxGeometry(30, 0.3, 0.3);
+            const beamGeoV = new THREE.BoxGeometry(0.3, 0.3, 70);
+
+            // Cross grids
+            for (let z = -35; z < 30; z += 10) {
+                const beam = new THREE.Mesh(beamGeoH, ceilingBeamMaterial);
+                beam.position.set(0, 9.9, z);
+                ceilingGroup.add(beam);
+            }
+            const leftLBeam = new THREE.Mesh(beamGeoV, ceilingBeamMaterial);
+            leftLBeam.position.set(-14.9, 9.9, -5);
+            ceilingGroup.add(leftLBeam);
+
+            const rightRBeam = new THREE.Mesh(beamGeoV, ceilingBeamMaterial);
+            rightRBeam.position.set(14.9, 9.9, -5);
+            ceilingGroup.add(rightRBeam);
+
+            scene.add(ceilingGroup);
+
+            // 2. THE EMBEDDED QUOTE (Centered entrance plaque)
+            const quotePlatGroup = new THREE.Group();
+            quotePlatGroup.position.set(0, 5, 29.8); // Mounted directly on entrance wall
+            quotePlatGroup.rotation.y = Math.PI; // Face inward
+
+            const quoteBacking = new THREE.Mesh(new THREE.BoxGeometry(16, 4.5, 0.15), frameMaterial);
+            quotePlatGroup.add(quoteBacking);
+
+            const quotePlane = new THREE.Mesh(new THREE.PlaneGeometry(15.7, 4.2), new THREE.MeshBasicMaterial({
+                map: createQuoteTexture()
+            }));
+            quotePlane.position.set(0, 0, 0.08);
+            quotePlatGroup.add(quotePlane);
+            scene.add(quotePlatGroup);
+
+            // 3. CURATED DECORATIVE PAINTINGS (Interspersed for aesthetic beauty)
+            // Painting I: Calm botanical study
+            createDecorativePainting('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=512&q=80', {x: 14.8, y: 3.5, z: -10}, -Math.PI/2);
+            // Painting II: Horizon ocean escape
+            createDecorativePainting('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=512&q=80', {x: 14.8, y: 3.5, z: 6}, -Math.PI/2);
+            // Painting III: Mountain landscape
+            createDecorativePainting('https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?auto=format&fit=crop&w=512&q=80', {x: -14.8, y: 3.5, z: 6}, Math.PI/2);
+
+            // 4. ORGANIC POTTED PLANTS (Corner installations)
+            const cornerCoords = [
+                {x: -13.5, z: -38},
+                {x: 13.5, z: -38},
+                {x: -13.5, z: 28},
+                {x: 13.5, z: 28}
+            ];
+            cornerCoords.forEach(pos => {
+                createMinimalistPottedPlant(pos.x, pos.z);
+            });
+
+            // Modern Centerpiece Seating Benches
+            const benchZ = [-10, 8];
+            benchZ.forEach(z => {
+                const benchSeat = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.6, 6), benchMaterial);
+                benchSeat.position.set(0, 0.3, z);
+                scene.add(benchSeat);
+
+                const standGeo = new THREE.BoxGeometry(1.2, 0.3, 0.4);
+                const leg1 = new THREE.Mesh(standGeo, baseboardMaterial);
+                leg1.position.set(0, 0.15, z - 2);
+                scene.add(leg1);
+                
+                const leg2 = new THREE.Mesh(standGeo, baseboardMaterial);
+                leg2.position.set(0, 0.15, z + 2);
+                scene.add(leg2);
+            });
+
+            // Room Column Pillars (Structural depth)
+            const colGeo = new THREE.BoxGeometry(0.5, 10, 0.5);
+            const columnsZ = [-28, -10, 8, 24];
+            columnsZ.forEach(z => {
+                const colL = new THREE.Mesh(colGeo, wallMaterial);
+                colL.position.set(-14.7, 5, z);
+                scene.add(colL);
+
+                const colR = new THREE.Mesh(colGeo, wallMaterial);
+                colR.position.set(14.7, 5, z);
+                scene.add(colR);
+            });
+
+            // Lighting Engine
+            ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+            scene.add(ambientLight);
+
+            // Populating Core Strategic & Technical Essays
+            exhibitsData.forEach(exhibit => {
+                const frameGroup = new THREE.Group();
+                frameGroup.position.set(exhibit.pos.x, exhibit.pos.y, exhibit.pos.z);
+                frameGroup.rotation.set(exhibit.rot.x, exhibit.rot.y, exhibit.rot.z);
+
+                const frameBackGeo = new THREE.BoxGeometry(4.8, 3.6, 0.1);
+                const frameBack = new THREE.Mesh(frameBackGeo, frameMaterial);
+                frameGroup.add(frameBack);
+
+                const artGeo = new THREE.PlaneGeometry(4.6, 3.4);
+                const artTexture = generateArtTexture(exhibit.id, exhibit.title, exhibit.category);
+                const artMaterial = new THREE.MeshBasicMaterial({ map: artTexture });
+                const artMesh = new THREE.Mesh(artGeo, artMaterial);
+                artMesh.position.set(0, 0, 0.06);
+                frameGroup.add(artMesh);
+
+                frameGroup.userData = { id: exhibit.id };
+                scene.add(frameGroup);
+                artFrames.push(frameBack);
+
+                // Individual target spotlights
+                const spotlight = new THREE.SpotLight(0xfff7e3, 1.8);
+                let lightOffsetX = 0, lightOffsetZ = 0;
+                if (exhibit.pos.x < 0) lightOffsetX = 2.5;
+                else if (exhibit.pos.x > 0) lightOffsetX = -2.5;
+                else lightOffsetZ = 2.5;
+
+                spotlight.position.set(exhibit.pos.x + lightOffsetX, exhibit.pos.y + 3.2, exhibit.pos.z + lightOffsetZ);
+                spotlight.target = frameBack;
+                spotlight.angle = Math.PI / 4.5;
+                spotlight.penumbra = 0.8;
+                scene.add(spotlight);
+                spotlights.push(spotlight);
+            });
+
+            // Final Theme Setup
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            applyTheme3D(savedTheme);
+
+            bindControls();
+        }
+
+        // Programmatic texture generators
+        function generateGridTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 512;
+            canvas.height = 512;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#faf6f0';
+            ctx.fillRect(0, 0, 512, 512);
+            ctx.strokeStyle = '#e6dfd5';
+            ctx.lineWidth = 1.5;
+            ctx.strokeRect(0, 0, 512, 512);
+            
+            // Soft atmospheric grain noise
+            ctx.fillStyle = 'rgba(0,0,0,0.01)';
+            for(let i=0; i<300; i++) {
+                ctx.fillRect(Math.random()*512, Math.random()*512, 4, 4);
+            }
+            
+            const texture = new THREE.CanvasTexture(canvas);
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.set(10, 20);
+            return texture;
+        }
+
+        function createQuoteTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1024;
+            canvas.height = 256;
+            const ctx = canvas.getContext('2d');
+            
+            ctx.fillStyle = '#f7f4ee';
+            ctx.fillRect(0, 0, 1024, 256);
+            
+            // Subtle brass border inside plaque
+            ctx.strokeStyle = '#bfa37a';
+            ctx.lineWidth = 6;
+            ctx.strokeRect(12, 12, 1000, 232);
+            
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#1c1a17';
+            ctx.font = "italic 32px 'Inter', sans-serif";
+            ctx.fillText('"Wisdom & Action are the final outcomes of knowledge."', 512, 115);
+            
+            ctx.fillStyle = '#706a61';
+            ctx.font = "normal 18px 'JetBrains Mono', monospace";
+            ctx.fillText('— SADMAN SAMIN', 512, 175);
+            
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        // Helper: Build a decorative scenery painting
+        function createDecorativePainting(unsplashUrl, pos, rotY) {
+            const group = new THREE.Group();
+            group.position.set(pos.x, pos.y, pos.z);
+            group.rotation.y = rotY;
+
+            // Simple wooden/gilded back frame
+            const frameBack = new THREE.Mesh(new THREE.BoxGeometry(3.6, 4.6, 0.1), frameMaterial);
+            group.add(frameBack);
+
+            const artGeo = new THREE.PlaneGeometry(3.4, 4.4);
+            const loader = new THREE.TextureLoader();
+            loader.crossOrigin = 'anonymous';
+
+            const artMat = new THREE.MeshBasicMaterial({ color: 0xe6e4dc }); // fallback warm gray
+            loader.load(unsplashUrl, (tex) => {
+                artMat.map = tex;
+                artMat.needsUpdate = true;
+            });
+
+            const artMesh = new THREE.Mesh(artGeo, artMat);
+            artMesh.position.set(0, 0, 0.06);
+            group.add(artMesh);
+
+            scene.add(group);
+        }
+
+        // Helper: Build organic potted green foliage
+        function createMinimalistPottedPlant(x, z) {
+            const plantGroup = new THREE.Group();
+            plantGroup.position.set(x, 0, z);
+
+            // Planter Pot Geometry (Sleek marble look)
+            const potGeo = new THREE.CylinderGeometry(0.8, 0.6, 1.4, 12);
+            const potMat = new THREE.MeshStandardMaterial({ color: 0xf5f2eb, roughness: 0.3 });
+            const pot = new THREE.Mesh(potGeo, potMat);
+            pot.position.y = 0.7;
+            plantGroup.add(pot);
+
+            // Soil
+            const soilGeo = new THREE.CylinderGeometry(0.75, 0.75, 0.1, 10);
+            const soilMat = new THREE.MeshStandardMaterial({ color: 0x3d2712, roughness: 0.9 });
+            const soil = new THREE.Mesh(soilGeo, soilMat);
+            soil.position.y = 1.35;
+            plantGroup.add(soil);
+
+            // Tall Leaf Blades (Varying heights, curves, and orientations)
+            const leafMat = new THREE.MeshStandardMaterial({ color: 0x22401f, roughness: 0.8, side: THREE.DoubleSide });
+            const leafShape = new THREE.ConeGeometry(0.15, 3.2, 4);
+
+            for (let i = 0; i < 9; i++) {
+                const leaf = new THREE.Mesh(leafShape, leafMat);
+                
+                // Spiral offset variables for organic layout
+                const angle = (i / 9) * Math.PI * 2;
+                const radius = 0.3;
+                const leafX = Math.sin(angle) * radius;
+                const leafZ = Math.cos(angle) * radius;
+                
+                leaf.position.set(leafX, 2.5, leafZ);
+                
+                // Splay blades slightly outward
+                leaf.rotation.x = (Math.random() - 0.5) * 0.4;
+                leaf.rotation.z = (Math.random() - 0.5) * 0.4;
+                leaf.rotation.y = angle;
+
+                plantGroup.add(leaf);
+            }
+
+            scene.add(plantGroup);
+        }
+
+        function generateArtTexture(id, title, category) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 512;
+            canvas.height = 384;
+            const ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = '#111110';
+            ctx.fillRect(0, 0, 512, 384);
+
+            // Generative art canvas mappings
+            ctx.save();
+            if (id === 1) { // Economics and Labor
+                ctx.strokeStyle = 'rgba(191, 163, 122, 0.2)';
+                ctx.lineWidth = 1;
+                for(let i=0; i<512; i+=30) {
+                    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 384); ctx.stroke();
+                }
+                ctx.fillStyle = '#bfa37a';
+                ctx.beginPath(); ctx.arc(256, 150, 45, 0, Math.PI*2); ctx.fill();
+                ctx.fillStyle = '#ffffff';
+                for(let i=0; i<40; i++) {
+                    ctx.fillRect(Math.sin(i)*160 + 256, Math.cos(i*1.3)*100 + 150, 3, 3);
+                }
+            } else if (id === 2) { // $20 Subscription
+                ctx.fillStyle = '#263a20';
+                ctx.fillRect(50, 40, 412, 304);
+                ctx.fillStyle = '#bfa37a';
+                ctx.beginPath(); ctx.arc(200, 192, 65, 0, Math.PI*2); ctx.fill();
+                ctx.beginPath(); ctx.arc(312, 192, 65, 0, Math.PI*2); ctx.fill();
+            } else if (id === 3) { // 15 AI subscriptions
+                let grad = ctx.createLinearGradient(0, 0, 512, 384);
+                grad.addColorStop(0, '#1c1b18');
+                grad.addColorStop(1, '#8c7853');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, 512, 384);
+                ctx.fillStyle = 'rgba(255,255,255,0.06)';
+                for(let i=0; i<15; i++) {
+                    ctx.fillRect(30 + i*16, 50 + i*12, 220, 140);
+                }
+            } else if (id === 4) { // Pricing Your First Client
+                ctx.fillStyle = '#0f1012';
+                ctx.fillRect(0, 0, 512, 384);
+                ctx.strokeStyle = '#bfa37a';
+                ctx.lineWidth = 4;
+                ctx.beginPath(); ctx.moveTo(150, 240); ctx.lineTo(362, 140); ctx.stroke();
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath(); ctx.arc(150, 240, 14, 0, Math.PI*2); ctx.fill();
+                ctx.beginPath(); ctx.arc(362, 140, 26, 0, Math.PI*2); ctx.fill();
+            } else if (id === 5) { // FIFA business blueprint
+                ctx.fillStyle = '#102e1c';
+                ctx.fillRect(0, 0, 512, 384);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+                ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.arc(256, 192, 85, 0, Math.PI*2); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(256, 0); ctx.lineTo(256, 384); ctx.stroke();
+                ctx.strokeStyle = '#bfa37a';
+                ctx.strokeRect(60, 60, 392, 264);
+            } else if (id === 6) { // Fractional Management
+                ctx.fillStyle = '#121721';
+                ctx.fillRect(0, 0, 512, 384);
+                ctx.fillStyle = 'rgba(191, 163, 122, 0.3)';
+                for(let x=0; x<5; x++) {
+                    for(let y=0; y<4; y++) {
+                        if((x + y) % 2 === 0) {
+                            ctx.fillRect(70 + x*80, 50 + y*80, 50, 50);
+                        }
+                    }
+                }
+            } else if (id === 7) { // HubSpot to Odoo migration
+                ctx.fillStyle = '#1e112a';
+                ctx.fillRect(0, 0, 512, 384);
+                let arrowGrad = ctx.createLinearGradient(100, 192, 412, 192);
+                arrowGrad.addColorStop(0, '#ff7a59');
+                arrowGrad.addColorStop(1, '#a2468f');
+                ctx.fillStyle = arrowGrad;
+                ctx.beginPath();
+                ctx.moveTo(100, 172); ctx.lineTo(300, 172); ctx.lineTo(300, 142);
+                ctx.lineTo(412, 192); ctx.lineTo(300, 242); ctx.lineTo(300, 212);
+                ctx.lineTo(100, 212); ctx.closePath(); ctx.fill();
+            }
+            ctx.restore();
+
+            // Card Bottom Plate text strip
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 310, 512, 74);
+            
+            ctx.fillStyle = '#1c1b18';
+            ctx.font = "bold 15px 'JetBrains Mono', monospace";
+            ctx.fillText(category.toUpperCase(), 25, 336);
+            
+            ctx.fillStyle = '#555552';
+            ctx.font = "14px 'Inter', sans-serif";
+            let displayTitle = title.length > 50 ? title.substring(0, 47) + "..." : title;
+            ctx.fillText(displayTitle, 25, 360);
+
+            const texture = new THREE.CanvasTexture(canvas);
+            return texture;
+        }
+
+        function applyTheme3D(theme) {
+            const isDark = (theme === 'dark');
+            const toggleBtn = document.getElementById('theme-toggle');
+
+            if (isDark) {
+                scene.background = new THREE.Color(0x060606);
+                scene.fog.color = new THREE.Color(0x060606);
+                ambientLight.intensity = 0.12;
+                wallMaterial.color.setHex(0x12110f);
+                
+                // Fade out natural daylight forest scenery for moody night atmosphere
+                if (forestWindowBackdrop) {
+                    forestWindowBackdrop.material.color.setHex(0x223344); // Midnight tint
+                }
+
+                spotlights.forEach(spot => spot.intensity = 4.0);
+                toggleBtn.innerHTML = '<span id="theme-icon">☼</span> Day Lights';
+            } else {
+                scene.background = new THREE.Color(0xfaf8f5);
+                scene.fog.color = new THREE.Color(0xfaf8f5);
+                ambientLight.intensity = 0.60;
+                wallMaterial.color.setHex(0xf2ede4);
+
+                // Natural daylight forest glow
+                if (forestWindowBackdrop) {
+                    forestWindowBackdrop.material.color.setHex(0xffffff);
+                }
+
+                spotlights.forEach(spot => spot.intensity = 1.8);
+                toggleBtn.innerHTML = '<span id="theme-icon">◑</span> Night Mode';
+            }
+        }
+
+        function bindControls() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key in keys) keys[e.key] = true;
+                if (e.key === 'Enter' && focusedExhibit) {
+                    window.open(focusedExhibit.url, '_blank');
+                }
+            });
+
+            document.addEventListener('keyup', (e) => {
+                if (e.key in keys) keys[e.key] = false;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isPointerLocked) {
+                    yaw -= e.movementX * 0.002;
+                    pitch -= e.movementY * 0.002;
+                    pitch = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, pitch));
+
+                    camera.rotation.order = "YXZ";
+                    camera.rotation.y = yaw;
+                    camera.rotation.x = pitch;
+                }
+            });
+
+            container.addEventListener('click', () => {
+                if (!isPointerLocked && onboarding.classList.contains('hidden')) {
+                    container.requestPointerLock();
+                } else if (isPointerLocked && focusedExhibit) {
+                    window.open(focusedExhibit.url, '_blank');
+                }
+            });
+
+            const themeBtn = document.getElementById('theme-toggle');
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const nextTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                localStorage.setItem('theme', nextTheme);
+                applyTheme3D(nextTheme);
+            });
+
+            window.addEventListener('resize', onWindowResize);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // Proximity checks
+        function calculateFocusedExhibit() {
+            let closestDist = Infinity;
+            let closest = null;
+
+            exhibitsData.forEach(exhibit => {
+                const dx = camera.position.x - exhibit.pos.x;
+                const dy = camera.position.y - exhibit.pos.y;
+                const dz = camera.position.z - exhibit.pos.z;
+                const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
+                if (dist < 7.0) {
+                    const toExhibit = new THREE.Vector3(exhibit.pos.x - camera.position.x, 0, exhibit.pos.z - camera.position.z).normalize();
+                    const lookVector = new THREE.Vector3();
+                    camera.getWorldDirection(lookVector);
+                    lookVector.y = 0;
+                    lookVector.normalize();
+
+                    const alignment = toExhibit.dot(lookVector);
+                    if (alignment > 0.72) {
+                        if (dist < closestDist) {
+                            closestDist = dist;
+                            closest = exhibit;
+                        }
+                    }
+                }
+            });
+
+            const plaque = document.getElementById('exhibit-plaque-hud');
+            const reticle = document.getElementById('reticle');
+
+            if (closest) {
+                if (focusedExhibit !== closest) {
+                    focusedExhibit = closest;
+                    
+                    document.getElementById('hud-num').innerText = "EXHIBIT " + closest.exhibitNum;
+                    document.getElementById('hud-category').innerText = closest.category.toUpperCase();
+                    document.getElementById('hud-title').innerText = closest.title;
+                    document.getElementById('hud-desc').innerText = closest.desc;
+                    document.getElementById('hud-link').href = closest.url;
+                    
+                    plaque.classList.add('visible');
+                    reticle.classList.add('active');
+
+                    highlightFrame(closest.id);
+                }
+            } else {
+                if (focusedExhibit !== null) {
+                    focusedExhibit = null;
+                    plaque.classList.remove('visible');
+                    reticle.classList.remove('active');
+                    clearHighlights();
+                }
+            }
+        }
+
+        function highlightFrame(id) {
+            artFrames.forEach(frame => {
+                if (frame.parent && frame.parent.userData.id === id) {
+                    frame.material.emissive.setHex(0x3a3022); // Elegant gold highlight glow
+                } else {
+                    frame.material.emissive.setHex(0x000000);
+                }
+            });
+        }
+
+        function clearHighlights() {
+            artFrames.forEach(frame => {
+                frame.material.emissive.setHex(0x000000);
+            });
+        }
+
+        // Loop execution
+        function animate() {
+            requestAnimationFrame(animate);
+
+            if (isPointerLocked) {
+                const moveSpeed = 0.15;
+                const frontDir = new THREE.Vector3();
+                const sideDir = new THREE.Vector3();
+
+                const forward = (keys.w || keys.ArrowUp) ? -1 : ((keys.s || keys.ArrowDown) ? 1 : 0);
+                const side = (keys.a || keys.ArrowLeft) ? -1 : ((keys.d || keys.ArrowRight) ? 1 : 0);
+
+                frontDir.set(0, 0, forward);
+                sideDir.set(side, 0, 0);
+
+                const camYaw = camera.rotation.y;
+                const finalMove = new THREE.Vector3();
+                finalMove.copy(frontDir).applyAxisAngle(new THREE.Vector3(0, 1, 0), camYaw)
+                         .addScaledVector(sideDir.applyAxisAngle(new THREE.Vector3(0, 1, 0), camYaw), 1)
+                         .normalize()
+                         .multiplyScalar(moveSpeed);
+
+                camera.position.add(finalMove);
+
+                // Wall bounds restrictions (Width: -14 to 14, Depth: -39.9 to 30)
+                const padding = 1.8;
+                camera.position.x = Math.max(-15 + padding, Math.min(15 - padding, camera.position.x));
+                camera.position.z = Math.max(-39.9 + padding, Math.min(30 - padding, camera.position.z));
+                camera.position.y = 1.8; // Set stable height level
+
+                calculateFocusedExhibit();
+            }
+
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+</html>

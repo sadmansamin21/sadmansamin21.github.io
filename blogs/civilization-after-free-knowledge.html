@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>What Happens to Civilization After Knowledge Becomes Free? — Sadman Samin</title>
+  <meta name="description" content="Access was never the bottleneck we thought it was. A look at what actually changes — and what doesn't — once every fact, skill, and idea is one search away.">
+
+  <link rel="canonical" href="https://sadmansamin21.github.io/blogs/civilization-after-free-knowledge.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --text: #ffffff;
+      --text-muted: #a1a1a1;
+      --accent: #ffffff;
+      --border: rgba(255, 255, 255, 0.1);
+      --card-bg: #0a0a0a;
+      --hover-bg: rgba(255, 255, 255, 0.03);
+      --success: #00ff41;
+      --nav-bg: rgba(5, 5, 5, 0.8);
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f5f0;
+      --text: #0a0a0a;
+      --text-muted: #666;
+      --accent: #0a0a0a;
+      --border: rgba(0, 0, 0, 0.1);
+      --card-bg: #ebebeb;
+      --hover-bg: rgba(0, 0, 0, 0.03);
+      --success: #1a7a3a;
+      --nav-bg: rgba(245, 245, 240, 0.85);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .mono { font-family: 'Space Mono', monospace; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; }
+
+    /* Navigation */
+    nav {
+      padding: 30px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .logo { font-weight: 700; font-size: 1.2rem; text-decoration: none; color: var(--text); letter-spacing: -0.02em; }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+      padding: 4px;
+    }
+    .theme-toggle:hover { opacity: 1; }
+
+    /* Layout */
+    .content-wrapper {
+      max-width: 850px;
+      margin: 80px auto;
+      padding: 0 25px;
+    }
+
+    header { margin-bottom: 80px; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; font-weight: 700; margin-bottom: 25px; letter-spacing: -0.04em; }
+    .post-meta { color: var(--text-muted); display: flex; gap: 20px; margin-bottom: 15px; }
+
+    .author-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .author-line a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .author-line a:hover { opacity: 0.6; }
+
+    .lead { font-size: 1.5rem; font-weight: 300; color: var(--text-muted); margin-bottom: 50px; line-height: 1.4; }
+
+    /* Content Body Styles */
+    .blog-content p { font-size: 1.15rem; margin-bottom: 35px; color: var(--text); opacity: 0.85; font-weight: 300; }
+    h2 { font-size: 2rem; margin: 80px 0 30px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 15px; letter-spacing: -0.02em; }
+    strong { color: var(--text); font-weight: 600; }
+
+    /* Table */
+    .table-container { margin: 50px 0; border: 1px solid var(--border); overflow-x: auto; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; background: var(--card-bg); font-size: 0.9rem; }
+    th, td { padding: 25px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text-muted); background: var(--card-bg); }
+    .delta-positive { color: var(--success); font-family: 'Space Mono', monospace; font-weight: 700; }
+    .delta-warn { color: #c8963e; font-family: 'Space Mono', monospace; font-weight: 700; }
+
+    /* Cards Grid */
+    .tech-stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .stack-card {
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .stack-card:hover {
+      border-color: rgba(128, 128, 128, 0.35);
+      transform: translateY(-5px);
+    }
+    .stack-header {
+      padding: 20px 25px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stack-header h4 { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; }
+    .stack-body { padding: 25px; }
+    .tool-item { margin-bottom: 20px; }
+    .tool-item:last-child { margin-bottom: 0; }
+    .tool-name { display: block; font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text); margin-bottom: 4px; }
+    .tool-role { display: block; font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; font-weight: 300; }
+
+    /* Roadmap */
+    .roadmap { list-style: none; margin: 60px 0; border-top: 1px solid var(--border); }
+    .roadmap li {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 30px;
+      transition: background 0.3s ease;
+    }
+    .roadmap li:hover { background: var(--hover-bg); }
+    .roadmap-step { color: var(--text-muted); font-size: 0.8rem; }
+    .roadmap-content strong { display: block; font-size: 1.3rem; margin-bottom: 10px; }
+
+    footer {
+      padding: 80px 5%;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      margin-top: 120px;
+      color: var(--text-muted);
+      transition: border-color 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.8rem; }
+      .roadmap li { grid-template-columns: 1fr; gap: 10px; }
+      .tech-stack-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../" class="logo">SADMAN SAMIN</a>
+    <div class="nav-right">
+      <div class="mono">JOURNAL / RESEARCH</div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <header>
+      <div class="post-meta mono">
+        <span>Published 15.07.26</span>
+        <span>•</span>
+        <span>Civilization &amp; Technology</span>
+      </div>
+      <h1>What Happens to Civilization After Knowledge Becomes Free?</h1>
+      <div class="author-line">
+        By <a href="../">Sadman Samin</a> &nbsp;·&nbsp; Businessman &amp; Researcher, Dhaka
+      </div>
+      <p class="lead">For most of history, the person who knew more, won. That assumption quietly died sometime in the last thirty years — and almost nobody has updated their behavior to reflect it. Here's what actually changes once knowing things stops being the advantage.</p>
+    </header>
+
+    <div class="blog-content">
+
+      <p>Ask someone what makes a doctor valuable, and they'll usually say "years of medical knowledge." Ask what makes a lawyer valuable, and you'll hear "command of the law." Ask what made a scholar valuable for the last two thousand years, and the answer was always some version of: <strong>they had access to information you didn't.</strong></p>
+
+      <p>That premise is now false. Not "becoming false" — already false, and has been for a while. A teenager with a phone in a rural village has faster access to more accurate medical literature than the best-resourced physician of 1990. The entire corpus of human mathematics, the collected case law of most legal systems, tutorials for nearly every trade skill, and now a machine that can explain any of it in plain language — all sit behind a screen most people carry in their pocket. Knowledge, in the sense of "facts and explanations that exist somewhere and can be retrieved," has gone from scarce to essentially free.</p>
+
+      <p>Civilizations built their entire status structure — priesthoods, universities, guilds, professional licensing — around controlling access to knowledge. So the real question isn't "what will free knowledge do to civilization." It's already been doing it for decades. The real question is: <strong>what happens now that the thing every institution was built to gatekeep no longer needs a gatekeeper?</strong></p>
+
+      <h2 id="the-history">01. This Has Happened Before — And We Have the Receipts</h2>
+
+      <p>Civilization has run this experiment once already, in miniature. Before the printing press, information moved at the speed of hand-copied manuscripts, and the Church held functional monopoly over interpretation of the era's most important text. Gutenberg didn't just print more Bibles — he broke the monopoly on interpretation itself. Within a century, Europe had the Reformation, a scientific revolution, and a printing-driven explosion of pamphlets, maps, and vernacular literature that no single authority could vet or approve.</p>
+
+      <p>The pattern is instructive because it wasn't smooth. More access to text did not immediately produce more wisdom. It produced decades of religious wars, a flood of both brilliant new science and confident nonsense, and a permanent restructuring of who got to claim authority. The printing press didn't make people wiser on contact — it made the <em>distribution of who got to try to be wise</em> radically wider, and society spent generations sorting out the consequences.</p>
+
+      <p>We are living through the second iteration of that same shock, compressed into a fraction of the time. The press took roughly 200 years to fully rewire European institutions. The internet has done a comparable amount of restructuring in about 30. What took cathedrals and monarchies generations to metabolize, we are now expected to metabolize inside a single career.</p>
+
+      <h2 id="what-actually-changes">02. The Bottleneck Didn't Disappear — It Moved</h2>
+
+      <p>This is the part almost every "information age" narrative gets wrong: free knowledge does not mean a society automatically becomes smarter, fairer, or more capable. Access was never the only bottleneck. It was simply the most visible one, because it was the one gatekept by institutions people could see and resent.</p>
+
+      <p>Remove that bottleneck and you don't get infinite capability — you expose the next constraint in line. And the honest answer is that the next constraints were always harder problems than access ever was.</p>
+
+      <div class="tech-stack-grid">
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">CONSTRAINT_01</span>
+            <h4>JUDGMENT</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">What it replaces</span>
+              <span class="tool-role">"Knowing the fact" as the scarce resource. Now everyone can retrieve the fact instantly.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Why it's harder</span>
+              <span class="tool-role">Knowing which facts matter, which sources to trust, and how to weigh conflicting claims can't be looked up — it has to be built through practice and error.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">CONSTRAINT_02</span>
+            <h4>ATTENTION</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">What it replaces</span>
+              <span class="tool-role">Scarcity of material to read or watch. There is now more available than any person could consume in a thousand lifetimes.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Why it's harder</span>
+              <span class="tool-role">The market shifted from competing to supply information to competing to capture the finite hours a person has to receive it — a far more ruthless fight.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">CONSTRAINT_03</span>
+            <h4>APPLICATION</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">What it replaces</span>
+              <span class="tool-role">Not knowing how to do a thing. That barrier has mostly fallen for anything explainable in text or video.</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Why it's harder</span>
+              <span class="tool-role">Reading about a skill and being able to execute it under real conditions, with real stakes and real feedback, remain separated by thousands of hours of practice no search engine can shortcut.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="mono">CONSTRAINT_04</span>
+            <h4>TRUST</h4>
+          </div>
+          <div class="stack-body">
+            <div class="tool-item">
+              <span class="tool-name">What it replaces</span>
+              <span class="tool-role">Institutional credentials as a stand-in for "this person's knowledge is reliable."</span>
+            </div>
+            <div class="tool-item">
+              <span class="tool-name">Why it's harder</span>
+              <span class="tool-role">When anyone can sound informed, the cost of verifying who is actually correct goes up, not down — and bad actors get the same megaphone as good ones.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>Put simply: free knowledge didn't dissolve the hierarchy of who is more capable than whom. It just re-sorted the hierarchy around a new axis. The people who win in a world of free information aren't the ones who know the most — they're the ones best at judgment, filtering, and turning information into action under real constraints.</p>
+
+      <h2 id="who-gains">03. Who Actually Gains — and Who Doesn't</h2>
+
+      <p>The optimistic version of this story says free knowledge is a great equalizer. The pessimistic version says it mostly benefits people who were already positioned to exploit it. Both are partly right, and the split roughly follows a predictable line.</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>GROUP</th>
+              <th>WHAT FREE KNOWLEDGE GIVES THEM</th>
+              <th>WHAT STILL LIMITS THEM</th>
+              <th>NET EFFECT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Self-directed learners, any background</td>
+              <td>A university's worth of material, on demand, at zero cost</td>
+              <td>Discipline, feedback loops, and someone to apply it against</td>
+              <td class="delta-positive">▲ Large Gain</td>
+            </tr>
+            <tr>
+              <td>People in low-infrastructure regions</td>
+              <td>Skills and markets previously reachable only via physical proximity to institutions</td>
+              <td>Connectivity, hardware cost, language barriers, local trust networks</td>
+              <td class="delta-positive">▲ Meaningful Gain</td>
+            </tr>
+            <tr>
+              <td>Credential-dependent professions</td>
+              <td>Little direct gain — the knowledge itself was rarely the moat</td>
+              <td>Licensing, liability, and regulation still gate the practice, not just the facts</td>
+              <td class="delta-warn">— Mostly Unchanged</td>
+            </tr>
+            <tr>
+              <td>People without the habit of self-teaching</td>
+              <td>Access exists but goes largely unused</td>
+              <td>Motivation and metacognition — the "how do I learn" skill — were never solved by access</td>
+              <td class="delta-warn">— Little Gain</td>
+            </tr>
+            <tr>
+              <td>Institutions built purely on information scarcity</td>
+              <td>Nothing — their core value proposition has structurally eroded</td>
+              <td>Must rebuild around curation, credentialing, or community instead of access</td>
+              <td class="delta-warn">▼ Structural Threat</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The pattern worth sitting with: free knowledge rewards people who already had the <em>meta-skill</em> of learning — curiosity, discipline, the ability to sit with confusion until it resolves. It does comparatively little for people who never developed that meta-skill, because the internet handed them access, not motivation. The gap that's widening isn't "who has information" — it's "who has the appetite and discipline to use unlimited information well."</p>
+
+      <h2 id="the-institutions">04. What Happens to the Institutions Built on Scarcity</h2>
+
+      <p>Every institution that derived its authority primarily from controlling access to knowledge is under the same slow pressure, whether or not it has noticed yet. This doesn't mean these institutions disappear — it means the honest ones are already quietly repositioning around a different value proposition, and the ones that don't will hollow out.</p>
+
+      <ul class="roadmap">
+        <li>
+          <div class="roadmap-step mono">SHIFT_01</div>
+          <div class="roadmap-content">
+            <strong>Universities: From Content to Structure</strong>
+            <p>Lecture content is free on video platforms and now explainable interactively by AI. What a university still sells — and what actually justifies the cost — is structure: deadlines, cohorts, mentorship, accreditation, and the social proof of a credential. Institutions that keep pretending their value is "we have the information" will lose to free alternatives. The ones that pivot to "we build discipline and community around using it" survive.</p>
+          </div>
+        </li>
+        <li>
+          <div class="roadmap-step mono">SHIFT_02</div>
+          <div class="roadmap-content">
+            <strong>Journalism: From Reporting to Verification</strong>
+            <p>When anyone can publish and anyone can search, the scarce commodity is no longer "who found this out first" — it's "who can I trust to have actually checked it." Outlets that survive this shift are converging on verification, context, and accountability as their product, not raw information delivery.</p>
+          </div>
+        </li>
+        <li>
+          <div class="roadmap-step mono">SHIFT_03</div>
+          <div class="roadmap-content">
+            <strong>Professions: From Knowing to Being Liable</strong>
+            <p>A doctor, lawyer, or engineer's core remaining moat isn't the knowledge in their head — a patient or client can often retrieve the same facts in seconds. Their moat is legal liability, hands-on judgment under uncertainty, and the willingness to put their license behind a decision. Free knowledge makes the client more informed; it doesn't make them liable for the outcome.</p>
+          </div>
+        </li>
+        <li>
+          <div class="roadmap-step mono">SHIFT_04</div>
+          <div class="roadmap-content">
+            <strong>Governments and Institutions of Record: From Sole Source to Referee</strong>
+            <p>When citizens no longer depend on official channels as their only source of information, institutions lose the automatic benefit of the doubt that came with being the sole narrator. Their surviving function shifts toward being a trusted referee among many competing claims — a much harder position to hold, and one that has to be earned continuously rather than assumed.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2 id="the-dangers">05. The Part the Optimists Skip</h2>
+
+      <p>It's tempting to treat "knowledge is free" as an unambiguous good, the way clean water or literacy are unambiguous goods. But knowledge and misinformation now travel through the exact same free, frictionless pipes, at the exact same speed, with no built-in mechanism to sort one from the other. The printing press didn't just spread scripture and science faster — it also spread propaganda faster, and it took Europe generations to build the norms and institutions (peer review, editorial standards, libel law) that made mass-printed information broadly trustworthy again.</p>
+
+      <p>We are in the equivalent early, chaotic phase now, except compressed. A few specific dangers are worth naming plainly rather than gesturing at vaguely:</p>
+
+      <p><strong>Confidence outpaces competence.</strong> Free access to information creates the feeling of expertise faster than it creates actual expertise. Someone who has read fifty articles about a topic can sound, and even feel, more authoritative than they are — because the retrieval cost that used to force depth (you had to go find a book, read the whole thing, sit with it) has vanished.</p>
+
+      <p><strong>Volume defeats verification.</strong> When the cost of producing plausible-sounding content approaches zero, the sheer volume of claims outpaces any human or institutional capacity to check them individually. This is not a hypothetical future problem — it is the defining information problem of the current decade.</p>
+
+      <p><strong>Fragmentation replaces consensus.</strong> A single scarce information supply once forced a society to argue over a shared set of facts, even when they disagreed about what those facts meant. Abundant, personalized information supply lets different groups inhabit entirely different factual universes, which makes shared decision-making — the actual mechanics of civilization — measurably harder.</p>
+
+      <p>None of this is an argument for scarcity. Gatekept knowledge produced its own catalog of harms — entrenched power, excluded voices, slower progress, artificial hierarchy. It is simply the honest accounting: free knowledge trades one set of failure modes for a different, less familiar set, and civilization hasn't finished building the norms to manage the new ones.</p>
+
+      <h2 id="final">06. The Only Skill That Actually Compounds Now</h2>
+
+      <p>If knowing things is no longer the advantage, what is? The evidence — from every institution quietly repositioning, from every group that gained the most from free access — points to the same answer: the advantage moves to whoever is best at converting unlimited information into good decisions, faster and more reliably than everyone else with access to the exact same information.</p>
+
+      <p>That's a different skill than the one civilization spent centuries optimizing for. It has less to do with memorizing and more to do with three things: knowing which questions are worth asking, knowing which sources and people to trust when everyone sounds equally confident, and having the discipline to actually apply what you learn instead of just consuming it. None of those three things are free. None of them show up automatically just because the facts do.</p>
+
+      <p>Civilization didn't get less demanding when knowledge became free. It got more demanding in a different place. The gate didn't disappear — it moved from "can you access this" to "what will you actually do with it." <strong>That gate has always been the harder one to pass, and now it's the only one left.</strong></p>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="mono">© 2026 SADMAN SAMIN — DHAKA, BD</div>
+    <p style="font-size: 0.7rem; margin-top: 10px; letter-spacing: 0.05em;">RESEARCH AT THE INTERSECTION OF BUSINESS & TECH</p>
+  </footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateIcon(next);
+  }
+
+  function updateIcon(theme) {
+    const icon = document.getElementById('themeIcon');
+    if (theme === 'light') {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    } else {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+    }
+  }
+
+  (function() {
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    updateIcon(saved);
+  })();
+</script>
+</body>
+</html>

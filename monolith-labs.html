@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
     
-    <title>Monolith Labs | Research & Infrastructure </title>
+    <title>Monolith Labs | Research & Infrastructure</title>
     <meta name="title" content="Monolith Labs | Research & Infrastructure">
     <meta name="description" content="Monolith Labs is a research institute dedicated to open-access science, climate-resilient structural models, and data-driven public utility tools.">
     <meta name="keywords" content="Monolith Labs, Sadman Samin, AI Job Risk Calculator, Rent Estimator BD, Sustainable Infrastructure, Public Utility Tools, AI Research">
@@ -29,22 +29,39 @@
 
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-primary: #111111;
-            --text-secondary: #666666;
-            --border-color: #e5e5e5;
-            --accent: #000000;
-            --hover-bg: #f9f9f9;
+            /* Light Theme Palette based on x.ai aesthetics */
+            --bg-color: #fafafa;
+            --text-primary: #09090b;
+            --text-secondary: #71717a;
+            --border-color: rgba(9, 9, 11, 0.08);
+            --border-hover: rgba(9, 9, 11, 0.16);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-hover-bg: #ffffff;
+            --btn-bg: #09090b;
+            --btn-text: #fafafa;
+            --btn-hover: #18181b;
+            --accent-sunset: #ea580c;
+            --accent-sunset-bg: rgba(234, 88, 12, 0.08);
+            --accent-sunset-border: rgba(234, 88, 12, 0.2);
+            --shimmer-gradient: linear-gradient(90deg, rgba(9,9,11,0.1) 0%, #ea580c 45%, #a855f7 50%, #ec4899 55%, rgba(9,9,11,0.1) 100%);
         }
 
-        /* Replaced media query with a data-theme attribute for manual toggling */
         :root[data-theme="dark"] {
-            --bg-color: #0a0a0a;
-            --text-primary: #ededed;
-            --text-secondary: #888888;
-            --border-color: #222222;
-            --accent: #ffffff;
-            --hover-bg: #141414;
+            /* Dark Theme Palette (Standard x.ai Dark Mode) */
+            --bg-color: #09090b;
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --border-color: rgba(244, 244, 245, 0.08);
+            --border-hover: rgba(244, 244, 245, 0.16);
+            --card-bg: rgba(20, 20, 23, 0.6);
+            --card-hover-bg: rgba(24, 24, 27, 0.8);
+            --btn-bg: #f4f4f5;
+            --btn-text: #09090b;
+            --btn-hover: #e4e4e7;
+            --accent-sunset: #ff6b4a;
+            --accent-sunset-bg: rgba(255, 107, 74, 0.08);
+            --accent-sunset-border: rgba(255, 107, 74, 0.2);
+            --shimmer-gradient: linear-gradient(90deg, rgba(244,244,245,0.15) 0%, #ff6b4a 45%, #a855f7 50%, #ec4899 55%, rgba(244,244,245,0.15) 100%);
         }
 
         * {
@@ -57,121 +74,194 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .mono {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            letter-spacing: -0.02em;
+            font-size: 0.75rem;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
         }
 
         a {
             color: inherit;
             text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-
-        a:hover {
-            opacity: 0.7;
+            transition: color 0.2s ease, opacity 0.2s ease;
         }
 
         /* Layout */
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 0 1.5rem;
         }
 
-        /* Navigation */
+        /* Glassmorphic Navbar */
+        header.nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: rgba(var(--bg-color), 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 6rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
+            height: 4rem;
         }
 
         .nav-logo {
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .nav-right {
+        .nav-center-links {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
 
-        .nav-back {
+        .nav-center-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
             color: var(--text-secondary);
         }
 
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
+        .nav-center-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-right {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            margin: -0.5rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
+            gap: 0.75rem;
         }
 
-        .theme-toggle:hover {
+        /* Pill Buttons */
+        .btn-pill-secondary {
+            background-color: transparent;
             color: var(--text-primary);
-            background-color: var(--hover-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        .theme-icon {
-            font-size: 1.1rem;
+        .btn-pill-secondary:hover {
+            background-color: var(--border-color);
+            border-color: var(--border-hover);
         }
 
-        /* Hero Section */
-        header {
-            margin-bottom: 5rem;
+        .btn-pill-primary {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: 1px solid var(--btn-bg);
+            padding: 0.6rem 1.25rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        h1 {
-            font-size: 2.5rem;
+        .btn-pill-primary:hover {
+            filter: brightness(0.9);
+            transform: translateY(-0.5px);
+        }
+
+        /* Hero Container */
+        .hero-section {
+            padding-top: 12rem;
+            padding-bottom: 6rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
             font-weight: 500;
             letter-spacing: -0.04em;
+            line-height: 1.05;
             margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-desc {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.6;
         }
 
-        /* Methodology Explanatory Note */
-        .methodology-note {
-            margin-top: 3.5rem;
+        .hero-ctas {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Highlight Shimmer Underline */
+        .shimmer-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .shimmer-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 999px;
+            background: var(--shimmer-gradient);
+            background-size: 400% 100%;
+            animation: hero-shimmer 4s linear infinite;
+        }
+
+        @keyframes hero-shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        /* Methodology Note Inline Link */
+        .methodology-container {
+            max-width: 600px;
+            margin: 0 auto;
             padding-top: 2rem;
             border-top: 1px solid var(--border-color);
-            max-width: 600px;
-        }
-
-        .mono-label {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            margin-bottom: 0.75rem;
         }
 
         .note-desc {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            line-height: 1.6;
         }
 
         .inline-link {
@@ -179,21 +269,25 @@
             font-weight: 500;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 1px;
-            transition: border-color 0.2s ease, opacity 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .inline-link:hover {
             border-bottom-color: var(--text-primary);
-            opacity: 1;
         }
 
-        /* Product List */
+        /* Products Grid Section */
+        .products-section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
         .section-title {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -206,246 +300,386 @@
             background-color: var(--border-color);
         }
 
-        .product-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
+        /* Product Cards */
         .product-card {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             padding: 2rem;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            background-color: transparent;
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
         }
 
         .product-card:hover {
-            background-color: var(--hover-bg);
+            background-color: var(--card-hover-bg);
             border-color: var(--text-secondary);
-            opacity: 1;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
         }
 
-        .product-header {
+        .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: flex-start;
             margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .product-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
         }
 
         .product-type {
+            font-size: 0.7rem;
             color: var(--text-secondary);
-            text-transform: uppercase;
+            background-color: var(--border-color);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 500;
         }
 
         .product-desc {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
         }
 
         .product-link {
+            font-size: 0.85rem;
+            font-weight: 500;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            font-size: 0.9rem;
-            border-bottom: 1px solid transparent;
-            padding-bottom: 2px;
+            gap: 0.25rem;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
         }
 
         .product-card:hover .product-link {
-            border-bottom-color: var(--text-primary);
+            gap: 0.5rem;
         }
 
-        /* Footer */
-        footer {
-            margin-top: 6rem;
-            padding-top: 2rem;
+        /* Stat Counter Board */
+        .stats-banner {
+            padding: 6rem 0;
             border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            color: var(--text-secondary);
+            gap: 3rem;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .product-card { padding: 1.5rem; }
-            nav { flex-direction: column; align-items: flex-start; gap: 1rem; }
-            .nav-right { width: 100%; justify-content: space-between; }
+        .banner-stat-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .banner-stat-item h3 {
+            font-size: 4rem;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .banner-stat-item p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Simplified & Truthful Flat Footer */
+        .footer-simple {
+            margin-top: 6rem;
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid-flat {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand-flat h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand-flat p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            max-width: 320px;
+            line-height: 1.6;
+        }
+
+        .footer-links-flat {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .footer-links-flat a {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-flat a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom-flat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid-flat { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .hero-section h1 { font-size: 2.5rem; }
+            .stats-banner { flex-direction: column; gap: 4rem; }
+            nav .nav-center-links { display: none; }
+            .footer-links-flat { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <nav>
-            <div class="nav-logo">MONOLITH LABS.</div>
-            <div class="nav-right">
-                <button id="theme-toggle" class="theme-toggle mono" aria-label="Toggle Theme">
-                    <span class="theme-icon" id="theme-icon">◑</span> Theme
-                </button>
-                <a href="https://sadmansamin21.github.io" class="nav-back mono">← Back</a>
-            </div>
-        </nav>
+    <!-- Sticky Glassmorphic Header -->
+    <header class="nav-header">
+        <div class="container">
+            <nav>
+                <div class="nav-logo">MONOLITH LABS.</div>
+                <div class="nav-center-links">
+                    <a href="#initiatives">Initiatives</a>
+                    <a href="https://sadmansamin21.github.io/methodology.html" target="_blank" rel="noopener noreferrer">Methodology</a>
+                </div>
+                <div class="nav-right">
+                    <button id="theme-toggle" class="btn-pill-secondary mono" aria-label="Toggle Theme">
+                        <span id="theme-icon">◑</span> Theme
+                    </button>
+                    <a href="https://sadmansamin21.github.io" class="btn-pill-secondary mono">← Back</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-        <header>
-            <h1>Building the next infrastructure.</h1>
+    <!-- Global Hero Area with Shimmer Underline -->
+    <div class="container">
+        <section class="hero-section">
+            <h1>Building the next public <span class="shimmer-underline">infrastructure</span>.</h1>
             <p class="hero-desc">
-               Monolith Labs is an independent research institute dedicated to open-access public data utilities and socio-economic intelligence frameworks. Founded on the principle of absolute accessibility, the lab builds and deploys a growing portfolio of digital tools, open data engines, and public directory platforms specifically engineered to advance open knowledge, cultivate public trust, and streamline community access to high-value information.
+                An independent research institute engineering open-access public data utilities, socio-economic intelligence models, and climate-resilient frameworks. Completely accessible, fully verified, and free.
             </p>
+            <div class="hero-ctas">
+                <a href="#initiatives" class="btn-pill-primary">Explore Products</a>
+            </div>
             
-            <div class="methodology-note">
+            <div class="methodology-container">
                 <p class="note-desc">
-                    To understand the data pipelines, AI synthesis processes, and verification rubrics used to build these initiatives, read our complete <a href="https://sadmansamin21.github.io/methodology.html" class="inline-link" target="_blank" rel="noopener noreferrer">Research Methodology &amp; Data Framework ↗</a>.
+                    To understand our data pipelines, synthesis rubrics, and automated validation layers, read the complete 
+                    <a href="https://sadmansamin21.github.io/methodology.html" class="inline-link" target="_blank" rel="noopener noreferrer">Research Methodology & Data Framework ↗</a>.
                 </p>
             </div>
-        </header>
+        </section>
 
-        <main>
+        <!-- Dynamic Global Stat Banner -->
+        <section class="stats-banner">
+            <div class="banner-stat-item">
+                <h3>9+</h3>
+                <p>Digital Utilities Engineered</p>
+            </div>
+            <div class="banner-stat-item">
+                <h3>0</h3>
+                <p>Paywalls or Gatekeeping Barriers</p>
+            </div>
+            <div class="banner-stat-item">
+                <h3>Global</h3>
+                <p>Research & Utility Scope</p>
+            </div>
+        </section>
+
+        <!-- Selected Initiatives Grid -->
+        <main class="products-section" id="initiatives">
             <div class="section-title mono">Selected Products & Initiatives</div>
             
-            <div class="product-list">
+            <div class="products-grid">
                 
-                <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">AI Job Risk Calculator</h2>
+                <div class="product-card">
+                    <div class="card-header">
+                        <h3 class="product-title">AI Job Risk Calculator</h3>
                         <span class="product-type mono">Research Flagship</span>
                     </div>
                     <p class="product-desc">
                         Mapping workforce vulnerabilities in the post-AGI economy. A long-term research initiative exploring how artificial general intelligence reshapes labor markets, institutional resilience, and economic planning.
                     </p>
-                    <div class="product-link">Explore Tool ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" class="product-link" target="_blank" rel="noopener noreferrer">Explore Tool ↗</a>
+                </div>
 
-                <a href="https://sadmansamin21.github.io/GovLinksBD.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">GovLinksBD</h2>
+                <div class="product-card">
+                    <div class="card-header">
+                        <h3 class="product-title">GovLinksBD</h3>
                         <span class="product-type mono">Public Tool</span>
                     </div>
                     <p class="product-desc">
                         A clean, compact directory of official government portals. Avoid messy official navigation and jump directly to the services you need.
                     </p>
-                    <div class="product-link">Open ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/GovLinksBD.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Portal ↗</a>
+                </div>
 
-                <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">AGI University Major Index</h2>
-                        <span class="product-type mono">RESEARCH FLAGSHIP</span>
+                <div class="product-card">
+                    <div class="card-header">
+                        <h3 class="product-title">AGI University Major Index</h3>
+                        <span class="product-type mono">Research</span>
                     </div>
                     <p class="product-desc">
                       Will Artificial General Intelligence render your degree obsolete? Check your subject's structural durability score instantly.
                     </p>
-                    <div class="product-link">Visit ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" class="product-link" target="_blank" rel="noopener noreferrer">Visit Index ↗</a>
+                </div>
 
-                <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">Rent Estimator BD</h2>
+                <div class="product-card">
+                    <div class="card-header">
+                        <h3 class="product-title">Rent Estimator BD</h3>
                         <span class="product-type mono">Public Tool</span>
                     </div>
                     <p class="product-desc">
-                        Data-driven rental intelligence for 50+ local districts across Bangladesh. A public utility bridging the information gap in the informal housing market to empower tenants and property owners alike.
+                        Data-driven rental intelligence mapping local neighborhoods. A public utility bridging the information gap in informal housing markets to empower tenants and property owners alike.
                     </p>
-                    <div class="product-link">Open Tool ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Tool ↗</a>
+                </div>
 
-                <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">Bangladesh University AI Adaptation Index</h2>
+                <div class="product-card">
+                    <div class="card-header">
+                        <h3 class="product-title">University AI Adaptation Index</h3>
                         <span class="product-type mono">Research Tool</span>
                     </div>
                     <p class="product-desc">
-                        An objective review of institutional readiness, system blockages, and curriculum durability across 30 major universities in Bangladesh.
+                        An objective review of institutional readiness, system blockages, and curriculum durability across 30 major universities.
                     </p>
-                    <div class="product-link">Visit ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" class="product-link" target="_blank" rel="noopener noreferrer">Visit ↗</a>
+                </div>
                 
-                <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">Land Price Dhaka</h2>
+                <div class="product-card">
+                    <div class="card-header">
+                        <h3 class="product-title">Land Price Dhaka</h3>
                         <span class="product-type mono">Public Tool</span>
                     </div>
                     <p class="product-desc">
-                        An open-access data utility mapping and evaluating land price trends across various sectors and neighborhoods in Dhaka to bridge transparency gaps in urban real estate.
+                        An open-access data utility evaluating land price trends across various sectors and urban neighborhoods to bridge transparency gaps in real estate.
                     </p>
-                    <div class="product-link">Open Tool ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Tool ↗</a>
+                </div>
 
-                <a href="https://sadmansamin21.github.io/ai-architecture.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">AI Architecture</h2>
+                <div class="product-card">
+                    <div class="card-header">
+                        <h3 class="product-title">AI Architecture</h3>
                         <span class="product-type mono">Research</span>
                     </div>
                     <p class="product-desc">
                         Investigating the convergence of machine learning frameworks, generative design, and architectural engineering to construct sustainable, space-efficient structural models.
                     </p>
-                    <div class="product-link">Explore Research ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/ai-architecture.html" class="product-link" target="_blank" rel="noopener noreferrer">Explore Research ↗</a>
+                </div>
 
-                <a href="https://sadmansamin21.github.io/gsaio.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">Global South AI Observatory</h2>
+                <div class="product-card">
+                    <div class="card-header">
+                        <h3 class="product-title">Global South AI Observatory</h3>
                         <span class="product-type mono">Information Tool</span>
                     </div>
                     <p class="product-desc">
                         Independent tracking registry evaluating sovereign computing nodes, verified national strategies, regulatory paradigms, and primary research outputs across emerging economies.
                     </p>
-                    <div class="product-link">Open Observatory ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/gsaio.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Observatory ↗</a>
+                </div>
                 
-                <a href="https://sadmansamin21.github.io/multipolar-product-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
-                    <div class="product-header">
-                        <h2 class="product-title">The Multipolar Product Index</h2>
+                <div class="product-card" style="grid-column: span 2;">
+                    <div class="card-header">
+                        <h3 class="product-title">The Multipolar Product Index</h3>
                         <span class="product-type mono">Information Tool</span>
                     </div>
                     <p class="product-desc">
                         Search 400+ specific U.S. tech products to discover their exact, explicitly non-U.S. global alternatives in a fully indexed database.
                     </p>
-                    <div class="product-link">Open Index ↗</div>
-                </a>
+                    <a href="https://sadmansamin21.github.io/multipolar-product-index.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Index ↗</a>
+                </div>
 
             </div>
         </main>
 
-        <footer>
-            <div class="mono">© 2026 Monolith Labs.</div>
-            <div class="mono">Dhaka, Bangladesh</div>
+        <!-- Simple, Unlabeled Footer Linking Directly to Live Initiatives Only -->
+        <footer class="footer-simple">
+            <div class="footer-grid-flat">
+                <div class="footer-brand-flat">
+                    <h4>MONOLITH LABS.</h4>
+                    <p>An independent research institute engineering open-access data utilities and global socio-economic intelligence models.</p>
+                </div>
+                <div class="footer-links-flat">
+                    <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" target="_blank" rel="noopener noreferrer">AI Job Risk Calculator ↗</a>
+                    <a href="https://sadmansamin21.github.io/GovLinksBD.html" target="_blank" rel="noopener noreferrer">GovLinksBD ↗</a>
+                    <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" target="_blank" rel="noopener noreferrer">AGI University Major Index ↗</a>
+                    <a href="https://sadmansamin21.github.io/house-rent-bd.html" target="_blank" rel="noopener noreferrer">Rent Estimator BD ↗</a>
+                    <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" target="_blank" rel="noopener noreferrer">University AI Adaptation Index ↗</a>
+                    <a href="https://sadmansamin21.github.io/land-price-dhaka.html" target="_blank" rel="noopener noreferrer">Land Price Dhaka ↗</a>
+                    <a href="https://sadmansamin21.github.io/ai-architecture.html" target="_blank" rel="noopener noreferrer">AI Architecture ↗</a>
+                    <a href="https://sadmansamin21.github.io/gsaio.html" target="_blank" rel="noopener noreferrer">Global South AI Observatory ↗</a>
+                    <a href="https://sadmansamin21.github.io/multipolar-product-index.html" target="_blank" rel="noopener noreferrer">The Multipolar Product Index ↗</a>
+                    <a href="https://sadmansamin21.github.io/methodology.html" target="_blank" rel="noopener noreferrer">Research Methodology & Data Framework ↗</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom-flat">
+                <div class="mono">© 2026 Monolith Labs.</div>
+            </div>
         </footer>
     </div>
 
     <script>
+        // Custom Theme toggler
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
 
-        // Determine current theme priority: LocalStorage -> OS Preference
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Apply initial theme
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
             document.documentElement.setAttribute('data-theme', 'dark');
             themeIcon.textContent = '◐';
         } else {
+            document.documentElement.setAttribute('data-theme', 'light');
             themeIcon.textContent = '◑';
         }
 
-        // Handle click event
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             
             if (currentTheme === 'dark') {
-                document.documentElement.removeAttribute('data-theme');
+                document.documentElement.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
                 themeIcon.textContent = '◑';
             } else {

@@ -306,7 +306,7 @@
             gap: 1.5rem;
         }
 
-        /* Product Cards */
+        /* Product Cards - Formatted as Block/Flex Anchor Wrappers */
         .product-card {
             display: flex;
             flex-direction: column;
@@ -319,6 +319,7 @@
             position: relative;
             overflow: hidden;
             min-height: 280px;
+            cursor: pointer;
         }
 
         .product-card:hover {
@@ -326,6 +327,7 @@
             border-color: var(--text-secondary);
             box-shadow: 0 15px 30px -10px rgba(0,0,0,0.05);
             transform: translateY(-2px);
+            opacity: 1; /* Override parent browser hover behavior */
         }
 
         .card-header {
@@ -333,6 +335,7 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1rem;
+            gap: 1rem;
         }
 
         .product-title {
@@ -349,6 +352,7 @@
             padding: 0.25rem 0.6rem;
             border-radius: 4px;
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .product-desc {
@@ -455,16 +459,136 @@
             font-size: 0.8rem;
         }
 
+        /* --- RESPONSIVE MOBILE OPTIMIZATION OVERRIDES --- */
         @media (max-width: 1024px) {
-            .footer-grid-flat { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-grid-flat { 
+                grid-template-columns: 1fr; 
+                gap: 3rem; 
+            }
         }
 
         @media (max-width: 768px) {
-            .products-grid { grid-template-columns: 1fr; }
-            .hero-section h1 { font-size: 2.5rem; }
-            .stats-banner { flex-direction: column; gap: 4rem; }
-            nav .nav-center-links { display: none; }
-            .footer-links-flat { grid-template-columns: 1fr; }
+            nav .nav-center-links { 
+                display: none; 
+            }
+            
+            nav {
+                height: 3.5rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .btn-pill-secondary {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .hero-section {
+                padding-top: 6.5rem; 
+                padding-bottom: 4rem;
+            }
+
+            .hero-section h1 { 
+                font-size: 2.25rem; 
+                letter-spacing: -0.03em;
+                line-height: 1.1;
+                margin-bottom: 1rem;
+            }
+
+            .hero-desc {
+                font-size: 1rem;
+                margin-bottom: 1.75rem;
+                padding: 0 0.5rem;
+                line-height: 1.5;
+            }
+
+            .hero-ctas {
+                margin-bottom: 2.5rem;
+            }
+
+            .stats-banner { 
+                flex-direction: column; 
+                gap: 2.5rem; 
+                padding: 4rem 0;
+            }
+
+            .banner-stat-item h3 {
+                font-size: 3rem;
+            }
+
+            .products-section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .products-grid { 
+                grid-template-columns: 1fr; 
+                gap: 1rem;
+            }
+
+            .product-card {
+                padding: 1.5rem;
+                min-height: auto; /* Allow height to adapt dynamically on mobile screens */
+            }
+
+            .product-title {
+                font-size: 1.15rem;
+            }
+
+            .product-desc {
+                font-size: 0.85rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Force 2-column featured items to stack sequentially on mobile screens */
+            .products-grid > .product-card[style*="grid-column"] {
+                grid-column: span 1 !important;
+            }
+
+            .footer-simple {
+                padding: 3rem 0;
+            }
+
+            .footer-grid-flat {
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .footer-brand-flat p {
+                max-width: 100%;
+            }
+
+            .footer-links-flat { 
+                grid-template-columns: 1fr; 
+                gap: 0.85rem;
+            }
+
+            .footer-bottom-flat {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding-top: 1.5rem;
+            }
+        }
+
+        /* Support for very small viewports (e.g. 320px to 375px) */
+        @media (max-width: 375px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-section h1 {
+                font-size: 1.85rem;
+            }
+
+            .banner-stat-item h3 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -524,13 +648,13 @@
             </div>
         </section>
 
-        <!-- Selected Initiatives Grid -->
+        <!-- Selected Initiatives Grid (Fully Clickable Card Wrapper Elements) -->
         <main class="products-section" id="initiatives">
             <div class="section-title mono">Selected Products & Initiatives</div>
             
             <div class="products-grid">
                 
-                <div class="product-card">
+                <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">AI Job Risk Calculator</h3>
                         <span class="product-type mono">Research Flagship</span>
@@ -538,10 +662,10 @@
                     <p class="product-desc">
                         Mapping workforce vulnerabilities in the post-AGI economy. A long-term research initiative exploring how artificial general intelligence reshapes labor markets, institutional resilience, and economic planning.
                     </p>
-                    <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" class="product-link" target="_blank" rel="noopener noreferrer">Explore Tool ↗</a>
-                </div>
+                    <div class="product-link">Explore Tool ↗</div>
+                </a>
 
-                <div class="product-card">
+                <a href="https://sadmansamin21.github.io/GovLinksBD.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">GovLinksBD</h3>
                         <span class="product-type mono">Public Tool</span>
@@ -549,10 +673,10 @@
                     <p class="product-desc">
                         A clean, compact directory of official government portals. Avoid messy official navigation and jump directly to the services you need.
                     </p>
-                    <a href="https://sadmansamin21.github.io/GovLinksBD.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Portal ↗</a>
-                </div>
+                    <div class="product-link">Open Portal ↗</div>
+                </a>
 
-                <div class="product-card">
+                <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">AGI University Major Index</h3>
                         <span class="product-type mono">Research</span>
@@ -560,10 +684,10 @@
                     <p class="product-desc">
                       Will Artificial General Intelligence render your degree obsolete? Check your subject's structural durability score instantly.
                     </p>
-                    <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" class="product-link" target="_blank" rel="noopener noreferrer">Visit Index ↗</a>
-                </div>
+                    <div class="product-link">Visit Index ↗</div>
+                </a>
 
-                <div class="product-card">
+                <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">Rent Estimator BD</h3>
                         <span class="product-type mono">Public Tool</span>
@@ -571,10 +695,10 @@
                     <p class="product-desc">
                         Data-driven rental intelligence mapping local neighborhoods. A public utility bridging the information gap in informal housing markets to empower tenants and property owners alike.
                     </p>
-                    <a href="https://sadmansamin21.github.io/house-rent-bd.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Tool ↗</a>
-                </div>
+                    <div class="product-link">Open Tool ↗</div>
+                </a>
 
-                <div class="product-card">
+                <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">University AI Adaptation Index</h3>
                         <span class="product-type mono">Research Tool</span>
@@ -582,10 +706,10 @@
                     <p class="product-desc">
                         An objective review of institutional readiness, system blockages, and curriculum durability across 30 major universities.
                     </p>
-                    <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" class="product-link" target="_blank" rel="noopener noreferrer">Visit ↗</a>
-                </div>
+                    <div class="product-link">Visit ↗</div>
+                </a>
                 
-                <div class="product-card">
+                <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">Land Price Dhaka</h3>
                         <span class="product-type mono">Public Tool</span>
@@ -593,10 +717,10 @@
                     <p class="product-desc">
                         An open-access data utility evaluating land price trends across various sectors and urban neighborhoods to bridge transparency gaps in real estate.
                     </p>
-                    <a href="https://sadmansamin21.github.io/land-price-dhaka.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Tool ↗</a>
-                </div>
+                    <div class="product-link">Open Tool ↗</div>
+                </a>
 
-                <div class="product-card">
+                <a href="https://sadmansamin21.github.io/ai-architecture.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">AI Architecture</h3>
                         <span class="product-type mono">Research</span>
@@ -604,10 +728,10 @@
                     <p class="product-desc">
                         Investigating the convergence of machine learning frameworks, generative design, and architectural engineering to construct sustainable, space-efficient structural models.
                     </p>
-                    <a href="https://sadmansamin21.github.io/ai-architecture.html" class="product-link" target="_blank" rel="noopener noreferrer">Explore Research ↗</a>
-                </div>
+                    <div class="product-link">Explore Research ↗</div>
+                </a>
 
-                <div class="product-card">
+                <a href="https://sadmansamin21.github.io/gsaio.html" class="product-card" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">Global South AI Observatory</h3>
                         <span class="product-type mono">Information Tool</span>
@@ -615,10 +739,10 @@
                     <p class="product-desc">
                         Independent tracking registry evaluating sovereign computing nodes, verified national strategies, regulatory paradigms, and primary research outputs across emerging economies.
                     </p>
-                    <a href="https://sadmansamin21.github.io/gsaio.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Observatory ↗</a>
-                </div>
+                    <div class="product-link">Open Observatory ↗</div>
+                </a>
                 
-                <div class="product-card" style="grid-column: span 2;">
+                <a href="https://sadmansamin21.github.io/multipolar-product-index.html" class="product-card" style="grid-column: span 2;" target="_blank" rel="noopener noreferrer">
                     <div class="card-header">
                         <h3 class="product-title">The Multipolar Product Index</h3>
                         <span class="product-type mono">Information Tool</span>
@@ -626,13 +750,13 @@
                     <p class="product-desc">
                         Search 400+ specific U.S. tech products to discover their exact, explicitly non-U.S. global alternatives in a fully indexed database.
                     </p>
-                    <a href="https://sadmansamin21.github.io/multipolar-product-index.html" class="product-link" target="_blank" rel="noopener noreferrer">Open Index ↗</a>
-                </div>
+                    <div class="product-link">Open Index ↗</div>
+                </a>
 
             </div>
         </main>
 
-        <!-- Simple, Unlabeled Footer Linking Directly to Live Initiatives Only -->
+        <!-- Simple, Unlabeled Flat Footer -->
         <footer class="footer-simple">
             <div class="footer-grid-flat">
                 <div class="footer-brand-flat">

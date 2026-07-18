@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGI Adaptation Course - Bangladesh Youth Readiness Program</title>
+  <link rel="canonical" href="https://sadmansamin21.github.io/agi-adaptation-course.html" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .locked-blur {
+            filter: blur(4px);
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brand-600 text-white p-2 rounded-lg">
+                    <i class="fas fa-brain text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg text-brand-900 tracking-tight">AGI Adaptation</span>
+                    <span class="text-xs block text-slate-500">Youth Prep Initiative</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://sadmansamin21.github.io" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition" target="_blank">
+                    <i class="fas fa-user-circle mr-1"></i> Instructor Portfolio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Course Introduction Section -->
+    <section class="bg-white border-b border-slate-100 py-12 md:py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="bg-brand-100 text-brand-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                Self-Paced Adaptability Module
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mt-4 tracking-tight leading-tight">
+                Preparing Bangladesh's Next Generation for AGI
+            </h1>
+            <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+                A structured, data-driven framework designed to help students, recent graduates, and young professionals pivot their careers before widespread cognitive automation.
+            </p>
+
+            <!-- Metadata Counters -->
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <div class="text-2xl font-bold text-brand-600">17+</div>
+                    <div class="text-xs text-slate-500 font-medium mt-1">Students Enrolled</div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <div class="text-2xl font-bold text-brand-600">3-4 Hours</div>
+                    <div class="text-xs text-slate-500 font-medium mt-1">Estimated Completion</div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <div class="text-2xl font-bold text-brand-600">6 Modules</div>
+                    <div class="text-xs text-slate-500 font-medium mt-1">Tools & Research</div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <div class="text-2xl font-bold text-brand-600">Free</div>
+                    <div class="text-xs text-slate-500 font-medium mt-1">Tuition Cost</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="max-w-5xl mx-auto px-4 py-12">
+
+        <!-- Locked Screen Gatekeeper -->
+        <div id="locked-panel" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-10 text-center max-w-xl mx-auto mb-16">
+            <div class="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-lock text-brand-600 text-2xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-900">Enroll to Unlock the Course Materials</h2>
+            <p class="text-sm text-slate-500 mt-2">
+                Gain instant access to practical indexes, AI job risk tools, career impact assessments, and tactical infographics.
+            </p>
+
+            <div class="mt-6 space-y-4">
+                <!-- Step 1: Go to Google Form -->
+                <div>
+                    <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Step 1</span>
+                    <a href="https://forms.gle/hdhK48dmrokV3Ask8" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white bg-brand-600 hover:bg-brand-700 transition shadow-sm">
+                        Register & Get Access Code <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Step 2: Input Verification Code -->
+                <div class="pt-4 border-t border-slate-100">
+                    <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Step 2: Enter Unlock Code</span>
+                    <div class="flex max-w-sm mx-auto">
+                        <input type="text" id="access-code" placeholder="Enter the 4-digit code" class="flex-1 min-w-0 block w-full px-4 py-2 text-base border border-slate-300 rounded-l-lg focus:ring-brand-500 focus:border-brand-500 text-center font-mono tracking-widest">
+                        <button onclick="verifyAccessCode()" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-r-lg text-white bg-slate-900 hover:bg-slate-800 transition">
+                            Unlock
+                        </button>
+                    </div>
+                    <p id="error-message" class="text-red-500 text-xs mt-2 hidden">Invalid code. Please register using the form above to retrieve the access key.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Content Container (Locked/Unlocked) -->
+        <div id="unlocked-content" class="locked-blur space-y-16">
+
+            <!-- Module 1: Foundations -->
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-blue-100 text-brand-700 rounded-lg p-3 font-bold">01</div>
+                    <div class="flex-1">
+                        <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Required Reading</span>
+                        <h3 class="text-xl font-bold text-slate-900 mt-1">Civilization After Free Knowledge</h3>
+                        <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                            Before delving into tools and indices, you must understand the long-term societal shifts. This foundational piece examines how human civilizations adapt when cognitive assets and actionable knowledge become virtually costless and infinitely abundant.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
+                            <span class="text-xs text-slate-500"><i class="far fa-clock mr-1"></i> Reading time: 12 minutes</span>
+                            <a href="https://sadmansamin21.github.io/blogs/civilization-after-free-knowledge.html" target="_blank" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:underline">
+                                Read Complete Article <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 2: Tools -->
+            <section class="space-y-6">
+                <div class="border-l-4 border-brand-600 pl-4">
+                    <h2 class="text-2xl font-bold text-slate-900">02. Career Risk Assessment Tools</h2>
+                    <p class="text-sm text-slate-500">Calculate exposure and evaluate the survival indexing of local career pathways.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Tool 1 -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900">AI Job Risk Calculator</h4>
+                            <p class="text-xs text-slate-500 mt-2">
+                                Quantify the exposure of specific task lists and local occupational profiles to baseline generative automation.
+                            </p>
+                        </div>
+                        <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" target="_blank" class="mt-6 inline-flex items-center text-xs font-bold text-brand-600 hover:text-brand-800">
+                            Launch Calculator <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Tool 2 -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900">AGI Major Survival Index</h4>
+                            <p class="text-xs text-slate-500 mt-2">
+                                Map standard academic degrees and professional certifications against projected timelines for general capabilities.
+                            </p>
+                        </div>
+                        <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" target="_blank" class="mt-6 inline-flex items-center text-xs font-bold text-brand-600 hover:text-brand-800">
+                            Check Major Index <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Tool 3 -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900">BD University AI Index</h4>
+                            <p class="text-xs text-slate-500 mt-2">
+                                Analyze local university program structures against regional labor market displacement forecasts.
+                            </p>
+                        </div>
+                        <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" target="_blank" class="mt-6 inline-flex items-center text-xs font-bold text-brand-600 hover:text-brand-800">
+                            Assess Institutions <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 3: Advanced Economics -->
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-blue-100 text-brand-700 rounded-lg p-3 font-bold">03</div>
+                    <div class="flex-1">
+                        <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Theoretical Handbook</span>
+                        <h3 class="text-xl font-bold text-slate-900 mt-1">Economics of AI and Labor</h3>
+                        <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                            How do labor economics pivot under full cognitive substitution? This handbook covers substitution vs. complementation elasticities, wage pressures in local markets, and structural shifts in international digital services outsourcing.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
+                            <span class="text-xs text-slate-500"><i class="fas fa-book mr-1"></i> Core Module Handbook</span>
+                            <a href="https://sadmansamin21.github.io/blogs/economics-of-ai-and-labor.html" target="_blank" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:underline">
+                                Open Handbook <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 4: Corporate Realities -->
+            <section class="space-y-6">
+                <div class="border-l-4 border-brand-600 pl-4">
+                    <h2 class="text-2xl font-bold text-slate-900">04. Corporate Dynamics & Market Operations</h2>
+                    <p class="text-sm text-slate-500">Examine how firms function behind closed doors under increasing technological saturation.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-amber-600 tracking-wider uppercase block mb-1">Corporate Productivity Paradox</span>
+                            <h4 class="font-bold text-slate-900 text-lg">Why are companies getting more productive while employees feel less useful?</h4>
+                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                                Investigation of "disconnected productivity," exploring how companies optimize organizational capacity using intelligent orchestration software while individual team members encounter alienation.
+                            </p>
+                        </div>
+                        <a href="https://sadmansamin.medium.com/why-are-companies-getting-more-productive-while-employees-feel-less-useful-1a7772686d84" target="_blank" class="mt-6 inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800">
+                            Read on Medium <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-indigo-600 tracking-wider uppercase block mb-1">Hiring & Assessment Shifts</span>
+                            <h4 class="font-bold text-slate-900 text-lg">If every applicant has an AI assistant, what does interviewing actually measure?</h4>
+                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                                Analysis of standard talent acquisition metrics. Under widespread accessibility of model tools, technical execution thresholds must pivot toward cognitive agency and problem diagnostics.
+                            </p>
+                        </div>
+                        <a href="https://sadmansamin.medium.com/if-every-applicant-has-an-ai-assistant-what-does-interviewing-actually-measure-15a4ab773305" target="_blank" class="mt-6 inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800">
+                            Read on Medium <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 5: Infographics and Charts -->
+            <section class="space-y-6">
+                <div class="border-l-4 border-brand-600 pl-4">
+                    <h2 class="text-2xl font-bold text-slate-900">05. AGI Adaptation Infographics</h2>
+                    <p class="text-sm text-slate-500">Visual models mapping job exposure patterns and tactical positioning paradigms.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Infographic 1 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 1: Strategy Hierarchy</span>
+                        <h4 class="text-base font-bold text-slate-900 mb-4">Adaptation Framework Hierarchy</h4>
+                        <div class="space-y-3">
+                            <div class="bg-brand-50 border-l-4 border-brand-600 p-3 rounded-r-lg">
+                                <span class="font-bold text-xs text-brand-800 block">Level 4: Cognitive Architecture</span>
+                                <p class="text-slate-600 text-xs mt-1">Directing workflows, modeling pipelines, orchestrating composite multi-agent platforms.</p>
+                            </div>
+                            <div class="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r-lg">
+                                <span class="font-bold text-xs text-blue-800 block">Level 3: Cross-Domain Synthesizer</span>
+                                <p class="text-slate-600 text-xs mt-1">Bridging computational tooling with localized physical domain problems.</p>
+                            </div>
+                            <div class="bg-slate-50 border-l-4 border-slate-400 p-3 rounded-r-lg">
+                                <span class="font-bold text-xs text-slate-800 block">Level 2: AI Execution Specialist</span>
+                                <p class="text-slate-600 text-xs mt-1">Prompt refinement, structured system development, standard workflow generation.</p>
+                            </div>
+                            <div class="bg-red-50 border-l-4 border-red-300 p-3 rounded-r-lg">
+                                <span class="font-bold text-xs text-red-800 block">Level 1: Routine Task Execution (Highly Vulnerable)</span>
+                                <p class="text-slate-600 text-xs mt-1">Writing standard syntax, translating languages, standard layout coding, repetitive reports.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Infographic 2 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 2: Strategic Positioning Matrix</span>
+                        <h4 class="text-base font-bold text-slate-900 mb-4">Job Role Risk vs Resilience Quadrant</h4>
+                        <div class="grid grid-cols-2 gap-2 text-center text-xs">
+                            <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                                <span class="font-bold text-red-800 block mb-1">High Risk / Repetitive</span>
+                                <p class="text-slate-500 text-[10px]">Customer care agents, routine software testers, basic data transcriptionists.</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                                <span class="font-bold text-amber-800 block mb-1">High Risk / Advanced cognitive</span>
+                                <p class="text-slate-500 text-[10px]">Junior system devs, basic legal research assistants, analytical financial forecasters.</p>
+                            </div>
+                            <div class="bg-sky-50 p-4 rounded-lg border border-sky-200">
+                                <span class="font-bold text-sky-800 block mb-1">Resilient / High-Touch Physical</span>
+                                <p class="text-slate-500 text-[10px]">Custom electrical deployment, non-standard mechanical assembly, physical health coordinators.</p>
+                            </div>
+                            <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+                                <span class="font-bold text-emerald-800 block mb-1">Resilient / Deep Adaptability</span>
+                                <p class="text-slate-500 text-[10px]">Complex product coordinators, high-complexity systems integration experts, cognitive path builders.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Infographic 3 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 3: Local Market Projections</span>
+                        <h4 class="text-base font-bold text-slate-900 mb-4">Bangladesh IT/Freelance Risk Heatmap</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                                    <span>Rote Content Development & Copywriting</span>
+                                    <span class="text-red-600 font-bold">95% Exposure</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-2">
+                                    <div class="bg-red-500 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                                    <span>Static UI Development & Core Web Layouts</span>
+                                    <span class="text-red-500 font-bold">85% Exposure</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-2">
+                                    <div class="bg-red-400 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                                    <span>Specialized Localized Integration</span>
+                                    <span class="text-emerald-600 font-bold">35% Exposure</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-2">
+                                    <div class="bg-emerald-500 h-2 rounded-full" style="width: 35%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Infographic 4 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 4: Practical Transition Roadmap</span>
+                        <h4 class="text-base font-bold text-slate-900 mb-4">Adaptation Career Flowchart</h4>
+                        <div class="flex flex-col space-y-2 text-xs">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold">1</span>
+                                <span class="text-slate-700">Identify cognitive components of your current academic/professional track.</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold">2</span>
+                                <span class="text-slate-700">Audit your routine processes and run them through high-level LLM tools.</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold">3</span>
+                                <span class="text-slate-700">Transition your skill development focus from syntax to complex diagnostic architecture.</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold">4</span>
+                                <span class="text-slate-700">Implement system-level solutions mapping computational networks to real-world deployment.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 6: Self-Assessment Quiz -->
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Practical Checkpoint</span>
+                    <h3 class="text-xl font-bold text-slate-900">Adaptation Knowledge Assessment</h3>
+                    <p class="text-xs text-slate-500 mt-1">Review basic structural mechanics concerning AGI economic disruptions before completion.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Question 1 -->
+                    <div class="space-y-2">
+                        <p class="text-sm font-semibold text-slate-900">1. If standard coding tasks can be compiled dynamically by large foundational models, what capacity should an engineer focus on developing?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="checkAnswer(1, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                                A. Memorizing structural syntax rules of secondary programming environments.
+                            </button>
+                            <button onclick="checkAnswer(1, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                                B. System integration architecture, problem orchestration, and algorithmic edge-case diagnostics.
+                            </button>
+                        </div>
+                        <p id="q1-feedback" class="text-xs hidden"></p>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="space-y-2 pt-4 border-t border-slate-100">
+                        <p class="text-sm font-semibold text-slate-900">2. In the context of "the productivity paradox," what factors drive structural employee alienation inside highly automated environments?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="checkAnswer(2, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                                A. Automation of core strategic agency, relegating the operator to minor task monitoring.
+                            </button>
+                            <button onclick="checkAnswer(2, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                                B. Standard decreases in organizational infrastructure capabilities.
+                            </button>
+                        </div>
+                        <p id="q2-feedback" class="text-xs hidden"></p>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="space-y-2 pt-4 border-t border-slate-100">
+                        <p class="text-sm font-semibold text-slate-900">3. Which regional digital segment in Bangladesh shows the highest exposure risks to near-term foundational tools?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="checkAnswer(3, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                                A. Geographically constrained physical maintenance networks and system operations.
+                            </button>
+                            <button onclick="checkAnswer(3, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                                B. Remote textual freelancing services, fundamental web interfaces, and generic coding support pipelines.
+                            </button>
+                        </div>
+                        <p id="q3-feedback" class="text-xs hidden"></p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-24">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="text-xs text-slate-500">
+                Designed to guide academic choices and vocational structures under emerging technologies.
+            </p>
+            <p class="text-xs text-slate-400 mt-2">
+                &copy; Sadman Samin. All educational modules are structured to adapt dynamically as metrics evolve.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Handling Security Gate and Quiz Check -->
+    <script>
+        // Security checks
+        // Obfuscation: "2632" charCodes [50, 54, 51, 50] XORed with 42 -> [24, 28, 25, 24]
+        const keyHashArray = [24, 28, 25, 24];
+
+        // Check Local Storage on page load to preserve login
+        window.addEventListener('DOMContentLoaded', () => {
+            const hasAccess = localStorage.getItem('agi_course_unlocked');
+            if (hasAccess === 'true') {
+                grantAccess();
+            }
+        });
+
+        function verifyAccessCode() {
+            const inputVal = document.getElementById('access-code').value.trim();
+            const errorMessage = document.getElementById('error-message');
+
+            if (inputVal.length !== 4) {
+                showError();
+                return;
+            }
+
+            let isValid = true;
+            for (let i = 0; i < 4; i++) {
+                if ((inputVal.charCodeAt(i) ^ 42) !== keyHashArray[i]) {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (isValid) {
+                localStorage.setItem('agi_course_unlocked', 'true');
+                grantAccess();
+            } else {
+                showError();
+            }
+        }
+
+        function showError() {
+            const errorElement = document.getElementById('error-message');
+            errorElement.classList.remove('hidden');
+        }
+
+        function grantAccess() {
+            const lockedPanel = document.getElementById('locked-panel');
+            const contentPanel = document.getElementById('unlocked-content');
+            
+            // Remove the locks and blur
+            lockedPanel.classList.add('hidden');
+            contentPanel.classList.remove('locked-blur');
+            // Remove restricted events
+            contentPanel.style.pointerEvents = 'auto';
+            contentPanel.style.userSelect = 'auto';
+        }
+
+        // Quiz Evaluation Mechanism
+        function checkAnswer(questionNum, isCorrect, btnElement) {
+            const parentDiv = btnElement.parentElement;
+            const feedbackText = document.getElementById(`q${questionNum}-feedback`);
+            
+            // Clear prior states on current question options
+            const siblingButtons = parentDiv.querySelectorAll('button');
+            siblingButtons.forEach(btn => {
+                btn.className = "w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition";
+            });
+
+            // Set outcome indicator
+            if (isCorrect) {
+                btnElement.className = "w-full text-left p-3 border border-emerald-300 bg-emerald-50 text-emerald-800 rounded-lg text-xs font-semibold transition";
+                feedbackText.innerText = "Correct option selected. This strategy maps to high resilience principles under model developments.";
+                feedbackText.className = "text-xs font-medium text-emerald-600 mt-2 block";
+            } else {
+                btnElement.className = "w-full text-left p-3 border border-red-300 bg-red-50 text-red-800 rounded-lg text-xs font-semibold transition";
+                feedbackText.innerText = "Incorrect choice. This role profile or approach is vulnerable to automated replacement frameworks.";
+                feedbackText.className = "text-xs font-medium text-red-600 mt-2 block";
+            }
+        }
+    </script>
+</body>
+</html>

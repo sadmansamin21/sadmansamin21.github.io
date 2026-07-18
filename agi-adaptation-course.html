@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGI Adaptation Course - Bangladesh Youth Readiness Program</title>
-  <link rel="canonical" href="https://sadmansamin21.github.io/agi-adaptation-course.html" />
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -12,6 +15,9 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
                     colors: {
                         brand: {
                             50: '#eff6ff',
@@ -28,122 +34,134 @@
     </script>
     <style>
         .locked-blur {
-            filter: blur(4px);
+            filter: blur(5px);
             pointer-events: none;
             user-select: none;
         }
+        /* Custom scrollbar for clean aesthetics */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
     <!-- Header / Navigation -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="bg-brand-600 text-white p-2 rounded-lg">
-                    <i class="fas fa-brain text-xl"></i>
+                <div class="bg-brand-600 text-white p-2 rounded-lg flex items-center justify-center w-10 h-10">
+                    <i class="fas fa-brain text-lg"></i>
                 </div>
                 <div>
-                    <span class="font-bold text-lg text-brand-900 tracking-tight">AGI Adaptation</span>
-                    <span class="text-xs block text-slate-500">Youth Prep Initiative</span>
+                    <span class="font-bold text-base md:text-lg text-brand-900 tracking-tight block leading-tight">AGI Adaptation</span>
+                    <span class="text-[10px] md:text-xs block text-slate-500 font-medium">Youth Prep Initiative</span>
                 </div>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="https://sadmansamin21.github.io" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition" target="_blank">
-                    <i class="fas fa-user-circle mr-1"></i> Instructor Portfolio
+            <div>
+                <a href="https://sadmansamin21.github.io" class="text-xs md:text-sm font-semibold text-slate-600 hover:text-brand-600 transition flex items-center gap-1" target="_blank">
+                    <i class="fas fa-user-circle"></i> <span class="hidden sm:inline">Instructor</span> Portfolio
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Hero / Course Introduction Section -->
-    <section class="bg-white border-b border-slate-100 py-12 md:py-16">
+    <section class="bg-white border-b border-slate-100 py-10 md:py-16">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="bg-brand-100 text-brand-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+            <span class="bg-brand-50 text-brand-800 text-[10px] md:text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider">
                 Self-Paced Adaptability Module
             </span>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mt-4 tracking-tight leading-tight">
+            <h1 class="text-2xl md:text-5xl font-extrabold text-slate-900 mt-4 tracking-tight leading-tight px-2">
                 Preparing Bangladesh's Next Generation for AGI
             </h1>
-            <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+            <p class="mt-4 text-sm md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed px-2">
                 A structured, data-driven framework designed to help students, recent graduates, and young professionals pivot their careers before widespread cognitive automation.
             </p>
 
-            <!-- Metadata Counters -->
-            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-2xl font-bold text-brand-600">17+</div>
-                    <div class="text-xs text-slate-500 font-medium mt-1">Students Enrolled</div>
+            <!-- Metadata Counters (Highly responsive) -->
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto px-2">
+                <div class="bg-slate-50 p-3 md:p-4 rounded-xl border border-slate-100">
+                    <div class="text-xl md:text-2xl font-bold text-brand-600">17+</div>
+                    <div class="text-[10px] md:text-xs text-slate-500 font-medium mt-1">Students Enrolled</div>
                 </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-2xl font-bold text-brand-600">3-4 Hours</div>
-                    <div class="text-xs text-slate-500 font-medium mt-1">Estimated Completion</div>
+                <div class="bg-slate-50 p-3 md:p-4 rounded-xl border border-slate-100">
+                    <div class="text-xl md:text-2xl font-bold text-brand-600">3-4 Hours</div>
+                    <div class="text-[10px] md:text-xs text-slate-500 font-medium mt-1">Estimated Time</div>
                 </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-2xl font-bold text-brand-600">6 Modules</div>
-                    <div class="text-xs text-slate-500 font-medium mt-1">Tools & Research</div>
+                <div class="bg-slate-50 p-3 md:p-4 rounded-xl border border-slate-100">
+                    <div class="text-xl md:text-2xl font-bold text-brand-600">7 Modules</div>
+                    <div class="text-[10px] md:text-xs text-slate-500 font-medium mt-1">Tools & Research</div>
                 </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-2xl font-bold text-brand-600">Free</div>
-                    <div class="text-xs text-slate-500 font-medium mt-1">Tuition Cost</div>
+                <div class="bg-slate-50 p-3 md:p-4 rounded-xl border border-slate-100">
+                    <div class="text-xl md:text-2xl font-bold text-brand-600">Free</div>
+                    <div class="text-[10px] md:text-xs text-slate-500 font-medium mt-1">Tuition Cost</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Main Content Area -->
-    <main class="max-w-5xl mx-auto px-4 py-12">
+    <main class="max-w-5xl mx-auto px-4 py-8 md:py-12 flex-grow w-full">
 
-        <!-- Locked Screen Gatekeeper -->
-        <div id="locked-panel" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-10 text-center max-w-xl mx-auto mb-16">
-            <div class="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-lock text-brand-600 text-2xl"></i>
+        <!-- Locked Screen Gatekeeper (Optimized for mobile viewing) -->
+        <div id="locked-panel" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-10 text-center max-w-lg mx-auto mb-16">
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-lock text-brand-600 text-xl md:text-2xl"></i>
             </div>
-            <h2 class="text-2xl font-bold text-slate-900">Enroll to Unlock the Course Materials</h2>
-            <p class="text-sm text-slate-500 mt-2">
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">Enroll to Unlock Course</h2>
+            <p class="text-xs md:text-sm text-slate-500 mt-2 max-w-sm mx-auto">
                 Gain instant access to practical indexes, AI job risk tools, career impact assessments, and tactical infographics.
             </p>
 
             <div class="mt-6 space-y-4">
                 <!-- Step 1: Go to Google Form -->
                 <div>
-                    <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Step 1</span>
-                    <a href="https://forms.gle/hdhK48dmrokV3Ask8" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white bg-brand-600 hover:bg-brand-700 transition shadow-sm">
-                        Register & Get Access Code <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    <span class="block text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-2">Step 1</span>
+                    <a href="https://forms.gle/hdhK48dmrokV3Ask8" target="_blank" class="inline-flex items-center justify-center w-full min-h-[48px] px-6 py-3 border border-transparent text-sm md:text-base font-semibold rounded-lg text-white bg-brand-600 hover:bg-brand-700 transition shadow-sm active:scale-[0.98]">
+                        Register & Get Access Code <i class="fas fa-external-link-alt ml-2 text-xs"></i>
                     </a>
                 </div>
 
                 <!-- Step 2: Input Verification Code -->
                 <div class="pt-4 border-t border-slate-100">
-                    <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Step 2: Enter Unlock Code</span>
+                    <span class="block text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-2">Step 2: Enter Unlock Code</span>
                     <div class="flex max-w-sm mx-auto">
-                        <input type="text" id="access-code" placeholder="Enter the 4-digit code" class="flex-1 min-w-0 block w-full px-4 py-2 text-base border border-slate-300 rounded-l-lg focus:ring-brand-500 focus:border-brand-500 text-center font-mono tracking-widest">
-                        <button onclick="verifyAccessCode()" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-r-lg text-white bg-slate-900 hover:bg-slate-800 transition">
+                        <input type="text" id="access-code" placeholder="Enter code" class="flex-1 min-w-0 block w-full px-4 py-2.5 text-sm md:text-base border border-slate-300 rounded-l-lg focus:ring-brand-500 focus:border-brand-500 text-center font-mono tracking-widest outline-none">
+                        <button onclick="verifyAccessCode()" class="inline-flex items-center min-h-[44px] px-5 py-2.5 border border-transparent text-xs md:text-sm font-semibold rounded-r-lg text-white bg-slate-900 hover:bg-slate-800 transition active:scale-[0.98]">
                             Unlock
                         </button>
                     </div>
-                    <p id="error-message" class="text-red-500 text-xs mt-2 hidden">Invalid code. Please register using the form above to retrieve the access key.</p>
+                    <p id="error-message" class="text-red-500 text-xs mt-2.5 hidden font-medium">Invalid code. Please register via the link above to receive the correct key.</p>
                 </div>
             </div>
         </div>
 
         <!-- Course Content Container (Locked/Unlocked) -->
-        <div id="unlocked-content" class="locked-blur space-y-16">
+        <div id="unlocked-content" class="locked-blur space-y-12 md:space-y-16">
 
             <!-- Module 1: Foundations -->
-            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
-                <div class="flex items-start space-x-4">
-                    <div class="bg-blue-100 text-brand-700 rounded-lg p-3 font-bold">01</div>
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-8">
+                <div class="flex flex-col md:flex-row items-start md:space-x-4 space-y-3 md:space-y-0">
+                    <div class="bg-blue-100 text-brand-700 rounded-lg w-10 h-10 flex items-center justify-center font-bold text-sm shrink-0">01</div>
                     <div class="flex-1">
-                        <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Required Reading</span>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1">Civilization After Free Knowledge</h3>
-                        <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                        <span class="text-[10px] font-semibold text-brand-600 tracking-wider uppercase block">Required Reading</span>
+                        <h3 class="text-lg md:text-xl font-bold text-slate-900 mt-1">Civilization After Free Knowledge</h3>
+                        <p class="text-slate-600 mt-2 text-xs md:text-sm leading-relaxed">
                             Before delving into tools and indices, you must understand the long-term societal shifts. This foundational piece examines how human civilizations adapt when cognitive assets and actionable knowledge become virtually costless and infinitely abundant.
                         </p>
-                        <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
-                            <span class="text-xs text-slate-500"><i class="far fa-clock mr-1"></i> Reading time: 12 minutes</span>
-                            <a href="https://sadmansamin21.github.io/blogs/civilization-after-free-knowledge.html" target="_blank" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:underline">
-                                Read Complete Article <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
+                            <span class="text-[10px] md:text-xs text-slate-500"><i class="far fa-clock mr-1"></i> Reading time: 12 minutes</span>
+                            <a href="https://sadmansamin21.github.io/blogs/civilization-after-free-knowledge.html" target="_blank" class="inline-flex items-center text-xs md:text-sm font-semibold text-brand-600 hover:underline">
+                                Read Complete Article <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
                             </a>
                         </div>
                     </div>
@@ -151,57 +169,57 @@
             </section>
 
             <!-- Module 2: Tools -->
-            <section class="space-y-6">
-                <div class="border-l-4 border-brand-600 pl-4">
-                    <h2 class="text-2xl font-bold text-slate-900">02. Career Risk Assessment Tools</h2>
-                    <p class="text-sm text-slate-500">Calculate exposure and evaluate the survival indexing of local career pathways.</p>
+            <section class="space-y-4 md:space-y-6">
+                <div class="border-l-4 border-brand-600 pl-3 md:pl-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">02. Career Risk Assessment Tools</h2>
+                    <p class="text-xs md:text-sm text-slate-500 mt-0.5">Calculate exposure and evaluate the survival indexing of local career pathways.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                     <!-- Tool 1 -->
-                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 md:p-6 flex flex-col justify-between">
                         <div>
-                            <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center mb-4">
+                            <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center mb-4 text-base">
                                 <i class="fas fa-calculator"></i>
                             </div>
-                            <h4 class="font-bold text-slate-900">AI Job Risk Calculator</h4>
-                            <p class="text-xs text-slate-500 mt-2">
+                            <h4 class="font-bold text-slate-900 text-sm md:text-base">AI Job Risk Calculator</h4>
+                            <p class="text-[11px] md:text-xs text-slate-500 mt-2 leading-relaxed">
                                 Quantify the exposure of specific task lists and local occupational profiles to baseline generative automation.
                             </p>
                         </div>
-                        <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" target="_blank" class="mt-6 inline-flex items-center text-xs font-bold text-brand-600 hover:text-brand-800">
+                        <a href="https://sadmansamin21.github.io/ai-job-risk-calculator.html" target="_blank" class="mt-5 inline-flex items-center text-[11px] md:text-xs font-bold text-brand-600 hover:text-brand-800">
                             Launch Calculator <i class="fas fa-external-link-alt ml-1"></i>
                         </a>
                     </div>
 
                     <!-- Tool 2 -->
-                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 md:p-6 flex flex-col justify-between">
                         <div>
-                            <div class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center mb-4">
+                            <div class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center mb-4 text-base">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <h4 class="font-bold text-slate-900">AGI Major Survival Index</h4>
-                            <p class="text-xs text-slate-500 mt-2">
+                            <h4 class="font-bold text-slate-900 text-sm md:text-base">AGI Major Survival Index</h4>
+                            <p class="text-[11px] md:text-xs text-slate-500 mt-2 leading-relaxed">
                                 Map standard academic degrees and professional certifications against projected timelines for general capabilities.
                             </p>
                         </div>
-                        <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" target="_blank" class="mt-6 inline-flex items-center text-xs font-bold text-brand-600 hover:text-brand-800">
+                        <a href="https://sadmansamin21.github.io/agi-major-survival-index.html" target="_blank" class="mt-5 inline-flex items-center text-[11px] md:text-xs font-bold text-brand-600 hover:text-brand-800">
                             Check Major Index <i class="fas fa-external-link-alt ml-1"></i>
                         </a>
                     </div>
 
                     <!-- Tool 3 -->
-                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 md:p-6 flex flex-col justify-between">
                         <div>
-                            <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center mb-4">
+                            <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center mb-4 text-base">
                                 <i class="fas fa-university"></i>
                             </div>
-                            <h4 class="font-bold text-slate-900">BD University AI Index</h4>
-                            <p class="text-xs text-slate-500 mt-2">
+                            <h4 class="font-bold text-slate-900 text-sm md:text-base">BD University AI Index</h4>
+                            <p class="text-[11px] md:text-xs text-slate-500 mt-2 leading-relaxed">
                                 Analyze local university program structures against regional labor market displacement forecasts.
                             </p>
                         </div>
-                        <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" target="_blank" class="mt-6 inline-flex items-center text-xs font-bold text-brand-600 hover:text-brand-800">
+                        <a href="https://sadmansamin21.github.io/bangladesh-university-ai-index.html" target="_blank" class="mt-5 inline-flex items-center text-[11px] md:text-xs font-bold text-brand-600 hover:text-brand-800">
                             Assess Institutions <i class="fas fa-external-link-alt ml-1"></i>
                         </a>
                     </div>
@@ -209,19 +227,19 @@
             </section>
 
             <!-- Module 3: Advanced Economics -->
-            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
-                <div class="flex items-start space-x-4">
-                    <div class="bg-blue-100 text-brand-700 rounded-lg p-3 font-bold">03</div>
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-8">
+                <div class="flex flex-col md:flex-row items-start md:space-x-4 space-y-3 md:space-y-0">
+                    <div class="bg-blue-100 text-brand-700 rounded-lg w-10 h-10 flex items-center justify-center font-bold text-sm shrink-0">03</div>
                     <div class="flex-1">
-                        <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Theoretical Handbook</span>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1">Economics of AI and Labor</h3>
-                        <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                        <span class="text-[10px] font-semibold text-brand-600 tracking-wider uppercase block">Theoretical Handbook</span>
+                        <h3 class="text-lg md:text-xl font-bold text-slate-900 mt-1">Economics of AI and Labor</h3>
+                        <p class="text-slate-600 mt-2 text-xs md:text-sm leading-relaxed">
                             How do labor economics pivot under full cognitive substitution? This handbook covers substitution vs. complementation elasticities, wage pressures in local markets, and structural shifts in international digital services outsourcing.
                         </p>
-                        <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
-                            <span class="text-xs text-slate-500"><i class="fas fa-book mr-1"></i> Core Module Handbook</span>
-                            <a href="https://sadmansamin21.github.io/blogs/economics-of-ai-and-labor.html" target="_blank" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:underline">
-                                Open Handbook <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
+                            <span class="text-[10px] md:text-xs text-slate-500"><i class="fas fa-book mr-1"></i> Core Module Handbook</span>
+                            <a href="https://sadmansamin21.github.io/blogs/economics-of-ai-and-labor.html" target="_blank" class="inline-flex items-center text-xs md:text-sm font-semibold text-brand-600 hover:underline">
+                                Open Handbook <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
                             </a>
                         </div>
                     </div>
@@ -229,104 +247,231 @@
             </section>
 
             <!-- Module 4: Corporate Realities -->
-            <section class="space-y-6">
-                <div class="border-l-4 border-brand-600 pl-4">
-                    <h2 class="text-2xl font-bold text-slate-900">04. Corporate Dynamics & Market Operations</h2>
-                    <p class="text-sm text-slate-500">Examine how firms function behind closed doors under increasing technological saturation.</p>
+            <section class="space-y-4 md:space-y-6">
+                <div class="border-l-4 border-brand-600 pl-3 md:pl-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">04. Corporate Dynamics & Market Operations</h2>
+                    <p class="text-xs md:text-sm text-slate-500 mt-0.5">Examine how firms function behind closed doors under increasing technological saturation.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 md:p-6 flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-semibold text-amber-600 tracking-wider uppercase block mb-1">Corporate Productivity Paradox</span>
-                            <h4 class="font-bold text-slate-900 text-lg">Why are companies getting more productive while employees feel less useful?</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                            <span class="text-[10px] font-semibold text-amber-600 tracking-wider uppercase block mb-1">Corporate Productivity Paradox</span>
+                            <h4 class="font-bold text-slate-900 text-base md:text-lg leading-snug">Why are companies getting more productive while employees feel less useful?</h4>
+                            <p class="text-slate-600 mt-2 text-xs md:text-sm leading-relaxed">
                                 Investigation of "disconnected productivity," exploring how companies optimize organizational capacity using intelligent orchestration software while individual team members encounter alienation.
                             </p>
                         </div>
-                        <a href="https://sadmansamin.medium.com/why-are-companies-getting-more-productive-while-employees-feel-less-useful-1a7772686d84" target="_blank" class="mt-6 inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800">
+                        <a href="https://sadmansamin.medium.com/why-are-companies-getting-more-productive-while-employees-feel-less-useful-1a7772686d84" target="_blank" class="mt-5 inline-flex items-center text-[11px] md:text-xs font-bold text-brand-600 hover:text-brand-800">
                             Read on Medium <i class="fas fa-external-link-alt ml-1"></i>
                         </a>
                     </div>
 
-                    <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between">
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 md:p-6 flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-semibold text-indigo-600 tracking-wider uppercase block mb-1">Hiring & Assessment Shifts</span>
-                            <h4 class="font-bold text-slate-900 text-lg">If every applicant has an AI assistant, what does interviewing actually measure?</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                            <span class="text-[10px] font-semibold text-indigo-600 tracking-wider uppercase block mb-1">Hiring & Assessment Shifts</span>
+                            <h4 class="font-bold text-slate-900 text-base md:text-lg leading-snug">If every applicant has an AI assistant, what does interviewing actually measure?</h4>
+                            <p class="text-slate-600 mt-2 text-xs md:text-sm leading-relaxed">
                                 Analysis of standard talent acquisition metrics. Under widespread accessibility of model tools, technical execution thresholds must pivot toward cognitive agency and problem diagnostics.
                             </p>
                         </div>
-                        <a href="https://sadmansamin.medium.com/if-every-applicant-has-an-ai-assistant-what-does-interviewing-actually-measure-15a4ab773305" target="_blank" class="mt-6 inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800">
+                        <a href="https://sadmansamin.medium.com/if-every-applicant-has-an-ai-assistant-what-does-interviewing-actually-measure-15a4ab773305" target="_blank" class="mt-5 inline-flex items-center text-[11px] md:text-xs font-bold text-brand-600 hover:text-brand-800">
                             Read on Medium <i class="fas fa-external-link-alt ml-1"></i>
                         </a>
                     </div>
                 </div>
             </section>
 
-            <!-- Module 5: Infographics and Charts -->
-            <section class="space-y-6">
-                <div class="border-l-4 border-brand-600 pl-4">
-                    <h2 class="text-2xl font-bold text-slate-900">05. AGI Adaptation Infographics</h2>
-                    <p class="text-sm text-slate-500">Visual models mapping job exposure patterns and tactical positioning paradigms.</p>
+            <!-- New Module 5: Optimization Stack (Requested Content Integration) -->
+            <section class="space-y-4 md:space-y-6">
+                <div class="border-l-4 border-brand-600 pl-3 md:pl-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">05. AGI Tooling Stack & Optimization Directory</h2>
+                    <p class="text-xs md:text-sm text-slate-500 mt-0.5">A curated mapping of frontier AI engines optimized for specific task workflows [2026 Index].</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Card: Content Writing -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-brand-600 bg-brand-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-pen-nib"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Content Writing</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Claude</p>
+                            </div>
+                        </div>
+
+                        <!-- Card: Coding -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-indigo-600 bg-indigo-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Coding & Syntax</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Claude</p>
+                            </div>
+                        </div>
+
+                        <!-- Card: Deep Research -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-emerald-600 bg-emerald-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Deep Research</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">ChatGPT</p>
+                            </div>
+                        </div>
+
+                        <!-- Card: Real-Time Research -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-amber-600 bg-amber-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Real-Time Research</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Gemini</p>
+                            </div>
+                        </div>
+
+                        <!-- Card: Agentic Work -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-purple-600 bg-purple-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Agentic Workflows</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Claude</p>
+                            </div>
+                        </div>
+
+                        <!-- Card: Academic Concepts -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-teal-600 bg-teal-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Academic Concepts</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Gemini Notebook</p>
+                            </div>
+                        </div>
+
+                        <!-- Card: Image Generation -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-rose-600 bg-rose-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Image Generation</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">ChatGPT</p>
+                            </div>
+                        </div>
+
+                        <!-- Card: Video Generation -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-sky-600 bg-sky-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Video Generation</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Grok / Veo 3</p>
+                            </div>
+                        </div>
+
+                        <!-- Card: Office Tasks -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                            <div class="text-cyan-600 bg-cyan-50 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm mt-0.5">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Office & Productivity</h4>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Claude / ChatGPT</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- All-Rounder Banner -->
+                    <div class="mt-6 bg-brand-50 border border-brand-100 rounded-xl p-4 flex flex-col sm:flex-row items-center sm:justify-between gap-3">
+                        <div class="flex items-center space-x-3 text-center sm:text-left">
+                            <div class="text-brand-800 bg-brand-100 w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fas fa-star-of-life animate-spin text-sm" style="animation-duration: 6s;"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Designated All-Rounder Model</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Recommended fallback for mixed cognitive task lists and multi-modal contexts.</p>
+                            </div>
+                        </div>
+                        <span class="bg-brand-600 text-white font-bold text-xs px-4 py-2 rounded-lg tracking-wide uppercase shadow-sm">
+                            Gemini
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 6: Infographics and Charts -->
+            <section class="space-y-4 md:space-y-6">
+                <div class="border-l-4 border-brand-600 pl-3 md:pl-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">06. AGI Adaptation Infographics</h2>
+                    <p class="text-xs md:text-sm text-slate-500 mt-0.5">Visual models mapping job exposure patterns and tactical positioning paradigms.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     <!-- Infographic 1 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
-                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 1: Strategy Hierarchy</span>
-                        <h4 class="text-base font-bold text-slate-900 mb-4">Adaptation Framework Hierarchy</h4>
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 md:p-6">
+                        <span class="text-[10px] font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 1: Strategy Hierarchy</span>
+                        <h4 class="text-sm md:text-base font-bold text-slate-900 mb-4">Adaptation Framework Hierarchy</h4>
                         <div class="space-y-3">
                             <div class="bg-brand-50 border-l-4 border-brand-600 p-3 rounded-r-lg">
                                 <span class="font-bold text-xs text-brand-800 block">Level 4: Cognitive Architecture</span>
-                                <p class="text-slate-600 text-xs mt-1">Directing workflows, modeling pipelines, orchestrating composite multi-agent platforms.</p>
+                                <p class="text-slate-600 text-[11px] md:text-xs mt-1">Directing workflows, modeling pipelines, orchestrating composite multi-agent platforms.</p>
                             </div>
                             <div class="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r-lg">
                                 <span class="font-bold text-xs text-blue-800 block">Level 3: Cross-Domain Synthesizer</span>
-                                <p class="text-slate-600 text-xs mt-1">Bridging computational tooling with localized physical domain problems.</p>
+                                <p class="text-slate-600 text-[11px] md:text-xs mt-1">Bridging computational tooling with localized physical domain problems.</p>
                             </div>
                             <div class="bg-slate-50 border-l-4 border-slate-400 p-3 rounded-r-lg">
                                 <span class="font-bold text-xs text-slate-800 block">Level 2: AI Execution Specialist</span>
-                                <p class="text-slate-600 text-xs mt-1">Prompt refinement, structured system development, standard workflow generation.</p>
+                                <p class="text-slate-600 text-[11px] md:text-xs mt-1">Prompt refinement, structured system development, standard workflow generation.</p>
                             </div>
                             <div class="bg-red-50 border-l-4 border-red-300 p-3 rounded-r-lg">
                                 <span class="font-bold text-xs text-red-800 block">Level 1: Routine Task Execution (Highly Vulnerable)</span>
-                                <p class="text-slate-600 text-xs mt-1">Writing standard syntax, translating languages, standard layout coding, repetitive reports.</p>
+                                <p class="text-slate-600 text-[11px] md:text-xs mt-1">Writing standard syntax, translating languages, standard layout coding, repetitive reports.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Infographic 2 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
-                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 2: Strategic Positioning Matrix</span>
-                        <h4 class="text-base font-bold text-slate-900 mb-4">Job Role Risk vs Resilience Quadrant</h4>
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 md:p-6">
+                        <span class="text-[10px] font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 2: Strategic Positioning Matrix</span>
+                        <h4 class="text-sm md:text-base font-bold text-slate-900 mb-4">Job Role Risk vs Resilience Quadrant</h4>
                         <div class="grid grid-cols-2 gap-2 text-center text-xs">
-                            <div class="bg-red-50 p-4 rounded-lg border border-red-200">
-                                <span class="font-bold text-red-800 block mb-1">High Risk / Repetitive</span>
-                                <p class="text-slate-500 text-[10px]">Customer care agents, routine software testers, basic data transcriptionists.</p>
+                            <div class="bg-red-50 p-3 md:p-4 rounded-lg border border-red-200 flex flex-col justify-between">
+                                <span class="font-bold text-red-800 block mb-1 text-[11px] md:text-xs">High Risk / Repetitive</span>
+                                <p class="text-slate-500 text-[9px] md:text-[10px] leading-tight">Customer care agents, routine software testers, basic data transcriptionists.</p>
                             </div>
-                            <div class="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                                <span class="font-bold text-amber-800 block mb-1">High Risk / Advanced cognitive</span>
-                                <p class="text-slate-500 text-[10px]">Junior system devs, basic legal research assistants, analytical financial forecasters.</p>
+                            <div class="bg-amber-50 p-3 md:p-4 rounded-lg border border-amber-200 flex flex-col justify-between">
+                                <span class="font-bold text-amber-800 block mb-1 text-[11px] md:text-xs">High Risk / Advanced cognitive</span>
+                                <p class="text-slate-500 text-[9px] md:text-[10px] leading-tight">Junior system devs, basic legal research assistants, analytical financial forecasters.</p>
                             </div>
-                            <div class="bg-sky-50 p-4 rounded-lg border border-sky-200">
-                                <span class="font-bold text-sky-800 block mb-1">Resilient / High-Touch Physical</span>
-                                <p class="text-slate-500 text-[10px]">Custom electrical deployment, non-standard mechanical assembly, physical health coordinators.</p>
+                            <div class="bg-sky-50 p-3 md:p-4 rounded-lg border border-sky-200 flex flex-col justify-between">
+                                <span class="font-bold text-sky-800 block mb-1 text-[11px] md:text-xs">Resilient / High-Touch Physical</span>
+                                <p class="text-slate-500 text-[9px] md:text-[10px] leading-tight">Custom electrical deployment, non-standard mechanical assembly, physical health coordinators.</p>
                             </div>
-                            <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
-                                <span class="font-bold text-emerald-800 block mb-1">Resilient / Deep Adaptability</span>
-                                <p class="text-slate-500 text-[10px]">Complex product coordinators, high-complexity systems integration experts, cognitive path builders.</p>
+                            <div class="bg-emerald-50 p-3 md:p-4 rounded-lg border border-emerald-200 flex flex-col justify-between">
+                                <span class="font-bold text-emerald-800 block mb-1 text-[11px] md:text-xs">Resilient / Deep Adaptability</span>
+                                <p class="text-slate-500 text-[9px] md:text-[10px] leading-tight">Complex product coordinators, high-complexity systems integration experts, cognitive path builders.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Infographic 3 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
-                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 3: Local Market Projections</span>
-                        <h4 class="text-base font-bold text-slate-900 mb-4">Bangladesh IT/Freelance Risk Heatmap</h4>
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 md:p-6">
+                        <span class="text-[10px] font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 3: Local Market Projections</span>
+                        <h4 class="text-sm md:text-base font-bold text-slate-900 mb-4">Bangladesh IT/Freelance Risk Heatmap</h4>
                         <div class="space-y-4">
                             <div>
-                                <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                                <div class="flex justify-between text-[11px] md:text-xs font-medium text-slate-700 mb-1">
                                     <span>Rote Content Development & Copywriting</span>
                                     <span class="text-red-600 font-bold">95% Exposure</span>
                                 </div>
@@ -335,7 +480,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                                <div class="flex justify-between text-[11px] md:text-xs font-medium text-slate-700 mb-1">
                                     <span>Static UI Development & Core Web Layouts</span>
                                     <span class="text-red-500 font-bold">85% Exposure</span>
                                 </div>
@@ -344,7 +489,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                                <div class="flex justify-between text-[11px] md:text-xs font-medium text-slate-700 mb-1">
                                     <span>Specialized Localized Integration</span>
                                     <span class="text-emerald-600 font-bold">35% Exposure</span>
                                 </div>
@@ -356,24 +501,24 @@
                     </div>
 
                     <!-- Infographic 4 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
-                        <span class="text-xs font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 4: Practical Transition Roadmap</span>
-                        <h4 class="text-base font-bold text-slate-900 mb-4">Adaptation Career Flowchart</h4>
-                        <div class="flex flex-col space-y-2 text-xs">
-                            <div class="flex items-center space-x-2">
-                                <span class="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold">1</span>
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 md:p-6">
+                        <span class="text-[10px] font-semibold text-brand-600 uppercase tracking-widest block mb-2">Model 4: Practical Transition Roadmap</span>
+                        <h4 class="text-sm md:text-base font-bold text-slate-900 mb-4">Adaptation Career Flowchart</h4>
+                        <div class="flex flex-col space-y-2.5 text-xs">
+                            <div class="flex items-start space-x-2">
+                                <span class="bg-slate-900 text-white w-5 h-5 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
                                 <span class="text-slate-700">Identify cognitive components of your current academic/professional track.</span>
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold">2</span>
+                            <div class="flex items-start space-x-2">
+                                <span class="bg-slate-900 text-white w-5 h-5 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
                                 <span class="text-slate-700">Audit your routine processes and run them through high-level LLM tools.</span>
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold">3</span>
+                            <div class="flex items-start space-x-2">
+                                <span class="bg-slate-900 text-white w-5 h-5 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
                                 <span class="text-slate-700">Transition your skill development focus from syntax to complex diagnostic architecture.</span>
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold">4</span>
+                            <div class="flex items-start space-x-2">
+                                <span class="bg-slate-900 text-white w-5 h-5 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">4</span>
                                 <span class="text-slate-700">Implement system-level solutions mapping computational networks to real-world deployment.</span>
                             </div>
                         </div>
@@ -381,23 +526,23 @@
                 </div>
             </section>
 
-            <!-- Module 6: Self-Assessment Quiz -->
-            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+            <!-- Module 7: Self-Assessment Quiz -->
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-8">
                 <div class="border-b border-slate-100 pb-4 mb-6">
-                    <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Practical Checkpoint</span>
-                    <h3 class="text-xl font-bold text-slate-900">Adaptation Knowledge Assessment</h3>
+                    <span class="text-[10px] font-semibold text-brand-600 tracking-wider uppercase block">Practical Checkpoint</span>
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900 mt-1">Adaptation Knowledge Assessment</h3>
                     <p class="text-xs text-slate-500 mt-1">Review basic structural mechanics concerning AGI economic disruptions before completion.</p>
                 </div>
 
                 <div class="space-y-6">
                     <!-- Question 1 -->
                     <div class="space-y-2">
-                        <p class="text-sm font-semibold text-slate-900">1. If standard coding tasks can be compiled dynamically by large foundational models, what capacity should an engineer focus on developing?</p>
+                        <p class="text-xs md:text-sm font-semibold text-slate-900">1. If standard coding tasks can be compiled dynamically by large foundational models, what capacity should an engineer focus on developing?</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <button onclick="checkAnswer(1, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                            <button onclick="checkAnswer(1, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition leading-relaxed min-h-[44px]">
                                 A. Memorizing structural syntax rules of secondary programming environments.
                             </button>
-                            <button onclick="checkAnswer(1, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                            <button onclick="checkAnswer(1, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition leading-relaxed min-h-[44px]">
                                 B. System integration architecture, problem orchestration, and algorithmic edge-case diagnostics.
                             </button>
                         </div>
@@ -406,12 +551,12 @@
 
                     <!-- Question 2 -->
                     <div class="space-y-2 pt-4 border-t border-slate-100">
-                        <p class="text-sm font-semibold text-slate-900">2. In the context of "the productivity paradox," what factors drive structural employee alienation inside highly automated environments?</p>
+                        <p class="text-xs md:text-sm font-semibold text-slate-900">2. In the context of "the productivity paradox," what factors drive structural employee alienation inside highly automated environments?</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <button onclick="checkAnswer(2, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                            <button onclick="checkAnswer(2, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition leading-relaxed min-h-[44px]">
                                 A. Automation of core strategic agency, relegating the operator to minor task monitoring.
                             </button>
-                            <button onclick="checkAnswer(2, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                            <button onclick="checkAnswer(2, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition leading-relaxed min-h-[44px]">
                                 B. Standard decreases in organizational infrastructure capabilities.
                             </button>
                         </div>
@@ -420,12 +565,12 @@
 
                     <!-- Question 3 -->
                     <div class="space-y-2 pt-4 border-t border-slate-100">
-                        <p class="text-sm font-semibold text-slate-900">3. Which regional digital segment in Bangladesh shows the highest exposure risks to near-term foundational tools?</p>
+                        <p class="text-xs md:text-sm font-semibold text-slate-900">3. Which regional digital segment in Bangladesh shows the highest exposure risks to near-term foundational tools?</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <button onclick="checkAnswer(3, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                            <button onclick="checkAnswer(3, false, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition leading-relaxed min-h-[44px]">
                                 A. Geographically constrained physical maintenance networks and system operations.
                             </button>
-                            <button onclick="checkAnswer(3, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition">
+                            <button onclick="checkAnswer(3, true, this)" class="w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition leading-relaxed min-h-[44px]">
                                 B. Remote textual freelancing services, fundamental web interfaces, and generic coding support pipelines.
                             </button>
                         </div>
@@ -440,10 +585,10 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-8 mt-24">
         <div class="max-w-5xl mx-auto px-4 text-center">
-            <p class="text-xs text-slate-500">
+            <p class="text-[10px] md:text-xs text-slate-500">
                 Designed to guide academic choices and vocational structures under emerging technologies.
             </p>
-            <p class="text-xs text-slate-400 mt-2">
+            <p class="text-[10px] md:text-xs text-slate-400 mt-2 font-medium">
                 &copy; Sadman Samin. All educational modules are structured to adapt dynamically as metrics evolve.
             </p>
         </div>
@@ -513,16 +658,16 @@
             // Clear prior states on current question options
             const siblingButtons = parentDiv.querySelectorAll('button');
             siblingButtons.forEach(btn => {
-                btn.className = "w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition";
+                btn.className = "w-full text-left p-3 border border-slate-200 rounded-lg text-xs hover:bg-slate-50 transition leading-relaxed min-h-[44px]";
             });
 
             // Set outcome indicator
             if (isCorrect) {
-                btnElement.className = "w-full text-left p-3 border border-emerald-300 bg-emerald-50 text-emerald-800 rounded-lg text-xs font-semibold transition";
+                btnElement.className = "w-full text-left p-3 border border-emerald-300 bg-emerald-50 text-emerald-800 rounded-lg text-xs font-semibold transition leading-relaxed min-h-[44px]";
                 feedbackText.innerText = "Correct option selected. This strategy maps to high resilience principles under model developments.";
                 feedbackText.className = "text-xs font-medium text-emerald-600 mt-2 block";
             } else {
-                btnElement.className = "w-full text-left p-3 border border-red-300 bg-red-50 text-red-800 rounded-lg text-xs font-semibold transition";
+                btnElement.className = "w-full text-left p-3 border border-red-300 bg-red-50 text-red-800 rounded-lg text-xs font-semibold transition leading-relaxed min-h-[44px]";
                 feedbackText.innerText = "Incorrect choice. This role profile or approach is vulnerable to automated replacement frameworks.";
                 feedbackText.className = "text-xs font-medium text-red-600 mt-2 block";
             }

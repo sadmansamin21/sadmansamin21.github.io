@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Newton's Cradle — A Simple Harmonic Motion &amp; Elastic Collision Laboratory</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="canonical" href="https://sadmansamin21.github.io/newtons-cradle.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#090b0d;
+    --bg-2:#0e1114;
+    --panel:#12161b;
+    --panel-2:#161b21;
+    --border:#242b33;
+    --border-soft:#1b2027;
+    --steel:#c9ced6;
+    --steel-dim:#7d8792;
+    --brass:#c19461;
+    --brass-glow:#e2b787;
+    --scope:#6bffb0;
+    --scope-dim:#245c44;
+    --amber:#e8a33d;
+    --danger:#d9705f;
+    --text:#e7eaee;
+    --text-dim:#8b93a0;
+    --text-faint:#586170;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0; padding:0; width:100%; height:100%; overflow:hidden;
+    background:var(--bg);
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--text);
+  }
+  #scene{ position:fixed; inset:0; }
+  #scene canvas{ display:block; width:100%; height:100%; touch-action:none; }
+
+  .vignette{
+    position:fixed; inset:0; pointer-events:none; z-index:5;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%);
+  }
+
+  /* ---------- Title block ---------- */
+  #titleblock{
+    position:fixed; top:28px; left:32px; z-index:10; max-width:480px;
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--brass-glow); margin:0 0 10px 0; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--scope); box-shadow:0 0 8px var(--scope); }
+  h1{
+    font-family:'Spectral', serif; font-weight:600; font-style:normal;
+    font-size:34px; line-height:1.08; margin:0 0 8px 0; color:var(--text);
+    letter-spacing:-0.01em;
+  }
+  h1 em{ font-style:italic; font-weight:400; color:var(--steel-dim); }
+  #titleblock p{
+    font-size:13px; line-height:1.55; color:var(--text-dim); margin:0; max-width:420px;
+  }
+  #titleblock .eq{
+    font-family:'IBM Plex Mono', monospace; color:var(--steel);
+  }
+
+  /* ---------- Side data panel ---------- */
+  #panel{
+    position:fixed; top:28px; right:28px; bottom:28px; z-index:10;
+    width:330px; display:flex; flex-direction:column; gap:14px;
+    overflow-y:auto; padding-right:2px;
+  }
+  #panel::-webkit-scrollbar{ width:4px; }
+  #panel::-webkit-scrollbar-thumb{ background:var(--border); border-radius:2px; }
+
+  .card{
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid var(--border); border-radius:3px;
+    padding:16px 16px 18px 16px;
+    backdrop-filter: blur(6px);
+  }
+  .card-label{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--text-faint); margin:0 0 12px 0;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .card-label .tag{ color:var(--scope); }
+
+  /* readouts */
+  .readouts{ display:grid; grid-template-columns:1fr 1fr; gap:10px 14px; }
+  .readout .k{ font-size:10px; color:var(--text-faint); letter-spacing:.06em; text-transform:uppercase; }
+  .readout .v{ font-family:'IBM Plex Mono', monospace; font-size:15px; color:var(--steel); margin-top:2px; }
+  .readout .v .unit{ font-size:10px; color:var(--text-faint); margin-left:2px; }
+  .readout.full{ grid-column:1 / -1; }
+  .readout .v.hi{ color:var(--scope); }
+  .readout .v.warn{ color:var(--amber); }
+
+  hr.thin{ border:none; border-top:1px solid var(--border-soft); margin:12px 0; }
+
+  /* sliders */
+  .field{ margin-bottom:14px; }
+  .field:last-child{ margin-bottom:0; }
+  .field .row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .field label{ font-size:11.5px; color:var(--text-dim); }
+  .field .val{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--steel); }
+  input[type=range]{
+    -webkit-appearance:none; width:100%; height:2px; background:var(--border);
+    border-radius:2px; outline:none; margin:0;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:12px; height:12px; border-radius:50%;
+    background:var(--brass-glow); border:2px solid #1a1410; cursor:pointer;
+    box-shadow:0 0 0 1px var(--border);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:10px; height:10px; border-radius:50%; background:var(--brass-glow);
+    border:2px solid #1a1410; cursor:pointer;
+  }
+
+  .btnrow{ display:flex; gap:8px; flex-wrap:wrap; }
+  button{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.04em;
+    background:var(--panel-2); color:var(--text-dim); border:1px solid var(--border);
+    padding:8px 12px; border-radius:2px; cursor:pointer; transition:all .15s ease;
+    flex:1; min-width:80px;
+  }
+  button:hover{ border-color:var(--brass); color:var(--text); background:#1a1f26; }
+  button:active{ transform:translateY(1px); }
+  button.primary{ border-color:var(--brass); color:var(--brass-glow); }
+  button.primary:hover{ background:rgba(193,148,97,0.12); }
+  button.on{ border-color:var(--scope); color:var(--scope); }
+
+  canvas.scope{ width:100%; height:118px; display:block; border-radius:2px; background:#060809; border:1px solid var(--border-soft); }
+
+  #legend{ display:flex; gap:14px; margin-top:8px; font-size:10px; color:var(--text-faint); font-family:'IBM Plex Mono', monospace;}
+  #legend span{ display:flex; align-items:center; gap:5px; }
+  #legend i{ width:8px; height:8px; display:inline-block; border-radius:1px; }
+
+  /* ---------- bottom hint ---------- */
+  #hint{
+    position:fixed; left:32px; bottom:26px; z-index:10;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-faint);
+    letter-spacing:.03em; max-width:420px; line-height:1.6;
+    pointer-events:none;
+  }
+  #hint b{ color:var(--steel-dim); font-weight:500; }
+
+  #brand{
+    position:fixed; left:32px; bottom:2px; z-index:10;
+    font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:var(--text-faint); opacity:.5;
+    letter-spacing:.1em; text-transform:uppercase;
+  }
+
+  @media (max-width: 880px){
+    #panel{ width:88vw; right:16px; top:auto; bottom:16px; height:44vh; }
+    #titleblock{ max-width:80vw; }
+    h1{ font-size:24px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="scene"></div>
+<div class="vignette"></div>
+
+<div id="titleblock">
+  <p class="eyebrow"><span class="dot"></span>SHM &amp; MOMENTUM CONSERVATION — INTERACTIVE MODEL</p>
+  <h1>Newton's Cradle<br><em>a coupled pendulum system</em></h1>
+  <p>Five identical steel spheres, each a rigid pendulum <span class="eq">θ̈ = −(g/L)sin θ − cθ̇</span>, coupled by near‑elastic contact collisions <span class="eq">e ≈ 1</span>. Pull a sphere and release it — momentum and kinetic energy propagate through the chain in accordance with conservation law.</p>
+</div>
+
+<div id="panel">
+
+  <div class="card">
+    <p class="card-label">Live State <span class="tag">● running</span></p>
+    <div class="readouts">
+      <div class="readout"><div class="k">Angle θ</div><div class="v" id="r-theta">0.00<span class="unit">rad</span></div></div>
+      <div class="readout"><div class="k">Ang. velocity ω</div><div class="v" id="r-omega">0.00<span class="unit">rad/s</span></div></div>
+      <div class="readout"><div class="k">Kinetic energy</div><div class="v hi" id="r-ke">0.00<span class="unit">J</span></div></div>
+      <div class="readout"><div class="k">Potential energy</div><div class="v" id="r-pe">0.00<span class="unit">J</span></div></div>
+      <div class="readout full"><div class="k">Total mechanical energy (system)</div><div class="v" id="r-etot">0.00<span class="unit">J</span></div></div>
+      <div class="readout"><div class="k">Period (measured)</div><div class="v" id="r-tmeas">—<span class="unit">s</span></div></div>
+      <div class="readout"><div class="k">Period (theory 2π√(L/g))</div><div class="v" id="r-ttheo">0.00<span class="unit">s</span></div></div>
+      <div class="readout"><div class="k">Collisions</div><div class="v" id="r-collisions">0</div></div>
+      <div class="readout"><div class="k">Sim time</div><div class="v" id="r-time">0.00<span class="unit">s</span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-label">Phase Portrait <span class="tag" id="phase-tag">sphere 5 · (θ, ω)</span></p>
+    <canvas class="scope" id="phase-canvas"></canvas>
+    <div id="legend"><span><i style="background:var(--scope)"></i>trajectory</span><span><i style="background:var(--brass-glow)"></i>current state</span></div>
+  </div>
+
+  <div class="card">
+    <p class="card-label">Energy Budget <span class="tag" id="energy-tag">KE / PE / total</span></p>
+    <canvas class="scope" id="energy-canvas"></canvas>
+    <div id="legend">
+      <span><i style="background:var(--scope)"></i>kinetic</span>
+      <span><i style="background:var(--amber)"></i>potential</span>
+      <span><i style="background:var(--steel-dim)"></i>total</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-label">Parameters</p>
+    <div class="field">
+      <div class="row"><label>Gravity g</label><span class="val" id="v-g">9.80 m/s²</span></div>
+      <input type="range" id="s-g" min="1" max="20" step="0.1" value="9.8">
+    </div>
+    <div class="field">
+      <div class="row"><label>String length L</label><span class="val" id="v-l">4.00 m</span></div>
+      <input type="range" id="s-l" min="2" max="6" step="0.1" value="4">
+    </div>
+    <div class="field">
+      <div class="row"><label>Restitution e (collision elasticity)</label><span class="val" id="v-e">0.995</span></div>
+      <input type="range" id="s-e" min="0.80" max="1.00" step="0.001" value="0.995">
+    </div>
+    <div class="field">
+      <div class="row"><label>Damping c (air + friction)</label><span class="val" id="v-c">0.010</span></div>
+      <input type="range" id="s-c" min="0" max="0.15" step="0.001" value="0.01">
+    </div>
+    <div class="field">
+      <div class="row"><label>Spheres released together</label><span class="val" id="v-n">1</span></div>
+      <input type="range" id="s-n" min="1" max="2" step="1" value="1">
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-label">Controls</p>
+    <div class="btnrow" style="margin-bottom:8px;">
+      <button class="primary" id="b-left">Pull left, release</button>
+      <button class="primary" id="b-right">Pull right, release</button>
+    </div>
+    <div class="btnrow">
+      <button id="b-pause">Pause</button>
+      <button id="b-reset">Reset</button>
+      <button id="b-orbit">Auto‑orbit: on</button>
+      <button id="b-sound" class="on">Sound: on</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="hint"><b>Drag a sphere</b> to pull it back, release the mouse to let go.<br><b>Drag empty space</b> to orbit the camera · <b>scroll</b> to zoom.</div>
+<div id="brand">Model rendered client‑side · symplectic (semi‑implicit Euler) integrator, 6 substeps/frame</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   PHYSICS MODEL
+   Each sphere is an independent pendulum: theta'' = -(g/L) sin(theta) - c*theta'
+   integrated with semi-implicit (symplectic) Euler across N substeps/frame,
+   which conserves energy far better than explicit Euler for oscillatory systems.
+   Collisions are resolved in the horizontal (swing) direction using the
+   1-D restitution model:
+     v1' = v1 - (1+e) * m2*(v1-v2) / (m1+m2)
+     v2' = v2 + (1+e) * m1*(v1-v2) / (m1+m2)
+   which reduces to full momentum/velocity exchange for e=1, equal masses.
+   ============================================================ */
+
+const N = 5;
+const R = 0.42;              // sphere radius (m)
+const SPACING = 2*R;         // spheres touch at rest
+const MASS = 1.0;            // kg, identical spheres
+const PIVOT_Y = 4.2;
+
+let params = {
+  g: 9.8,
+  L: 4.0,
+  e: 0.995,
+  c: 0.01,
+};
+
+let balls = []; // {theta, omega, pivotX}
+let collisionCount = 0;
+let simTime = 0;
+let paused = false;
+let pairTouching = new Array(N-1).fill(false); // edge-detection so each impact clicks once
+
+function initBalls(){
+  balls = [];
+  for(let i=0;i<N;i++){
+    balls.push({
+      theta: 0, omega: 0,
+      pivotX: (i - (N-1)/2) * SPACING
+    });
+  }
+  collisionCount = 0;
+  simTime = 0;
+  pairTouching.fill(false);
+  periodTracker.reset();
+}
+
+function ballX(b){ return b.pivotX + params.L*Math.sin(b.theta); }
+function ballY(b){ return PIVOT_Y - params.L*Math.cos(b.theta); }
+function ballVx(b){ return params.L*b.omega*Math.cos(b.theta); }
+
+function angAccel(theta, omega){
+  return -(params.g/params.L)*Math.sin(theta) - params.c*omega;
+}
+
+function integrateSubstep(dt){
+  // symplectic Euler per ball
+  for(const b of balls){
+    const a = angAccel(b.theta, b.omega);
+    b.omega += a*dt;
+    b.theta += b.omega*dt;
+  }
+  // collision resolution, adjacent pairs, may need a couple of passes
+  // since impulses can cascade through a touching chain in one substep.
+  for(let pass=0; pass<3; pass++){
+    let any=false;
+    for(let i=0;i<N-1;i++){
+      const A = balls[i], B = balls[i+1];
+      const xA = ballX(A), xB = ballX(B);
+      const gap = (xB - xA) - 2*R;
+      if(gap < 0){
+        const vA = ballVx(A), vB = ballVx(B);
+        if(vA > vB){ // approaching
+          if(!pairTouching[i]){
+            playImpact(Math.abs(vA-vB)); // rising edge: one click per real impact
+            pairTouching[i] = true;
+          }
+          const m1=MASS, m2=MASS, e=params.e;
+          const vA2 = vA - (1+e)*m2*(vA-vB)/(m1+m2);
+          const vB2 = vB + (1+e)*m1*(vA-vB)/(m1+m2);
+          // convert back to omega (guard near cos(theta)=0)
+          const cA = Math.cos(A.theta), cB = Math.cos(B.theta);
+          if(Math.abs(cA)>1e-3) A.omega = vA2/(params.L*cA);
+          if(Math.abs(cB)>1e-3) B.omega = vB2/(params.L*cB);
+          collisionCount++;
+          any=true;
+        }
+        // positional correction to prevent sinking / tunneling
+        const overlap = -gap;
+        const dThetaA = -(overlap/2)/(params.L*Math.cos(A.theta)||1);
+        const dThetaB =  (overlap/2)/(params.L*Math.cos(B.theta)||1);
+        A.theta += dThetaA*0.5;
+        B.theta += dThetaB*0.5;
+      } else {
+        pairTouching[i] = false;
+      }
+    }
+    if(!any) break;
+  }
+}
+
+const SUBSTEPS = 6;
+function stepPhysics(dt){
+  if(paused) return;
+  const h = dt/SUBSTEPS;
+  for(let i=0;i<SUBSTEPS;i++){
+    integrateSubstep(h);
+    simTime += h;
+    periodTracker.sample(balls[N-1].theta, simTime);
+  }
+}
+
+function energyOf(b){
+  const ke = 0.5*MASS*(params.L*b.omega)*(params.L*b.omega);
+  const h = params.L*(1-Math.cos(b.theta)); // height above resting point
+  const pe = MASS*params.g*h;
+  return {ke, pe};
+}
+function systemEnergy(){
+  let ke=0, pe=0;
+  for(const b of balls){ const e=energyOf(b); ke+=e.ke; pe+=e.pe; }
+  return {ke, pe, total: ke+pe};
+}
+
+// Period measurement via zero-crossings of theta on the tracked ball
+const periodTracker = {
+  lastSign: 0, lastCrossTime: null, period: null,
+  reset(){ this.lastSign=0; this.lastCrossTime=null; this.period=null; },
+  sample(theta, t){
+    const s = Math.sign(theta);
+    if(this.lastSign !== 0 && s !== this.lastSign && s>0){ // upward crossing
+      if(this.lastCrossTime !== null){
+        this.period = t - this.lastCrossTime;
+      }
+      this.lastCrossTime = t;
+    }
+    if (Math.abs(theta) > 1e-4) this.lastSign = s;
+  }
+};
+
+initBalls();
+
+/* ============================================================
+   AUDIO: synthesized metal-on-metal impact clicks (Web Audio API,
+   no sample files). Each collision fires a short bandpass-filtered
+   noise burst (the "click" transient) plus a decaying sine partial
+   (the "clack" resonance), both scaled by impact speed so harder
+   hits sound louder and brighter — closer to a real steel sphere.
+   ============================================================ */
+let audioCtx = null;
+let noiseBuffer = null;
+let soundOn = true;
+
+function ensureAudio(){
+  if(!audioCtx){
+    try{
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const len = Math.floor(audioCtx.sampleRate * 0.035);
+      noiseBuffer = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
+      const data = noiseBuffer.getChannelData(0);
+      for(let i=0;i<len;i++){ data[i] = (Math.random()*2-1) * (1 - i/len); }
+    }catch(err){ soundOn = false; return; }
+  }
+  if(audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+function playImpact(speed){
+  if(!soundOn || !audioCtx) return;
+  const t = audioCtx.currentTime;
+  const vel = Math.min(Math.abs(speed), 6);
+  const amp = 0.06 + Math.min(1, vel/4) * 0.45;
+
+  // noise burst -> bandpass, the sharp "tick" of contact
+  const src = audioCtx.createBufferSource();
+  src.buffer = noiseBuffer;
+  const bp = audioCtx.createBiquadFilter();
+  bp.type = 'bandpass';
+  bp.frequency.value = 1700 + vel*450;
+  bp.Q.value = 2.4;
+  const noiseGain = audioCtx.createGain();
+  noiseGain.gain.setValueAtTime(amp*0.8, t);
+  noiseGain.gain.exponentialRampToValueAtTime(0.001, t+0.045);
+  src.connect(bp).connect(noiseGain).connect(audioCtx.destination);
+  src.start(t); src.stop(t+0.05);
+
+  // decaying tonal partial, the metallic "ring"
+  const osc = audioCtx.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(950 + vel*140, t);
+  osc.frequency.exponentialRampToValueAtTime(360, t+0.09);
+  const oscGain = audioCtx.createGain();
+  oscGain.gain.setValueAtTime(amp*0.5, t);
+  oscGain.gain.exponentialRampToValueAtTime(0.001, t+0.13);
+  osc.connect(oscGain).connect(audioCtx.destination);
+  osc.start(t); osc.stop(t+0.14);
+}
+
+/* ============================================================
+   THREE.JS SCENE
+   ============================================================ */
+const container = document.getElementById('scene');
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:false});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
+container.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x090b0d);
+scene.fog = new THREE.Fog(0x090b0d, 14, 34);
+
+const camera = new THREE.PerspectiveCamera(38, window.innerWidth/window.innerHeight, 0.1, 100);
+
+// custom orbit camera
+const camState = { radius: 13.5, theta: 0.15, phi: 1.25, target: new THREE.Vector3(0, PIVOT_Y-2.2, 0) };
+function updateCamera(){
+  const {radius, theta, phi, target} = camState;
+  camera.position.x = target.x + radius*Math.sin(phi)*Math.sin(theta);
+  camera.position.y = target.y + radius*Math.cos(phi);
+  camera.position.z = target.z + radius*Math.sin(phi)*Math.cos(theta);
+  camera.lookAt(target);
+}
+updateCamera();
+
+// Lighting
+scene.add(new THREE.AmbientLight(0x2a3038, 0.9));
+const key = new THREE.DirectionalLight(0xfff3e0, 2.0);
+key.position.set(6, 10, 6);
+key.castShadow = true;
+key.shadow.mapSize.set(2048,2048);
+key.shadow.camera.left=-10; key.shadow.camera.right=10;
+key.shadow.camera.top=10; key.shadow.camera.bottom=-10;
+key.shadow.camera.near=1; key.shadow.camera.far=30;
+key.shadow.bias=-0.0025;
+scene.add(key);
+const rim = new THREE.DirectionalLight(0x6bb0ff, 0.55);
+rim.position.set(-8,4,-6);
+scene.add(rim);
+const fill = new THREE.PointLight(0xe8a33d, 0.5, 20);
+fill.position.set(-3, 3, 5);
+scene.add(fill);
+
+// Reflection environment via CubeCamera for convincing chrome spheres
+const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256, { format: THREE.RGBFormat, generateMipmaps:true, minFilter: THREE.LinearMipmapLinearFilter });
+const cubeCamera = new THREE.CubeCamera(0.1, 50, cubeRenderTarget);
+cubeCamera.position.set(0, PIVOT_Y-2, 0);
+scene.add(cubeCamera);
+
+// gentle env "sky" gradient behind everything for reflections to pick up
+(function buildEnvBackdrop(){
+  const geo = new THREE.SphereGeometry(30, 24, 24);
+  const mat = new THREE.ShaderMaterial({
+    side: THREE.BackSide,
+    uniforms: {},
+    vertexShader: `varying vec3 vPos; void main(){ vPos=position; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+    fragmentShader: `
+      varying vec3 vPos;
+      void main(){
+        float h = normalize(vPos).y*0.5+0.5;
+        vec3 top = vec3(0.09,0.11,0.14);
+        vec3 bot = vec3(0.02,0.025,0.03);
+        vec3 col = mix(bot, top, h);
+        col += vec3(0.15,0.11,0.08)*smoothstep(0.75,1.0,h)*0.3;
+        gl_FragColor = vec4(col,1.0);
+      }`
+  });
+  scene.add(new THREE.Mesh(geo, mat));
+})();
+
+// Lab stand: base plinth + posts + top bar (brushed metal / brass look)
+const brassMat = new THREE.MeshStandardMaterial({color:0x8a6a45, metalness:0.85, roughness:0.35});
+const darkMetal = new THREE.MeshStandardMaterial({color:0x1c2026, metalness:0.7, roughness:0.45});
+const plinthMat = new THREE.MeshStandardMaterial({color:0x14171b, metalness:0.2, roughness:0.75});
+
+const halfWidth = (N-1)*SPACING/2 + 1.4;
+
+const plinth = new THREE.Mesh(new THREE.BoxGeometry(halfWidth*2+1.2, 0.4, 3.2), plinthMat);
+plinth.position.set(0, -0.2, 0);
+plinth.receiveShadow = true;
+scene.add(plinth);
+
+function addPost(x){
+  const post = new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.11, PIVOT_Y+0.3, 16), darkMetal);
+  post.position.set(x, PIVOT_Y/2, 1.35);
+  post.castShadow = true; post.receiveShadow = true;
+  scene.add(post);
+  const post2 = post.clone();
+  post2.position.z = -1.35;
+  scene.add(post2);
+}
+addPost(-halfWidth);
+addPost(halfWidth);
+
+const topBar = new THREE.Mesh(new THREE.BoxGeometry(halfWidth*2+0.3, 0.16, 0.16), brassMat);
+topBar.position.set(0, PIVOT_Y+0.16, 1.35);
+topBar.castShadow = true;
+scene.add(topBar);
+const topBar2 = topBar.clone();
+topBar2.position.z = -1.35;
+scene.add(topBar2);
+
+// diagonal braces for engineering credibility
+function addBrace(x, dir){
+  const geo = new THREE.CylinderGeometry(0.045,0.045, 2.0, 8);
+  const m = new THREE.Mesh(geo, darkMetal);
+  m.position.set(x + dir*0.55, 1.0, 1.35);
+  m.rotation.z = dir*0.6;
+  m.castShadow = true;
+  scene.add(m);
+  const m2 = m.clone(); m2.position.z=-1.35; scene.add(m2);
+}
+addBrace(-halfWidth, 1);
+addBrace(halfWidth, -1);
+
+// Steel sphere material (chrome, uses live cube reflection)
+const steelMat = new THREE.MeshStandardMaterial({
+  color: 0xd7dbe0, metalness: 1.0, roughness: 0.06,
+  envMap: cubeRenderTarget.texture, envMapIntensity: 1.35
+});
+
+const ballGeo = new THREE.SphereGeometry(R, 48, 48);
+const ropeGeo = new THREE.CylinderGeometry(0.012, 0.012, 1, 6);
+const ropeMat = new THREE.MeshStandardMaterial({color:0x9aa0a8, metalness:0.4, roughness:0.5});
+const capMat = new THREE.MeshStandardMaterial({color:0x2a2f36, metalness:0.8, roughness:0.3});
+
+const ballMeshes = [];
+const rope1Meshes = [];
+const rope2Meshes = [];
+
+for(let i=0;i<N;i++){
+  const b = balls[i];
+
+  const mesh = new THREE.Mesh(ballGeo, steelMat);
+  mesh.castShadow = true; mesh.receiveShadow = true;
+  mesh.userData.index = i;
+  scene.add(mesh);
+  ballMeshes.push(mesh);
+
+  const cap = new THREE.Mesh(new THREE.SphereGeometry(0.05,10,10), capMat);
+  cap.position.set(b.pivotX, PIVOT_Y, 1.35);
+  scene.add(cap);
+  const cap2 = cap.clone(); cap2.position.z=-1.35; scene.add(cap2);
+
+  const r1 = new THREE.Mesh(ropeGeo, ropeMat); r1.castShadow=true; scene.add(r1);
+  const r2 = new THREE.Mesh(ropeGeo, ropeMat); r2.castShadow=true; scene.add(r2);
+  rope1Meshes.push(r1); rope2Meshes.push(r2);
+}
+
+function layoutRope(mesh, x1,y1,z1, x2,y2,z2){
+  const dx=x2-x1, dy=y2-y1, dz=z2-z1;
+  const len = Math.sqrt(dx*dx+dy*dy+dz*dz);
+  mesh.position.set((x1+x2)/2, (y1+y2)/2, (z1+z2)/2);
+  mesh.scale.set(1, len, 1);
+  const dir = new THREE.Vector3(dx,dy,dz).normalize();
+  const up = new THREE.Vector3(0,1,0);
+  const quat = new THREE.Quaternion().setFromUnitVectors(up, dir);
+  mesh.setRotationFromQuaternion(quat);
+}
+
+function syncMeshes(){
+  for(let i=0;i<N;i++){
+    const b = balls[i];
+    const x = ballX(b), y = ballY(b);
+    ballMeshes[i].position.set(x,y,0);
+    layoutRope(rope1Meshes[i], b.pivotX, PIVOT_Y, 1.35, x, y, 0);
+    layoutRope(rope2Meshes[i], b.pivotX, PIVOT_Y, -1.35, x, y, 0);
+  }
+}
+syncMeshes();
+
+/* ============================================================
+   INTERACTION: drag to pull a ball, drag empty space to orbit
+   ============================================================ */
+const raycaster = new THREE.Raycaster();
+const mouseNDC = new THREE.Vector2();
+let dragMode = null; // 'ball' | 'orbit' | null
+let dragBallIndex = -1;
+let dragStartX = 0;
+let dragStartTheta = 0;
+let orbitStart = {x:0,y:0,theta:0,phi:0};
+
+function setMouseNDC(e){
+  const r = renderer.domElement.getBoundingClientRect();
+  mouseNDC.x = ((e.clientX - r.left)/r.width)*2 - 1;
+  mouseNDC.y = -((e.clientY - r.top)/r.height)*2 + 1;
+}
+
+renderer.domElement.addEventListener('pointerdown', (e)=>{
+  ensureAudio();
+  setMouseNDC(e);
+  raycaster.setFromCamera(mouseNDC, camera);
+  const hits = raycaster.intersectObjects(ballMeshes);
+  if(hits.length>0){
+    dragMode = 'ball';
+    dragBallIndex = hits[0].object.userData.index;
+    dragStartX = e.clientX;
+    dragStartTheta = balls[dragBallIndex].theta;
+    balls[dragBallIndex].omega = 0;
+    autoOrbit = false;
+  } else {
+    dragMode = 'orbit';
+    orbitStart = {x:e.clientX, y:e.clientY, theta:camState.theta, phi:camState.phi};
+  }
+  renderer.domElement.setPointerCapture(e.pointerId);
+});
+
+renderer.domElement.addEventListener('pointermove', (e)=>{
+  if(dragMode==='ball'){
+    const dx = e.clientX - dragStartX;
+    const dTheta = (dx/220) * 1.0; // drag sensitivity
+    let theta = dragStartTheta + dTheta;
+    theta = Math.max(-1.35, Math.min(1.35, theta));
+    balls[dragBallIndex].theta = theta;
+    balls[dragBallIndex].omega = 0;
+  } else if(dragMode==='orbit'){
+    const dx = e.clientX - orbitStart.x;
+    const dy = e.clientY - orbitStart.y;
+    camState.theta = orbitStart.theta - dx*0.0055;
+    camState.phi = Math.max(0.35, Math.min(1.5, orbitStart.phi - dy*0.0045));
+  }
+});
+
+window.addEventListener('pointerup', ()=>{ dragMode=null; dragBallIndex=-1; });
+
+renderer.domElement.addEventListener('wheel', (e)=>{
+  e.preventDefault();
+  camState.radius = Math.max(6, Math.min(28, camState.radius + e.deltaY*0.01));
+}, {passive:false});
+
+let autoOrbit = true;
+document.getElementById('b-orbit').addEventListener('click', (e)=>{
+  autoOrbit = !autoOrbit;
+  e.target.textContent = 'Auto-orbit: ' + (autoOrbit ? 'on' : 'off');
+  e.target.classList.toggle('on', autoOrbit);
+});
+
+window.addEventListener('resize', ()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+/* ============================================================
+   UI: sliders & buttons
+   ============================================================ */
+function bindSlider(id, valId, fmt, onChange){
+  const el = document.getElementById(id);
+  const val = document.getElementById(valId);
+  el.addEventListener('input', ()=>{
+    const v = parseFloat(el.value);
+    val.textContent = fmt(v);
+    onChange(v);
+  });
+}
+bindSlider('s-g','v-g', v=>v.toFixed(2)+' m/s²', v=>params.g=v);
+bindSlider('s-l','v-l', v=>v.toFixed(2)+' m', v=>params.L=v);
+bindSlider('s-e','v-e', v=>v.toFixed(3), v=>params.e=v);
+bindSlider('s-c','v-c', v=>v.toFixed(3), v=>params.c=v);
+bindSlider('s-n','v-n', v=>String(Math.round(v)), v=>{});
+
+document.getElementById('b-left').addEventListener('click', ()=>{
+  ensureAudio();
+  releaseFrom('left');
+});
+document.getElementById('b-right').addEventListener('click', ()=>{
+  ensureAudio();
+  releaseFrom('right');
+});
+document.getElementById('b-sound').addEventListener('click', (e)=>{
+  ensureAudio();
+  soundOn = !soundOn;
+  e.target.textContent = 'Sound: ' + (soundOn ? 'on' : 'off');
+  e.target.classList.toggle('on', soundOn);
+});
+function releaseFrom(side){
+  const n = Math.round(parseFloat(document.getElementById('s-n').value));
+  for(const b of balls){ b.theta=0; b.omega=0; }
+  const angle = 0.85;
+  if(side==='left'){
+    for(let i=0;i<n;i++){ balls[i].theta = -angle; }
+  } else {
+    for(let i=0;i<n;i++){ balls[N-1-i].theta = angle; }
+  }
+  collisionCount = 0; simTime = 0; periodTracker.reset();
+  paused = false;
+  document.getElementById('b-pause').textContent = 'Pause';
+}
+
+document.getElementById('b-reset').addEventListener('click', ()=>{
+  initBalls();
+  paused = false;
+  document.getElementById('b-pause').textContent = 'Pause';
+});
+document.getElementById('b-pause').addEventListener('click', (e)=>{
+  paused = !paused;
+  e.target.textContent = paused ? 'Resume' : 'Pause';
+});
+
+/* ============================================================
+   SCOPE CANVASES: phase portrait + energy budget
+   ============================================================ */
+const phaseCanvas = document.getElementById('phase-canvas');
+const energyCanvas = document.getElementById('energy-canvas');
+function fitCanvas(c){
+  const r = c.getBoundingClientRect();
+  c.width = r.width * devicePixelRatio;
+  c.height = r.height * devicePixelRatio;
+}
+fitCanvas(phaseCanvas); fitCanvas(energyCanvas);
+window.addEventListener('resize', ()=>{ fitCanvas(phaseCanvas); fitCanvas(energyCanvas); });
+
+const phaseCtx = phaseCanvas.getContext('2d');
+const energyCtx = energyCanvas.getContext('2d');
+let phaseTrail = [];
+const PHASE_TRAIL_MAX = 400;
+let energyHistory = []; // {ke, pe, total}
+const ENERGY_HIST_MAX = 260;
+
+function drawPhasePortrait(){
+  const w = phaseCanvas.width, h = phaseCanvas.height;
+  phaseCtx.clearRect(0,0,w,h);
+  // grid
+  phaseCtx.strokeStyle = 'rgba(255,255,255,0.05)';
+  phaseCtx.lineWidth = 1;
+  phaseCtx.beginPath();
+  phaseCtx.moveTo(w/2,0); phaseCtx.lineTo(w/2,h);
+  phaseCtx.moveTo(0,h/2); phaseCtx.lineTo(w,h/2);
+  phaseCtx.stroke();
+
+  const thetaScale = w/2 / 1.6;
+  const omegaScale = h/2 / 4.2;
+  const cx = w/2, cy = h/2;
+
+  const tracked = balls[N-1];
+  phaseTrail.push({theta: tracked.theta, omega: tracked.omega});
+  if(phaseTrail.length > PHASE_TRAIL_MAX) phaseTrail.shift();
+
+  phaseCtx.beginPath();
+  for(let i=0;i<phaseTrail.length;i++){
+    const p = phaseTrail[i];
+    const x = cx + p.theta*thetaScale;
+    const y = cy - p.omega*omegaScale;
+    if(i===0) phaseCtx.moveTo(x,y); else phaseCtx.lineTo(x,y);
+  }
+  const grad = phaseCtx.createLinearGradient(0,0,w,0);
+  grad.addColorStop(0,'rgba(107,255,176,0.05)');
+  grad.addColorStop(1,'rgba(107,255,176,0.9)');
+  phaseCtx.strokeStyle = grad;
+  phaseCtx.lineWidth = 1.6*devicePixelRatio;
+  phaseCtx.stroke();
+
+  // current point
+  const cur = phaseTrail[phaseTrail.length-1];
+  const x = cx + cur.theta*thetaScale, y = cy - cur.omega*omegaScale;
+  phaseCtx.beginPath();
+  phaseCtx.arc(x,y,4*devicePixelRatio,0,Math.PI*2);
+  phaseCtx.fillStyle = '#e2b787';
+  phaseCtx.shadowColor = '#e2b787'; phaseCtx.shadowBlur = 8*devicePixelRatio;
+  phaseCtx.fill();
+  phaseCtx.shadowBlur = 0;
+}
+
+function drawEnergyBudget(){
+  const w = energyCanvas.width, h = energyCanvas.height;
+  energyCtx.clearRect(0,0,w,h);
+  const e = systemEnergy();
+  energyHistory.push(e);
+  if(energyHistory.length > ENERGY_HIST_MAX) energyHistory.shift();
+
+  const maxE = Math.max(2, ...energyHistory.map(v=>v.total)) * 1.15;
+  function plot(key, color, lw){
+    energyCtx.beginPath();
+    for(let i=0;i<energyHistory.length;i++){
+      const v = energyHistory[i][key];
+      const x = (i/(ENERGY_HIST_MAX-1)) * w;
+      const y = h - (v/maxE)*h;
+      if(i===0) energyCtx.moveTo(x,y); else energyCtx.lineTo(x,y);
+    }
+    energyCtx.strokeStyle = color;
+    energyCtx.lineWidth = lw*devicePixelRatio;
+    energyCtx.stroke();
+  }
+  plot('pe', 'rgba(232,163,61,0.85)', 1.3);
+  plot('ke', 'rgba(107,255,176,0.9)', 1.3);
+  plot('total', 'rgba(140,148,160,0.55)', 1.1);
+}
+
+/* ============================================================
+   READOUT UPDATES
+   ============================================================ */
+const rTheta = document.getElementById('r-theta');
+const rOmega = document.getElementById('r-omega');
+const rKE = document.getElementById('r-ke');
+const rPE = document.getElementById('r-pe');
+const rEtot = document.getElementById('r-etot');
+const rTmeas = document.getElementById('r-tmeas');
+const rTtheo = document.getElementById('r-ttheo');
+const rCollisions = document.getElementById('r-collisions');
+const rTime = document.getElementById('r-time');
+
+function updateReadouts(){
+  const tracked = balls[N-1];
+  rTheta.textContent = tracked.theta.toFixed(3) + '\u00A0rad';
+  rOmega.textContent = tracked.omega.toFixed(3) + '\u00A0rad/s';
+  const e = systemEnergy();
+  rKE.textContent = e.ke.toFixed(2) + '\u00A0J';
+  rPE.textContent = e.pe.toFixed(2) + '\u00A0J';
+  rEtot.textContent = e.total.toFixed(2) + '\u00A0J';
+  rTmeas.textContent = periodTracker.period ? periodTracker.period.toFixed(3)+'\u00A0s' : '—';
+  rTtheo.textContent = (2*Math.PI*Math.sqrt(params.L/params.g)).toFixed(3) + '\u00A0s';
+  rCollisions.textContent = collisionCount;
+  rTime.textContent = simTime.toFixed(2) + '\u00A0s';
+}
+
+/* ============================================================
+   MAIN LOOP
+   ============================================================ */
+let lastT = performance.now();
+function animate(now){
+  requestAnimationFrame(animate);
+  const dt = Math.min(0.033, (now-lastT)/1000);
+  lastT = now;
+
+  stepPhysics(dt);
+  syncMeshes();
+
+  if(autoOrbit && dragMode!=='orbit'){
+    camState.theta += dt*0.045;
+  }
+  updateCamera();
+
+  // update cube camera for reflections (skip balls themselves to avoid feedback banding)
+  ballMeshes.forEach(m=>m.visible=false);
+  cubeCamera.update(renderer, scene);
+  ballMeshes.forEach(m=>m.visible=true);
+
+  renderer.render(scene, camera);
+
+  drawPhasePortrait();
+  drawEnergyBudget();
+  updateReadouts();
+}
+requestAnimationFrame(animate);
+
+// kick off with a gentle default release so the page isn't static on load
+setTimeout(()=>{ releaseFrom('left'); }, 500);
+
+})();
+</script>
+</body>
+</html>

@@ -7,9 +7,9 @@
 
     <!-- SEO Canonical Link -->
     <link rel="canonical" href="https://monolithlabs.pages.dev/" />
-    
-    <!-- Meta Refresh Fallback -->
-    <meta http-equiv="refresh" content="3;url=https://monolithlabs.pages.dev/" />
+
+    <!-- Meta Refresh: 0s delay treated by Google as equivalent to a 301 -->
+    <meta http-equiv="refresh" content="0;url=https://monolithlabs.pages.dev/" />
 
     <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -166,7 +166,7 @@
             font-weight: 500;
         }
 
-        /* Primary Action Button */
+        /* Primary Action Button (fallback for anyone whose browser blocks the refresh) */
         .btn {
             display: flex;
             align-items: center;
@@ -198,36 +198,10 @@
             transform: translateX(4px);
         }
 
-        /* Visual Progress Bar */
-        .progress-wrapper {
+        .status-text {
             margin-top: 24px;
-        }
-
-        .progress-text {
             font-size: 0.8rem;
             color: #6b7280;
-            margin-bottom: 8px;
-        }
-
-        .progress-bar-bg {
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 9999px;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #38bdf8, #818cf8);
-            border-radius: 9999px;
-            animation: fillProgress 3s linear forwards;
-        }
-
-        @keyframes fillProgress {
-            0% { width: 0%; }
-            100% { width: 100%; }
         }
     </style>
 </head>
@@ -237,14 +211,14 @@
 
     <div class="container">
         <div class="card">
-            
+
             <div class="badge">
                 <span class="badge-dot"></span>
                 System Notice
             </div>
 
             <h1>Monolith Labs Has Moved</h1>
-            
+
             <p class="description">
                 Our infrastructure and research platform has permanently migrated to our new custom node.
             </p>
@@ -262,31 +236,10 @@
                 </svg>
             </a>
 
-            <div class="progress-wrapper">
-                <div class="progress-text" id="status-text">Redirecting in 3s...</div>
-                <div class="progress-bar-bg">
-                    <div class="progress-bar-fill"></div>
-                </div>
-            </div>
+            <div class="status-text">Redirecting automatically. Tap above if you're not sent through.</div>
 
         </div>
     </div>
 
-    <script>
-        // JS Fallback Redirect with live text countdown
-        let seconds = 3;
-        const statusText = document.getElementById('status-text');
-
-        const interval = setInterval(() => {
-            seconds--;
-            if (seconds > 0) {
-                statusText.innerText = `Redirecting in ${seconds}s...`;
-            } else {
-                statusText.innerText = `Redirecting now...`;
-                clearInterval(interval);
-                window.location.href = "https://monolithlabs.pages.dev/";
-            }
-        }, 1000);
-    </script>
 </body>
 </html>
